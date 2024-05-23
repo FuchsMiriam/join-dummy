@@ -1,0 +1,35 @@
+body {
+  overflow-x: hidden;
+  width: 1440px;
+  height: 1024px;
+  background-color: #f6f7f8;
+}
+
+/*CSS für Mainpage*/
+
+.mainpage {
+  overflow: hidden;
+}
+
+/*Animation am Anfang*/
+
+#animatedLogo {
+  position: fixed;
+  width: 274px;
+  height: 334.07px;
+  top: 345px;
+  left: 583px;
+  gap: 0px;
+  transition: transform 100ms ease-in-out, width 100ms ease-in-out,
+    height 100ms ease-in-out, top 100ms ease-in-out, left 100ms ease-in-out;
+}
+
+/*Mainpage*/
+
+.hiddenMainpage {
+  display: none;
+}
+
+.visibleMainpage {
+  display: block;
+}
