@@ -21,8 +21,8 @@ body {
   top: 345px;
   left: 583px;
   gap: 0px;
-  transition: transform 100ms ease-in-out, width 100ms ease-in-out,
-    height 100ms ease-in-out, top 100ms ease-in-out, left 100ms ease-in-out;
+  transition: transform 300ms ease-in-out, width 300ms ease-in-out,
+    height 300ms ease-in-out, top 300ms ease-in-out, left 300ms ease-in-out;
 }
 
 /*Mainpage*/
@@ -96,7 +96,7 @@ body {
   text-align: center;
   position: relative;
   width: 315px;
-  height: 73px;
+  height: 89px;
 }
 
 .loginHeadline::after {
