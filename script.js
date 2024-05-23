@@ -15,8 +15,14 @@ window.onload = function() {
         logo.removeEventListener('transitionend', onTransitionEnd);
 
         content.classList.remove('hiddenMainpage');
-        content.classList.add('visibleMainpage');
+        /*content.classList.add('visibleMainpage');*/
     }
 
     logo.addEventListener('transitionend', onTransitionEnd);
 };
+
+// Funktion zur Weiterleitung auf die Sign-up-Seite
+
+function redirectToSignUpPage() {
+    window.location.href = './signup.html';
+  }

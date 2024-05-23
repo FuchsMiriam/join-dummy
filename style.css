@@ -3,6 +3,7 @@ body {
   width: 1440px;
   height: 1024px;
   background-color: #f6f7f8;
+  font-family: "Inter";
 }
 
 /*CSS für Mainpage*/
@@ -30,6 +31,61 @@ body {
   display: none;
 }
 
-.visibleMainpage {
+/*.visibleMainpage {
   display: block;
+}*/
+
+/*Login-Seite rechts oben*/
+
+.mainpageSignUpContainer {
+  width: 279px;
+  height: 49px;
+  top: 67px;
+  left: 1039px;
+  gap: 35px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.textNotUser {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #000000;
+}
+
+.mainpageSignUpButton {
+  grid-template-columns: max-content;
+  width: 91px;
+  height: 49px;
+  padding: 15px 16px 15px 16px;
+  gap: 10px;
+  border-radius: 8px;
+  background: #2a3647;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.2px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mainpageSignUpButton:hover {
+  background-color: #29abe2;
+  border: none;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/*Login-Seite Login-Kasten*/
+
+.loginHeadline {
+  font-family: Inter;
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  text-align: center;
 }
