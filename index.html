@@ -18,17 +18,35 @@
     <img id="animatedLogo" src="./assets/img/logoLarge.png" alt="Logo" />
 
     <div class="hiddenMainpage" id="contentMainpage">
-
       <div class="mainpageSignUpContainer">
         <p class="textNotUser">Not a Join user?</p>
-        <button class="mainpageSignUpButton" onclick="redirectToSignUpPage()">Sign up</button>
+        <button class="mainpageSignUpButton" onclick="redirectToSignUpPage()">
+          Sign up
+        </button>
       </div>
 
       <div class="loginContainer">
         <h1 class="loginHeadline">Log in</h1>
+        <div class="mainCredentials">
+          <div class="loginInputFields">
+            <form action="">
+              <input class="loginEmail" type="text" placeholder="Email" />
+              <input class="loginPassword" type="text" placeholder="Password" />
+            </form>
+          </div>
+          <div class="rememberMeSection">
+            <img
+              src="./assets/img/loginCheckButton.png"
+              alt="Kontrollkästchen"
+            />
+            <p>Remember me</p>
+          </div>
+        </div>
+        <div class="loginButtons">
+          <button class="mainpageLoginButton">Log in</button>
+          <button class="mainpageGuestButton">Guest Log in</button>
+        </div>
       </div>
-      
-
     </div>
   </body>
 </html>

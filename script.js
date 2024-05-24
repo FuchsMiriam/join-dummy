@@ -9,7 +9,7 @@ window.onload = function() {
         logo.style.height = '121.97px';
         logo.style.top = '80px';
         logo.style.left = '77px';
-    }, 1000);
+    }, 500);
 
     function onTransitionEnd() {
         logo.removeEventListener('transitionend', onTransitionEnd);
