@@ -77,7 +77,7 @@ body {
 .mainpageSignUpButton:hover {
   background-color: #29abe2;
   border: none;
-  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 /*Login-Seite Login-Kasten*/
@@ -185,12 +185,23 @@ body {
   gap: 8px;
   left: 39px;
   position: relative;
+  align-items: center;
+}
+
+.checkboxRemember {
+  height: 24px;
+  width: 24px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.checkboxLabel {
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
   text-align: left;
-  align-items: center;
+  flex-shrink: 0;
 }
 
 /*Login-Abschnitt Buttons*/
@@ -223,7 +234,7 @@ body {
 .mainpageLoginButton:hover {
   background-color: #29abe2;
   border: none;
-  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .mainpageGuestButton {
@@ -249,5 +260,65 @@ body {
 .mainpageGuestButton:hover {
   color: #29abe2;
   border: 1px solid #29abe2;
-  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/*Datenschutz Buttons*/
+
+.legalButtonsContainer {
+  display: flex;
+  position: relative;
+  /*width: 246px;*/
+  height: 35px;
+  top: 949px;
+  left: 597px;
+  gap: 16px;
+}
+
+.legalButtonLeft {
+  /*width: 121px;
+  height: 35px;*/
+  padding: 8px;
+  gap: 8px;
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: #a8a8a8;
+  text-align: left;
+  background: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.legalButtonRight {
+  /*width: 109px;
+  height: 35px;*/
+  padding: 8px;
+  gap: 8px;
+  display: flex;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  color: #a8a8a8;
+  text-align: left;
+  background: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.legalButtonRight:hover {
+  color: #29abe2;
+  font-weight: 700;
+}
+
+.legalButtonLeft:hover {
+  color: #29abe2;
+  font-weight: 700;
 }
