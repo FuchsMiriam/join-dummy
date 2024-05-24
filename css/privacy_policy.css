@@ -1,0 +1,91 @@
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-100.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-200.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-300.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-500.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-600.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-700.woff2');
+}@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-800.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-900.woff2');
+}
+@font-face {
+    font-family: inter;
+    src: url('../fonts/inter-v13-latin-regular.woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "inter", "sans-serif";
+    background-color: rgb(246,247,248);
+}
+
+.m-left-328 {
+    margin-left: 328px;
+}
+
+.container {
+    margin-top: 206px;
+    max-width: 1014px;
+    height: 943px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+h1 {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 32.4px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.2px;
+}
+
+li {
+    margin-left: 16px;
+}
+
+.arrow-backwards {
+    width: 37px;
+    height: 37px;
+}
+
+.arrow-backwards-link {
+    color: #29ABE2;
+    position: absolute;
+    left: 1307px;
+    top: 225px;
+}
