@@ -3,18 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signup</title>
+    <title>Sign up</title>
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../css/signup.css" />
+    <link rel="stylesheet" href="../fonts.css" />
     <link
       rel="shortcut icon"
       href="../assets/img/favicon.ico"
       type="image/x-icon"
     />
-    <script src="../script.js"></script>
+    <script src="../js/signup.js"></script>
   </head>
   <body>
-    <img src="../assets/img/logoLarge.png" alt="Logo" />
+    <img class="logoSignupPage" src="../assets/img/logoLarge.png" alt="Logo" />
+
+    <div class="signupContainer">
+      <a class="signupArrow" href="../index.html"></a>
+      <h1 class="signupHeadline">Sign up</h1>
+
+      <div class="mainCredentialsSignup">
+        <div class="signupInputFields">
+          <form
+            action=""
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 32px;
+            "
+          >
+            <div class="emailContainer">
+              <input
+                class="signupEmail"
+                type="text"
+                placeholder="Name"
+                id="signupNameInput"
+              />
+              <img
+                class="emailIcon"
+                src="../assets/img/personIcon.png"
+                alt="Person"
+              />
+            </div>
+            <div class="emailContainer">
+              <input
+                class="signupEmail"
+                type="email"
+                placeholder="Email"
+                id="signupEmailInput"
+              />
+              <img
+                class="emailIcon"
+                src="../assets/img/mailIcon.png"
+                alt="Email"
+              />
+            </div>
+            <div class="emailContainer">
+              <input
+                class="signupPassword"
+                type="password"
+                placeholder="Password"
+                id="signupPasswordInput"
+              />
+              <img
+                class="emailIcon"
+                src="../assets/img/lockIcon.png"
+                alt="Schloss"
+              />
+            </div>
+            <div class="emailContainer">
+              <input
+                class="signupPassword"
+                type="password"
+                placeholder="Confirm Password"
+                id="signupConfirmPassword"
+              />
+              <img
+                class="emailIcon"
+                src="../assets/img/lockIcon.png"
+                alt="Schloss"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="privacyPolicySection">
+          <input class="checkboxRemember" type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="checkboxLabel"
+            >I accept the
+            <a href="./privacy_policy.html" class="linkPolicy">Privacy Policy</a></label
+          >
+        </div>
+      </div>
+
+      <button id="signupButton" onclick="signup()">Sign up</button>
+    </div>
+
+    <div class="legalButtonsContainer">
+      <button class="legalButtonLeft" onclick="redirectToPrivacyPage()">
+        Privacy Policy
+      </button>
+      <button class="legalButtonRight" onclick="redirectToLegalPage()">
+        Legal Notice
+      </button>
+    </div>
   </body>
 </html>
