@@ -177,6 +177,7 @@ body {
 input[type="email"]:focus,
 input[type="password"]:focus {
   border: 1px solid #29abe2 !important;
+  outline: none;
 }
 
 .loginPassword {

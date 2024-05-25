@@ -56,7 +56,7 @@ window.onload = function () {
 // Funktion zur Weiterleitung auf die Sign up Seite
 
 function redirectToSignUpPage() {
-  window.location.href = "./signup.html";
+  window.location.href = "./html/signup.html";
 }
 
 //Funktion zur Weiterleitung auf die Privacy Policy Seite
