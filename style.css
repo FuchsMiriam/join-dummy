@@ -139,18 +139,24 @@ body {
 }
 
 .loginInputFields {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 422px;
   height: 152px;
-  gap: 32px;
+}
+
+.emailContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.emailIcon {
+  position: absolute;
+  right: 21px;
+  width: 24px;
+  height: 24px;
 }
 
 .loginEmail {
-  background-image: url(./assets/img/mailIcon.png);
-  background-repeat: no-repeat;
   width: 380px;
   height: 24px;
   gap: 10px;
@@ -161,7 +167,16 @@ body {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
+}
+
+.loginEmail::placeholder,
+.loginPassword::placeholder {
   color: #d1d1d1;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border: 1px solid #29abe2 !important;
 }
 
 .loginPassword {
@@ -192,10 +207,7 @@ body {
 }
 
 .checkboxRemember {
-  height: 24px;
-  width: 24px;
-  border-radius: 3px;
-  cursor: pointer;
+  display: none;
 }
 
 .checkboxLabel {
@@ -204,7 +216,36 @@ body {
   font-weight: 400;
   line-height: 19.2px;
   text-align: left;
-  flex-shrink: 0;
+  padding-left: 30px;
+}
+
+.checkboxRemember + .checkboxLabel::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url("./assets/img/checkboxUnchecked.png");
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: background-image 0.1s;
+  cursor: pointer;
+}
+
+.checkboxRemember:not(:checked) + .checkboxLabel:hover::before {
+  background-image: url("./assets/img/checkboxUncheckedHover.png");
+  cursor: pointer;
+}
+
+.checkboxRemember:checked + .checkboxLabel::before {
+  background-image: url("./assets/img/checkboxChecked.png");
+  cursor: pointer;
+}
+
+.checkboxRemember:checked + .checkboxLabel:hover::before {
+  background-image: url("./assets/img/checkboxCheckedHover.png");
+  cursor: pointer;
 }
 
 /*Login-Abschnitt Buttons*/
@@ -258,6 +299,7 @@ body {
   color: #2a3647;
   align-content: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .mainpageGuestButton:hover {

@@ -10,15 +10,19 @@ function includeHTML() {
     if (file) {
       /* Make an HTTP request using the attribute value as the file name: */
       xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
+      xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {
-          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          if (this.status == 200) {
+            elmnt.innerHTML = this.responseText;
+          }
+          if (this.status == 404) {
+            elmnt.innerHTML = "Page not found.";
+          }
           /* Remove the attribute, and call this function once more: */
           elmnt.removeAttribute("w3-include-html");
           includeHTML();
         }
-      }
+      };
       xhttp.open("GET", file, true);
       xhttp.send();
       /* Exit the function: */
@@ -26,8 +30,6 @@ function includeHTML() {
     }
   }
 }
-
-
 
 // Funktion für die Animation auf der Login-Seite
 
@@ -51,9 +53,18 @@ window.onload = function () {
   logo.addEventListener("transitionend", onTransitionEnd);
 };
 
-// Funktion zur Weiterleitung auf die Sign-up-Seite
+// Funktion zur Weiterleitung auf die Sign up Seite
 
 function redirectToSignUpPage() {
   window.location.href = "./signup.html";
 }
 
+//Funktion zur Weiterleitung auf die Privacy Policy Seite
+function redirectToPrivacyPage() {
+  window.location.href = "./html/privacy_policy.html";
+}
+
+//Funktion zur Weiterleitung auf die Privacy Policy Seite
+function redirectToLegalPage() {
+  window.location.href = "./html/legal_notice.html";
+}
