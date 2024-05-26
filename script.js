@@ -129,8 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-//Funktionen für den Login
+//Funktion für den Login
 
 let users = [{ email: "miriam@test.de", password: "test123" }]; //muss in Firebase
 

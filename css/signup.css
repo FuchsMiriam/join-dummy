@@ -101,6 +101,13 @@
   height: 24px;
 }
 
+.errorMessageSignup {
+  display: none;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .signupEmail {
   width: 380px;
   height: 24px;
@@ -125,6 +132,11 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
   border: 1px solid #29abe2 !important;
+}
+
+input[type="password"].error {
+  border: 1px solid red !important;
+  outline: none;
 }
 
 .signupPassword {
