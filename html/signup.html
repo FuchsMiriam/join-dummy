@@ -39,6 +39,7 @@
                 type="text"
                 placeholder="Name"
                 id="signupNameInput"
+                required
               />
               <img
                 class="emailIcon"
@@ -52,6 +53,7 @@
                 type="email"
                 placeholder="Email"
                 id="signupEmailInput"
+                required
               />
               <img
                 class="emailIcon"
@@ -65,11 +67,13 @@
                 type="password"
                 placeholder="Password"
                 id="signupPasswordInput"
+                required
               />
               <img
                 class="emailIcon"
                 src="../assets/img/lockIcon.png"
                 alt="Schloss"
+                id="signupLockIcon"
               />
             </div>
             <div class="emailContainer">
@@ -78,25 +82,34 @@
                 type="password"
                 placeholder="Confirm Password"
                 id="signupConfirmPassword"
+                required
               />
               <img
                 class="emailIcon"
                 src="../assets/img/lockIcon.png"
                 alt="Schloss"
+                id="signupValidationLockIcon"
               />
             </div>
           </form>
+          <div id="errorMessage" class="errorMessageSignup">
+            Ups! Your password does not match.
+          </div>
         </div>
         <div class="privacyPolicySection">
           <input class="checkboxRemember" type="checkbox" id="rememberMe" />
           <label for="rememberMe" class="checkboxLabel"
             >I accept the
-            <a href="./privacy_policy.html" class="linkPolicy">Privacy Policy</a></label
+            <a href="./privacy_policy.html" class="linkPolicy"
+              >Privacy Policy</a
+            ></label
           >
         </div>
       </div>
 
-      <button id="signupButton" onclick="signup()">Sign up</button>
+      <button type="button" id="signupButton" onclick="signup()">
+        Sign up
+      </button>
     </div>
 
     <div class="legalButtonsContainer">

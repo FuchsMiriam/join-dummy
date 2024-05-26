@@ -44,6 +44,7 @@
                   type="email"
                   placeholder="Email"
                   id="loginEmailInput"
+                  required
                 />
                 <img
                   class="emailIcon"
@@ -57,14 +58,19 @@
                   type="password"
                   placeholder="Password"
                   id="loginPasswordInput"
+                  required
                 />
                 <img
                   class="emailIcon"
                   src="./assets/img/lockIcon.png"
                   alt="Schloss"
+                  id="lockIcon"
                 />
               </div>
             </form>
+            <div id="errorMessage" class="errorMessage">
+              Wrong password. Ups! Try again.
+            </div>
           </div>
           <div class="rememberMeSection">
             <input class="checkboxRemember" type="checkbox" id="rememberMe" />
@@ -72,8 +78,16 @@
           </div>
         </div>
         <div class="loginButtons">
-          <button class="mainpageLoginButton">Log in</button>
-          <button class="mainpageGuestButton">Guest Log in</button>
+          <button
+            type="button"
+            class="mainpageLoginButton"
+            onclick="loginUser()"
+          >
+            Log in
+          </button>
+          <button class="mainpageGuestButton" onclick="redirectToBoard()">
+            Guest Log in
+          </button>
         </div>
       </div>
 
