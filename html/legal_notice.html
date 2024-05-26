@@ -7,16 +7,22 @@
     <title>Legal Notice</title>
     <link rel="stylesheet" href="../css/legal_notice.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../assets/templates/templates.css">
+    <link rel="stylesheet" href="../assets/templates/desktop_template.html">
+
 </head>
 
-<body>
+<body onload="includeHTML()">
+    <div w3-include-html="../assets/templates/desktop_template.html"></div>
     <div class="container m-left-328">
-        <a class="arrow-backwards-link" href="index.html">
-            <img class="arrow-backwards" src="../assets/img/arrow-left-line.svg" alt="arrow_left">
-        </a>
-        <h1>Legal Notice</h1>
+        <div class="head">
+            <h1>Legal Notice</h1>
+            <a class="arrow-backwards-link" href="index.html">
+                <img class="arrow-backwards" src="../assets/img/arrow-left-line.svg" alt="arrow_left">
+            </a>
+        </div>
         <br><br>
-        <div class="content">
             <div class="imprint">
                 <br>
                 <h2 class="imprint-headline">Imprint</h2>
@@ -95,7 +101,6 @@
             <br><br>
             Date: June 23, 2024
         </div>
-    </div>
 </body>
 
 </html>

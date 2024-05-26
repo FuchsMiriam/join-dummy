@@ -13,10 +13,16 @@ html {
     margin-left: 328px;
 }
 
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+
 .container {
-    margin-top: 206px;
     max-width: 1014px;
-    height: 943px;
+    height: 840px;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -43,13 +49,10 @@ li {
 }
 
 .arrow-backwards {
-    width: 37px;
-    height: 37px;
+    width: 21.33px;
+    height: 20.74px;
 }
 
 .arrow-backwards-link {
     color: #29ABE2;
-    position: absolute;
-    left: 1307px;
-    top: 225px;
 }

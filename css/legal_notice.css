@@ -10,8 +10,21 @@ html {
     background-color: rgb(246,247,248);
 }
 
-.content {
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.container {
     max-width: 1014px;
+    height: 840px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.content {
     height: 943px;
     overflow-y: auto;
     scrollbar-width: none;
@@ -28,7 +41,6 @@ a {
 }
 
 h1 {
-    margin-top: 206px;
     font-size: 61px;
     font-weight: 700;
     line-height: 73.2px;
@@ -40,15 +52,12 @@ ul {
 }
 
 .arrow-backwards {
-    width: 37px;
-    height: 37px;
+    width: 21.33px;
+    height: 20.74px;
 }
 
 .arrow-backwards-link {
     color: #29ABE2;
-    position: absolute;
-    left: 1307px;
-    top: 225px;
 }
 
 .imprint {
