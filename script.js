@@ -1,3 +1,18 @@
+//Datenbank für Login
+
+/*function onloadFunc() {
+  onloadDatabase();
+}
+
+const databaseURL =
+  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function onloadDatabase(path = "") {
+  let response = await fetch(databaseURL + path + '.json');
+  return responseToJson = await response.json();
+  console.log(response);
+}*/
+
 //Template einbinden
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -64,7 +79,32 @@ function redirectToPrivacyPage() {
   window.location.href = "./html/privacy_policy.html";
 }
 
-//Funktion zur Weiterleitung auf die Privacy Policy Seite
+//Funktion zur Weiterleitung auf die Legal Notice Seite
 function redirectToLegalPage() {
   window.location.href = "./html/legal_notice.html";
+}
+
+//Funktion zur Weiterleitung auf das Board
+function redirectToBoard() {
+  window.location.href = "./html/board.html";
+}
+
+//Funktionen für den Login
+
+let users = [{ email: "miriam@test.de", password: "test123" }]; //muss in Firebase
+
+function loginUser() {
+  let email = document.getElementById("loginEmailInput");
+  let password = document.getElementById("loginPasswordInput");
+  let user = users.find(
+    (u) => u.email == email.value && u.password == password.value
+  );
+
+  if (user) {
+    console.log("Login successful");
+    window.location.href = "./html/board.html";
+  } else {
+    console.log("Invalid email or password");
+    alert("Invalid email or password");
+  }
 }
