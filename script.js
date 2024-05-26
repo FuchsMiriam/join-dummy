@@ -113,6 +113,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const loginButton = document.querySelector(".mainpageLoginButton");
+
+  loginButton.addEventListener("click", () => {
+    const loginSuccess = loginUser();
+
+    if (!loginSuccess) {
+      const errorMessage = document.getElementById("errorMessage");
+      const passwordInput = document.getElementById("loginPasswordInput");
+
+      errorMessage.style.display = "block";
+      passwordInput.classList.add("error");
+    }
+  });
+});
+
+
 //Funktionen für den Login
 
 let users = [{ email: "miriam@test.de", password: "test123" }]; //muss in Firebase
@@ -125,10 +142,6 @@ function loginUser() {
   );
 
   if (user) {
-    console.log("Login successful");
     window.location.href = "./html/board.html";
-  } else {
-    console.log("Invalid email or password");
-    alert("Invalid email or password");
   }
 }

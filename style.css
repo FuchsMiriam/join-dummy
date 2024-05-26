@@ -163,6 +163,13 @@ body {
   content: url("./assets/img/visibility_off.png");
 }
 
+.errorMessage {
+  display: none;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .loginEmail {
   width: 380px;
   height: 24px;
@@ -185,6 +192,11 @@ body {
 input[type="email"]:focus,
 input[type="password"]:focus {
   border: 1px solid #29abe2 !important;
+  outline: none;
+}
+
+input[type="password"].error {
+  border: 1px solid red !important;
   outline: none;
 }
 
