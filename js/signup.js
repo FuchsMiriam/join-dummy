@@ -27,7 +27,7 @@ function signup() {
     "signupConfirmPassword"
   ).value;
 
-  // Simple form validation
+  // Formularüberprüfung
   if (!email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
     return;
@@ -37,14 +37,13 @@ function signup() {
     alert("Passwords do not match.");
     return;
   }
-  // Create user with Firebase
+  // User mit Firebase erstellen
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("User created:", user);
       alert("User successfully created!");
-      // Optional: Save additional user data (e.g., name) to Firestore or Realtime Database
     })
     .catch((error) => {
       const errorCode = error.code;

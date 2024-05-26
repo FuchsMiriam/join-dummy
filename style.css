@@ -156,6 +156,11 @@ body {
   right: 21px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
+}
+
+.visibility_off {
+  content: url("./assets/img/visibility_off.png");
 }
 
 .loginEmail {

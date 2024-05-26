@@ -68,26 +68,50 @@ window.onload = function () {
   logo.addEventListener("transitionend", onTransitionEnd);
 };
 
-// Funktion zur Weiterleitung auf die Sign up Seite
+// Funktion für Weiterleitungen
 
 function redirectToSignUpPage() {
   window.location.href = "./html/signup.html";
 }
 
-//Funktion zur Weiterleitung auf die Privacy Policy Seite
 function redirectToPrivacyPage() {
   window.location.href = "./html/privacy_policy.html";
 }
 
-//Funktion zur Weiterleitung auf die Legal Notice Seite
 function redirectToLegalPage() {
   window.location.href = "./html/legal_notice.html";
 }
 
-//Funktion zur Weiterleitung auf das Board
 function redirectToBoard() {
   window.location.href = "./html/board.html";
 }
+
+//Funktionen für das Wechseln der Anzeigeart - Icons und Texteingabe
+
+document.addEventListener("DOMContentLoaded", () => {
+  const passwordInput = document.getElementById("loginPasswordInput");
+  const lockIcon = document.getElementById("lockIcon");
+
+  passwordInput.addEventListener("input", () => {
+    if (passwordInput.value.length > 0) {
+      lockIcon.src = "./assets/img/visibility_off.png";
+    } else {
+      lockIcon.src = "./assets/img/lockIcon.png";
+    }
+  });
+  let passwordVisible = false;
+
+  lockIcon.addEventListener("click", () => {
+    passwordVisible = !passwordVisible;
+    if (passwordVisible) {
+      lockIcon.src = "./assets/img/visibility_on.png";
+      passwordInput.type = "text";
+    } else {
+      lockIcon.src = "./assets/img/visibility_off.png";
+      passwordInput.type = "password"; //
+    }
+  });
+});
 
 //Funktionen für den Login
 
