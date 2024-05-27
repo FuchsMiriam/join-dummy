@@ -564,6 +564,7 @@ input::placeholder{
 .hoverCloseDetailCard:hover{
     border-radius: 50%;
     background-color: rgb(238, 238, 238);
+    cursor: pointer;
 }
 
 .overlapContacts{
@@ -592,9 +593,16 @@ input::placeholder{
 
 .centered-axis-xy {
     position: absolute;
-    left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+}
+
+.detailCardinsideContent{
+    left: 50%;
+}
+
+.detailCardoutsideContent{
+    left: 150%;
 }
 
 .checkboxCard{

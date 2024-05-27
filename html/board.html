@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
-    <link type="text/css" rel="stylesheet" href="../assets/templates/templates.css">
+    <link rel="stylesheet" href="../assets/templates/templates.css">
     <link rel="stylesheet" href="../fonts.css">
-    <script src="../script.js"></script>
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../style.css">
+    <script src="../js/board.js"></script>
 </head>
-<body>
+<body onload="init()">
     <header></header>
     <nav></nav>
     <section class="headerFrame">
@@ -59,113 +59,11 @@
         </div>
     </section>
     <section class="contentFrame">
-        <div class="columnBoard">
-            <div class="noTasksToDo">No tasks To do</div>
-        </div>
-        <div class="columnBoard">
-            <div class="TasksToDo">
-                <div class="labelCard">User Story</div>
-                <div class="textCard">
-                    <div class="textCardTitle">Kochwelt Page & Recipe Recommender</div>
-                    <div class="textCardContent">Build start page with recipe recommandation...</div>
-                </div>
-                <div class="textCardProgress">
-                    <div class="progressBar">
-                        <div class="progressBarLine"></div>
-                    </div>
-                    <div class="textProgress">1/2 Subtasks</div>
-                </div>
-                <div class="contactsPriority">
-                    <div class="cardContacts">   
-                        <div class="cardContact">AM</div>
-                        <div class="cardContact overlapContacts">EM</div>
-                    </div>
-                    <img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="columnBoard">
-            <div class="TasksToDo">
-                <div class="labelCard">User Story</div>
-                <div class="textCard">
-                    <div class="textCardTitle">Kochwelt Page & Recipe Recommender</div>
-                    <div class="textCardContent">Build start page with recipe recommandation...</div>
-                </div>
-                <div class="contactsPriority">
-                    <div class="cardContacts">   
-                        <div class="cardContact">AM</div>
-                        <div class="cardContact overlapContacts">EM</div>
-                    </div>
-                    <img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="columnBoard"></div>
+        <div id="toDO" class="columnBoard"></div>
+        <div id="inProgress" class="columnBoard"></div>
+        <div id="awaitFeedback" class="columnBoard"></div>
+        <div id="done" class="columnBoard"></div>
     </section>
-    <section class="">
-        <div class="detailCardTaskToDo centered-axis-xy">
-            <div class="labelClose">
-                <div class="labelDetailCard">User Story</div>
-                <div class="imgPrio hoverCloseDetailCard flex-center">
-                    <img class="closeDetailCard" src="../assets/img/close.png" alt="">
-                </div>
-            </div>
-            <div class="textDetailCardTitle">Kochwelt Page & Recipe Recommender</div>
-            <div class="textDetailCardContent">Build start page with recipe recommandation...</div>
-            <div class="textDetailCardDate">
-                <div>Due date:</div>
-                <div class="dateDetailCard">10/05/2023</div>
-            </div>
-            <div class="textDetailCardPriority">
-                <div>Priority:</div>
-                <div class="priorityDetailCard">
-                    <div class="dateDetailCard">Medium</div>
-                    <img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">
-                </div>
-            </div>
-            <div class="textDetailCardContacts">
-                <div>Assigned To:</div>
-                <div class="contactsDetailCard">
-                    <div class="contactsListCard">
-                        <p class="cardContactDetailCard">EM</p>
-                        <p class="nameContactDetailCard">Emmanuel Mauer</p>
-                    </div>
-                    <div class="contactsListCard">
-                        <p class="cardContactDetailCard">EM</p>
-                        <p class="nameContactDetailCard">Emmanuel Mauer</p>
-                    </div>
-                    <div class="contactsListCard">
-                        <p class="cardContactDetailCard">EM</p>
-                        <p class="nameContactDetailCard">Emmanuel Mauer</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="textDetailCardContacts">
-                <div>Subtasks:</div>
-                <div class="subtasksDetailCard">
-                    <div class="subtasksListCard">
-                        <input class="checkboxRememberCard" type="checkbox" id="checkCard1" />
-                        <label for="checkCard1" class="checkboxCard">Implement Recipe Recommandation</label>
-                    </div>
-                    <div class="subtasksListCard">
-                        <input class="checkboxRememberCard" type="checkbox" id="checkCard2" />
-                        <label for="checkCard2" class="checkboxCard">Implement Recipe Recommandation</label>
-                    </div>
-                </div>
-            </div>
-            <div class="deleteEditDetailCard">
-                <div class="deleteDetailCard">
-                    <div class="imgDetaildelete"></div>
-                    <p class="textDeleteCard">Delete</p>
-                </div>
-                <div class="vektorDetailCard"></div>
-                <div class="editDetailCard">
-                    <div class="imgDetailedit"></div>
-                    <p class="textDeleteCard">Edit</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section id="idDetailCard"></section>
 </body>
 </html>
