@@ -38,22 +38,49 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   setupPasswordVisibilityToggle("signupPasswordInput", "signupLockIcon");
-  setupPasswordVisibilityToggle("signupConfirmPassword", "signupValidationLockIcon");
+  setupPasswordVisibilityToggle(
+    "signupConfirmPassword",
+    "signupValidationLockIcon"
+  );
 });
 
+//Datenbank für Signup
 
-//Funktionen Sign up und Firebase
+function onloadFunc() {
+  onloadDatabase();
+}
 
-let users = [
-  {
-    name: "Miriam Fuchs",
-    email: "miriam@test.de",
-    password: "test123",
-    confirmPassword: "",
-  },
-]; //muss in Firebase
+//Datenbank für Signup
 
-function signup() {
+const databaseURL =
+  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function onloadDatabase(path = "") {
+  let response = await fetch(databaseURL + path + ".json");
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
+}
+
+// Funktion zum Posten der Daten in die Firebase-Datenbank
+async function postData(path = "", data = {}) {
+  try {
+    let response = await fetch(`${databaseURL}${path}.json`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    let responseToJson = await response.json();
+    return responseToJson;
+  } catch (error) {
+    console.error("Error posting data:", error);
+    throw error;
+  }
+}
+
+//Funktionen Sign up
+
+async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
@@ -61,28 +88,35 @@ function signup() {
     "signupConfirmPassword"
   ).value;
 
-  // Formularüberprüfung
-  if (!email || !password || !confirmPassword) {
+  if (!name || !email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
     return;
   }
 
   if (password !== confirmPassword) {
-    alert("Passwords do not match.");
+    document.getElementById("errorMessage").style.display = "block";
     return;
   }
-  // User mit Firebase erstellen
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log("User created:", user);
-      alert("User successfully created!");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error("Error creating user:", errorCode, errorMessage);
-      alert(errorMessage);
-    });
+
+  document.getElementById("errorMessage").style.display = "none";
+
+  try {
+    const newUser = {
+      name: name,
+      email: email,
+      password: password,
+    };
+
+    const response = await postData("users", newUser);
+
+    if (response) {
+      alert("You signed up successfully");
+    } else {
+      console.error("Error saving user to database:", response);
+    }
+  } catch (error) {
+    console.error("Error creating user:", error.message);
+    alert("Error creating user: " + error.message);
+  }
+  postData();
 }
