@@ -1,4 +1,5 @@
 //Funktion zur Weiterleitung auf die Privacy Policy Seite
+
 function redirectToPrivacyPage() {
   window.location.href = "./privacy_policy.html";
 }
@@ -6,6 +7,29 @@ function redirectToPrivacyPage() {
 //Funktion zur Weiterleitung auf die Privacy Policy Seite
 function redirectToLegalPage() {
   window.location.href = "./legal_notice.html";
+}
+
+// Sign up button
+
+document.addEventListener("DOMContentLoaded", () => {
+  buttonDisabled();
+  checkboxToggle();
+});
+
+function buttonDisabled() {
+  const signupButton = document.querySelector("#signupButton");
+  signupButton.disabled = true;
+}
+
+//Checkbox-Wechsel
+
+function checkboxToggle() {
+  const checkbox = document.querySelector("#rememberMe");
+  const signupButton = document.querySelector("#signupButton");
+
+  checkbox.addEventListener("change", () => {
+    signupButton.disabled = !checkbox.checked;
+  });
 }
 
 //Funktionen für das Wechseln der Anzeigeart - Icons und Texteingabe
@@ -78,7 +102,7 @@ async function postData(path = "", data = {}) {
   }
 }
 
-//Funktionen Sign up
+//Funktion Sign up
 
 async function signup() {
   const name = document.getElementById("signupNameInput").value;
