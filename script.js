@@ -1,19 +1,3 @@
-//Datenbank für Login
-
-function onloadFunc() {
-  onloadDatabase();
-}
-
-const databaseURL =
-  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
-
-async function onloadDatabase(path = "") {
-  let response = await fetch(databaseURL + path + ".json");
-  let responseToJson = await response.json();
-  console.log(responseToJson);
-  return responseToJson;
-}
-
 //Template einbinden
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -45,6 +29,24 @@ function includeHTML() {
       return;
     }
   }
+}
+
+//Datenbank für Login
+
+function onloadFunc() {
+  onloadDatabase();
+}
+
+//Datenbank für Login
+
+const databaseURL =
+  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function onloadDatabase(path = "") {
+  let response = await fetch(databaseURL + path + ".json");
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
 }
 
 // Funktion für die Animation auf der Login-Seite
