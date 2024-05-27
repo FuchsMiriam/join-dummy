@@ -117,8 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const loginButton = document.querySelector(".mainpageLoginButton");
 
-  loginButton.addEventListener("click", () => {
-    const loginSuccess = loginUser();
+  loginButton.addEventListener("click", async () => {
+    const loginSuccess = await loginUser();
 
     if (!loginSuccess) {
       const errorMessage = document.getElementById("errorMessage");
@@ -132,16 +132,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Funktion für den Login
 
-let users = [{ email: "miriam@test.de", password: "test123" }]; //muss in Firebase
+async function loginUser() {
+  let email = document.getElementById("loginEmailInput").value;
+  let password = document.getElementById("loginPasswordInput").value;
 
-function loginUser() {
-  let email = document.getElementById("loginEmailInput");
-  let password = document.getElementById("loginPasswordInput");
-  let user = users.find(
-    (u) => u.email == email.value && u.password == password.value
-  );
+  try {
+    let usersData = await onloadDatabase("users");
+    let user = Object.values(usersData).find(
+      (u) => u.email === email && u.password === password
+    );
 
-  if (user) {
-    window.location.href = "./html/board.html";
+    if (user) {
+      window.location.href = "./html/board.html";
+      return;
+    }
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
   }
 }
