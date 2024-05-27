@@ -185,27 +185,27 @@ input[type="password"].error {
   display: inline-block;
   width: 24px;
   height: 24px;
-  background-image: url("../assets/img/checkboxUnchecked.png");
+  background-image: url("../assets/img/checkboxUnchecked.svg");
   background-size: cover;
   position: absolute;
   left: 0;
-  top: 0;
+  top: -4px;
   transition: background-image 0.1s;
   cursor: pointer;
 }
 
 .checkboxRemember:not(:checked) + .checkboxLabel:hover::before {
-  background-image: url("../assets/img/checkboxUncheckedHover.png");
+  background-image: url("../assets/img/checkboxUncheckedHover.svg");
   cursor: pointer;
 }
 
 .checkboxRemember:checked + .checkboxLabel::before {
-  background-image: url("../assets/img/checkboxChecked.png");
+  background-image: url("../assets/img/checkboxChecked.svg");
   cursor: pointer;
 }
 
 .checkboxRemember:checked + .checkboxLabel:hover::before {
-  background-image: url("../assets/img/checkboxCheckedHover.png");
+  background-image: url("../assets/img/checkboxCheckedHover.svg");
   cursor: pointer;
 }
 

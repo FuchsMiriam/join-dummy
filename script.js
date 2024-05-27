@@ -95,9 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   passwordInput.addEventListener("input", () => {
     if (passwordInput.value.length > 0) {
-      lockIcon.src = "./assets/img/visibility_off.png";
+      lockIcon.src = "./assets/img/visibility_off.svg";
     } else {
-      lockIcon.src = "./assets/img/lockIcon.png";
+      lockIcon.src = "./assets/img/lockIcon.svg";
     }
   });
   let passwordVisible = false;
@@ -105,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
   lockIcon.addEventListener("click", () => {
     passwordVisible = !passwordVisible;
     if (passwordVisible) {
-      lockIcon.src = "./assets/img/visibility_on.png";
+      lockIcon.src = "./assets/img/visibility_on.svg";
       passwordInput.type = "text";
     } else {
-      lockIcon.src = "./assets/img/visibility_off.png";
+      lockIcon.src = "./assets/img/visibility_off.svg";
       passwordInput.type = "password"; //
     }
   });
