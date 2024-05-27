@@ -76,6 +76,7 @@
   gap: 24px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .signupInputFields {
@@ -105,7 +106,8 @@
   display: none;
   color: red;
   font-size: 12px;
-  margin-top: 5px;
+  position: absolute;
+  top: calc(72% + 5px);
 }
 
 .signupEmail {
@@ -162,9 +164,9 @@ input[type="password"].error {
   width: 231px;
   height: 24px;
   gap: 8px;
-  left: 39px;
   position: relative;
   align-items: center;
+  margin-top: 10px;
 }
 
 .checkboxRemember {
@@ -178,6 +180,11 @@ input[type="password"].error {
   line-height: 19.2px;
   text-align: left;
   padding-left: 30px;
+}
+
+.checkboxRemember,
+.checkboxLabel {
+  align-self: center;
 }
 
 .checkboxRemember + .checkboxLabel::before {
