@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../assets/templates/templates.css">
-    <script src="../script.js"></script>
+    <script src="../js/template.js"></script>
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../fonts.css">
 </head>
@@ -20,13 +20,13 @@
         </div>
         <section id="content">
             <div class="content-left">
-                <label for="input-title">Title<span class="input-star">*</span></label>
+                <label for="input-title">Title<span class="span-star">*</span></label>
                 <input type="text" id="input-title" placeholder="Enter a Title">
                 <label for="input-description">Description</label>
                 <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
                 <label for="input-assigny">Assigned to</label>
                 <form action="#">
-                    <input list="input-assigned" id="input-assigned" name="input-assigny">
+                    <input list="input-assigned" id="input-assigny">
                     <datalist id="input-assigned">
                         <option value="1"></option>
                         <option value="2"></option>
@@ -37,8 +37,32 @@
                 </form>
             </div>
             <div class="seperator"></div>
-            <div class="content-right"></div>
+            <div class="content-right">
+                <label for="input-date">Due Date<span class="span-star">*</span></label>
+                <input id="input-date" type="date">
+                <label for="input-prio">Prio</label>
+                <span class="input-prio-span">
+                    <input id="input-prio" class="btn urgent-image" type="button" value="Urgent">
+                    <input id="input-prio" class="btn medium-image" type="button" value="Medium">
+                    <input id="input-prio" class="btn low-image" type="button" value="Low">
+                </span>
+                <form action="#"></form>
+                <label for="input-category">Category<span class="span-star">*</span></label>
+                <input list="input-categorie" id="input-category">
+                <datalist id="input-categorie">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                </datalist>
+            </div>
         </section>
+        <div class="footer">
+            <span>*This field is required</span>
+            <span>
+                <button class="btn-footer-clear">Clear</button>
+                <button class="btn-footer-create">Create Task</button>
+            </span>
+        </div>
     </div>
 </body>
 
