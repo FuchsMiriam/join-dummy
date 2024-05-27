@@ -1,6 +1,6 @@
 //Datenbank für Login
 
-/*function onloadFunc() {
+function onloadFunc() {
   onloadDatabase();
 }
 
@@ -8,10 +8,11 @@ const databaseURL =
   "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function onloadDatabase(path = "") {
-  let response = await fetch(databaseURL + path + '.json');
-  return responseToJson = await response.json();
-  console.log(response);
-}*/
+  let response = await fetch(databaseURL + path + ".json");
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
+}
 
 //Template einbinden
 function includeHTML() {
