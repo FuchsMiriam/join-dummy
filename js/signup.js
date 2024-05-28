@@ -9,6 +9,10 @@ function redirectToLegalPage() {
   window.location.href = "./legal_notice.html";
 }
 
+function redirectToLoginPage() {
+  window.location.href = "../index.html";
+}
+
 // Sign up button
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -119,10 +123,12 @@ async function signup() {
 
   if (password !== confirmPassword) {
     document.getElementById("errorMessage").style.display = "block";
+    document.getElementById("signupConfirmPassword").classList.add("error");
     return;
   }
 
   document.getElementById("errorMessage").style.display = "none";
+  document.getElementById("signupConfirmPassword").classList.remove("error");
 
   try {
     const newUser = {
@@ -143,4 +149,5 @@ async function signup() {
     alert("Error creating user: " + error.message);
   }
   postData();
+  redirectToLoginPage();
 }

@@ -136,7 +136,7 @@ input[type="password"]:focus {
   border: 1px solid #29abe2 !important;
 }
 
-input[type="password"].error {
+input.confirmPassword.error {
   border: 1px solid red !important;
   outline: none;
 }
