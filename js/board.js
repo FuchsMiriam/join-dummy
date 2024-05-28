@@ -8,7 +8,7 @@ let exampleTask = {
 
 function init(){
     loadTasks();
-    postData("2", {"task": exampleTask});
+    postData("", {"3": exampleTask});
     document.getElementById("idDetailCard").innerHTML = detailCardHTML();
     document.getElementById("inProgress").innerHTML = cardHTML();
     document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
