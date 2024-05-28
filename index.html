@@ -13,7 +13,7 @@
       type="image/x-icon"
     />
   </head>
-  <body class="mainpage">
+  <body class="mainpage" onload="onloadFunc()">
     <img id="animatedLogo" src="./assets/img/logoLarge.svg" alt="Logo" />
 
     <div class="hiddenMainpage" id="contentMainpage">
@@ -24,7 +24,7 @@
         </button>
       </div>
 
-      <div class="loginContainer" onload="onloadFunc()">
+      <div class="loginContainer">
         <h1 class="loginHeadline">Log in</h1>
         <div class="mainCredentials">
           <div class="loginInputFields">

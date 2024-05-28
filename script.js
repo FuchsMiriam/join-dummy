@@ -56,9 +56,20 @@ function redirectToBoard() {
   window.location.href = "./html/board.html";
 }
 
+//Zurücksetzen des Formulars
+
+function resetForm() {
+  document.getElementById("loginEmailInput").value = "";
+  document.getElementById("loginPasswordInput").value = "";
+  document.getElementById("rememberMe").checked = false;
+}
+
+window.addEventListener("pageshow", resetForm);
+
 //Funktionen für das Wechseln der Anzeigeart - Icons und Texteingabe
 
 document.addEventListener("DOMContentLoaded", () => {
+  resetForm();
   const passwordInput = document.getElementById("loginPasswordInput");
   const lockIcon = document.getElementById("lockIcon");
 
@@ -69,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lockIcon.src = "./assets/img/lockIcon.svg";
     }
   });
-  let passwordVisible = false;
 
+  let passwordVisible = false;
   lockIcon.addEventListener("click", () => {
     passwordVisible = !passwordVisible;
     if (passwordVisible) {
@@ -85,14 +96,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginButton = document.querySelector(".mainpageLoginButton");
-
   loginButton.addEventListener("click", async () => {
     const loginSuccess = await loginUser();
-
     if (!loginSuccess) {
       const errorMessage = document.getElementById("errorMessage");
       const passwordInput = document.getElementById("loginPasswordInput");
-
       errorMessage.style.display = "block";
       passwordInput.classList.add("error");
     }
@@ -113,7 +121,7 @@ async function loginUser() {
 
     if (user) {
       window.location.href = "./html/board.html";
-      return;
+      return true;
     }
   } catch (error) {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
