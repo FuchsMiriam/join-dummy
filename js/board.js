@@ -7,6 +7,7 @@ let exampleTask = {
 };
 
 function init(){
+    includeHTML();
     loadTasks();
     postData("", {"3": exampleTask});
     document.getElementById("idDetailCard").innerHTML = detailCardHTML();

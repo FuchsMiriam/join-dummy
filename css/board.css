@@ -8,7 +8,7 @@
 .contentFrame{
     padding-left: 232px;
     height: 688px;
-    width: calc(1208px - 64px - 64px);
+    width: 1208px;
     padding: 0px 64px 0px 64px;
     display: flex;
     gap: 26px;
@@ -46,8 +46,8 @@
 }
 
 .search-container{
-    width: calc(312px - 16px - 16px);
-    height: calc(48px - 8px - 8px);
+    width: 312px;
+    height: 48px;
     border-radius: 10px;
     border: 1px solid #a8a8a8;
     padding: 8px 16px 8px 16px;
@@ -175,7 +175,7 @@ input::placeholder{
 }
 
 .headersTable{
-    width: calc(1208px - 64px - 64px);
+    width: 1208px;
     height: 24px;
     display: flex;
     justify-content: space-between;
@@ -262,7 +262,7 @@ input::placeholder{
 }
 
 .TasksToDo{
-    width: calc(252px - 16px - 16px);
+    width: 252px;
     height: fit-content;
     border-radius: 24px;
     padding: 16px;
@@ -287,7 +287,7 @@ input::placeholder{
 }
 
 .labelCard{
-    height: calc(27px - 4px - 4px);
+    height: 27px;
     width: fit-content;
     padding: 4px 16px 4px 16px;
     border-radius: 8px;
@@ -301,7 +301,7 @@ input::placeholder{
 }
 
 .labelDetailCard{
-    height: calc(36px - 4px - 4px);
+    height: 36px;
     width: fit-content;
     padding: 4px 24px 4px 24px;
     border-radius: 8px;
@@ -370,7 +370,7 @@ input::placeholder{
 }
 
 .progressBar{
-    width: calc(128px - 64px);
+    width: 128px;
     height: 8px;
     padding: 0px 64px 0px 0px;
     display: flex;
@@ -441,8 +441,8 @@ input::placeholder{
 }
 
 .contactsListCard{
-    width: calc(445px - 16px - 16px);
-    height: calc(56px - 7px - 7px);
+    width: 445px;
+    height: 56px;
     border-radius: 10px;
     padding: 7px 16px 7px 16px;
     display: flex;
@@ -464,7 +464,7 @@ input::placeholder{
     display: flex;
     align-items: center;
     width: fit-content;
-    height: calc(32px - 6px - 6px);
+    height: 32px;
     padding: 6px 16px 6px 16px;
     gap: 16px;
     font-size: 16px;
@@ -475,7 +475,7 @@ input::placeholder{
 
 .subtasksListCard:hover{
     border-radius: 10px;
-    height: calc(32px - 4px - 4px);
+    height: 32px;
     padding: 4px 16px 4px 16px;
     background-color: rgba(238, 238, 238, 1);
 }
@@ -500,8 +500,8 @@ input::placeholder{
 }
 
 .priorityDetailCard{
-    width: calc(139px - 18px - 18px);
-    height: calc(32px - 4px - 4px);
+    width: 139px;
+    height: 32px;
     border-radius: 32px;
     padding: 4px 18px 4px 18px;
     display: flex;
@@ -580,7 +580,7 @@ input::placeholder{
 
 .detailCardTaskToDo{
     position: absolute;
-    width: calc(525px - 40px - 40px);
+    width: 525px;
     height: fit-content;
     border-radius: 30px;
     padding: 48px 40px 48px 40px;
