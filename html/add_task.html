@@ -7,12 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../assets/templates/templates.css">
-    <script src="../js/template.js"></script>
     <link rel="stylesheet" href="../css/add_task.css">
     <link rel="stylesheet" href="../fonts.css">
+    <script src="../js/template.js"></script>
+    <script src="../js/add_task.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(); init()">
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
     <div class="container  m-left-328">
         <div class="head">
@@ -48,18 +49,20 @@
                 </span>
                 <form action="#"></form>
                 <label for="input-category">Category<span class="span-star">*</span></label>
-                <input list="input-categorie" id="input-category">
+                <input list="input-categorie" id="input-category" >
                 <datalist id="input-categorie">
-                    <option value="1"></option>
-                    <option value="2"></option>
-                    <option value="3"></option>
+                    <option value="Technical Task"></option>
+                    <option value="User Story"></option>
                 </datalist>
+                <label for="input-subtask">Subtasks</label>
+                <input type="text" id="input-subtask" placeholder="Add new subtask" onclick="valueNewTask()"">
+                <div id="show-subtask"></div>
             </div>
         </section>
         <div class="footer">
             <span>*This field is required</span>
             <span>
-                <button class="btn-footer-clear">Clear</button>
+                <button class="btn-footer-clear" onclick="clearInputs()">Clear</button>
                 <button class="btn-footer-create">Create Task</button>
             </span>
         </div>
