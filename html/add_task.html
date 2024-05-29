@@ -27,14 +27,8 @@
                 <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
                 <label for="input-assigny">Assigned to</label>
                 <form action="#">
-                    <input list="input-assigned" id="input-assigny">
-                    <datalist id="input-assigned">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option value="4"></option>
-                        <option value="5"></option>
-                    </datalist>
+                    <input list="input-assigned" id="input-assigny" onclick="showContacts()">
+                    <div id="show-assigned"></div>
                 </form>
             </div>
             <div class="seperator"></div>

@@ -112,7 +112,9 @@ input {
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     max-width: 440px;
+    min-width: 300px;
     max-height: 200px;
+    min-height: 150px;
 }
 
 #input-assigned {
