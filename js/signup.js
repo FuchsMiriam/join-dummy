@@ -115,9 +115,15 @@ async function signup() {
   const confirmPassword = document.getElementById(
     "signupConfirmPassword"
   ).value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!name || !email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
+    return;
+  }
+
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
     return;
   }
 
@@ -145,7 +151,7 @@ async function signup() {
 
       setTimeout(() => {
         window.location.href = "../index.html";
-      }, 3000);
+      }, 2000);
     } else {
       console.error("Error saving user to database:", response);
     }
@@ -153,5 +159,4 @@ async function signup() {
     console.error("Error creating user:", error.message);
     alert("Error creating user: " + error.message);
   }
-  postData();
 }

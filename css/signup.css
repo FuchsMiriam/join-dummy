@@ -280,8 +280,8 @@ input.confirmPassword.error {
   font-size: 20px;
   line-height: 24px;
   font-weight: 400;
-  transition: transform 400ms ease-in-out;
-  transition-delay: 800ms;
+  transition: transform 200ms ease-in-out;
+  transition-delay: 400ms;
   box-shadow: 0px 0px 4px 0px #0000001a;
   background: #2a3647;
   border-radius: 20px;
@@ -290,5 +290,5 @@ input.confirmPassword.error {
 }
 
 .overlay.show {
-  transform: translateX(-50%) translateY(-50);
+  transform: translateX(-50%) translateY(-750%);
 }
