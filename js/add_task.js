@@ -10,6 +10,11 @@ function clearInputs() {
     document.getElementById('input-assigned').ariaValueText = null;
     document.getElementById("input-date").valueAsDate = null;
     document.getElementById('input-subtask').value = '';
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+    task.splice(0, task.length);
+    addSubTask();
 }
 
 function catergoryClear() {
@@ -18,6 +23,16 @@ function catergoryClear() {
         category = document.createElement('IMG');
         category.src = '../assets/img/close.png';
     }
+}
+
+function imageOnSubtask() {
+    let subtask = document.getElementById('input-subtask');
+
+    if(subtask.onfocus) {
+        subtask.style.backgroundImage = "url(../assets/img/add.svg)";
+        subtask.style.backgroundPosition = "center";
+    }
+    
 }
 
 function addSubTask() {
@@ -44,4 +59,22 @@ function valueNewTask() {
     task.push(valueTask.value);
 
     addSubTask();
+}
+
+function changePrioButtonUrgent() {
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+}
+
+function changePrioButtonMedium() {
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button_active.svg)";
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+}
+
+function changePrioButtonLow() {
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
 }

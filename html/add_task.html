@@ -40,24 +40,24 @@
             <div class="seperator"></div>
             <div class="content-right">
                 <label for="input-date">Due Date<span class="span-star">*</span></label>
-                <input id="input-date" type="date">
+                <input id="input-date" type="date" required>
                 <label for="input-prio">Prio</label>
-                <span class="input-prio-span">
-                    <input id="input-prio" class="btn urgent-image" type="button" value="Urgent">
-                    <input id="input-prio" class="btn medium-image" type="button" value="Medium">
-                    <input id="input-prio" class="btn low-image" type="button" value="Low">
-                </span>
-                <form action="#"></form>
-                <label for="input-category">Category<span class="span-star">*</span></label>
-                <input list="input-categorie" id="input-category" >
-                <datalist id="input-categorie">
-                    <option value="Technical Task"></option>
-                    <option value="User Story"></option>
-                </datalist>
-                <label for="input-subtask">Subtasks</label>
-                <input type="text" id="input-subtask" placeholder="Add new subtask" onclick="valueNewTask()"">
-                <div id="show-subtask"></div>
-            </div>
+                <div class="input-prio-span">
+                    <div id="input-prio1" onclick="changePrioButtonUrgent()" class="urgent-image"></div>
+                        <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image"></div>
+                            <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image"></div>
+                            </div>
+                            <form action="#"></form>
+                            <label for="input-category">Category<span class="span-star">*</span></label>
+                            <input list="input-categorie" id="input-category" required>
+                            <datalist id="input-categorie">
+                                <option value="Technical Task"></option>
+                                <option value="User Story"></option>
+                            </datalist>
+                            <label for="input-subtask">Subtasks</label>
+                            <input type="text" id="input-subtask" placeholder="Add new subtask">
+                            <div id="show-subtask"></div>
+                        </div>
         </section>
         <div class="footer">
             <span>*This field is required</span>
