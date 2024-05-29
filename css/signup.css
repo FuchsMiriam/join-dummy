@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 /* Logo*/
 
 .logoSignupPage {
@@ -85,6 +89,7 @@
   gap: 24px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .emailContainer {
@@ -257,4 +262,33 @@ input.confirmPassword.error {
   background-color: lightgray;
   color: darkgray;
   cursor: not-allowed;
+}
+
+/*Overlay*/
+
+.overlay {
+  position: absolute;
+  left: 50%;
+  bottom: -450px;
+  transform: translateX(-50%) translateY(0);
+  width: 312px;
+  height: 74px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  transition: transform 400ms ease-in-out;
+  transition-delay: 800ms;
+  box-shadow: 0px 0px 4px 0px #0000001a;
+  background: #2a3647;
+  border-radius: 20px;
+  padding: 0px 25px;
+  z-index: 10;
+}
+
+.overlay.show {
+  transform: translateX(-50%) translateY(-50);
 }

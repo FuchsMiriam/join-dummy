@@ -140,7 +140,12 @@ async function signup() {
     const response = await postData("users", newUser);
 
     if (response) {
-      alert("You signed up successfully");
+      const overlay = document.getElementById("overlay");
+      overlay.classList.add("show");
+
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 3000);
     } else {
       console.error("Error saving user to database:", response);
     }
@@ -149,5 +154,4 @@ async function signup() {
     alert("Error creating user: " + error.message);
   }
   postData();
-  redirectToLoginPage();
 }
