@@ -25,12 +25,10 @@ body {
 .headlinesContainer {
   display: flex;
   align-items: center;
-  width: 569px;
-  height: 73px;
+  position: absolute;
   top: 206px;
   left: 743px;
-  gap: 30px;
-  position: absolute;
+  height: 73px;
 }
 
 .contactsHeadline {
@@ -38,20 +36,7 @@ body {
   font-weight: 700;
   line-height: 73.2px;
   text-align: left;
-  width: 274px;
-  height: 73px;
-}
-
-.contactsHeadline::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0px;
-  height: 59px;
-  gap: 0px;
-  border: 3px solid #29abe2;
+  position: relative;
 }
 
 .subheadingContacts {
@@ -59,7 +44,22 @@ body {
   font-weight: 400;
   line-height: 32.4px;
   text-align: left;
-  width: 235px;
-  height: 32px;
-  display: contents;
+  margin-left: 40px;
+}
+
+.contactsHeadlineContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.contactsHeadlineContainer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 59px;
+  background-color: #29abe2;
+  margin-left: 20px;
 }
