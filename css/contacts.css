@@ -1,0 +1,65 @@
+body {
+  overflow-x: hidden;
+  width: 1440px;
+  height: 1024px;
+  background-color: #f6f7f8;
+  font-family: "Inter";
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.mainContainerContacts {
+  display: flex;
+}
+
+.contactsSidebar {
+  width: 456px;
+  height: 928px;
+  top: 96px;
+  left: 232px;
+  background: #ffffff;
+  box-shadow: 4px 0px 6px 0px #00000014;
+  position: sticky;
+}
+
+.headlinesContainer {
+  display: flex;
+  align-items: center;
+  width: 569px;
+  height: 73px;
+  top: 206px;
+  left: 743px;
+  gap: 30px;
+  position: absolute;
+}
+
+.contactsHeadline {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  text-align: left;
+  width: 274px;
+  height: 73px;
+}
+
+.contactsHeadline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0px;
+  height: 59px;
+  gap: 0px;
+  border: 3px solid #29abe2;
+}
+
+.subheadingContacts {
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 32.4px;
+  text-align: left;
+  width: 235px;
+  height: 32px;
+  display: contents;
+}
