@@ -74,19 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Datenbank für Signup
 
-function onloadFunc() {
-  onloadDatabase();
-}
-
-//Datenbank für Signup
-
 const databaseURL =
   "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
 
 async function onloadDatabase(path = "") {
   let response = await fetch(databaseURL + path + ".json");
   let responseToJson = await response.json();
-  console.log(responseToJson);
   return responseToJson;
 }
 
