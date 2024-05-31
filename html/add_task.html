@@ -26,10 +26,10 @@
                 <label for="input-description">Description</label>
                 <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
                 <label for="input-assigny">Assigned to</label>
-                <form action="#">
-                    <input list="input-assigned" id="input-assigny" onclick="showContacts()">
-                    <div id="show-assigned"></div>
-                </form>
+                <input list="input-assigned" id="input-assigny" class="dropbtn" onclick="showContacts()"
+                    placeholder="Select contacts to assign">
+                <div id="show-contacts">
+                </div>
             </div>
             <div class="seperator"></div>
             <div class="content-right">
@@ -38,21 +38,24 @@
                 <label for="input-prio">Prio</label>
                 <div class="input-prio-span">
                     <div id="input-prio1" onclick="changePrioButtonUrgent()" class="urgent-image"></div>
-                        <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image"></div>
-                            <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image"></div>
-                            </div>
-                            <form action="#"></form>
-                            <label for="input-category">Category<span class="span-star">*</span></label>
-                            <input list="input-categorie" id="input-category" required>
-                            <datalist id="input-categorie">
-                                <option value="Technical Task"></option>
-                                <option value="User Story"></option>
-                            </datalist>
-                            <label for="input-subtask">Subtasks</label>
-                            <input type="text" id="input-subtask" placeholder="Add new subtask">
-                            <div id="show-subtask"></div>
-                        </div>
+                    <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image"></div>
+                    <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image"></div>
+                </div>
+                <form action="#"></form>
+                <label for="input-category">Category<span class="span-star">*</span></label>
+                <input list="input-categorie" id="input-category" required>
+                <datalist id="input-categorie">
+                    <option value="Technical Task"></option>
+                    <option value="User Story"></option>
+                </datalist>
+                <label for="input-subtask">Subtasks</label>
+                <div class="input-container">
+                    <input type="text" id="input-subtask" placeholder="Add new subtask"><button
+                        class="add-button" onclick="addSubTask()">+</button>
+                    </div>
+                </div>
         </section>
+        <div id="show-subtask"></div>
         <div class="footer">
             <span>*This field is required</span>
             <span>
@@ -62,5 +65,4 @@
         </div>
     </div>
 </body>
-
 </html>

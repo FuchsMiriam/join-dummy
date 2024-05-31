@@ -7,98 +7,104 @@ async function init() {
     await loadTasks();
 }
 
-async function loadTasks() {
-    let response = await fetch(URL_CONTACT + ".json");
+async function loadTasks(path = "") {
+    let response = await fetch(URL_CONTACT + path + ".json");
     let responseToJSON = await response.json();
-    tasks = responseToJSON;
-    console.log(tasks);
-    contacts.push(tasks);
+    contacts = responseToJSON;
+    console.log(contacts);
 }
 
 function showContacts() {
-    let container = document.getElementById('show-assigned');
+    let container = document.getElementById('show-contacts');
 
-    for (let i = 0; i < contacts[0].length; i++) {
-        const contact = contacts[0][i].name;
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
 
         container.innerHTML += `
-        <div>
-        ${contact}
+        <div class="display-contacts-dropdown">
+            <ol>
+                <li>
+                    ${contact}
+                </li>
+            </ol>
         </div>
         `;
     }
-}  
+}
 
-    function clearInputs() {
-        document.getElementById('input-title').value = '';
-        document.getElementById('input-description').value = '';
-        document.getElementById("input-date").valueAsDate = null;
-        document.getElementById('input-subtask').value = '';
-        document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
-        document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
-        document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-        task.splice(0, task.length);
-        addSubTask();
+function clearInputs() {
+    document.getElementById('input-title').value = '';
+    document.getElementById('input-description').value = '';
+    document.getElementById("input-date").valueAsDate = null;
+    document.getElementById('input-subtask').value = '';
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+    task.splice(0, task.length);
+    addSubTask();
+}
+
+function catergoryClear() {
+    let category = document.getElementById('input-category');
+    if (category == !'') {
+        category = document.createElement('IMG');
+        category.src = '../assets/img/close.png';
     }
+}
 
-    function catergoryClear() {
-        let category = document.getElementById('input-category');
-        if (category == !'') {
-            category = document.createElement('IMG');
-            category.src = '../assets/img/close.png';
-        }
+function imageOnSubtask() {
+    let subtask = document.getElementById('input-subtask');
+
+    if (subtask.onfocus) {
+        subtask.style.backgroundImage = "url(../assets/img/add.svg)";
+        subtask.style.backgroundPosition = "center";
     }
+}
 
-    function imageOnSubtask() {
-        let subtask = document.getElementById('input-subtask');
-
-        if (subtask.onfocus) {
-            subtask.style.backgroundImage = "url(../assets/img/add.svg)";
-            subtask.style.backgroundPosition = "center";
-        }
-
-    }
-
-    function addSubTask() {
-        let inputs = document.getElementById('show-subtask');
-        inputs.innerHTML = '';
-
-        for (let i = 0; i < task.length; i++) {
-            let tasks = task[i];
+function showSubtask() {
+    let inputs = document.getElementById('show-subtask');
+    inputs.innerHTML = '';
+    
+    for (let i = 0; i < task.length; i++) {
+        let tasks = task[i];
 
             inputs.innerHTML += `
-            <ul>
+            <ul id="subtask${i}" onclick="showHover()">
                 <li>
                     ${tasks}
                 </li>
             </ul>
         `;
-        }
-        inputs.value = '';
     }
+}
 
-    function valueNewTask() {
-        let valueTask = document.getElementById('input-subtask');
+function showHover() {
+    document.getElementById(`subtask${i}`).classList.add('sub-hover');
+}
 
-        task.push(valueTask.value);
+function addSubTask() {
+    let input = document.getElementById('input-subtask');
 
-        addSubTask();
-    }
+    task.push(input.value);
 
-    function changePrioButtonUrgent() {
-        document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
-        document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
-        document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-    }
+    showSubtask();
+    input.value = '';
+}
 
-    function changePrioButtonMedium() {
-        document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button_active.svg)";
-        document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
-        document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-    }
+function changePrioButtonUrgent() {
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+}
 
-    function changePrioButtonLow() {
-        document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
-        document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
-        document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
-    }
+function changePrioButtonMedium() {
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button_active.svg)";
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+}
+
+function changePrioButtonLow() {
+    document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
+    document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
+    document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+}

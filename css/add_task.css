@@ -52,7 +52,7 @@ input {
     width: 440px;
     font-size: 20px;
 }
-
+/* 
 .dropdown a:hover {
     background-color: #ddd;
 }
@@ -72,7 +72,7 @@ input {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
+} */
 
 .show {display:block;}
 
@@ -82,7 +82,7 @@ input {
     flex-direction: column;
     justify-content: space-evenly;
     width: 440px;
-    height: 376px;
+    height: 424pxpx;
 }
 
 #input-title,
@@ -97,7 +97,6 @@ input {
     height: 48px;
     padding: 12px 16px;
 }
-
 
 #input-title {
     padding: 12px 21px;
@@ -117,9 +116,74 @@ input {
     min-height: 150px;
 }
 
-#input-assigned {
-    padding: 12px 21px;
+#input-assigny {
+    cursor: pointer;
+    line-height: 24px;
 }
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#input-subtask {
+    flex: 1;
+    padding: 5px;
+}
+
+#show-subtask {
+    width: 400px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 40px;
+    font-size: 24px;
+    overflow: auto;
+}
+
+#subtask {
+    cursor: pointer;
+}
+
+.sub-hover {
+    display: none;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+}
+
+.add-button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background-color: inherit;
+    font-size: 24px;
+    color: #2A3647;
+}
+
+.add-button:hover {
+    border-radius: 50%;
+    background-color: lightgray;
+}
+  
+.display-contacts-dropdown {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    width: 440px;
+    background-color: #2A3647;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 
 .seperator {
     width: 0;
@@ -233,3 +297,4 @@ input {
     background-color: #29ABE2;
     color: white;
 }
+
