@@ -20,7 +20,40 @@ body {
   background: #ffffff;
   box-shadow: 4px 0px 6px 0px #00000014;
   position: sticky;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
+
+/*Button-Div*/
+
+.buttonContactsSidebar {
+  display: flex;
+}
+
+.addContactButton {
+  grid-template-columns: max-content;
+  background: #2a3647;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 25.2px;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 328px;
+  height: 56px;
+  top: 22.5px;
+  left: 52px;
+  padding: 12px 0px 12px 0px;
+  gap: 16px;
+  border-radius: 10px;
+  border: 1px solid #2a3647;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/*Rechte Seite*/
 
 .headlinesContainer {
   display: flex;
