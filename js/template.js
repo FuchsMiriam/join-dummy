@@ -30,3 +30,24 @@ function includeHTML() {
     }
   }
 }
+
+
+function hoverSidebar(){
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  
+  if(page == "desktop_template.html")
+  {
+    document.getElementById("frameBoard").classList.add("menuFramesHover");
+    document.getElementById("imgFrameBoard").classList.add("imgBoardHover");
+  }
+
+  if(page == "board.html")
+  {
+    document.getElementById("frameBoard").classList.add("menuFramesHover");
+    document.getElementById("imgFrameBoard").classList.add("imgBoardHover");
+  }
+
+  console.log(page);
+    
+}

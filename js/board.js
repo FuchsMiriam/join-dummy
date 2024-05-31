@@ -4,15 +4,35 @@ let exampleTask = {
     "label": "User Story",
     "title": "Einkaufen",
     "text": "Obst, Gemüse, Fleisch",
+    "date": "10/06/2026",
+    "priority": 1, // 1 - High, 2 - Medium, 3 - Low
+    "assigned to": {
+        "0": {
+            "name": "Max Mustermann",
+            "color": "yellow"},
+        "1": {
+            "name": "Anna Müller",
+            "color": "blue"},
+    },
+    "subtasks": {
+        "0": {
+            "text": "Obst im Rewe",
+            "checked": "0"}, //0 - did not, 1 - did
+        "1": {
+            "text": "Gemüse im Lidl",
+            "checked": "1"}, //0 - did not, 1 - did
+    },
+    "taskApplication": 0, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
 };
 
+let result = false;
 function init(){
     includeHTML();
-    loadTasks();
-    postData("", {"3": exampleTask});
-    document.getElementById("idDetailCard").innerHTML = detailCardHTML();
-    document.getElementById("inProgress").innerHTML = cardHTML();
-    document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
+    // hoverSidebar();
+    loadTasks().then((result) => {
+        putData(path="", tasks);
+        renderTasks();
+    });
 }
 
 async function loadTasks(){
@@ -20,6 +40,7 @@ async function loadTasks(){
     let responseToJSON = await response.json();
     tasks = responseToJSON;
     console.log(tasks);
+    result = true;
 }
 
 async function postData(path="", data=""){
@@ -51,6 +72,15 @@ async function putData(path="", data={}){
     return responseToJson = await response.json();
 }
 
+function renderTasks(){
+    document.getElementById("idDetailCard").innerHTML = detailCardHTML();
+    showTasks();
+    // document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
+    // document.getElementById("inProgress").innerHTML = cardHTML();
+    // document.getElementById("awaitFeedback").innerHTML = cardHTMLNoTasks();
+    // document.getElementById("done").innerHTML = cardHTMLNoTasks();
+}
+
 function openDetailCard(idTask){
     document.getElementById(idTask).classList.remove("detailCardoutsideContent");
     document.getElementById(idTask).classList.add("detailCardinsideContent");
@@ -76,157 +106,32 @@ function detailCardHTML(){
     `
 }
 
-function detailCardHTMLLabel(){
-    return /*html*/`
-        <div class="labelClose">
-            <div class="labelDetailCard">User Story</div>
-            <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard('taskToDo')">
-                <img class="closeDetailCard" src="../assets/img/close.png" alt="">
-            </div>
-        </div>
-    `;
+function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
+    let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
+
+    for(let i = 0; i < tasks.length; i++){
+        if(tasks[i].taskApplication == 0)
+            tasksToDo += addTask(i, "toDO");
+        else if(tasks[i].taskApplication == 1)
+            tasksInProgress += addTask(i, "inProgress");
+        else if(tasks[i].taskApplication == 2)
+            tasksAwaitFeedback += addTask(i, "awaitFeedback");
+        else if(tasks[i].taskApplication == 3)
+            tasksAwaitFeedback += addTask(i, "done");
+    }
+    checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
-function detailCardHTMLTitle(){
-    return /*html*/`
-        <div class="textDetailCardTitle">Kochwelt Page & Recipe Recommender</div>
-    `
+function addTask(idTask, idApplication){
+    document.getElementById(idApplication).innerHTML += cardHTML(idTask);
+    return 1;
 }
 
-function detailCardHTMLContent(){
-    return /*html*/`
-        <div class="textDetailCardContent">Build start page with recipe recommandation...</div>
-    `
+function getCheckedTasks(idTask){
+    let checkedTasks = 0;
+    for(let i = 0; i < tasks[idTask]["subtasks"].length; i++)
+        if(tasks[idTask]["subtasks"][i]["checked"] == 1)
+            checkedTasks++;
+    return checkedTasks;
 }
 
-function detailCardHTMLDate(){
-    return /*html*/`
-        <div class="textDetailCardDate">
-            <div>Due date:</div>
-            <div class="dateDetailCard">10/05/2023</div>
-        </div>
-    `
-}
-
-function detailCardHTMLPriority(){
-    return /*html*/`
-        <div class="textDetailCardPriority">
-            <div>Priority:</div>
-            <div class="priorityDetailCard">
-                <div class="dateDetailCard">Medium</div>
-                <img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">
-            </div>
-        </div>
-    `
-}
-
-function detailCardHTMLContacts(){
-    return /*html*/`
-        <div class="textDetailCardContacts">
-                <div>Assigned To:</div>
-                <div class="contactsDetailCard">
-                    <div class="contactsListCard">
-                        <p class="cardContactDetailCard">EM</p>
-                        <p class="nameContactDetailCard">Emmanuel Mauer</p>
-                    </div>
-                </div>
-            </div>
-    `
-}
-
-function detailCardHTMLSubtasks(){
-    return /*html*/`
-        <div class="textDetailCardContacts">
-            <div>Subtasks:</div>
-            <div class="subtasksDetailCard">
-                <div class="subtasksListCard">
-                    <input class="checkboxRememberCard" type="checkbox" id="checkCard1" />
-                    <label for="checkCard1" class="checkboxCard">Implement Recipe Recommandation</label>
-                </div>
-            </div>
-        </div>
-    `
-}
-
-function detailCardHTMLDeleteEdit(){
-    return /*html*/`
-        <div class="deleteEditDetailCard">
-        <div class="deleteDetailCard">
-            <div class="imgDetaildelete"></div>
-            <p class="textDeleteCard">Delete</p>
-        </div>
-        <div class="vektorDetailCard"></div>
-        <div class="editDetailCard">
-            <div class="imgDetailedit"></div>
-            <p class="textDeleteCard">Edit</p>
-        </div>
-    </div>
-    `
-}
-
-function cardHTML(){
-    return /*html*/`
-        <div id="taskToDo1" class="TasksToDo" onclick="openDetailCard('taskToDo')">
-            ${cardHTMLLabel()}
-            <div class="textCard">
-                ${cardHTMLTitle()}
-                ${cardHTMLContent()}
-            </div>
-            ${cardHTMLProgressBar()}
-            <div class="contactsPriority">
-                ${cardHTMLContacts()}
-                ${cardHTMLPriority()}
-            </div>
-        </div>
-    `
-}
-
-function cardHTMLLabel(){
-    return /*html*/`
-        <div class="labelCard">User Story</div>
-    `
-}
-
-function cardHTMLTitle(){
-    return /*html*/`
-        <div class="textCardTitle">Kochwelt Page & Recipe Recommender</div>
-    `
-}
-
-function cardHTMLContent(){
-    return /*html*/`
-        <div class="textCardContent">Build start page with recipe recommandation...</div>
-    `
-}
-
-function cardHTMLProgressBar(){
-    return /*html*/`
-        <div class="textCardProgress">
-            <div class="progressBar">
-                <div class="progressBarLine"></div>
-            </div>
-            <div class="textProgress">1/2 Subtasks</div>
-        </div>
-    `
-}
-
-function cardHTMLPriority(){
-    return /*html*/`
-        <img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">        
-    `
-}
-
-function cardHTMLContacts(){
-    return /*html*/`
-        <div class="cardContacts">   
-            <div class="cardContact">AM</div>
-            <div class="cardContact overlapContacts">EM</div>
-        </div>
-    `
-}
-
-function cardHTMLNoTasks(){
-    return /*html*/`
-        <div class="noTasksToDo">No tasks To do</div>
-    `
-}

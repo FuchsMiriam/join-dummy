@@ -6,8 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../assets/templates/templates.css">
     <link rel="stylesheet" href="../../fonts.css" />
+    <script src="../../js/template.js"></script>
 </head>
-<body>
+<body onload="hoverSidebar()">
     <header>
         <div class="headerTitel">Kanban Project Management Tool</div>
         <div class="headerImg">
@@ -33,9 +34,9 @@
                 </div>
                 <p class="menuSidebarHover">Add Task</p>
             </div>
-            <div class="menuFrames" onclick="">
+            <div id="frameBoard" class="menuFrames" onclick="">
                 <div class="iconSidebar flex_center">
-                    <div class="imgSidebar imgBoard"></div>
+                    <div id="imgFrameBoard" class="imgSidebar imgBoard"></div>
                 </div>
                 <p class="menuSidebarHover">Board</p> 
             </div>

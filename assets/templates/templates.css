@@ -169,9 +169,9 @@ p{
     background-color: rgb(42, 62, 89);
 }
 
-/* .menuFrames:hover{
+.menuFramesHover{
     background-color: rgba(9, 25, 49, 1);
-} */
+}
 
 .imgAddTask{
     background: url("../img/imgAddTask.png");
@@ -194,12 +194,12 @@ p{
     background-size: cover;
 }
 
-/* .menuFrames:hover .imgBoard{
+.imgBoardHover{
     background: url("../img/imgHoverBoard.png");
     object-fit: cover;
     background-position: center;
     background-size: cover;
-} */
+}
 
 .imgContacts{
     background: url("../img/imgContacts.png");

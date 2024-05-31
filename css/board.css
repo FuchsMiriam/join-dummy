@@ -241,6 +241,7 @@ input::placeholder{
     width: 246px;
     height: 688px;
     display: flex;
+    flex-direction: column;
     gap: 24px;
 }
 
@@ -372,7 +373,7 @@ input::placeholder{
 .progressBar{
     width: 128px;
     height: 8px;
-    padding: 0px 64px 0px 0px;
+    /* padding: 0px 64px 0px 0px; */
     display: flex;
     gap: 10px;
     border-radius: 8px;
@@ -528,6 +529,43 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     color: white;
+    position: relative;
+}
+
+.yellow{
+    background-color: rgba(255, 122, 0, 1);
+}
+
+.blue{
+    background-color: blue;
+}
+
+.leftPosition0{
+    left: 0px;
+}
+
+.leftPosition8{
+    left: -8px;
+}
+
+.leftPosition16{
+    left: -16px;
+}
+
+.leftPosition24{
+    left: -24px;
+}
+
+.leftPosition32{
+    left: -32px;
+}
+
+.leftPosition40{
+    left: -40px;
+}
+
+.leftPosition48{
+    left: -48px;
 }
 
 .cardContactDetailCard{
