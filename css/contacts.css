@@ -64,6 +64,34 @@ body {
   justify-content: center;
 }
 
+.letter {
+  width: 352px !important;
+  font-size: 20px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 36px;
+  gap: 8px;
+  display: flex;
+}
+
+.lineContactSidebar {
+  width: 352px;
+  border: 1px solid #d1d1d1;
+  gap: 10px;
+  display: flex;
+}
+
+.contactListInner {
+  width: 352px;
+  height: 78px;
+  gap: 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 /*Rechte Seite*/
 
 .headlinesContainer {

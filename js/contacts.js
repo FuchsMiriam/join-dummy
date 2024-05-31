@@ -1,10 +1,15 @@
 const contactsURL =
   "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
-async function loadContacts() {
+async function fetchContacts() {
   let response = await fetch(contactsURL + ".json");
-  let responseToJSON = await response.json();
-  return responseToJSON;
+  return await response.json();
+}
+
+function getInitials(name) {
+  const nameParts = name.split(" ");
+  const initials = nameParts.map((part) => part.charAt(0)).join("");
+  return initials;
 }
 
 async function postData(path = "", data = "") {
@@ -36,8 +41,31 @@ async function putData(path = "", data = {}) {
   return (responseToJson = await response.json());
 }
 
-function contactsSidebar(){
-  let contacts = document.getElementById('contactsList').innerHTML;
-  contacts = '';
-contacts =`<div></div>`;
+function contactsSidebar(contacts) {
+  let html = "";
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    html += `
+      <div class="letter">${contact.name.charAt(0)}</div>
+      <div class="lineContactSidebar"></div>
+      <div class="contactListInner">
+          <div>${getInitials(contact.name)}</div>
+          <div>
+              <div>${contact.name}</div>
+              <div>${contact.email}</div>
+          </div>
+      </div>
+    `;
+  }
+
+  return html;
+}
+
+async function showContacts() {
+  const contactListDiv = document.getElementById("contactList");
+  contactListDiv.innerHTML = "";
+
+  const contacts = await fetchContacts();
+  contactListDiv.innerHTML = contactsSidebar(contacts);
 }
