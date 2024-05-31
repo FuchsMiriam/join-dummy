@@ -26,18 +26,22 @@ body {
 
 /*Button-Div*/
 
-.buttonContactsSidebar {
+.buttonContainer {
+  width: 456px;
+  height: 101px;
+  padding: 22.5px 52px;
+  gap: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .addContactButton {
-  grid-template-columns: max-content;
   background: #2a3647;
   color: #ffffff;
   font-size: 21px;
   font-weight: 700;
   line-height: 25.2px;
-  align-content: center;
   justify-content: center;
   cursor: pointer;
   width: 328px;
@@ -48,9 +52,16 @@ body {
   gap: 16px;
   border-radius: 10px;
   border: 1px solid #2a3647;
-  position: relative;
   display: flex;
   align-items: center;
+}
+
+/*Kontakliste*/
+.contactList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*Rechte Seite*/

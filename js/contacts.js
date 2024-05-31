@@ -35,3 +35,9 @@ async function putData(path = "", data = {}) {
   });
   return (responseToJson = await response.json());
 }
+
+function contactsSidebar(){
+  let contacts = document.getElementById('contactsList').innerHTML;
+  contacts = '';
+contacts =`<div></div>`;
+}
