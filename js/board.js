@@ -73,35 +73,34 @@ async function putData(path="", data={}){
 }
 
 function renderTasks(){
-    document.getElementById("idDetailCard").innerHTML = detailCardHTML();
     showTasks();
-    // document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
-    // document.getElementById("inProgress").innerHTML = cardHTML();
-    // document.getElementById("awaitFeedback").innerHTML = cardHTMLNoTasks();
-    // document.getElementById("done").innerHTML = cardHTMLNoTasks();
 }
 
 function openDetailCard(idTask){
-    document.getElementById(idTask).classList.remove("detailCardoutsideContent");
-    document.getElementById(idTask).classList.add("detailCardinsideContent");
+    document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
+    document.getElementById("idDetailCard").classList.remove("d-none");
+    // document.getElementById("taskToDo").classList.remove("detailCardoutsideContent");
+    // document.getElementById("taskToDo").classList.add("detailCardinsideContent");
 }
 
 function closeDetailCard(idTask){
-    document.getElementById(idTask).classList.add("detailCardoutsideContent");
-    document.getElementById(idTask).classList.remove("detailCardinsideContent");
+    document.getElementById("idDetailCard").innerHTML = '';
+    document.getElementById("idDetailCard").classList.add("d-none");
+    // document.getElementById("taskToDo").classList.add("detailCardoutsideContent");
+    // document.getElementById("taskToDo").classList.remove("detailCardinsideContent");
 }
 
-function detailCardHTML(){
+function detailCardHTML(idTask){
     return /*html*/`
-        <div id="taskToDo" class="detailCardTaskToDo centered-axis-xy detailCardoutsideContent">
-            ${detailCardHTMLLabel()}
-            ${detailCardHTMLTitle()}
-            ${detailCardHTMLContent()}
-            ${detailCardHTMLDate()}
-            ${detailCardHTMLPriority()}
-            ${detailCardHTMLContacts()}
-            ${detailCardHTMLSubtasks()}
-            ${detailCardHTMLDeleteEdit()}
+        <div id="taskToDo" class="detailCardTaskToDo detailCardoutsideContent">
+            ${detailCardHTMLLabel(idTask)}
+            ${detailCardHTMLTitle(idTask)}
+            ${detailCardHTMLContent(idTask)}
+            ${detailCardHTMLDate(idTask)}
+            ${detailCardHTMLPriority(idTask)}
+            ${detailCardHTMLContacts(idTask)}
+            ${detailCardHTMLSubtasks(idTask)}
+            ${detailCardHTMLDeleteEdit(idTask)}
         </div>
     `
 }

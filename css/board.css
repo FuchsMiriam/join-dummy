@@ -9,12 +9,12 @@
     padding-left: 232px;
     height: 688px;
     width: 1208px;
-    padding: 0px 64px 0px 64px;
+    padding: 0px 51px 0px 51px;
     display: flex;
-    gap: 26px;
+    /* gap: 26px; */
     position: relative;
-    left: 232px;
-    top: calc(336px - 232px - 96px);
+    left: 232px; /*232px - 13px */ 
+    top: calc(336px - 232px - 96px - 13px);
 }
 
 .titleSearch{
@@ -238,11 +238,15 @@ input::placeholder{
 }
 
 .columnBoard{
-    width: 246px;
+    /* width: 278px; */ 
     height: 688px;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
     gap: 24px;
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 13px;
 }
 
 .noTasksToDo{
@@ -616,8 +620,12 @@ input::placeholder{
     flex-direction: row;
 }
 
+.detailcardContacts{
+    display: flex;
+    flex-direction: column;
+}
+
 .detailCardTaskToDo{
-    position: absolute;
     width: 525px;
     height: fit-content;
     border-radius: 30px;
@@ -669,81 +677,106 @@ input::placeholder{
     cursor: pointer;
   }
   
-  .checkboxRememberCard:checked + .checkboxCard::before {
+.checkboxRememberCard:checked + .checkboxCard::before {
     background-image: url("../assets/img/checkboxChecked.svg");
     cursor: pointer;
-   }
+}
 
-  .deleteEditDetailCard{
+.deleteEditDetailCard{
     width: 445px;
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-  }
+}
 
-  .deleteDetailCard{
+.deleteDetailCard{
     height: 24px;
     gap: 8px;
     display: flex;
     align-items: center;
-  }
+}
 
-  .deleteDetailCard:hover .textDeleteCard{
+.deleteDetailCard:hover .textDeleteCard{
     font-weight: 700;
     color: rgba(41, 171, 226, 1);
-  }
+}
 
-  .editDetailCard{
+.editDetailCard{
     height: 24px;
     gap: 8px;
     display: flex;
     align-items: center;
-  }
+}
 
-  .editDetailCard:hover .textDeleteCard{
+.editDetailCard:hover .textDeleteCard{
     font-weight: 700;
     color: rgba(41, 171, 226, 1);
-  }
+}
 
-  .deleteDetailCard:hover .imgDetaildelete{
+.deleteDetailCard:hover .imgDetaildelete{
     background-image: url("../assets/img/deleteHover.svg");
     object-fit: cover;
     background-position: center;
     background-size: cover;
-  }
+}
 
-  .editDetailCard:hover .imgDetailedit{
+.editDetailCard:hover .imgDetailedit{
     background-image: url("../assets/img/editHover.svg");
     object-fit: cover;
     background-position: center;
     background-size: cover;
-  }
+}
 
-  .textDeleteCard{
+.textDeleteCard{
     font-weight: 400;
     font-size: 16px;
     line-height: 19.2px;
-  }
+}
 
-  .imgDetaildelete{
+.imgDetaildelete{
     height: 19px;
     width: 18px;
     background-image: url("../assets/img/delete.svg");
     object-fit: cover;
     background-position: center;
     background-size: cover;
-  }
+}
 
-  .imgDetailedit{
+.imgDetailedit{
     height: 18.25px;
     width: 18.28px;
     background-image: url("../assets/img/edit.svg");
     object-fit: cover;
     background-position: center;
     background-size: cover;
-  }
+}
 
-  .vektorDetailCard{
+.vektorDetailCard{
     height: 22px;
     border: 1px solid rgba(209, 209, 209, 1);
-  }
+}
+
+.scrollbarColumn::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbarColumn{
+  /* -ms-overflow-style: none;  IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.containerDetailCard{
+    width: 1440px;
+    height: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.d-none{
+    display: none;
+}
