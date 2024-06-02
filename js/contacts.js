@@ -39,17 +39,9 @@ async function putData(path = "", data = {}) {
 
 /*Kontaktseitenleiste*/
 
-/*function getInitials(name) {
-  const nameParts = name.split(" ");
-  const initials = nameParts.map((part) => part.charAt(0)).join("");
-  return initials;
-}*/
-
 function getInitials(name) {
-  console.log("Generating initials for:", name);
   const nameParts = name.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
-  console.log("Initials generated:", initials);
   return initials;
 }
 
