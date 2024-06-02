@@ -79,3 +79,10 @@ function initializePage() {
   includeHTML();
   showContacts();
 }
+
+/*Overlay schließen*/
+
+document.getElementById("closeOverlay").addEventListener("click", function () {
+  window.location.href = "contacts.html";
+  document.getElementById("contactOverlay").classList.add("hidden");
+});

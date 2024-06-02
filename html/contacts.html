@@ -27,58 +27,89 @@
             />
             <h1 class="contactsOverlayHeadline">Add contact</h1>
             <h2 class="contactsOverlaySubheadline">
-              Task are better wih a team!
+              Task are better with a team!
             </h2>
           </div>
         </div>
 
         <div class="rightOverlayContent">
           <img
-            src="../assets/img/personIcon.svg"
+            src="../assets/img/personIconWhite.svg"
             alt="Person"
             class="overlayPersonLargeImg"
           />
-          <div class="overlayInputField">
-            <input
-              class="overlayContactsInput"
-              type="text"
-              placeholder="Name"
-              required
-            />
-            <img
-              class="contactsIcon"
-              src="../assets/img/personIcon.svg"
-              alt="Person"
-            />
+          <div class="overlayInputContainer">
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="text"
+                placeholder="Name"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/personIcon.svg"
+                alt="Person"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="email"
+                placeholder="Email"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/mailIcon.svg"
+                alt="E-Mail"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="tel"
+                placeholder="Phone"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/phone.svg"
+                alt="Telefon"
+              />
+            </div>
           </div>
-          <div class="overlayInputField">
-            <input
-              class="overlayContactsInput"
-              type="email"
-              placeholder="Email"
-              required
-            />
-            <img
-              class="contactsIcon"
-              src="../assets/img/mailIcon.svg"
-              alt="E-Mail"
-            />
+          <div class="contactButtons">
+            <div class="cancelContainer">
+              <a href="contacts.html" class="contactCancelButton">
+                <img
+                  class="cancelSymbol"
+                  src="../assets/img/cancel.svg"
+                  alt="X-Symbol"
+                />
+                Cancel
+              </a>
+            </div>
+            <div class="createContainer">
+              <button class="contactCreateButton">
+                <img
+                  class="cancelSymbol"
+                  src="../assets/img/haken.svg"
+                  alt="Häkchen"
+                />
+                Create contact
+              </button>
+            </div>
           </div>
-          <div class="overlayInputField">
-            <input
-              class="overlayContactsInput"
-              type="number"
-              placeholder="Phone"
-              required
-            />
-            <img
-              class="contactsIcon"
-              src="../assets/img/phone.svg"
-              alt="Telefon"
-            />
-          </div>
-          <button>Cancel</button>
-          <button>Create</button>
+        </div>
+
+        <div class="closeOverlay">
+          <img
+            src="../assets/img/cancel.svg"
+            alt="Cancel"
+            class="closeOverlayIcon"
+            id="closeOverlay"
+          />
         </div>
       </div>
 
