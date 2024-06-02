@@ -17,9 +17,11 @@
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
 
     <div class="mainContainerContacts">
+
+    <!-- Overlay Start -->
       <div class="addNewContactOverlay" id="contactOverlay">
         <div class="leftOverlayContent">
-          <div>
+          <div class="leftContainer">
             <img
               src="../assets/img/logoSidebar.png"
               alt="Join-Logo"
@@ -33,12 +35,21 @@
         </div>
 
         <div class="rightOverlayContent">
-          <img
-            src="../assets/img/personIconWhite.svg"
-            alt="Person"
-            class="overlayPersonLargeImg"
-          />
+          <div class="overlayPersonContainer">
+            <img
+              src="../assets/img/personIconWhite.svg"
+              alt="Person"
+              class="overlayPersonLargeImg"
+            />
+          </div>
           <div class="overlayInputContainer">
+            <form  action=""
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 32px;
+            ">
             <div class="overlayInputField">
               <input
                 class="overlayContactsInput"
@@ -78,6 +89,7 @@
                 alt="Telefon"
               />
             </div>
+            </form>
           </div>
           <div class="contactButtons">
             <div class="cancelContainer">
@@ -113,9 +125,11 @@
         </div>
       </div>
 
+      <!-- Overlay Ende -->
+
       <div class="contactsSidebar">
         <div class="buttonContainer">
-          <button class="addContactButton">
+          <button class="addContactButton" onclick="openOverlay()">
             Add new contact
             <img src="../assets/img/contact_add.svg" alt="Person" />
           </button>

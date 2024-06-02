@@ -80,9 +80,17 @@ function initializePage() {
   showContacts();
 }
 
+/*Overlay öffnen*/
+
+function openOverlay() {
+  document.querySelector('.addNewContactOverlay').classList.add('visible');
+}
+  
+
 /*Overlay schließen*/
 
 document.getElementById("closeOverlay").addEventListener("click", function () {
-  window.location.href = "contacts.html";
   document.getElementById("contactOverlay").classList.add("hidden");
+  window.location.href = "contacts.html";
 });
+
