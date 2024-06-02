@@ -22,6 +22,7 @@ body {
   position: sticky;
   overflow-y: scroll;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /*Button-Div*/
@@ -90,6 +91,20 @@ body {
   cursor: pointer;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+/*Scrollbalken*/
+.contactsSidebar::-webkit-scrollbar {
+  width: 24px;
+  background-color: white;
+}
+
+.contactsSidebar::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+  border: 8px solid #a8a8a8;
+  border-radius: 10px;
+  height: 53px;
+  width: 10px;
 }
 
 /*Rechte Seite*/

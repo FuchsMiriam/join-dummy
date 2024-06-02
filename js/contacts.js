@@ -1,21 +1,17 @@
 const contactsURL =
   "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
+/*Kontakte abrufen, hinzufügen löschen, aktualisieren*/
+
 async function fetchContacts() {
   let response = await fetch(contactsURL + ".json");
   return await response.json();
 }
 
-function getInitials(name) {
-  const nameParts = name.split(" ");
-  const initials = nameParts.map((part) => part.charAt(0)).join("");
-  return initials;
-}
-
 async function postData(path = "", data = "") {
   let response = await fetch(contactsURL + path + ".json", {
     method: "POST",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
@@ -33,12 +29,28 @@ async function deleteData(path = "") {
 async function putData(path = "", data = {}) {
   let response = await fetch(contactsURL + path + ".json", {
     method: "PUT",
-    header: {
+    headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
   return (responseToJson = await response.json());
+}
+
+/*Kontaktseitenleiste*/
+
+/*function getInitials(name) {
+  const nameParts = name.split(" ");
+  const initials = nameParts.map((part) => part.charAt(0)).join("");
+  return initials;
+}*/
+
+function getInitials(name) {
+  console.log("Generating initials for:", name);
+  const nameParts = name.split(" ");
+  const initials = nameParts.map((part) => part.charAt(0)).join("");
+  console.log("Initials generated:", initials);
+  return initials;
 }
 
 function contactsSidebar(contacts) {
@@ -67,5 +79,11 @@ async function showContacts() {
   contactListDiv.innerHTML = "";
 
   const contacts = await fetchContacts();
-  contactListDiv.innerHTML = contactsSidebar(contacts);
+  const contactsHTML = contactsSidebar(contacts);
+  contactListDiv.innerHTML = contactsHTML;
+}
+
+function initializePage() {
+  includeHTML();
+  showContacts();
 }
