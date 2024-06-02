@@ -17,6 +17,71 @@
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
 
     <div class="mainContainerContacts">
+      <div class="addNewContactOverlay" id="contactOverlay">
+        <div class="leftOverlayContent">
+          <div>
+            <img
+              src="../assets/img/logoSidebar.png"
+              alt="Join-Logo"
+              class="contactsOverlayImg"
+            />
+            <h1 class="contactsOverlayHeadline">Add contact</h1>
+            <h2 class="contactsOverlaySubheadline">
+              Task are better wih a team!
+            </h2>
+          </div>
+        </div>
+
+        <div class="rightOverlayContent">
+          <img
+            src="../assets/img/personIcon.svg"
+            alt="Person"
+            class="overlayPersonLargeImg"
+          />
+          <div class="overlayInputField">
+            <input
+              class="overlayContactsInput"
+              type="text"
+              placeholder="Name"
+              required
+            />
+            <img
+              class="contactsIcon"
+              src="../assets/img/personIcon.svg"
+              alt="Person"
+            />
+          </div>
+          <div class="overlayInputField">
+            <input
+              class="overlayContactsInput"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <img
+              class="contactsIcon"
+              src="../assets/img/mailIcon.svg"
+              alt="E-Mail"
+            />
+          </div>
+          <div class="overlayInputField">
+            <input
+              class="overlayContactsInput"
+              type="number"
+              placeholder="Phone"
+              required
+            />
+            <img
+              class="contactsIcon"
+              src="../assets/img/phone.svg"
+              alt="Telefon"
+            />
+          </div>
+          <button>Cancel</button>
+          <button>Create</button>
+        </div>
+      </div>
+
       <div class="contactsSidebar">
         <div class="buttonContainer">
           <button class="addContactButton">

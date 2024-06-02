@@ -12,6 +12,117 @@ body {
   display: flex;
 }
 
+/*Overlay*/
+.addNewContactOverlay {
+  position: fixed;
+  top: 50%;
+  /*right: -100%;*/
+  transform: translateY(-50%);
+  width: 1212px;
+  height: 592px;
+  background-color: white;
+  box-shadow: -4px 0 6px 0 rgba(0, 0, 0, 0.1);
+  transition: right 0.5s ease;
+  z-index: 999;
+  border-radius: 30px;
+  opacity: 1;
+}
+
+/*Overlay links*/
+.leftOverlayContent {
+  width: 467px;
+  height: 594px;
+  padding: 66px 48px;
+  gap: 12px;
+  background: #2a3647;
+  float: left;
+  color: white;
+}
+
+.contactsOverlayImg {
+  width: 55.6px;
+  height: 66.48px;
+}
+
+.contactsOverlayHeadline {
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  text-align: left;
+  width: 366px;
+  height: 73px;
+}
+
+.contactsOverlaySubheadline {
+  width: 371px;
+  height: 32px;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 32.4px;
+  text-align: left;
+}
+
+.contactsOverlaySubheadline::after {
+  content: "";
+  display: flex;
+  width: 90px;
+  border: 3px solid #29abe2;
+  border-radius: 3px;
+}
+
+/*Overlay rechts*/
+
+.rightOverlayContent {
+  /* Stile für den rechten Inhalt*/
+}
+
+.overlayPersonLargeImg {
+  width: 120px;
+  height: 120px;
+  top: 204px;
+  left: 550px;
+  border-radius: 70px;
+  border: 3px;
+  border: 3px solid #ffffff;
+  background: #d1d1d1;
+}
+
+.overlayInputField {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.overlayContactsInput {
+  width: 380px;
+  height: 24px;
+  gap: 10px;
+  display: flex;
+  border-radius: 10px;
+  padding: 12px 21px 12px 21px;
+  border: 1px solid #d1d1d1;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  outline: none;
+}
+.overlayContactsInput::placeholder {
+  color: #d1d1d1;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border: 1px solid #29abe2 !important;
+}
+
+.contactsIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/*Kontakt-Seitenleiste*/
+
 .contactsSidebar {
   width: 456px;
   height: 928px;
