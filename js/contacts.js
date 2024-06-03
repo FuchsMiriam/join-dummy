@@ -1,11 +1,21 @@
 const contactsURL =
   "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
-/*Kontakte abrufen, hinzufügen löschen, aktualisieren*/
+let contacts = [];
 
-async function fetchContacts() {
-  let response = await fetch(contactsURL + ".json");
-  return await response.json();
+async function initializePage() {
+  includeHTML();
+  await fetchContacts();
+  showContacts();
+}
+
+/*Kontakte abrufen, hinzufügen, löschen, aktualisieren*/
+
+async function fetchContacts(path = "") {
+  let response = await fetch(contactsURL + path + ".json");
+  let data = await response.json();
+  contacts = data ? Object.values(data) : [];
+  contacts.sort((a, b) => a.name.localeCompare(b.name)); 
 }
 
 async function postData(path = "", data = "") {
@@ -70,27 +80,26 @@ async function showContacts() {
   const contactListDiv = document.getElementById("contactList");
   contactListDiv.innerHTML = "";
 
-  const contacts = await fetchContacts();
-  const contactsHTML = contactsSidebar(contacts);
-  contactListDiv.innerHTML = contactsHTML;
+  if (contacts.length > 0) {
+    const contactsHTML = contactsSidebar(contacts);
+    contactListDiv.innerHTML = contactsHTML;
+  } else {
+    contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
+  }
 }
 
-function initializePage() {
-  includeHTML();
-  showContacts();
-}
+contacts.sort();
 
 /*Overlay öffnen*/
 
 function openOverlay() {
-  document.querySelector('.addNewContactOverlay').classList.add('visible');
+  document.querySelector(".addNewContactOverlay").classList.remove("hidden");
+  document.querySelector(".addNewContactOverlay").classList.add("visible");
 }
-  
 
 /*Overlay schließen*/
 
 document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
-  window.location.href = "contacts.html";
+  document.getElementById("contactOverlay").classList.remove("visible");
 });
-

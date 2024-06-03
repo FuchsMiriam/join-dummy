@@ -148,11 +148,11 @@ input {
     cursor: pointer;
 }
 
-.sub-hover {
+/* .sub-hover {
     display: none;
     background-color: #FFFFFF;
     padding: 10px 20px;
-}
+} */
 
 .add-button {
     width: 24px;
@@ -296,5 +296,10 @@ input {
 .btn-footer-create:active {
     background-color: #29ABE2;
     color: white;
+}
+
+#show-contacts {
+    height: 60px;
+    width: 440px;
 }
 

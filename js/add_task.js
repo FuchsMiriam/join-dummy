@@ -1,4 +1,5 @@
 let task = [];
+let savedTask = [];
 let contacts = [];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const BASE_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -31,8 +32,8 @@ async function init() {
     await loadTasks();
 }
 
-async function loadTasks(path = "") {
-    let response = await fetch(BASE_URL + path + ".json");
+async function loadTasks() {
+    let response = await fetch(URL_CONTACT + ".json");
     let responseToJSON = await response.json();
     contacts = responseToJSON;
     console.log(contacts);
@@ -94,8 +95,8 @@ function showSubtask() {
         let tasks = task[i];
 
             inputs.innerHTML += `
-            <ul id="subtask${i}" onclick="showHover()">
-                <li>
+            <ul id="subtask${i}">
+                <li onclick="editValue()">
                     ${tasks}
                 </li>
             </ul>
@@ -103,9 +104,20 @@ function showSubtask() {
     }
 }
 
-function showHover() {
-    document.getElementById(`subtask${i}`).classList.add('sub-hover');
+function editValue() {
+    let edit = document.getElementById(`subtask${i}`).value;
+
+    savedTask.push(edit);
+    loadTasks();
 }
+
+function loadTask() {
+    
+}
+
+// function showHover() {
+//     document.getElementById(`subtask${i}`).classList.add('sub-hover');
+// }
 
 function addSubTask() {
     let input = document.getElementById('input-subtask');
