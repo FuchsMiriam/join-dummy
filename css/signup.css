@@ -127,6 +127,7 @@ body {
   font-weight: 400;
   line-height: 24px;
   outline: none;
+  cursor: pointer;
 }
 
 .signupEmail::placeholder,
@@ -160,6 +161,7 @@ input.confirmPassword.error {
   line-height: 24px;
   text-align: left;
   outline: none;
+  cursor: pointer;
 }
 
 /*Remember-Abschnitt*/

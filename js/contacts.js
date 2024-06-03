@@ -83,14 +83,13 @@ function initializePage() {
 /*Overlay öffnen*/
 
 function openOverlay() {
-  document.querySelector('.addNewContactOverlay').classList.add('visible');
+  document.querySelector(".addNewContactOverlay").classList.remove("hidden");
+  document.querySelector(".addNewContactOverlay").classList.add("visible");
 }
-  
 
 /*Overlay schließen*/
 
 document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
-  window.location.href = "contacts.html";
+  document.getElementById("contactOverlay").classList.remove("visible");
 });
-
