@@ -1,17 +1,42 @@
 let task = [];
 let contacts = [];
-const URL_CONTACT = " https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
-
+const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
+let exampleTask = {
+    "label": "User Story",
+    "title": "Einkaufen",
+    "text": "Obst, Gemüse, Fleisch",
+    "date": "10/06/2026",
+    "priority": 1, // 1 - High, 2 - Medium, 3 - Low
+    "assigned to": {
+        "0": {
+            "name": "Max Mustermann",
+            "color": "yellow"},
+        "1": {
+            "name": "Anna Müller",
+            "color": "blue"},
+    },
+    "subtasks": {
+        "0": {
+            "text": "Obst im Rewe",
+            "checked": "0"}, //0 - did not, 1 - did
+        "1": {
+            "text": "Gemüse im Lidl",
+            "checked": "1"}, //0 - did not, 1 - did
+    },
+    "taskApplication": 0, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
+};
 async function init() {
     addSubTask();
     await loadTasks();
 }
 
 async function loadTasks(path = "") {
-    let response = await fetch(URL_CONTACT + path + ".json");
+    let response = await fetch(BASE_URL + path + ".json");
     let responseToJSON = await response.json();
     contacts = responseToJSON;
     console.log(contacts);
+    showContacts();
 }
 
 function showContacts() {

@@ -6,22 +6,22 @@ let exampleTask = {
     "text": "Obst, Gemüse, Fleisch",
     "date": "10/06/2026",
     "priority": 1, // 1 - High, 2 - Medium, 3 - Low
-    "assigned to": {
-        "0": {
-            "name": "Max Mustermann",
-            "color": "yellow"},
-        "1": {
-            "name": "Anna Müller",
-            "color": "blue"},
-    },
-    "subtasks": {
-        "0": {
-            "text": "Obst im Rewe",
-            "checked": "0"}, //0 - did not, 1 - did
-        "1": {
-            "text": "Gemüse im Lidl",
-            "checked": "1"}, //0 - did not, 1 - did
-    },
+    "assigned to": [
+        {
+           "name": "Max Mustermann",
+           "color": "yellow"},
+        {
+           "name": "Anna Müller",
+           "color": "blue"},
+    ],
+    "subtasks": [
+        {
+           "text": "Obst im Rewe",
+           "checked": "0"}, //0 - did not, 1 - did
+        {
+           "text": "Gemüse im Lidl",
+           "checked": "1"}, //0 - did not, 1 - did
+    ],
     "taskApplication": 0, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
 };
 
@@ -29,10 +29,12 @@ let result = false;
 function init(){
     includeHTML();
     // hoverSidebar();
-    loadTasks().then((result) => {
-        putData(path="", tasks);
+    // loadTasks().then((result) => {
+    //     putData(path="", tasks);
+        for(let i = 0; i < 5; i++)
+        tasks.push(exampleTask);
         renderTasks();
-    });
+    // });
 }
 
 async function loadTasks(){
@@ -78,21 +80,19 @@ function renderTasks(){
 
 function openDetailCard(idTask){
     document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
-    document.getElementById("idDetailCard").classList.remove("d-none");
-    // document.getElementById("taskToDo").classList.remove("detailCardoutsideContent");
-    // document.getElementById("taskToDo").classList.add("detailCardinsideContent");
+    document.getElementById("idDetailCard").classList.add("leftPart");
+    document.getElementById("idDetailCard").classList.remove("leftPartOut");
 }
 
 function closeDetailCard(idTask){
     document.getElementById("idDetailCard").innerHTML = '';
-    document.getElementById("idDetailCard").classList.add("d-none");
-    // document.getElementById("taskToDo").classList.add("detailCardoutsideContent");
-    // document.getElementById("taskToDo").classList.remove("detailCardinsideContent");
+    document.getElementById("idDetailCard").classList.remove("leftPart");
+    document.getElementById("idDetailCard").classList.add("leftPartOut");
 }
 
 function detailCardHTML(idTask){
     return /*html*/`
-        <div id="taskToDo" class="detailCardTaskToDo detailCardoutsideContent">
+        <div class="detailCardTaskToDo">
             ${detailCardHTMLLabel(idTask)}
             ${detailCardHTMLTitle(idTask)}
             ${detailCardHTMLContent(idTask)}
@@ -107,7 +107,7 @@ function detailCardHTML(idTask){
 
 function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
-
+    document.getElementById("toDO").innerHTML = ``;
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].taskApplication == 0)
             tasksToDo += addTask(i, "toDO");
@@ -134,3 +134,9 @@ function getCheckedTasks(idTask){
     return checkedTasks;
 }
 
+function toggleCheckbox(idTask, idCheckBox){
+    var isChecked = document.getElementById("checkCard" + idTask + idCheckBox).checked;
+
+    // tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
+    renderTasks();
+}

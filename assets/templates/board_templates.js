@@ -89,9 +89,10 @@ function getDetailcardHTMLSubtasks(idTask){
     for(let i = 0; i < tasks[idTask]["subtasks"].length; i++){
         subtasksCards += /*html*/`
             <div class="subtasksListCard">
-                <input class="checkboxRememberCard" type="checkbox" id="checkCard1" />
-                <label for="checkCard1" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
+                <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
+                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
             </div>`;
+        // if(tasks[idTask]["subtasks"][i]["checked"])
     }  
     return /*html*/` <div class="subtasksDetailCard">${subtasksCards}</div>`
 }

@@ -493,6 +493,14 @@ input::placeholder{
     background-image: url("../assets/img/checkboxCheckedHover.svg");
 }
 
+.checkedBox{
+    background-image: url("../assets/img/checkboxCheckedHover.svg");
+}
+
+.uncheckedBox{
+    background-image: url("../assets/img/checkboxUncheckedHover.svg");
+}
+
 .dateDetailCard{
     color: rgba(0, 0, 0, 1);
 }
@@ -774,9 +782,18 @@ input::placeholder{
     align-items: center;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 2000px; /* Start position (hidden on the right) */
+    transition: transform 0.5s ease-in-out;
 }
 
 .d-none{
     display: none;
+}
+
+.leftPart{
+    transform: translateX(-2000px);
+}
+
+.leftPartOut{
+    transform: translateX(2000px);
 }
