@@ -1,11 +1,20 @@
 const contactsURL =
   "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
-/*Kontakte abrufen, hinzufügen löschen, aktualisieren*/
+let contacts = [];
 
-async function fetchContacts() {
-  let response = await fetch(contactsURL + ".json");
-  return await response.json();
+async function initializePage() {
+  includeHTML();
+  await fetchContacts();
+  showContacts();
+}
+
+/*Kontakte abrufen, hinzufügen, löschen, aktualisieren*/
+
+async function fetchContacts(path = "") {
+  let response = await fetch(contactsURL + path + ".json");
+  let data = await response.json();
+  contacts = data ? Object.values(data) : [];
 }
 
 async function postData(path = "", data = "") {
@@ -70,14 +79,12 @@ async function showContacts() {
   const contactListDiv = document.getElementById("contactList");
   contactListDiv.innerHTML = "";
 
-  const contacts = await fetchContacts();
-  const contactsHTML = contactsSidebar(contacts);
-  contactListDiv.innerHTML = contactsHTML;
-}
-
-function initializePage() {
-  includeHTML();
-  showContacts();
+  if (contacts.length > 0) {
+    const contactsHTML = contactsSidebar(contacts);
+    contactListDiv.innerHTML = contactsHTML;
+  } else {
+    contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
+  }
 }
 
 /*Overlay öffnen*/
