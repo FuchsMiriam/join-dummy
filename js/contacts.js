@@ -15,6 +15,7 @@ async function fetchContacts(path = "") {
   let response = await fetch(contactsURL + path + ".json");
   let data = await response.json();
   contacts = data ? Object.values(data) : [];
+  contacts.sort((a, b) => a.name.localeCompare(b.name)); 
 }
 
 async function postData(path = "", data = "") {
@@ -86,6 +87,8 @@ async function showContacts() {
     contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
   }
 }
+
+contacts.sort();
 
 /*Overlay öffnen*/
 

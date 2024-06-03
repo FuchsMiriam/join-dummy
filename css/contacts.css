@@ -1,5 +1,5 @@
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   width: 1440px;
   height: 1024px;
   background-color: #f6f7f8;
@@ -355,7 +355,6 @@ input[type="tel"]:focus {
 
 /*Scrollbalken*/
 .contactsSidebar::-webkit-scrollbar {
-  width: 24px;
   background-color: white;
 }
 
@@ -363,8 +362,36 @@ input[type="tel"]:focus {
   background-color: #a8a8a8;
   border: 8px solid #a8a8a8;
   border-radius: 10px;
-  height: 53px;
-  width: 10px;
+  height: 10px;
+  width: 5px;
+}
+
+/* Pfeil hoch */
+.contactsSidebar::-webkit-scrollbar-button:vertical:decrement {
+  height: 14px;
+  width: 16px;
+  background-position: center;
+  background-image: url("../assets/img/arrowUp.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.contactsSidebar::-webkit-scrollbar-button:vertical:decrement:active {
+  background-image: url("../assets/img/arrowUp_active.svg");
+}
+
+/* Pfeil runter */
+.contactsSidebar::-webkit-scrollbar-button:vertical:increment {
+  height: 14px;
+  width: 16px;
+  background-position: center;
+  background-image: url("../assets/img/arrowDown.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.contactsSidebar::-webkit-scrollbar-button:vertical:increment:active {
+  background-image: url("../assets/img/arrowDown_active.svg");
 }
 
 /*Rechte Seite*/
