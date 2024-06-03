@@ -2,55 +2,37 @@ let task = [];
 let savedTask = [];
 let contacts = [];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
-const BASE_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
-let exampleTask = {
-    "label": "User Story",
-    "title": "Einkaufen",
-    "text": "Obst, Gemüse, Fleisch",
-    "date": "10/06/2026",
-    "priority": 1, // 1 - High, 2 - Medium, 3 - Low
-    "assigned to": {
-        "0": {
-            "name": "Max Mustermann",
-            "color": "yellow"},
-        "1": {
-            "name": "Anna Müller",
-            "color": "blue"},
-    },
-    "subtasks": {
-        "0": {
-            "text": "Obst im Rewe",
-            "checked": "0"}, //0 - did not, 1 - did
-        "1": {
-            "text": "Gemüse im Lidl",
-            "checked": "1"}, //0 - did not, 1 - did
-    },
-    "taskApplication": 0, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
-};
+
+
 async function init() {
     addSubTask();
     await loadTasks();
 }
 
-async function loadTasks() {
-    let response = await fetch(URL_CONTACT + ".json");
-    let responseToJSON = await response.json();
-    contacts = responseToJSON;
-    console.log(contacts);
-    showContacts();
+async function loadTasks(path = "") {
+    // let response = await fetch(URL_CONTACT + ".json");
+    // let responseToJSON = await response.json();
+    // contacts.push(responseToJSON);
+    // console.log(contacts);
+    // showContacts();
+    let response = await fetch(URL_CONTACT + path + ".json");
+  let data = await response.json();
+  contacts = data ? Object.values(data):[];
+  contacts.sort((a, b) => a.name.localeCompare(b.name)); 
+  console.log(contacts);
 }
 
 function showContacts() {
     let container = document.getElementById('show-contacts');
 
     for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
+        const contact = contacts[i].name;
 
         container.innerHTML += `
         <div class="display-contacts-dropdown">
             <ol>
-                <li>
-                    ${contact}
+                <li class="contact-list">
+                    ${contact} <input type="checkbox" class="contacts-checkbox">
                 </li>
             </ol>
         </div>
