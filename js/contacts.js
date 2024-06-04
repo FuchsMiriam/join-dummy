@@ -7,6 +7,13 @@ async function initializePage() {
   includeHTML();
   await fetchContacts();
   showContacts();
+
+  const contactDivs = document.querySelectorAll(".contactListInner");
+  contactDivs.forEach((contactDiv, index) => {
+    contactDiv.addEventListener("click", function () {
+      showContactDetails(index);
+    });
+  });
 }
 
 /*Kontakte abrufen, hinzufügen, löschen, aktualisieren*/
@@ -15,7 +22,7 @@ async function fetchContacts(path = "") {
   let response = await fetch(contactsURL + path + ".json");
   let data = await response.json();
   contacts = data ? Object.values(data) : [];
-  contacts.sort((a, b) => a.name.localeCompare(b.name)); 
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 async function postData(path = "", data = "") {
@@ -57,17 +64,26 @@ function getInitials(name) {
 
 function contactsSidebar(contacts) {
   let html = "";
+  let addedLetters = new Set();
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
+    const firstLetter = contact.name.charAt(0).toUpperCase();
+
+    if (!addedLetters.has(firstLetter)) {
+      html += `
+        <div class="letter">${firstLetter}</div>
+        <div class="lineContactSidebar"></div>
+      `;
+      addedLetters.add(firstLetter);
+    }
+
     html += `
-      <div class="letter">${contact.name.charAt(0)}</div>
-      <div class="lineContactSidebar"></div>
       <div class="contactListInner">
-          <div>${getInitials(contact.name)}</div>
+          <div class="contactInitials">${getInitials(contact.name)}</div>
           <div>
-              <div>${contact.name}</div>
-              <div>${contact.email}</div>
+              <div class="contactName">${contact.name}</div>
+              <div class="contactEmail">${contact.email}</div>
           </div>
       </div>
     `;
@@ -103,3 +119,41 @@ document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
   document.getElementById("contactOverlay").classList.remove("visible");
 });
+
+/*Kontaktansicht rechte Seite*/
+
+function createContactDetailsHTML(contact) {
+  document.getElementById("contactsFullscreen").innerHTML = `
+    <div class="fullContactDetails">
+      <div class="fullContactHeader">
+        <div class="contactDetailsInitials">${getInitials(contact.name)}</div>
+        <div class="contactDetailsName">${contact.name}</div>
+        <div class="contactDetailsButtons">
+          <button class="editContactButton">
+            <img src="../assets/img/edit.svg" alt="Edit" /> Edit
+          </button>
+          <button class="deleteContactButton">
+            <img src="../assets/img/delete.svg" alt="Delete" /> Delete
+          </button>
+        </div>
+      </div>
+      <div class="contactInfoHeader">Contact Information</div>
+      <div class="contactInfoDetails">
+        <div class="contactInfoItem">
+          <div class="contactInfoLabel">Email</div>
+          <div class="contactInfoValue">${contact.email}</div>
+        </div>
+        <div class="contactInfoItem">
+          <div class="contactInfoLabel">Phone</div>
+          <div class="contactInfoValue">${contact.phone}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showContactDetails(index) {
+  const contact = contacts[index];
+  createContactDetailsHTML(contact);
+  document.getElementById("contactsFullscreen").style.display = "block";
+}

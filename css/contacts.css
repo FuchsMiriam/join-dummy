@@ -165,6 +165,7 @@ body {
   gap: 8px;
   cursor: pointer;
 }
+
 .overlayContactsInput::placeholder {
   color: #d1d1d1;
   outline: none;
@@ -351,6 +352,49 @@ input[type="tel"]:focus {
   cursor: pointer;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+contactListInnerActive {
+  background: #2a3647;
+  border-radius: 10px;
+  color: white;
+}
+
+.contactListInner:hover {
+  background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
+  border-radius: 10px;
+}
+
+.contactInitials {
+  top: 16px;
+  left: 7px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.4px;
+  text-align: center;
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.contactName {
+  width: 170px;
+  height: 24px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #000000;
+}
+
+.contactEmail {
+  width: 140px;
+  height: 19px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.2px;
+  text-align: left;
+  color: #007cee;
 }
 
 /*Scrollbalken*/
