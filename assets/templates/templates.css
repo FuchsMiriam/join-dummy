@@ -154,6 +154,13 @@ p{
     background-size: cover;
 }
 
+.imgHoverSummary{
+    background: url("../img/imgHoverSummary.png");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
 .menuFrames:hover .imgSummary{
     background: url("../img/imgHoverSummary.png");
     object-fit: cover;
@@ -175,6 +182,13 @@ p{
 
 .imgAddTask{
     background: url("../img/imgAddTask.png");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+.imgHoverAddtask{
+    background: url("../img/imgHoverAddTasks.png");
     object-fit: cover;
     background-position: center;
     background-size: cover;
@@ -203,6 +217,13 @@ p{
 
 .imgContacts{
     background: url("../img/imgContacts.png");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+.imgHoverContacts{
+    background: url("../img/imgHoverContacts.png");
     object-fit: cover;
     background-position: center;
     background-size: cover;

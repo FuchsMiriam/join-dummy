@@ -86,21 +86,22 @@ function detailCardHTMLSubtasks(idTask){
 
 function getDetailcardHTMLSubtasks(idTask){
     let subtasksCards = '';
-    for(let i = 0; i < tasks[idTask]["subtasks"].length; i++){
+
+    for(let i = 0; i < tasks[idTask]["subtasks"].length; i++){ 
         subtasksCards += /*html*/`
             <div class="subtasksListCard">
                 <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
                 <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
             </div>`;
-        // if(tasks[idTask]["subtasks"][i]["checked"])
-    }  
+    } 
+    
     return /*html*/` <div class="subtasksDetailCard">${subtasksCards}</div>`
 }
 
 function detailCardHTMLDeleteEdit(idTask){
     return /*html*/`
         <div class="deleteEditDetailCard">
-        <div class="deleteDetailCard">
+        <div class="deleteDetailCard" onclick="deleteTask(${idTask})">
             <div class="imgDetaildelete"></div>
             <p class="textDeleteCard">Delete</p>
         </div>

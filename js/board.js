@@ -29,19 +29,17 @@ let result = false;
 function init(){
     includeHTML();
     // hoverSidebar();
-    // loadTasks().then((result) => {
-    //     putData(path="", tasks);
-        for(let i = 0; i < 5; i++)
-        tasks.push(exampleTask);
+    loadTasks().then((result) => {
+        putData(path="", tasks);
         renderTasks();
-    // });
+        hoverSidebar();
+    });
 }
 
 async function loadTasks(){
     let response = await fetch(BASE_URL + ".json");
     let responseToJSON = await response.json();
     tasks = responseToJSON;
-    console.log(tasks);
     result = true;
 }
 
@@ -82,12 +80,21 @@ function openDetailCard(idTask){
     document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
     document.getElementById("idDetailCard").classList.add("leftPart");
     document.getElementById("idDetailCard").classList.remove("leftPartOut");
+    checkSubtasks(idTask);
 }
 
 function closeDetailCard(idTask){
-    document.getElementById("idDetailCard").innerHTML = '';
     document.getElementById("idDetailCard").classList.remove("leftPart");
     document.getElementById("idDetailCard").classList.add("leftPartOut");
+}
+
+function checkSubtasks(idTask){
+    for(let i = 0; i < tasks[idTask]["subtasks"].length; i++)
+        {
+            let name = "checkCard" + idTask + i;
+            if(tasks[idTask]["subtasks"][i]["checked"])
+                document.getElementById(name).setAttribute('checked', 'checked');
+        }
 }
 
 function detailCardHTML(idTask){
@@ -137,6 +144,46 @@ function getCheckedTasks(idTask){
 function toggleCheckbox(idTask, idCheckBox){
     var isChecked = document.getElementById("checkCard" + idTask + idCheckBox).checked;
 
-    // tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
+    tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
     renderTasks();
+    putData(path="", tasks);
+}
+
+function deleteTask(idTask){
+    tasks.splice(idTask, 1);
+    closeDetailCard(idTask);
+    renderTasks();
+    putData(path="", tasks);
+}
+
+function searchTasks() {
+    let input = document.getElementById("searchTask").value;
+    input = input.toLowerCase();
+
+    if(!input.length)
+        input.length = 0;
+        // closeSearch();
+    else if (input.length < 4) {
+        // document.getElementById("buttonMorePokemon").style.visibility = "visible";
+        // document.getElementById("warningSearch").style.visibility = "visible";
+        // document.getElementById("closeSearch").style.visibility = "visible";
+        renderTasks();
+    }
+    else
+        renderFoundTask(input);
+}
+
+function renderFoundTask(input){
+    // document.getElementById("warningSearch").style.visibility = "hidden";
+    // document.getElementById("content").innerHTML = ``;
+    // document.getElementById("buttonMorePokemon").style.visibility = "hidden";
+    // document.getElementById("closeSearch").style.visibility = "visible";
+
+    for (let i = 0; i < tasks.length; i++) {
+      let text = tasks[i].text;
+      let title = tasks[i].title;
+      if (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)) {
+        //render FoundTasks
+      }
+    }
 }
