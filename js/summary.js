@@ -1,11 +1,21 @@
+const BASE_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
+let tasks = [];
 let result = false;
 function init(){
-    includeHTML();
-    loadInfomations().then((result) => {
-        hoverSidebar();
-    });
+    // includeHTML();
+    // hoverSidebar();
+
+    includeHTML().then(function() {
+        hoverSidebar();})
+    // loadTasks().then((result) => {
+    //     hoverSidebar();
+    // });
 }
 
-function loadInfomations(){
+
+async function loadTasks(){
+    let response = await fetch(BASE_URL + ".json");
+    let responseToJSON = await response.json();
+    tasks = responseToJSON;
     result = true;
 }

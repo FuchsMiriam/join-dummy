@@ -67,7 +67,7 @@ function getdetailcardHTMLContacts(idTask){
         contactCards += /*html*/`
             <div class="contactsDetailCard">
                 <div class="contactsListCard">
-                    <p class="cardContactDetailCard">${initials}</p>
+                    <p class="cardContactDetailCard ${tasks[idTask]["assigned to"][i].color}">${initials}</p>
                     <p class="nameContactDetailCard">${tasks[idTask]["assigned to"][i].name}</p>
                 </div>
             </div>`;

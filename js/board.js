@@ -179,11 +179,27 @@ function renderFoundTask(input){
     // document.getElementById("buttonMorePokemon").style.visibility = "hidden";
     // document.getElementById("closeSearch").style.visibility = "visible";
 
-    for (let i = 0; i < tasks.length; i++) {
-      let text = tasks[i].text;
-      let title = tasks[i].title;
-      if (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)) {
-        //render FoundTasks
-      }
+    // for (let i = 0; i < tasks.length; i++) {
+    //   let text = tasks[i].text;
+    //   let title = tasks[i].title;
+      showSearchTasks(input);
+    // }
+}
+
+function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
+    let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
+    document.getElementById("toDO").innerHTML = ``;
+    for(let i = 0; i < tasks.length; i++){
+        let text = tasks[i].text;
+        let title = tasks[i].title;
+        if(tasks[i].taskApplication == 0 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
+            tasksToDo += addTask(i, "toDO");
+        else if(tasks[i].taskApplication == 1 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
+            tasksInProgress += addTask(i, "inProgress");
+        else if(tasks[i].taskApplication == 2 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
+            tasksAwaitFeedback += addTask(i, "awaitFeedback");
+        else if(tasks[i].taskApplication == 3 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
+            tasksAwaitFeedback += addTask(i, "done");
     }
+    checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }

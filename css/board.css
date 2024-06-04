@@ -585,7 +585,7 @@ input::placeholder{
     height: 42px;
     border: 2px solid white;
     border-radius: 50%;
-    background-color: rgba(255, 122, 0, 1);
+    /* background-color: rgba(255, 122, 0, 1); */
     font-weight: 400;
     font-size: 12px;
     line-height: 14.4px;
