@@ -130,22 +130,22 @@ function createContactDetailsHTML(contact) {
         <div class="contactDetailsName">${contact.name}</div>
         <div class="contactDetailsButtons">
           <button class="editContactButton">
-            <img src="../assets/img/edit.svg" alt="Edit" /> Edit
+            <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
           </button>
           <button class="deleteContactButton">
-            <img src="../assets/img/delete.svg" alt="Delete" /> Delete
+            <img class="editImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
           </button>
         </div>
       </div>
       <div class="contactInfoHeader">Contact Information</div>
       <div class="contactInfoDetails">
-        <div class="contactInfoItem">
-          <div class="contactInfoLabel">Email</div>
-          <div class="contactInfoValue">${contact.email}</div>
+        <div class="contactInfoEmail">
+          <div class="contactInfoLabelEmail">Email</div>
+          <div class="contactInfoValueEmail">${contact.email}</div>
         </div>
-        <div class="contactInfoItem">
-          <div class="contactInfoLabel">Phone</div>
-          <div class="contactInfoValue">${contact.phone}</div>
+        <div class="contactInfoPhone">
+          <div class="contactInfoLabelPhone">Phone</div>
+          <div class="contactInfoValuePhone">${contact.phone}</div>
         </div>
       </div>
     </div>
