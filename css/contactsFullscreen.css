@@ -159,7 +159,7 @@
 .editContactButton {
   width: 62px;
   height: 24px;
-  gap: 13px;
+  gap: 8px;
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
@@ -168,9 +168,15 @@
   align-items: center;
   border: none;
   background-color: #f6f7f8;
+  cursor: pointer;
 }
 
 .editImg {
+  width: 24px;
+  height: 24px;
+}
+
+.deleteImg{
   width: 24px;
   height: 24px;
 }
@@ -188,6 +194,21 @@
   align-items: center;
   border: none;
   background-color: #f6f7f8;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contactDetailsButtons button:hover {
+  color: #29abe2;
+  transform: scale(1.1);
+}
+
+.contactDetailsButtons button.editContactButton:hover img {
+  content: url('../assets/img/editHover.svg');
+}
+
+.contactDetailsButtons button.deleteContactButton:hover img {
+  content: url('../assets/img/deleteHover.svg');
 }
 
 .contactInfoHeader {

@@ -135,7 +135,7 @@ function createContactDetailsHTML(contact) {
             <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
           </button>
           <button class="deleteContactButton">
-            <img class="editImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
+            <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
           </button>
         </div>
         </div>
