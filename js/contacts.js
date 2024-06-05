@@ -131,10 +131,10 @@ function createContactDetailsHTML(contact) {
           contact.name
         }</div>
         <div class="contactDetailsButtons">
-          <button class="editContactButton">
+          <button class="editContactButton" onclick="editContact()">
             <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
           </button>
-          <button class="deleteContactButton">
+          <button class="deleteContactButton" onclick="deleteContact()">
             <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
           </button>
         </div>
@@ -174,4 +174,16 @@ function showContactDetails(index) {
   let contactEmail = document.querySelector(".contactEmail");
   contactName.style.color = "#ffffff";
   contactEmail.style.color = "#007CEE";
+}
+
+/*Kontakt editieren*/
+function editContact(){}
+
+/*Kontakt löschen*/
+function deleteContact(){}
+
+/*Kontakt erstellen*/
+
+function createContact(){
+
 }
