@@ -158,7 +158,8 @@ function createContactDetailsHTML(contact) {
 function showContactDetails(index) {
   const contact = contacts[index];
   createContactDetailsHTML(contact);
-  document.getElementById("contactsFullscreen").style.display = "block";
+  document.getElementById("contactsFullscreen").classList.remove("out");
+  document.getElementById("contactsFullscreen").classList.add("in");
 
   let contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, i) => {

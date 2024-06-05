@@ -89,11 +89,19 @@
   width: 461px;
   height: 364px;
   top: 311px;
-  left: 750px;
+  left: 2000px;
   gap: 21px;
   position: fixed;
   display: flex;
   align-items: center;
+  transition: left 0.5s ease; 
+}
+.contactsFullscreen.in {
+  left: 750px;
+}
+
+.contactsFullscreen.out {
+  left: 2000px;
 }
 
 .fullContactDetails {
