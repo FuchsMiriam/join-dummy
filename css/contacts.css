@@ -354,10 +354,9 @@ input[type="tel"]:focus {
   padding-bottom: 15px;
 }
 
-contactListInnerActive {
+.contactListInner.active {
   background: #2a3647;
   border-radius: 10px;
-  color: white;
 }
 
 .contactListInner:hover {
@@ -375,6 +374,7 @@ contactListInnerActive {
   position: relative;
   width: 42px;
   height: 42px;
+  color: #ffffff;
 }
 
 .contactName {
