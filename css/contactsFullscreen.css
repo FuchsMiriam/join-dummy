@@ -1,4 +1,4 @@
-/*Scrollbalken*/
+/*Scrollbar*/
 .contactsSidebar::-webkit-scrollbar {
   background-color: white;
 }
@@ -11,7 +11,7 @@
   width: 5px;
 }
 
-/* Pfeil hoch */
+/* Arrow Up */
 .contactsSidebar::-webkit-scrollbar-button:vertical:decrement {
   height: 14px;
   width: 16px;
@@ -25,7 +25,7 @@
   background-image: url("../assets/img/arrowUp_active.svg");
 }
 
-/* Pfeil runter */
+/* Arrow Down */
 .contactsSidebar::-webkit-scrollbar-button:vertical:increment {
   height: 14px;
   width: 16px;
@@ -39,7 +39,7 @@
   background-image: url("../assets/img/arrowDown_active.svg");
 }
 
-/*Rechte Seite*/
+/*Right side*/
 
 .headlinesContainer {
   display: flex;
@@ -83,7 +83,7 @@
   margin-left: 20px;
 }
 
-/*Aufgerufener Kontakt rechts*/
+/*Selected contact on the right*/
 
 .contactsFullscreen {
   width: 461px;
@@ -287,7 +287,7 @@
   color: #000000;
 }
 
-/*Overlay erstellter Kontakt*/
+/*Overlay for created contact*/
 
 .contactCreatedOverlay {
   font-size: 20px;

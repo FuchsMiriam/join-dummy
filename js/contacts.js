@@ -16,7 +16,7 @@ async function initializePage() {
   });
 }
 
-/*Kontakte abrufen, hinzufügen, löschen, aktualisieren*/
+/*Fetch, add, delete, update contacts*/
 
 async function fetchContacts(path = "") {
   let response = await fetch(contactsURL + path + ".json");
@@ -54,7 +54,7 @@ async function putData(path = "", data = {}) {
   return (responseToJson = await response.json());
 }
 
-/*Kontaktseitenleiste*/
+/*Contact sidebar*/
 
 function getInitials(name) {
   const nameParts = name.split(" ");
@@ -106,21 +106,21 @@ async function showContacts() {
 
 contacts.sort();
 
-/*Overlay öffnen*/
+/*Open overlay*/
 
 function openOverlay() {
   document.querySelector(".addNewContactOverlay").classList.remove("hidden");
   document.querySelector(".addNewContactOverlay").classList.add("visible");
 }
 
-/*Overlay schließen*/
+/*Close overlay*/
 
 document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
   document.getElementById("contactOverlay").classList.remove("visible");
 });
 
-/*Kontaktansicht rechte Seite*/
+/*Contact view on the right side*/
 
 function createContactDetailsHTML(contact) {
   document.getElementById("contactsFullscreen").innerHTML = `
@@ -176,13 +176,13 @@ function showContactDetails(index) {
   contactEmail.style.color = "#007CEE";
 }
 
-/*Kontakt editieren*/
+/*Edit contact*/
 function editContact(){}
 
-/*Kontakt löschen*/
+/*Delete contact*/
 function deleteContact(){}
 
-/*Kontakt erstellen*/
+/*Create contact*/
 
 function createContact(){
 
