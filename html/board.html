@@ -60,10 +60,10 @@
         </div>
     </section>
     <section class="contentFrame">
-        <div id="toDO" class="columnBoard scrollbarColumn"></div>
-        <div id="inProgress" class="columnBoard scrollbarColumn"></div>
-        <div id="awaitFeedback" class="columnBoard scrollbarColumn"></div>
-        <div id="done" class="columnBoard scrollbarColumn"></div>
+        <div id="toDO" ondrop="drop(0)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div id="inProgress" ondrop="drop(1)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div id="awaitFeedback" ondrop="drop(2)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div id="done" ondrop="drop(3)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
     </section>
     <section id="idDetailCard" class="containerDetailCard">
     </section>

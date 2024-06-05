@@ -1,5 +1,6 @@
 const BASE_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks = [];
+let currentTask = 0;
 let exampleTask = {
     "label": "User Story",
     "title": "Einkaufen",
@@ -30,6 +31,8 @@ function init(){
     includeHTML();
     // hoverSidebar();
     loadTasks().then((result) => {
+        // for(let i = 0; i<2; i++)
+        //     tasks.push(exampleTask);
         putData(path="", tasks);
         renderTasks();
         hoverSidebar();
@@ -73,6 +76,10 @@ async function putData(path="", data={}){
 }
 
 function renderTasks(){
+    document.getElementById("toDO").innerHTML = ``;
+    document.getElementById("inProgress").innerHTML = ``;
+    document.getElementById("awaitFeedback").innerHTML = ``;
+    document.getElementById("done").innerHTML = ``;
     showTasks();
 }
 
@@ -114,7 +121,6 @@ function detailCardHTML(idTask){
 
 function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
-    document.getElementById("toDO").innerHTML = ``;
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].taskApplication == 0)
             tasksToDo += addTask(i, "toDO");
@@ -123,7 +129,7 @@ function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
         else if(tasks[i].taskApplication == 2)
             tasksAwaitFeedback += addTask(i, "awaitFeedback");
         else if(tasks[i].taskApplication == 3)
-            tasksAwaitFeedback += addTask(i, "done");
+            tasksDone += addTask(i, "done");
     }
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
@@ -202,4 +208,18 @@ function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback,
             tasksAwaitFeedback += addTask(i, "done");
     }
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
+}
+
+function startDragging(idTask){
+    currentTask = idTask;
+}
+
+function allowDrop(ev){
+    ev.preventDefault();
+}
+
+function drop(category){
+    tasks[currentTask]['taskApplication'] = category;
+    renderTasks();
+    putData(path="", tasks);
 }

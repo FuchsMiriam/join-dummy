@@ -127,7 +127,7 @@ function checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone)
 
 function cardHTML(idTask){
     return /*html*/`
-        <div id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(${idTask})">
+        <div draggable="true" id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(${idTask})" ondragstart="startDragging(${idTask})">
             ${cardHTMLLabel(idTask)}
             <div class="textCard">
                 ${cardHTMLTitle(idTask)}
@@ -212,5 +212,7 @@ function getInitials(name) {
 
     return initials;
 }
+
+
 
 
