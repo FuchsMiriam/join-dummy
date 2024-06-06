@@ -22,7 +22,6 @@ async function fetchContacts(path = "") {
   let response = await fetch(contactsURL + path + ".json");
   let data = await response.json();
   contacts = data ? Object.values(data) : [];
-  contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 async function postData(path = "", data = "") {
@@ -69,7 +68,6 @@ function contactsSidebar(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const firstLetter = contact.name.charAt(0).toUpperCase();
-
     if (!addedLetters.has(firstLetter)) {
       html += `
         <div class="letter">${firstLetter}</div>
@@ -97,6 +95,8 @@ async function showContacts() {
   contactListDiv.innerHTML = "";
 
   if (contacts.length > 0) {
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+
     const contactsHTML = contactsSidebar(contacts);
     contactListDiv.innerHTML = contactsHTML;
   } else {
@@ -177,13 +177,85 @@ function showContactDetails(index) {
 }
 
 /*Edit contact*/
-function editContact(){}
+function editContact() {}
 
 /*Delete contact*/
-function deleteContact(){}
+function deleteContact() {}
 
 /*Create contact*/
 
-function createContact(){
+/*function createContact() {
+  let name = document.getElementById("createNameInput");
+  let email = document.getElementById("createEmailInput");
+  let phone = document.getElementById("createPhoneInput");
 
+  let contact = {
+    Name: name.value,
+    Email: email.value,
+    Phone: phone.value,
+  };
+
+  putData("", contact)
+    .then((response) => {
+      console.log("Contact successfully added to Firebase:", response);
+      const newID = response.name;
+      contact.id = newID;
+      contacts.push(contact);
+      showContacts();
+    })
+    .catch((error) => {
+      console.error("Error adding contact to Firebase:", error);
+    });
+
+  name.value = "";
+  email.value = "";
+  phone.value = "";
+}*/
+
+async function createContact() {
+  let name = document.getElementById("createNameInput");
+  let email = document.getElementById("createEmailInput");
+  let phone = document.getElementById("createPhoneInput");
+
+  let newID = await generateCustomID();
+
+  let contact = {
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+  };
+
+  try {
+    await putData(newID, contact);
+    contacts.push({ id: newID, ...contact });
+    showContacts();
+    document.getElementById("contactOverlay").classList.add("hidden");
+    window.location.href = "contacts.html";
+
+    setTimeout(() => {
+      document
+        .querySelector(".contactCreatedOverlay")
+        .classList.remove("contactCreatedOverlayHidden");
+        setTimeout(() => {
+          document.querySelector(".contactCreatedOverlay").classList.add("in");
+        }, 10);
+    }, 2000);
+
+    setTimeout(() => {
+      document.querySelector(".contactCreatedOverlay").classList.remove("in");
+      document.querySelector(".contactCreatedOverlay").classList.add("out");
+    }, 4000);
+  } catch (error) {
+    console.error("Error adding contact to Firebase:", error);
+  }
+  name.value = "";
+  email.value = "";
+  phone.value = "";
+}
+
+async function generateCustomID() {
+  await fetchContacts();
+
+  const nextID = contacts.length + 1;
+  return `contact${nextID}`;
 }

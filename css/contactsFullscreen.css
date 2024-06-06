@@ -96,6 +96,7 @@
   align-items: center;
   transition: left 0.5s ease;
 }
+
 .contactsFullscreen.in {
   left: 750px;
 }
@@ -300,11 +301,23 @@
   width: 326px;
   height: 74px;
   top: 700px;
-  left: 300px;
-  gap: 0px;
+  left: 2000px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
   position: relative;
+  transition: left 0.8s ease;
+}
+
+.contactCreatedOverlayHidden{
+  display: none;
+}
+
+.contactCreatedOverlay.in{
+  left: 300px;
+}
+
+.contactCreatedOverlay.out{
+  left: 2000px;
 }

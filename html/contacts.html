@@ -51,12 +51,14 @@
                 align-items: center;
                 gap: 32px;
               "
+              onsubmit="createContact(); return false"
             >
               <div class="overlayInputField">
                 <input
                   class="overlayContactsInput"
                   type="text"
                   name="name"
+                  id="createNameInput"
                   placeholder="Name"
                   required
                 />
@@ -71,6 +73,7 @@
                   class="overlayContactsInput"
                   type="email"
                   name="emailAddress"
+                  id="createEmailInput"
                   placeholder="Email"
                   required
                 />
@@ -85,6 +88,7 @@
                   class="overlayContactsInput"
                   type="tel"
                   name="phoneNumber"
+                  id="createPhoneInput"
                   placeholder="Phone"
                   required
                 />
@@ -94,7 +98,6 @@
                   alt="Telefon"
                 />
               </div>
-            </form>
           </div>
           <div class="contactButtons">
             <div class="cancelContainer">
@@ -108,7 +111,7 @@
               </a>
             </div>
             <div class="createContainer">
-              <button class="contactCreateButton" onclick="createContact()">
+              <button class="contactCreateButton">
                 <img
                   class="cancelSymbol"
                   src="../assets/img/haken.svg"
@@ -116,6 +119,7 @@
                 />
                 Create contact
               </button>
+            </form>
             </div>
           </div>
         </div>
@@ -155,7 +159,7 @@
         ></div>
       </div>
 
-      <div class="contactCreatedOverlay">Contact successfully created</div>
+      <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
     </div>
 
     <script src="../js/contacts.js"></script>
