@@ -11,15 +11,14 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="../css/contacts.css" />
-    <link rel="stylesheet" href="../css/contactsFullscreen.css">
+    <link rel="stylesheet" href="../css/contactsFullscreen.css" />
     <link rel="stylesheet" href="../fonts.css" />
   </head>
   <body onload="initializePage()">
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
 
     <div class="mainContainerContacts">
-
-    <!-- Overlay Start -->
+      <!-- Overlay Start -->
       <div class="addNewContactOverlay hidden" id="contactOverlay">
         <div class="leftOverlayContent">
           <div class="leftContainer">
@@ -44,56 +43,61 @@
             />
           </div>
           <div class="overlayInputContainer">
-            <form  action=""
-            style="
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 32px;
-            ">
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="text"
-                name="name"
-                placeholder="Name"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/personIcon.svg"
-                alt="Person"
-              />
-            </div>
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="email"
-                name="emailAddress"
-                placeholder="Email"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/mailIcon.svg"
-                alt="E-Mail"
-              />
-            </div>
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="tel"
-                name="phoneNumber"
-                placeholder="Phone"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/phone.svg"
-                alt="Telefon"
-              />
-            </div>
-            </form>
+            <form
+              action=""
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+              "
+              onsubmit="createContact(); return false"
+            >
+              <div class="overlayInputField">
+                <input
+                  class="overlayContactsInput"
+                  type="text"
+                  name="name"
+                  id="createNameInput"
+                  placeholder="Name"
+                  required
+                />
+                <img
+                  class="contactsIcon"
+                  src="../assets/img/personIcon.svg"
+                  alt="Person"
+                />
+              </div>
+              <div class="overlayInputField">
+                <input
+                  class="overlayContactsInput"
+                  type="email"
+                  name="emailAddress"
+                  id="createEmailInput"
+                  placeholder="Email"
+                  required
+                />
+                <img
+                  class="contactsIcon"
+                  src="../assets/img/mailIcon.svg"
+                  alt="E-Mail"
+                />
+              </div>
+              <div class="overlayInputField">
+                <input
+                  class="overlayContactsInput"
+                  type="tel"
+                  name="phoneNumber"
+                  id="createPhoneInput"
+                  placeholder="Phone"
+                  required
+                />
+                <img
+                  class="contactsIcon"
+                  src="../assets/img/phone.svg"
+                  alt="Telefon"
+                />
+              </div>
           </div>
           <div class="contactButtons">
             <div class="cancelContainer">
@@ -115,6 +119,7 @@
                 />
                 Create contact
               </button>
+            </form>
             </div>
           </div>
         </div>
@@ -129,7 +134,7 @@
         </div>
       </div>
 
-      <!-- Overlay Ende -->
+      <!-- Overlay End -->
 
       <div class="contactsSidebar">
         <div class="buttonContainer">
@@ -147,8 +152,14 @@
           <h2 class="subheadingContacts">Better with a team</h2>
         </div>
 
-        <div id="contactsFullscreen" class="contactsFullscreen" onclick="showContactDetails(index)"></div>
+        <div
+          id="contactsFullscreen"
+          class="contactsFullscreen"
+          onclick="showContactDetails(index)"
+        ></div>
       </div>
+
+      <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
     </div>
 
     <script src="../js/contacts.js"></script>

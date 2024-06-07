@@ -1,43 +1,75 @@
 let task = [];
 let savedTask = [];
 let contacts = [];
+let contactsNames = [];
+let assigned = [];
+let isListContactsLoaded = false;
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
 async function init() {
     addSubTask();
     await loadTasks();
+    await getNamesFromArray();
 }
 
 async function loadTasks(path = "") {
-    // let response = await fetch(URL_CONTACT + ".json");
-    // let responseToJSON = await response.json();
-    // contacts.push(responseToJSON);
-    // console.log(contacts);
-    // showContacts();
     let response = await fetch(URL_CONTACT + path + ".json");
-  let data = await response.json();
-  contacts = data ? Object.values(data):[];
-  contacts.sort((a, b) => a.name.localeCompare(b.name)); 
-  console.log(contacts);
+    let data = await response.json();
+    contacts = data ? Object.values(data) : [];
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+    console.log(contacts);
+}
+
+async function getNamesFromArray() {
+    for (let j = 0; j < contacts.length; j++) {
+        const names = contacts[j].name;
+
+        contactsNames.push(names);
+    }
 }
 
 function showContacts() {
     let container = document.getElementById('show-contacts');
+    getInitials();
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i].name;
 
-        container.innerHTML += `
-        <div class="display-contacts-dropdown">
-            <ol>
-                <li class="contact-list">
-                    ${contact} <input type="checkbox" class="contacts-checkbox">
-                </li>
-            </ol>
-        </div>
-        `;
+        container.innerHTML +=
+            displayContactsTemplate(i, contact)
     }
+}
+
+function ifIsListContactsLoaded() {
+    document.getElementById('input-assigny').addEventListener('click', function() {
+        if(!isListContactsLoaded) {
+            showContacts();
+            isListContactsLoaded = true;
+            closeButtonForShowContacts();
+        }
+    })
+}
+
+function closeButtonForShowContacts() {
+    let assigny = document.getElementById('input-assigny');
+
+    assigny.style.backgroundImage = 'url(../assets/img/close.png)';
+    assigny.style.backgroundRepeat = 'no-repeat';
+    assigny.style.backgroundPosition = 'right';
+}
+
+function addInitials(i, contact) {
+    let ini = document.getElementById('display-initials');
+
+    assigned.push(contact[i]);
+}
+
+function getInitials() {
+    const nameParts = contactsNames.split(' ');
+    const initials = nameParts.map(part => part.charAt(0)).join('');
+
+    return initials;
 }
 
 function clearInputs() {
@@ -72,34 +104,18 @@ function imageOnSubtask() {
 function showSubtask() {
     let inputs = document.getElementById('show-subtask');
     inputs.innerHTML = '';
-    
+
     for (let i = 0; i < task.length; i++) {
         let tasks = task[i];
 
-            inputs.innerHTML += `
-            <ul id="subtask${i}">
-                <li onclick="editValue()">
-                    ${tasks}
-                </li>
-            </ul>
-        `;
+        inputs.innerHTML +=
+            showSubtaskTemplate(i, tasks)
     }
 }
 
 function editValue() {
-    let edit = document.getElementById(`subtask${i}`).value;
 
-    savedTask.push(edit);
-    loadTasks();
 }
-
-function loadTask() {
-    
-}
-
-// function showHover() {
-//     document.getElementById(`subtask${i}`).classList.add('sub-hover');
-// }
 
 function addSubTask() {
     let input = document.getElementById('input-subtask');

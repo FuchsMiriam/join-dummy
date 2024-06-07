@@ -1,4 +1,4 @@
-/*Scrollbalken*/
+/*Scrollbar*/
 .contactsSidebar::-webkit-scrollbar {
   background-color: white;
 }
@@ -11,7 +11,7 @@
   width: 5px;
 }
 
-/* Pfeil hoch */
+/* Arrow Up */
 .contactsSidebar::-webkit-scrollbar-button:vertical:decrement {
   height: 14px;
   width: 16px;
@@ -25,7 +25,7 @@
   background-image: url("../assets/img/arrowUp_active.svg");
 }
 
-/* Pfeil runter */
+/* Arrow Down */
 .contactsSidebar::-webkit-scrollbar-button:vertical:increment {
   height: 14px;
   width: 16px;
@@ -39,7 +39,7 @@
   background-image: url("../assets/img/arrowDown_active.svg");
 }
 
-/*Rechte Seite*/
+/*Right side*/
 
 .headlinesContainer {
   display: flex;
@@ -83,7 +83,7 @@
   margin-left: 20px;
 }
 
-/*Aufgerufener Kontakt rechts*/
+/*Selected contact on the right*/
 
 .contactsFullscreen {
   width: 461px;
@@ -94,8 +94,9 @@
   position: fixed;
   display: flex;
   align-items: center;
-  transition: left 0.5s ease; 
+  transition: left 0.5s ease;
 }
+
 .contactsFullscreen.in {
   left: 750px;
 }
@@ -120,7 +121,7 @@
   width: 120px;
   height: 120px;
   gap: 10px;
-  border-radius: 70px 0px 0px 0px;
+  border-radius: 70px;
   border: 3px solid #ffffff;
   box-shadow: 0px 0px 4px 0px #0000001a;
   display: flex;
@@ -129,6 +130,8 @@
   line-height: 56.4px;
   text-align: center;
   color: #ffffff;
+  justify-content: center;
+  align-items: center;
 }
 
 .contactNameButtons {
@@ -176,7 +179,7 @@
   height: 24px;
 }
 
-.deleteImg{
+.deleteImg {
   width: 24px;
   height: 24px;
 }
@@ -195,20 +198,19 @@
   border: none;
   background-color: #f6f7f8;
   cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .contactDetailsButtons button:hover {
   color: #29abe2;
-  transform: scale(1.1);
+  font-weight: 700;
 }
 
 .contactDetailsButtons button.editContactButton:hover img {
-  content: url('../assets/img/editHover.svg');
+  content: url("../assets/img/editHover.svg");
 }
 
 .contactDetailsButtons button.deleteContactButton:hover img {
-  content: url('../assets/img/deleteHover.svg');
+  content: url("../assets/img/deleteHover.svg");
 }
 
 .contactInfoHeader {
@@ -284,4 +286,68 @@
   line-height: 19.2px;
   text-align: left;
   color: #000000;
+}
+
+/*Overlay for created contact*/
+
+.contactCreatedOverlay {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: white;
+  background: #2a3647;
+  box-shadow: 0px 0px 4px 0px #00000026;
+  width: 326px;
+  height: 74px;
+  top: 700px;
+  left: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  position: relative;
+  transition: left 0.8s ease;
+}
+
+.contactCreatedOverlayHidden {
+  display: none;
+}
+
+.contactCreatedOverlay.in {
+  left: 300px;
+}
+
+.contactCreatedOverlay.out {
+  left: 2000px;
+}
+
+/*Colours*/
+
+.orange {
+  background-color: #ff7a00;
+}
+
+.purple {
+  background-color: #9327ff;
+}
+
+.blue {
+  background-color: #6e52ff;
+}
+
+.pink {
+  background-color: #fc71ff;
+}
+
+.yellow {
+  background-color: #ffbb2b;
+}
+
+.green {
+  background-color: #1fd7c1;
+}
+
+.red {
+  background-color: #e02f2f;
 }
