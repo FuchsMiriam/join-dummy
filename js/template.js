@@ -62,8 +62,5 @@ function hoverSidebar(){
     document.getElementById("frameContacts").classList.add("nohover");
     document.getElementById("frameContacts").classList.add("menuFramesHover");
     document.getElementById("imgFrameContacts").classList.add("imgHoverContacts");
-  }
-
-  console.log(page);
-    
+  } 
 }

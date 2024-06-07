@@ -2,6 +2,6 @@ function init(){
     includeHTML();
     setTimeout(() => {
         hoverSidebar();
-      },1);
+      },100);
 }
 
