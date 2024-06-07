@@ -127,25 +127,28 @@ function createContactDetailsHTML(contact) {
     <div class="fullContactDetails">
       <div class="fullContactHeader">
         <div class="contactDetailsInitials">${getInitials(contact.name)}</div>
-        <div class="contactDetailsName">${contact.name}</div>
+        <div class="contactNameButtons"><div class="contactDetailsName">${
+          contact.name
+        }</div>
         <div class="contactDetailsButtons">
           <button class="editContactButton">
-            <img src="../assets/img/edit.svg" alt="Edit" /> Edit
+            <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
           </button>
           <button class="deleteContactButton">
-            <img src="../assets/img/delete.svg" alt="Delete" /> Delete
+            <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
           </button>
+        </div>
         </div>
       </div>
       <div class="contactInfoHeader">Contact Information</div>
       <div class="contactInfoDetails">
-        <div class="contactInfoItem">
-          <div class="contactInfoLabel">Email</div>
-          <div class="contactInfoValue">${contact.email}</div>
+        <div class="contactInfoEmail">
+          <div class="contactInfoLabelEmail">Email</div>
+          <div class="contactInfoValueEmail">${contact.email}</div>
         </div>
-        <div class="contactInfoItem">
-          <div class="contactInfoLabel">Phone</div>
-          <div class="contactInfoValue">${contact.phone}</div>
+        <div class="contactInfoPhone">
+          <div class="contactInfoLabelPhone">Phone</div>
+          <div class="contactInfoValuePhone">${contact.phone}</div>
         </div>
       </div>
     </div>
@@ -155,5 +158,20 @@ function createContactDetailsHTML(contact) {
 function showContactDetails(index) {
   const contact = contacts[index];
   createContactDetailsHTML(contact);
-  document.getElementById("contactsFullscreen").style.display = "block";
+  document.getElementById("contactsFullscreen").classList.remove("out");
+  document.getElementById("contactsFullscreen").classList.add("in");
+
+  let contactDivs = document.querySelectorAll(".contactListInner");
+  contactDivs.forEach((contactDiv, i) => {
+    if (i === index) {
+      contactDiv.classList.add("active");
+    } else {
+      contactDiv.classList.remove("active");
+    }
+  });
+
+  let contactName = document.querySelector(".contactName");
+  let contactEmail = document.querySelector(".contactEmail");
+  contactName.style.color = "#ffffff";
+  contactEmail.style.color = "#007CEE";
 }

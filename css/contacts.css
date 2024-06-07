@@ -316,6 +316,12 @@ input[type="tel"]:focus {
   align-items: center;
 }
 
+.addContactButton:hover{
+  background-color: #29abe2;
+  border: none;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 /*Kontakliste*/
 .contactList {
   display: flex;
@@ -354,10 +360,9 @@ input[type="tel"]:focus {
   padding-bottom: 15px;
 }
 
-contactListInnerActive {
+.contactListInner.active {
   background: #2a3647;
   border-radius: 10px;
-  color: white;
 }
 
 .contactListInner:hover {
@@ -375,6 +380,7 @@ contactListInnerActive {
   position: relative;
   width: 42px;
   height: 42px;
+  color: #ffffff;
 }
 
 .contactName {
@@ -397,87 +403,3 @@ contactListInnerActive {
   color: #007cee;
 }
 
-/*Scrollbalken*/
-.contactsSidebar::-webkit-scrollbar {
-  background-color: white;
-}
-
-.contactsSidebar::-webkit-scrollbar-thumb {
-  background-color: #a8a8a8;
-  border: 8px solid #a8a8a8;
-  border-radius: 10px;
-  height: 10px;
-  width: 5px;
-}
-
-/* Pfeil hoch */
-.contactsSidebar::-webkit-scrollbar-button:vertical:decrement {
-  height: 14px;
-  width: 16px;
-  background-position: center;
-  background-image: url("../assets/img/arrowUp.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.contactsSidebar::-webkit-scrollbar-button:vertical:decrement:active {
-  background-image: url("../assets/img/arrowUp_active.svg");
-}
-
-/* Pfeil runter */
-.contactsSidebar::-webkit-scrollbar-button:vertical:increment {
-  height: 14px;
-  width: 16px;
-  background-position: center;
-  background-image: url("../assets/img/arrowDown.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.contactsSidebar::-webkit-scrollbar-button:vertical:increment:active {
-  background-image: url("../assets/img/arrowDown_active.svg");
-}
-
-/*Rechte Seite*/
-
-.headlinesContainer {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 206px;
-  left: 743px;
-  height: 73px;
-}
-
-.contactsHeadline {
-  font-size: 61px;
-  font-weight: 700;
-  line-height: 73.2px;
-  text-align: left;
-  position: relative;
-}
-
-.subheadingContacts {
-  font-size: 27px;
-  font-weight: 400;
-  line-height: 32.4px;
-  text-align: left;
-  margin-left: 40px;
-}
-
-.contactsHeadlineContainer {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.contactsHeadlineContainer::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 59px;
-  background-color: #29abe2;
-  margin-left: 20px;
-}
