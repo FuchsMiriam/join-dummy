@@ -38,24 +38,28 @@ function hoverSidebar(){
   
   if(page == "summary.html")
   {
+    document.getElementById("frameSummary").classList.add("nohover");
     document.getElementById("frameSummary").classList.add("menuFramesHover");
     document.getElementById("imgFrameSummary").classList.add("imgHoverSummary");
   }
 
   if(page == "add_task.html")
   {
+    document.getElementById("frameAddtasks").classList.add("nohover");
     document.getElementById("frameAddtasks").classList.add("menuFramesHover");
     document.getElementById("imgFrameAddtask").classList.add("imgHoverAddtask");
   }
 
   if(page == "board.html")
   {
+    document.getElementById("frameBoard").classList.add("nohover");
     document.getElementById("frameBoard").classList.add("menuFramesHover");
     document.getElementById("imgFrameBoard").classList.add("imgBoardHover");
   }
 
   if(page == "contacts.html")
   {
+    document.getElementById("frameContacts").classList.add("nohover");
     document.getElementById("frameContacts").classList.add("menuFramesHover");
     document.getElementById("imgFrameContacts").classList.add("imgHoverContacts");
   }

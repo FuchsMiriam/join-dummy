@@ -76,11 +76,15 @@ async function putData(path="", data={}){
 }
 
 function renderTasks(){
+    setBackColumns();
+    showTasks();
+}
+
+function setBackColumns(){
     document.getElementById("toDO").innerHTML = ``;
     document.getElementById("inProgress").innerHTML = ``;
     document.getElementById("awaitFeedback").innerHTML = ``;
     document.getElementById("done").innerHTML = ``;
-    showTasks();
 }
 
 function openDetailCard(idTask){
@@ -121,6 +125,7 @@ function detailCardHTML(idTask){
 
 function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
+    setBackColumns();
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].taskApplication == 0)
             tasksToDo += addTask(i, "toDO");
@@ -167,34 +172,15 @@ function searchTasks() {
     input = input.toLowerCase();
 
     if(!input.length)
-        input.length = 0;
-        // closeSearch();
-    else if (input.length < 4) {
-        // document.getElementById("buttonMorePokemon").style.visibility = "visible";
-        // document.getElementById("warningSearch").style.visibility = "visible";
-        // document.getElementById("closeSearch").style.visibility = "visible";
         renderTasks();
+    else{
+        setBackColumns();
+        showSearchTasks(input);
     }
-    else
-        renderFoundTask(input);
-}
-
-function renderFoundTask(input){
-    // document.getElementById("warningSearch").style.visibility = "hidden";
-    // document.getElementById("content").innerHTML = ``;
-    // document.getElementById("buttonMorePokemon").style.visibility = "hidden";
-    // document.getElementById("closeSearch").style.visibility = "visible";
-
-    // for (let i = 0; i < tasks.length; i++) {
-    //   let text = tasks[i].text;
-    //   let title = tasks[i].title;
-      showSearchTasks(input);
-    // }
 }
 
 function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
-    document.getElementById("toDO").innerHTML = ``;
     for(let i = 0; i < tasks.length; i++){
         let text = tasks[i].text;
         let title = tasks[i].title;
@@ -205,9 +191,15 @@ function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback,
         else if(tasks[i].taskApplication == 2 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
             tasksAwaitFeedback += addTask(i, "awaitFeedback");
         else if(tasks[i].taskApplication == 3 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
-            tasksAwaitFeedback += addTask(i, "done");
+            tasksDone += addTask(i, "done");
     }
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
+}
+
+function foundTask(){
+    setBackColumns();
+    renderTasks();
+    // document.getElementById("searchTask").value = '';
 }
 
 function startDragging(idTask){

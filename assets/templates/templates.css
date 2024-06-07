@@ -161,22 +161,17 @@ p{
     background-size: cover;
 }
 
-.menuFrames:hover .imgSummary{
+.menuFrames:not(.nohover):hover .imgSummary{
     background: url("../img/imgHoverSummary.png");
     object-fit: cover;
     background-position: center;
     background-size: cover;
 }
 
-.menuFrames:hover .menuSidebarHover{
-    font-weight: 700;
-}
 
-.menuFrames:hover{
-    background-color: rgb(42, 62, 89);
-}
 
 .menuFramesHover{
+    color: white;
     background-color: rgba(9, 25, 49, 1);
 }
 
@@ -238,5 +233,13 @@ p{
 
 .privacyColor:hover{
     color: rgba(41, 171, 226, 1);
+    font-weight: 700;
+}
+
+.menuFrames:not(.nohover):hover {
+    background-color: rgb(42, 62, 89);
+}
+
+.menuFrames:not(.nohover):hover .menuSidebarHover{
     font-weight: 700;
 }
