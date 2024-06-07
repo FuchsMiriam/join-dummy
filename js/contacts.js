@@ -99,6 +99,13 @@ async function showContacts() {
 
     const contactsHTML = contactsSidebar(contacts);
     contactListDiv.innerHTML = contactsHTML;
+
+    const contactDivs = document.querySelectorAll(".contactListInner");
+    contactDivs.forEach((contactDiv, index) => {
+      contactDiv.addEventListener("click", function () {
+        showContactDetails(index);
+      });
+    });
   } else {
     contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
   }
@@ -134,7 +141,9 @@ function createContactDetailsHTML(contact) {
           <button class="editContactButton" onclick="editContact()">
             <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
           </button>
-          <button class="deleteContactButton" onclick="deleteContact()">
+          <button class="deleteContactButton" onclick="deleteContact('${
+            contact.id
+          }')">
             <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
           </button>
         </div>
@@ -164,23 +173,35 @@ function showContactDetails(index) {
   let contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, i) => {
     if (i === index) {
-      contactDiv.classList.add("active");
+      contactDiv.classList.add("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#ffffff";
     } else {
-      contactDiv.classList.remove("active");
+      contactDiv.classList.remove("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#000000";
     }
   });
-
-  let contactName = document.querySelector(".contactName");
-  let contactEmail = document.querySelector(".contactEmail");
-  contactName.style.color = "#ffffff";
-  contactEmail.style.color = "#007CEE";
 }
 
 /*Edit contact*/
 function editContact() {}
 
 /*Delete contact*/
-function deleteContact() {}
+
+async function deleteContact(id) {
+  try {
+    await deleteData(id);
+    const index = contacts.findIndex((contact) => contact.id === id);
+    if (index !== -1) {
+      contacts.splice(index, 1);
+      showContacts();
+      document.getElementById("contactsFullscreen").innerHTML = "";
+    } else {
+      console.error("Kontakt nicht gefunden:", id);
+    }
+  } catch (error) {
+    console.error("Fehler beim Löschen des Kontakts aus Firebase:", error);
+  }
+}
 
 /*Create contact*/
 
@@ -236,9 +257,9 @@ async function createContact() {
       document
         .querySelector(".contactCreatedOverlay")
         .classList.remove("contactCreatedOverlayHidden");
-        setTimeout(() => {
-          document.querySelector(".contactCreatedOverlay").classList.add("in");
-        }, 10);
+      setTimeout(() => {
+        document.querySelector(".contactCreatedOverlay").classList.add("in");
+      }, 10);
     }, 2000);
 
     setTimeout(() => {
