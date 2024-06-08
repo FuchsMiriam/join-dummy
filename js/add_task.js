@@ -168,3 +168,9 @@ function changePrioButtonLow() {
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
 }
+
+function addTask() {
+    let task = document.getElementById('add_task');
+
+    task.classList.remove('d-none');
+}

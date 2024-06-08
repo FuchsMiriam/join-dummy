@@ -27,7 +27,7 @@ h1 {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .btn {
@@ -338,4 +338,32 @@ input {
     justify-content: space-between;
     align-items: center;
     padding-right: 20px;
+}
+
+.pop-up-task {
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 1ms ease-in-out;
+}
+
+.overlay-create-task {
+    width: 450px;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(42, 54, 71, 1);
+    color: white;
+    font-size: 24px;
+    border-radius: 15px;
 }
