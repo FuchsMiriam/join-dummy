@@ -1,14 +1,15 @@
-//Funktion zur Weiterleitung auf die Privacy Policy Seite
+//Function to redirect to the Privacy Policy page
 
 function redirectToPrivacyPage() {
   window.location.href = "./privacy_policy.html";
 }
 
-//Funktion zur Weiterleitung auf die Privacy Policy Seite
+//Function to redirect to the Legal Notice page
 function redirectToLegalPage() {
   window.location.href = "./legal_notice.html";
 }
 
+// Function to redirect to the Login page
 function redirectToLoginPage() {
   window.location.href = "../index.html";
 }
@@ -25,7 +26,7 @@ function buttonDisabled() {
   signupButton.disabled = true;
 }
 
-//Checkbox-Wechsel
+//Checkbox toggle functionality
 
 function checkboxToggle() {
   const checkbox = document.querySelector("#rememberMe");
@@ -36,7 +37,7 @@ function checkboxToggle() {
   });
 }
 
-//Funktionen für das Wechseln der Anzeigeart - Icons und Texteingabe
+//Functions for toggling password visibility - icons and text input
 
 document.addEventListener("DOMContentLoaded", () => {
   const setupPasswordVisibilityToggle = (passwordInputId, lockIconId) => {
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-//Datenbank für Signup
+//Database for signup
 
 const databaseURL =
   "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -99,7 +100,7 @@ async function postData(path = "", data = {}) {
   }
 }
 
-//Funktion Sign up
+//Function for signup
 
 async function signup() {
   const name = document.getElementById("signupNameInput").value;

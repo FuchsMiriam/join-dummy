@@ -3,7 +3,8 @@ let savedTask = [];
 let contacts = [];
 let contactsNames = [];
 let assigned = [];
-let isListContactsLoaded = false;
+let listContactsLoaded = false;
+let initial = [];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
@@ -22,61 +23,86 @@ async function loadTasks(path = "") {
 }
 
 async function getNamesFromArray() {
-    for (let j = 0; j < contacts.length; j++) {
-        const names = contacts[j].name;
-
-        contactsNames.push(names);
-    }
+    contactsNames = contacts.map(contact => contact.name);
 }
 
 function showContacts() {
     let container = document.getElementById('show-contacts');
-    getInitials();
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i].name;
 
+        container.classList.remove('d-none');
         container.innerHTML +=
             displayContactsTemplate(i, contact)
     }
 }
 
 function ifIsListContactsLoaded() {
-    document.getElementById('input-assigny').addEventListener('click', function() {
-        if(!isListContactsLoaded) {
+    document.getElementById('input-assigny').addEventListener('click', function () {
+        if (listContactsLoaded == false) {
             showContacts();
-            isListContactsLoaded = true;
             closeButtonForShowContacts();
+            listContactsLoaded = true;
         }
     })
 }
 
 function closeButtonForShowContacts() {
-    let assigny = document.getElementById('input-assigny');
+    let assigny = document.getElementById('input-assigned');
 
-    assigny.style.backgroundImage = 'url(../assets/img/close.png)';
-    assigny.style.backgroundRepeat = 'no-repeat';
-    assigny.style.backgroundPosition = 'right';
+    if (assigny == onfocus) {
+        document.getElementById('add-button-contacts').innerHTML = `
+            <div>
+            <span id="close-contacts" onclick="closeContacts()">-</span>
+            </div>
+        `;
+    }
 }
 
-function addInitials(i, contact) {
+function closeContacts() {
+    let buttonContacts = document.getElementById('add-button-contacts');
+    listContactsLoaded = false;
+    document.getElementById('show-contacts').classList.add('d-none');
+    buttonContacts.innerHTML = '';
+    buttonContacts.innerHTML = `
+            <div>
+                <span>+</span>
+            </div>
+        `;
+        
+}
+
+//-------------Begin initials functions--------------//
+function addInitials(i) {
     let ini = document.getElementById('display-initials');
+    const initials = getInitials(contactsNames[i]);
+    assigned = contactsNames[i];
+    initial.push(initials); 
+    
 
-    assigned.push(contact[i]);
+    ini.innerHTML += `
+        <div>
+            ${initials}
+        </div>
+    `;
 }
 
-function getInitials() {
-    const nameParts = contactsNames.split(' ');
+function getInitials(name) {
+    const nameParts = name.split(' ');
     const initials = nameParts.map(part => part.charAt(0)).join('');
 
     return initials;
 }
+//-------------End initials functions--------------//
 
 function clearInputs() {
     document.getElementById('input-title').value = '';
     document.getElementById('input-description').value = '';
     document.getElementById("input-date").valueAsDate = null;
     document.getElementById('input-subtask').value = '';
+    document.getElementById('input-category').value = '';
+    document.getElementById('display-initials').innerHTML = '';
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
@@ -113,16 +139,15 @@ function showSubtask() {
     }
 }
 
-function editValue() {
-
-}
-
 function addSubTask() {
     let input = document.getElementById('input-subtask');
 
-    task.push(input.value);
-
-    showSubtask();
+    if (input == '') {
+        alert('Bitte eintrag hinzufügen')
+    } else {
+        task.push(input.value);
+        showSubtask();
+    }
     input.value = '';
 }
 
@@ -142,4 +167,10 @@ function changePrioButtonLow() {
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+}
+
+function addTask() {
+    let task = document.getElementById('add_task');
+
+    task.classList.remove('d-none');
 }
