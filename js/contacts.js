@@ -207,9 +207,11 @@ function showContactDetails(index) {
   let contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, i) => {
     if (i === index) {
+      contactDiv.classList.add("active");
       contactDiv.classList.add("nohover");
       contactDiv.querySelector(".contactName").style.color = "#ffffff";
     } else {
+      contactDiv.classList.remove("active");
       contactDiv.classList.remove("nohover");
       contactDiv.querySelector(".contactName").style.color = "#000000";
     }
