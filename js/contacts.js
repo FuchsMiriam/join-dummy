@@ -165,8 +165,10 @@ function showContactDetails(index) {
   contactDivs.forEach((contactDiv, i) => {
     if (i === index) {
       contactDiv.classList.add("active");
+      contactDiv.classList.add("nohover");
     } else {
       contactDiv.classList.remove("active");
+      contactDiv.classList.remove("nohover");
     }
   });
 

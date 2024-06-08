@@ -358,16 +358,23 @@ input[type="tel"]:focus {
   cursor: pointer;
   padding-top: 15px;
   padding-bottom: 15px;
+  border-radius: 10px;
 }
 
 .contactListInner.active {
   background: #2a3647;
-  border-radius: 10px;
+} 
+
+/* .contactListInner:hover {
+  background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
 }
 
-.contactListInner:hover {
+.contactListInner:not(.nohover):hover {
+  background: #2a3647;
+} */
+
+.contactListInner:hover:not(.nohover) {
   background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
-  border-radius: 10px;
 }
 
 .contactInitials {
