@@ -27,10 +27,13 @@
                 <label for="input-description">Description</label>
                 <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
                 <label for="input-assigny">Assigned to</label>
-                <input list="input-assigned" id="input-assigny" class="dropbtn" onclick="ifIsListContactsLoaded()"
-                    placeholder="Select contacts to assign">
-                    <datalist></datalist>
-                <div id="show-contacts">
+                <div class="input-container-contacts">
+                    <input list="input-assigned" id="input-assigny" class="dropbtn"
+                        placeholder="Select contacts to assign">
+                    <button class="add-button" id="add-button-contacts" onclick="ifIsListContactsLoaded()">+
+                    </button>
+                    <div id="show-contacts" class="d-none">
+                    </div>
                 </div>
                 <div id="display-initials"></div>
             </div>
@@ -58,10 +61,10 @@
                 <div class="input-container">
                     <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button"
                         onclick="addSubTask()">+</button>
-                    </div>
+                    <div id="show-subtask"></div>
                 </div>
-            </section>
-            <div id="show-subtask"></div>
+            </div>
+        </section>
         <div class="footer">
             <span>*This field is required</span>
             <span>
