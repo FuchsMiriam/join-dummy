@@ -1,10 +1,8 @@
-//Datenbank für Login
-
 function onloadFunc() {
   onloadDatabase();
 }
 
-//Datenbank für Login
+//Database for Login
 
 const databaseURL =
   "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -16,7 +14,7 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-// Funktion für die Animation auf der Login-Seite
+// Function for animation on the login page
 
 window.onload = function () {
   const logo = document.getElementById("animatedLogo");
@@ -38,7 +36,7 @@ window.onload = function () {
   logo.addEventListener("transitionend", onTransitionEnd);
 };
 
-// Funktion für Weiterleitungen
+// Function for redirects
 
 function redirectToSignUpPage() {
   window.location.href = "./html/signup.html";
@@ -56,7 +54,7 @@ function redirectToBoard() {
   window.location.href = "./html/board.html";
 }
 
-//Zurücksetzen des Formulars
+//Reset form
 
 function resetForm() {
   document.getElementById("loginEmailInput").value = "";
@@ -66,7 +64,7 @@ function resetForm() {
 
 window.addEventListener("pageshow", resetForm);
 
-//Funktionen für das Wechseln der Anzeigeart - Icons und Texteingabe
+//Functions for toggling display type - icons and text input
 
 document.addEventListener("DOMContentLoaded", () => {
   resetForm();
@@ -107,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//Funktion für den Login
+//Function for login
 
 async function loginUser() {
   let email = document.getElementById("loginEmailInput").value;

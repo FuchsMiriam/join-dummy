@@ -45,7 +45,7 @@ body {
   position: absolute;
 }
 
-/*Sign up-Überschrift*/
+/*Sign up headline*/
 
 .signupHeadline {
   font-family: Inter;
@@ -72,7 +72,7 @@ body {
   border-bottom: 3px solid #29abe2;
 }
 
-/*Sign up Kästchen*/
+/*Sign up Box*/
 
 .mainCredentialsSignup {
   height: 326px;
@@ -164,7 +164,7 @@ input.confirmPassword.error {
   cursor: pointer;
 }
 
-/*Remember-Abschnitt*/
+/*Remember section*/
 
 .privacyPolicySection {
   display: flex;
