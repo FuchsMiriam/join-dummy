@@ -36,7 +36,6 @@ function addContactWithColor(contact) {
   contactColors[contact.id] = randomColor;
 }
 
-
 /*Fetch, add, delete, update contacts*/
 
 /*async function fetchContacts(path = "") {
@@ -49,7 +48,9 @@ async function fetchContacts(path = "") {
   try {
     const response = await fetch(contactsURL + path + ".json");
     const data = await response.json();
-    contacts = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
+    contacts = data
+      ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
+      : [];
     console.log("Abgerufene Kontakte:", contacts);
   } catch (error) {
     console.error("Fehler beim Abrufen der Kontakte:", error);
@@ -256,25 +257,27 @@ async function createContact() {
     await putData(newID, contact);
     contacts.push({ id: newID, ...contact });
     showContacts();
+
     document.getElementById("contactOverlay").classList.add("hidden");
-    window.location.href = "contacts.html";
+
+    const overlay = document.querySelector(".contactCreatedOverlay");
+
+    overlay.classList.remove("contactCreatedOverlayHidden");
+
+    void overlay.offsetWidth;
+
+    overlay.classList.add("in");
+
+    window.location.href = "contacts.html#contactCreatedOverlay";
 
     setTimeout(() => {
-      document
-        .querySelector(".contactCreatedOverlay")
-        .classList.remove("contactCreatedOverlayHidden");
-      setTimeout(() => {
-        document.querySelector(".contactCreatedOverlay").classList.add("in");
-      }, 10);
+      overlay.classList.remove("in");
+      overlay.classList.add("out");
     }, 2000);
-
-    setTimeout(() => {
-      document.querySelector(".contactCreatedOverlay").classList.remove("in");
-      document.querySelector(".contactCreatedOverlay").classList.add("out");
-    }, 5000);
   } catch (error) {
     console.error("Error adding contact to Firebase:", error);
   }
+
   name.value = "";
   email.value = "";
   phone.value = "";
