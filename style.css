@@ -143,6 +143,15 @@ body {
 .loginInputFields {
   width: 422px;
   height: 152px;
+  position: relative;
+}
+
+.interactionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 422px;
+  height: 196px;
 }
 
 .emailContainer {
@@ -167,7 +176,9 @@ body {
   display: none;
   color: red;
   font-size: 12px;
-  margin-top: 5px;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .loginEmail {
