@@ -36,57 +36,62 @@
                 align-items: center;
                 gap: 32px;
               "
+              onsubmit="loginUser(); return false;"
             >
-              <div class="emailContainer">
-                <input
-                  class="loginEmail"
-                  type="email"
-                  placeholder="Email"
-                  id="loginEmailInput"
-                  required
-                />
-                <img
-                  class="emailIcon"
-                  src="./assets/img/mailIcon.svg"
-                  alt="Email"
-                />
+              <div class="interactionContainer">
+                <div class="emailContainer">
+                  <input
+                    class="loginEmail"
+                    type="email"
+                    placeholder="Email"
+                    id="loginEmailInput"
+                    required
+                  />
+                  <img
+                    class="emailIcon"
+                    src="./assets/img/mailIcon.svg"
+                    alt="Email"
+                  />
+                </div>
+                <div class="emailContainer">
+                  <input
+                    class="loginPassword"
+                    type="password"
+                    placeholder="Password"
+                    id="loginPasswordInput"
+                    required
+                  />
+                  <img
+                    class="emailIcon"
+                    src="./assets/img/lockIcon.svg"
+                    alt="Schloss"
+                    id="lockIcon"
+                  />
+                </div>
+                <div id="errorMessage" class="errorMessage">
+                  Wrong password. Ups! Try again.
+                </div>
+                <div class="rememberMeSection">
+                  <input
+                    class="checkboxRemember"
+                    type="checkbox"
+                    id="rememberMe"
+                  />
+                  <label for="rememberMe" class="checkboxLabel"
+                    >Remember me</label
+                  >
+                </div>
               </div>
-              <div class="emailContainer">
-                <input
-                  class="loginPassword"
-                  type="password"
-                  placeholder="Password"
-                  id="loginPasswordInput"
-                  required
-                />
-                <img
-                  class="emailIcon"
-                  src="./assets/img/lockIcon.svg"
-                  alt="Schloss"
-                  id="lockIcon"
-                />
+              <div class="loginButtons">
+                <button type="submit" class="mainpageLoginButton">
+                  Log in
+                </button>
+                <button class="mainpageGuestButton" onclick="redirectToBoard()">
+                  Guest Log in
+                </button>
               </div>
             </form>
-            <div id="errorMessage" class="errorMessage">
-              Wrong password. Ups! Try again.
-            </div>
           </div>
-          <div class="rememberMeSection">
-            <input class="checkboxRemember" type="checkbox" id="rememberMe" />
-            <label for="rememberMe" class="checkboxLabel">Remember me</label>
-          </div>
-        </div>
-        <div class="loginButtons">
-          <button
-            type="submit"
-            class="mainpageLoginButton"
-            onclick="loginUser()"
-          >
-            Log in
-          </button>
-          <button class="mainpageGuestButton" onclick="redirectToBoard()">
-            Guest Log in
-          </button>
         </div>
       </div>
 
