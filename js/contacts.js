@@ -3,25 +3,57 @@ const contactsURL =
 
 let contacts = [];
 
+let contactColors = {};
+
 async function initializePage() {
   includeHTML();
   await fetchContacts();
   showContacts();
 
-  const contactDivs = document.querySelectorAll(".contactListInner");
+  /*const contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, index) => {
-    contactDiv.addEventListener("click", function () {
+    contactDiv.addEventListener("click", () => {
       showContactDetails(index);
     });
-  });
+  });*/
+  setBg();
 }
+
+/*Randomize colours*/
+
+const setBg = () => {
+  const elements = document.querySelectorAll(
+    ".contactInitials, .contactDetailsInitials"
+  );
+  elements.forEach((element) => {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    element.style.backgroundColor = "#" + randomColor;
+  });
+};
+
+function addContactWithColor(contact) {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  contactColors[contact.id] = randomColor;
+}
+
 
 /*Fetch, add, delete, update contacts*/
 
-async function fetchContacts(path = "") {
+/*async function fetchContacts(path = "") {
   let response = await fetch(contactsURL + path + ".json");
   let data = await response.json();
   contacts = data ? Object.values(data) : [];
+}*/
+
+async function fetchContacts(path = "") {
+  try {
+    const response = await fetch(contactsURL + path + ".json");
+    const data = await response.json();
+    contacts = data ? Object.keys(data).map(key => ({ id: key, ...data[key] })) : [];
+    console.log("Abgerufene Kontakte:", contacts);
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Kontakte:", error);
+  }
 }
 
 async function postData(path = "", data = "") {
@@ -102,7 +134,7 @@ async function showContacts() {
 
     const contactDivs = document.querySelectorAll(".contactListInner");
     contactDivs.forEach((contactDiv, index) => {
-      contactDiv.addEventListener("click", function () {
+      contactDiv.addEventListener("click", () => {
         showContactDetails(index);
       });
     });
@@ -162,6 +194,7 @@ function createContactDetailsHTML(contact) {
       </div>
     </div>
   `;
+  setBg();
 }
 
 function showContactDetails(index) {
@@ -189,6 +222,7 @@ function editContact() {}
 
 async function deleteContact(id) {
   try {
+    await fetchContacts();
     await deleteData(id);
     const index = contacts.findIndex((contact) => contact.id === id);
     if (index !== -1) {
@@ -204,34 +238,6 @@ async function deleteContact(id) {
 }
 
 /*Create contact*/
-
-/*function createContact() {
-  let name = document.getElementById("createNameInput");
-  let email = document.getElementById("createEmailInput");
-  let phone = document.getElementById("createPhoneInput");
-
-  let contact = {
-    Name: name.value,
-    Email: email.value,
-    Phone: phone.value,
-  };
-
-  putData("", contact)
-    .then((response) => {
-      console.log("Contact successfully added to Firebase:", response);
-      const newID = response.name;
-      contact.id = newID;
-      contacts.push(contact);
-      showContacts();
-    })
-    .catch((error) => {
-      console.error("Error adding contact to Firebase:", error);
-    });
-
-  name.value = "";
-  email.value = "";
-  phone.value = "";
-}*/
 
 async function createContact() {
   let name = document.getElementById("createNameInput");
@@ -265,7 +271,7 @@ async function createContact() {
     setTimeout(() => {
       document.querySelector(".contactCreatedOverlay").classList.remove("in");
       document.querySelector(".contactCreatedOverlay").classList.add("out");
-    }, 4000);
+    }, 5000);
   } catch (error) {
     console.error("Error adding contact to Firebase:", error);
   }
