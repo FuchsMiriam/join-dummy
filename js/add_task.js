@@ -4,7 +4,6 @@ let contacts = [];
 let contactsNames = [];
 let assigned = [];
 let listContactsLoaded = false;
-let contactIsChecked = [];
 let initial = [];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 
@@ -62,13 +61,16 @@ function closeButtonForShowContacts() {
 }
 
 function closeContacts() {
+    let buttonContacts = document.getElementById('add-button-contacts');
+    listContactsLoaded = false;
     document.getElementById('show-contacts').classList.add('d-none');
-    document.getElementById('add-button-contacts').innerHTML = `
+    buttonContacts.innerHTML = '';
+    buttonContacts.innerHTML = `
             <div>
                 <span>+</span>
             </div>
         `;
-        listContactsLoaded = false;
+        
 }
 
 //-------------Begin initials functions--------------//
