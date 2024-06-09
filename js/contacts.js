@@ -226,7 +226,15 @@ function showContactDetails(index) {
 }
 
 /*Edit contact*/
-function editContact() {}
+function editContact() {
+  const overlay = document.getElementById('editOverlay');
+  document.querySelector(".editContactOverlay").classList.remove("hidden");
+  document.querySelector(".editContactOverlay").classList.add("visible");
+}
+document.getElementById("closeEditOverlay").addEventListener("click", function () {
+  document.querySelector(".editContactOverlay").classList.add("hidden");
+  document.querySelector(".editContactOverlay").classList.remove("visible");
+});
 
 /*Delete contact*/
 

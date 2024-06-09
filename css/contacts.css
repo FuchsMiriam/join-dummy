@@ -74,6 +74,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 66px 48px;
+  gap: 16px;
 }
 
 .contactsOverlayImg {
@@ -219,7 +220,6 @@ input[type="tel"]:focus {
   line-height: 24px;
   text-align: left;
   color: #2a3647;
-  align-content: center;
   justify-content: center;
   cursor: pointer;
   text-decoration: none;

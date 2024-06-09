@@ -12,13 +12,14 @@
     />
     <link rel="stylesheet" href="../css/contacts.css" />
     <link rel="stylesheet" href="../css/contactsFullscreen.css" />
+    <link rel="stylesheet" href="../css/contactsEdit.css">
     <link rel="stylesheet" href="../fonts.css" />
   </head>
   <body onload="initializePage()">
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
 
     <div class="mainContainerContacts">
-      <!-- Overlay Start -->
+      <!-- Overlay Add Contact Start -->
       <div class="addNewContactOverlay hidden" id="contactOverlay">
         <div class="leftOverlayContent">
           <div class="leftContainer">
@@ -161,6 +162,118 @@
 
       <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
     </div>
+
+
+
+    <!-- Overlay Edit Start -->
+    <div class="editContactOverlay hidden" id="editOverlay">
+      <div class="leftOverlayContentEdit">
+        <div class="leftContainer">
+          <img
+            src="../assets/img/logoSidebar.png"
+            alt="Join-Logo"
+            class="contactsOverlayImg"
+          />
+          <h1 class="editOverlayHeadline">Edit contact</h1>
+        </div>
+      </div>
+
+      <div class="rightOverlayContent">
+        <div class="overlayPersonContainer">
+          <img
+            src="../assets/img/personIconWhite.svg"
+            alt="Person"
+            class="overlayPersonLargeImg"
+          />
+        </div>
+        <div class="overlayInputContainer">
+          <form
+            action=""
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 32px;
+            "
+            onsubmit="editContact(); return false"
+          >
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="text"
+                name="name"
+                id="createNameInput"
+                placeholder="Name"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/personIcon.svg"
+                alt="Person"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="email"
+                name="emailAddress"
+                id="createEmailInput"
+                placeholder="Email"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/mailIcon.svg"
+                alt="E-Mail"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="tel"
+                name="phoneNumber"
+                id="createPhoneInput"
+                placeholder="Phone"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/phone.svg"
+                alt="Telefon"
+              />
+            </div>
+        </div>
+        <div class="editButtons">
+          <div class="cancelContainer">
+            <a href="contacts.html" class="editDeleteButton">
+              Delete
+            </a>
+          </div>
+          <div class="createContainer">
+            <button class="editButtonOverlay">
+              <img
+                class="cancelSymbol"
+                src="../assets/img/haken.svg"
+                alt="Häkchen"
+              />
+              Save
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="closeOverlay">
+        <img
+          src="../assets/img/cancel.svg"
+          alt="Cancel"
+          class="closeOverlayIcon"
+          id="closeEditOverlay"
+        />
+      </div>
+    </div>
+
+    <!-- Overlay End -->
 
     <script src="../js/contacts.js"></script>
     <script src="../js/template.js"></script>
