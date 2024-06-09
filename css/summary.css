@@ -1,0 +1,139 @@
+#titleSummary{
+    width: fit-content;
+    /* height: 73px; */
+    padding-left: 328px;
+    padding-top: calc(206px - 96px);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.summaryTitle{
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 73.2px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.summaryTitleVektor{
+    height: 59px;
+    width: 3px;
+    background-color: rgba(41, 171, 226, 1)
+}
+
+.summaryTitleText{
+    font-family: "Inter";
+    font-weight: 400px;
+    font-size: 27px;
+    list-style: 32.4px;
+    color: rgba(42, 54, 71, 1);
+}
+
+#textRegards{
+    /* width: 385px;
+    height: 136px; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+}
+
+#infosSummary{
+    width: 560px;
+    height: 562px;
+    display: flex;
+    flex-direction: column;
+    gap: calc(392px - 196px - 168px);
+}
+
+.summaryText{
+    padding-left: 328px;
+    padding-top: calc(335px - 206px - 73px);
+    display: flex;
+    align-items: center;
+    gap: calc(968px - 328px - 560px);
+}
+
+.regardsTime{
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 47px;
+    line-height: 56.4px;
+    color: rgba(42, 54, 71, 1);
+}
+
+.regardsName{
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 76.8px;
+    color: rgba(41, 171, 226, 1);
+}
+
+.summaryToDO{
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 38px 19px 38px 19px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.toDoDone{
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeLine{
+    width: 560px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 28px 48px 28px 48px;
+    display: flex;
+    gap: 61px;
+    background-color: white;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.summaryTasks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.summarySeparateTasks{
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 25px 0px 25px 0px;
+    display: flex;
+    gap: 30px;
+    background-color: white;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.summaryNumber{
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 76.8px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.summaryTaskText{
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(42, 54, 71, 1);
+}
+
+.summarySeparateTasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
