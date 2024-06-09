@@ -4,6 +4,7 @@ const contactsURL =
 let contacts = [];
 
 let contactColors = {};
+let currentContact = 0;
 
 async function initializePage() {
   includeHTML();
@@ -137,6 +138,7 @@ async function showContacts() {
     contactDivs.forEach((contactDiv, index) => {
       contactDiv.addEventListener("click", () => {
         showContactDetails(index);
+        currentContact = index;
       });
     });
   } else {
@@ -162,7 +164,7 @@ document.getElementById("closeOverlay").addEventListener("click", function () {
 
 /*Contact view on the right side*/
 
-function createContactDetailsHTML(contact) {
+function createContactDetailsHTML(contact, index) {
   document.getElementById("contactsFullscreen").innerHTML = `
     <div class="fullContactDetails">
       <div class="fullContactHeader">
@@ -199,7 +201,12 @@ function createContactDetailsHTML(contact) {
 }
 
 function showContactDetails(index) {
-  const contact = contacts[index];
+  let contact = 0;
+  if(index == null){
+    contact = contacts[currentContact];}
+  else{
+    contact = contacts[index];
+  }
   createContactDetailsHTML(contact);
   document.getElementById("contactsFullscreen").classList.remove("out");
   document.getElementById("contactsFullscreen").classList.add("in");
