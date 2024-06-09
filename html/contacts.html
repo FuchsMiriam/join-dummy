@@ -137,6 +137,112 @@
 
       <!-- Overlay End -->
 
+       <!-- Overlay Edit Start -->
+    <div class="editContactOverlay hidden" id="editOverlay">
+      <div class="leftOverlayContentEdit">
+        <div class="leftContainer">
+          <img
+            src="../assets/img/logoSidebar.png"
+            alt="Join-Logo"
+            class="contactsOverlayImg"
+          />
+          <h1 class="editOverlayHeadline">Edit contact</h1>
+        </div>
+      </div>
+
+      <div class="rightOverlayContent">
+        <div class="overlayInitialsContainer">
+          <div class="editInitials" id="contactInitialsEdit"></div>
+        </div>
+        <div class="overlayInputContainer">
+          <form
+            action=""
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 32px;
+            "
+            onsubmit="editContact(); return false"
+          >
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="text"
+                name="name"
+                id="editNameInput"
+                placeholder="Name"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/personIcon.svg"
+                alt="Person"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="email"
+                name="emailAddress"
+                id="editEmailInput"
+                placeholder="Email"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/mailIcon.svg"
+                alt="E-Mail"
+              />
+            </div>
+            <div class="overlayInputField">
+              <input
+                class="overlayContactsInput"
+                type="tel"
+                name="phoneNumber"
+                id="editPhoneInput"
+                placeholder="Phone"
+                required
+              />
+              <img
+                class="contactsIcon"
+                src="../assets/img/phone.svg"
+                alt="Telefon"
+              />
+            </div>
+        </div>
+        <div class="editButtons">
+          <div class="cancelContainer">
+            <button type="button" class="editDeleteButton" id="editDeleteButton" onclick="deleteContact('${contact.id}')">
+              Delete
+          </button>
+          </div>
+          <div class="createContainer">
+            <button type="submit" class="editButtonOverlay">
+              <img
+                class="cancelSymbol"
+                src="../assets/img/haken.svg"
+                alt="Häkchen"
+              />
+              Save
+            </button>
+          </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="closeOverlay">
+        <img
+          src="../assets/img/cancel.svg"
+          alt="Cancel"
+          class="closeOverlayIcon"
+          id="closeEditOverlay"
+        />
+      </div>
+    </div>
+
+    <!-- Overlay Edit End -->
+
       <div class="contactsSidebar">
         <div class="buttonContainer">
           <button class="addContactButton" onclick="openOverlay()">
@@ -162,118 +268,6 @@
 
       <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
     </div>
-
-
-
-    <!-- Overlay Edit Start -->
-    <div class="editContactOverlay hidden" id="editOverlay">
-      <div class="leftOverlayContentEdit">
-        <div class="leftContainer">
-          <img
-            src="../assets/img/logoSidebar.png"
-            alt="Join-Logo"
-            class="contactsOverlayImg"
-          />
-          <h1 class="editOverlayHeadline">Edit contact</h1>
-        </div>
-      </div>
-
-      <div class="rightOverlayContent">
-        <div class="overlayPersonContainer">
-          <img
-            src="../assets/img/personIconWhite.svg"
-            alt="Person"
-            class="overlayPersonLargeImg"
-          />
-        </div>
-        <div class="overlayInputContainer">
-          <form
-            action=""
-            style="
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              gap: 32px;
-            "
-            onsubmit="editContact(); return false"
-          >
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="text"
-                name="name"
-                id="createNameInput"
-                placeholder="Name"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/personIcon.svg"
-                alt="Person"
-              />
-            </div>
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="email"
-                name="emailAddress"
-                id="createEmailInput"
-                placeholder="Email"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/mailIcon.svg"
-                alt="E-Mail"
-              />
-            </div>
-            <div class="overlayInputField">
-              <input
-                class="overlayContactsInput"
-                type="tel"
-                name="phoneNumber"
-                id="createPhoneInput"
-                placeholder="Phone"
-                required
-              />
-              <img
-                class="contactsIcon"
-                src="../assets/img/phone.svg"
-                alt="Telefon"
-              />
-            </div>
-        </div>
-        <div class="editButtons">
-          <div class="cancelContainer">
-            <a href="contacts.html" class="editDeleteButton">
-              Delete
-            </a>
-          </div>
-          <div class="createContainer">
-            <button class="editButtonOverlay">
-              <img
-                class="cancelSymbol"
-                src="../assets/img/haken.svg"
-                alt="Häkchen"
-              />
-              Save
-            </button>
-          </form>
-          </div>
-        </div>
-      </div>
-
-      <div class="closeOverlay">
-        <img
-          src="../assets/img/cancel.svg"
-          alt="Cancel"
-          class="closeOverlayIcon"
-          id="closeEditOverlay"
-        />
-      </div>
-    </div>
-
-    <!-- Overlay End -->
 
     <script src="../js/contacts.js"></script>
     <script src="../js/template.js"></script>

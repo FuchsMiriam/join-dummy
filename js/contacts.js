@@ -24,7 +24,7 @@ async function initializePage() {
 
 const setBg = () => {
   const elements = document.querySelectorAll(
-    ".contactInitials, .contactDetailsInitials"
+    ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
   );
   elements.forEach((element) => {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -39,12 +39,6 @@ function addContactWithColor(contact) {
 
 /*Fetch, add, delete, update contacts*/
 
-/*async function fetchContacts(path = "") {
-  let response = await fetch(contactsURL + path + ".json");
-  let data = await response.json();
-  contacts = data ? Object.values(data) : [];
-}*/
-
 async function fetchContacts(path = "") {
   try {
     const response = await fetch(contactsURL + path + ".json");
@@ -52,7 +46,6 @@ async function fetchContacts(path = "") {
     contacts = data
       ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
       : [];
-    console.log("Abgerufene Kontakte:", contacts);
   } catch (error) {
     console.error("Fehler beim Abrufen der Kontakte:", error);
   }
@@ -148,14 +141,14 @@ async function showContacts() {
 
 contacts.sort();
 
-/*Open overlay*/
+/*Open Add contact overlay*/
 
 function openOverlay() {
   document.querySelector(".addNewContactOverlay").classList.remove("hidden");
   document.querySelector(".addNewContactOverlay").classList.add("visible");
 }
 
-/*Close overlay*/
+/*Close Add contact overlay*/
 
 document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
@@ -202,9 +195,9 @@ function createContactDetailsHTML(contact, index) {
 
 function showContactDetails(index) {
   let contact = 0;
-  if(index == null){
-    contact = contacts[currentContact];}
-  else{
+  if (index == null) {
+    contact = contacts[currentContact];
+  } else {
     contact = contacts[index];
   }
   createContactDetailsHTML(contact);
@@ -223,18 +216,12 @@ function showContactDetails(index) {
       contactDiv.querySelector(".contactName").style.color = "#000000";
     }
   });
-}
 
-/*Edit contact*/
-function editContact() {
-  const overlay = document.getElementById('editOverlay');
-  document.querySelector(".editContactOverlay").classList.remove("hidden");
-  document.querySelector(".editContactOverlay").classList.add("visible");
+  const editButton = document.querySelector(".editContactButton");
+  editButton.onclick = function () {
+    editContact(contact);
+  };
 }
-document.getElementById("closeEditOverlay").addEventListener("click", function () {
-  document.querySelector(".editContactOverlay").classList.add("hidden");
-  document.querySelector(".editContactOverlay").classList.remove("visible");
-});
 
 /*Delete contact*/
 
@@ -254,6 +241,37 @@ async function deleteContact(id) {
     console.error("Fehler beim Löschen des Kontakts aus Firebase:", error);
   }
 }
+
+/*Display Initials Edit function*/
+
+function displayContactInitials(contact) {
+  const contactInitialsEdit = document.getElementById("contactInitialsEdit");
+  contactInitialsEdit.textContent = getInitials(contact.name);
+  setBg();
+}
+
+/*Edit contact*/
+
+function editContact(contact) {
+  displayContactInitials(contact);
+
+  let nameInput = document.getElementById("editNameInput");
+  let emailInput = document.getElementById("editEmailInput");
+  let phoneInput = document.getElementById("editPhoneInput");
+
+  nameInput.value = contact.name || "";
+  emailInput.value = contact.email || "";
+  phoneInput.value = contact.phone || "";
+
+  document.querySelector(".editContactOverlay").classList.remove("hidden");
+  document.querySelector(".editContactOverlay").classList.add("visible");
+}
+document
+  .getElementById("closeEditOverlay")
+  .addEventListener("click", function () {
+    document.querySelector(".editContactOverlay").classList.add("hidden");
+    document.querySelector(".editContactOverlay").classList.remove("visible");
+  });
 
 /*Create contact*/
 

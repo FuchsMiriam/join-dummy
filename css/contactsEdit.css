@@ -51,6 +51,39 @@
   margin-top: 10px;
 }
 
+.overlayInitialsContainer {
+  width: 120px;
+  height: 120px;
+  top: 204px;
+  left: 550px;
+  border-radius: 70px;
+  border: 3px solid #ffffff;
+  background: #d1d1d1;
+  position: absolute;
+  box-shadow: 0px 0px 4px 0px #0000001a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editInitials {
+  width: 80px;
+  height: 28.57px;
+  top: 45.71px;
+  left: 20px;
+  gap: 0px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter;
+  font-size: 47px;
+  font-weight: 500;
+  line-height: 56.4px;
+  text-align: center;
+  color: white;
+}
+
 .editButtons {
   display: flex;
   width: 249px;
