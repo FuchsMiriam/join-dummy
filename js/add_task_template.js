@@ -12,7 +12,7 @@ function showSubtaskTemplate(i, tasks) {
     return `
     <ul id="subtask${i}">
         <li onclick="editValue()" class="subtask-span">
-            ${tasks}
+            <span onclick="postData()">${tasks}</span>
         </li>
     </ul>
 `;

@@ -121,11 +121,13 @@ input {
 }
 
 #display-initials {
-    display: flex;
-    gap: 4px;
+    display: grid;
     position: absolute;
-    bottom: 280px;
+    bottom: 210px;
     z-index: -1;
+    width: 440px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-row-gap: 30px;
 }
 
 .input-container {
@@ -366,4 +368,13 @@ input {
     color: white;
     font-size: 24px;
     border-radius: 15px;
+    transition: all 125ms ease-in-out;
+    transform: translateY(500px);
+}
+
+
+.initials {
+    background-color: yellow;
+    border-radius: 50%;
+    padding: 10px;
 }
