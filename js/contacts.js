@@ -227,13 +227,18 @@ function showContactDetails(index) {
 
 async function deleteContact(id) {
   try {
-    await fetchContacts();
+    /*await fetchContacts();*/
     await deleteData(id);
     const index = contacts.findIndex((contact) => contact.id === id);
     if (index !== -1) {
       contacts.splice(index, 1);
       showContacts();
       document.getElementById("contactsFullscreen").innerHTML = "";
+
+      document.querySelector(".editContactOverlay").classList.add("hidden");
+      document.querySelector(".editContactOverlay").classList.remove("visible");
+
+      setBg();
     } else {
       console.error("Kontakt nicht gefunden:", id);
     }
@@ -265,6 +270,9 @@ function editContact(contact) {
 
   document.querySelector(".editContactOverlay").classList.remove("hidden");
   document.querySelector(".editContactOverlay").classList.add("visible");
+
+  const deleteButton = document.getElementById("editDeleteButton");
+  deleteButton.setAttribute("onclick", `deleteContact('${contact.id}')`);
 }
 document
   .getElementById("closeEditOverlay")

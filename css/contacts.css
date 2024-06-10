@@ -395,7 +395,7 @@ input[type="tel"]:focus {
 }
 
 .contactName {
-  width: 180px;
+  width: 200px;
   height: 24px;
   font-size: 20px;
   font-weight: 400;
