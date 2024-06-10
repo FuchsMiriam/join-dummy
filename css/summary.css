@@ -41,8 +41,8 @@
 }
 
 #infosSummary{
-    width: 560px;
-    height: 562px;
+    /* width: 560px;
+    height: 562px; */
     display: flex;
     flex-direction: column;
     gap: calc(392px - 196px - 168px);
@@ -79,11 +79,40 @@
     padding: 38px 19px 38px 19px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+}
+
+.summaryToDO:hover{
+   width: 282.5px;
+   height: 184px;
+   background-color: rgba(42, 54, 71, 1);
+   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+   cursor: pointer;
+}
+
+.summaryToDO:hover .summaryNumber{
+    color: white;
+}
+
+.summaryToDO:hover .summaryTaskText{
+    color: white;
+}
+
+.summaryToDO:hover .backgroundImg-ToDo{
+    background-image: url("../assets/img/toDOwhite.svg");
+}
+
+.summaryToDO:hover .backgroundImg-Done{
+    background-image: url("../assets/img/DoneWhite.svg");
 }
 
 .toDoDone{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .timeLine{
@@ -97,11 +126,35 @@
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
 
+.timeLine:hover{
+    width: 576px;
+    height: 184px;
+    background-color: rgba(42, 54, 71, 1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+ }
+ 
+ .timeLine:hover .summaryNumber{
+     color: white;
+ }
+ 
+.timeLine:hover .summaryTaskText{
+     color: white;
+}
+
+.timeLine:hover .timeLineDateNumber{
+    color: white;
+}
+
+.timeLine:hover .timeLineDateText{
+    color: white;
+}
+
 .summaryTasks{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    align-items: center;
 }
 
 .summarySeparateTasks{
@@ -110,10 +163,25 @@
     border-radius: 30px;
     padding: 25px 0px 25px 0px;
     display: flex;
-    gap: 30px;
     background-color: white;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 }
+
+.summarySeparateTasks:hover{
+    width: 184px;
+    height: 184px;
+    background-color: rgba(42, 54, 71, 1);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+ }
+ 
+ .summarySeparateTasks:hover .summaryNumber{
+     color: white;
+ }
+ 
+ .summarySeparateTasks:hover .summaryTaskText{
+     color: white;
+ }
 
 .summaryNumber{
     font-family: "Inter";
@@ -131,9 +199,77 @@
     color: rgba(42, 54, 71, 1);
 }
 
-.summarySeparateTasks{
+.flex-center{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
+
+.timeLineVektor{
+    height: 102.02px;
+    width: 2px;
+    background-color: rgba(209, 209, 209, 1);
+}
+
+.timeLineUrgent{
+    display: flex;
+    gap: 18px;
+    text-align: center;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.summaryUrgentImg{
+    width: 60px;
+    height: 60px;
+}
+
+.summaryDoneImg{
+    width: 69px;
+    height: 69px;
+}
+
+.timeLineDate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.timeLineDateNumber{
+    font-family: "inter";
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 25.2px;
+    color: rgba(42, 54, 71, 1);
+}
+
+.timeLineDateText{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 13px;
+    text-align: center;
+}
+
+.backgroundImg-ToDo{
+    background-image: url("../assets/img/ToDo.svg");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+.backgroundImg-Done{
+    background-image: url("../assets/img/Done.svg");
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+
+

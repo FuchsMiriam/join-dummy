@@ -21,17 +21,49 @@
     <div class="summaryText">
         <div id="infosSummary">
             <div class="toDoDone">
-                <div class="summaryToDO">1</div>
-                <div class="summaryToDO">1</div>
-            </div>
-            <div class="timeLine"></div>
-            <div class="summaryTasks">
-                <div class="summarySeparateTasks">
-                    <p class="summaryNumber">5</p>
-                    <p class="summaryTaskText">Tasks in Board</p>
+                <div class="summaryToDO" onclick="location.href='board.html';">
+                    <div class="summaryDoneImg backgroundImg-ToDo"></div>
+                    <div class="flex-center">
+                        <p class="summaryNumber">1</p>
+                        <p class="summaryTaskText">To-do</p>
+                    </div>
                 </div>
-                <div class="summarySeparateTasks"></div>
-                <div class="summarySeparateTasks"></div>
+                <div class="summaryToDO" onclick="location.href='board.html';">
+                    <div class="summaryDoneImg backgroundImg-Done"></div>
+                    <div class="flex-center">
+                        <p class="summaryNumber">1</p>
+                        <p class="summaryTaskText">Done</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeLine" onclick="location.href='board.html';">
+                <div class="timeLineUrgent">
+                    <img class="summaryUrgentImg" src="../assets/img/Urgent.svg" alt="">
+                    <div class="flex-center">
+                        <p class="summaryNumber">1</p>
+                        <p class="summaryTaskText">Urgent</p>
+                    </div>
+                </div>
+                <div class="timeLineVektor">
+                </div>
+                <div class="timeLineDate">
+                    <p class="timeLineDateNumber">Oktober 16, 2022</p>
+                    <p class="timeLineDateText">Upcoming Deadline</p>
+                </div>
+            </div>
+            <div class="summaryTasks">
+                <div class="summarySeparateTasks flex-center" onclick="location.href='board.html';">
+                    <p class="summaryNumber">5</p>
+                    <p class="summaryTaskText">Tasks in <br> Board</p>
+                </div>
+                <div class="summarySeparateTasks flex-center" onclick="location.href='board.html';">
+                    <p class="summaryNumber">2</p>
+                    <p class="summaryTaskText">Task in <br> Progress</p>
+                </div>
+                <div class="summarySeparateTasks flex-center" onclick="location.href='board.html';">
+                    <p class="summaryNumber">5</p>
+                    <p class="summaryTaskText">Awaiting <br> Feedback</p>
+                </div>
             </div>
         </div>
         <div id="textRegards">
