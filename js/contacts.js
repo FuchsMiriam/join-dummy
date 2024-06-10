@@ -22,19 +22,90 @@ async function initializePage() {
 
 /*Randomize colours*/
 
+/*const setBg = () => {
+  const elements = document.querySelectorAll(
+    ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
+  );
+  elements.forEach((element) => {
+    const contactId = element.dataset.contactId;
+    if (contactId && contactColors[contactId]) {
+      element.style.backgroundColor = contactColors[contactId];
+    } else {
+      let randomColor;
+      do {
+        randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
+      } while (
+        randomColor === 'rgba(255, 255, 255, 1)' ||
+        randomColor === 'rgba(0, 0, 0, 1)' || 
+        randomColor === 'rgba(0, 0, 0, 0)'
+      );
+      contactColors[contactId] = randomColor;
+      element.style.backgroundColor = randomColor;
+    }
+  });
+  saveContactColors();
+};
+
+function addContactWithColor(contact) {
+  let randomColor;
+  do {
+    randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
+  } while (
+    randomColor === 'rgba(255, 255, 255, 1)' ||
+    randomColor === 'rgba(0, 0, 0, 1)' || 
+    randomColor === 'rgba(0, 0, 0, 0)'  
+  );
+  contactColors[contact.id] = randomColor;
+  saveContactColors();
+}
+
+function saveContactColors() {
+  localStorage.setItem('contactColors', JSON.stringify(contactColors));
+}*/
+
+window.addEventListener("load", () => {
+  const storedColors = localStorage.getItem("contactColors");
+  if (storedColors) {
+    contactColors = JSON.parse(storedColors);
+  } else {
+    contactColors = {};
+  }
+  setBg();
+});
+
 const setBg = () => {
   const elements = document.querySelectorAll(
     ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
   );
   elements.forEach((element) => {
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    element.style.backgroundColor = "#" + randomColor;
+    const contactId = element.dataset.contactId;
+    if (contactId && contactColors[contactId]) {
+      element.style.backgroundColor = contactColors[contactId].backgroundColor;
+    } else {
+      const randomColor = generateRandomColor();
+      contactColors[contactId] = { backgroundColor: randomColor };
+      element.style.backgroundColor = randomColor;
+    }
   });
+  saveContactColors();
 };
 
-function addContactWithColor(contact) {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  contactColors[contact.id] = randomColor;
+function generateRandomColor() {
+  let randomColor;
+  do {
+    randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
+      Math.random() * 256
+    )}, ${Math.floor(Math.random() * 256)}, 1)`;
+  } while (
+    randomColor === "rgba(255, 255, 255, 1)" ||
+    randomColor === "rgba(0, 0, 0, 1)" ||
+    randomColor === "rgba(0, 0, 0, 0)"
+  );
+  return randomColor;
+}
+
+function saveContactColors() {
+  localStorage.setItem("contactColors", JSON.stringify(contactColors));
 }
 
 /*Fetch, add, delete, update contacts*/
@@ -264,7 +335,7 @@ function editContact(contact) {
   document.getElementById("editEmailInput").value = contact.email || "";
   document.getElementById("editPhoneInput").value = contact.phone || "";
 
-  currentContact = contacts.findIndex(c => c.id === contact.id);
+  currentContact = contacts.findIndex((c) => c.id === contact.id);
 
   document.querySelector(".editContactOverlay").classList.remove("hidden");
   document.querySelector(".editContactOverlay").classList.add("visible");
@@ -316,8 +387,8 @@ async function saveContact() {
 /*Close Edit contact overlay*/
 
 document.getElementById("closeEditOverlay").addEventListener("click", function () {
-  document.getElementById(".editContactOverlay").classList.add("hidden");
-  document.getElementById(".editContactOverlay").classList.remove("visible");
+  document.querySelector(".editContactOverlay").classList.remove("visible");
+  document.querySelector(".editContactOverlay").classList.add("hidden");
 });
 
 /*Create contact*/
