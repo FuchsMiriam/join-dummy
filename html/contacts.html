@@ -163,7 +163,7 @@
               align-items: center;
               gap: 32px;
             "
-            onsubmit="editContact(); return false"
+            onsubmit="saveContact(); return false"
           >
             <div class="overlayInputField">
               <input
@@ -218,7 +218,7 @@
           </button>
           </div>
           <div class="createContainer">
-            <button type="submit" class="editButtonOverlay">
+            <button type="submit" class="editButtonOverlay" id="editButton">
               <img
                 class="cancelSymbol"
                 src="../assets/img/haken.svg"

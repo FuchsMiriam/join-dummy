@@ -143,7 +143,7 @@
 }
 
 .contactDetailsName {
-  width: 450px;
+  width: 500px;
   height: 56px;
   font-size: 47px;
   font-weight: 500;
@@ -253,7 +253,7 @@
 }
 
 .contactInfoValueEmail {
-  width: 140px;
+  width: 200px;
   height: 19px;
   font-size: 16px;
   font-weight: 400;
@@ -279,7 +279,7 @@
 }
 
 .contactInfoValuePhone {
-  width: 124px;
+  width: 200px;
   height: 19px;
   font-size: 16px;
   font-weight: 400;

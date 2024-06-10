@@ -260,13 +260,11 @@ function displayContactInitials(contact) {
 function editContact(contact) {
   displayContactInitials(contact);
 
-  let nameInput = document.getElementById("editNameInput");
-  let emailInput = document.getElementById("editEmailInput");
-  let phoneInput = document.getElementById("editPhoneInput");
+  document.getElementById("editNameInput").value = contact.name || "";
+  document.getElementById("editEmailInput").value = contact.email || "";
+  document.getElementById("editPhoneInput").value = contact.phone || "";
 
-  nameInput.value = contact.name || "";
-  emailInput.value = contact.email || "";
-  phoneInput.value = contact.phone || "";
+  currentContact = contacts.findIndex(c => c.id === contact.id);
 
   document.querySelector(".editContactOverlay").classList.remove("hidden");
   document.querySelector(".editContactOverlay").classList.add("visible");
@@ -274,12 +272,53 @@ function editContact(contact) {
   const deleteButton = document.getElementById("editDeleteButton");
   deleteButton.setAttribute("onclick", `deleteContact('${contact.id}')`);
 }
-document
-  .getElementById("closeEditOverlay")
-  .addEventListener("click", function () {
-    document.querySelector(".editContactOverlay").classList.add("hidden");
-    document.querySelector(".editContactOverlay").classList.remove("visible");
-  });
+
+async function saveContact() {
+  const editedContact = {
+    name: document.getElementById("editNameInput").value,
+    email: document.getElementById("editEmailInput").value,
+    phone: document.getElementById("editPhoneInput").value,
+  };
+
+  if (currentContact === null) {
+    console.error("Keine gültige Kontakt-ID gefunden");
+    return;
+  }
+
+  const contactId = contacts[currentContact]?.id;
+
+  if (!contactId) {
+    console.error("Keine gültige Kontakt-ID gefunden");
+    return;
+  }
+
+  try {
+    await putData(`${contactId}`, editedContact);
+  } catch (error) {
+    console.error("Error updating contact in Firebase:", error);
+    return;
+  }
+
+  try {
+    await fetchContacts();
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+  }
+
+  showContacts();
+
+  showContactDetails(currentContact);
+
+  document.querySelector(".editContactOverlay").classList.add("hidden");
+  document.querySelector(".editContactOverlay").classList.remove("visible");
+}
+
+/*Close Edit contact overlay*/
+
+document.getElementById("closeEditOverlay").addEventListener("click", function () {
+  document.getElementById(".editContactOverlay").classList.add("hidden");
+  document.getElementById(".editContactOverlay").classList.remove("visible");
+});
 
 /*Create contact*/
 
