@@ -1,0 +1,27 @@
+@media (max-width: 1200px) {
+  .signupContainer {
+    left: calc(50% - 211px);
+  }
+
+  .legalButtonsContainer {
+    left: calc(50%);
+  }
+}
+
+@media (max-width: 800px) {
+  .logoSignupPage {
+    width: 60px;
+  }
+
+  .signupContainer {
+    width: 500px;
+    height: auto;
+    padding: 32px 0;
+    gap: 32px;
+    border-radius: 30px;
+  }
+
+  .legalButtonsContainer {
+    left: calc(20%);
+  }
+}

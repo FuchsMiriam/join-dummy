@@ -9,44 +9,66 @@ let currentContact = 0;
 async function initializePage() {
   includeHTML();
   await fetchContacts();
+  await assignColorsToContacts(contacts);
   showContacts();
   setBg();
 }
 
 /*Randomize colours*/
 
-function assignColorsToContacts(contacts) {
-  const coloredContacts = {};
-
+async function assignColorsToContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const colorClass = colorClasses[i % colorClasses.length];
+    contact.colorClass = colorClass;
 
-    coloredContacts[contact.id] = { backgroundColor: colorClass };
+    await putData(contact.id, contact);
   }
-
-  return coloredContacts;
 }
 
-function setBg() {
+/*function setBg() {
   const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
 
   elements.forEach((element, index) => {
     const colorClass = colorClasses[index % colorClasses.length];
     element.classList.add(colorClass);
   });
+}*/
+
+function setBg() {
+  const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
+
+  elements.forEach((element) => {
+    const initials = element.textContent.trim();
+    const contact = contacts.find(c => getInitials(c.name) === initials);
+    if (contact && contact.colorClass) {
+      element.classList.add(contact.colorClass);
+    }
+  });
 }
 
-function saveContactColors(contactColors) {
+/*function saveContactColors(contactColors) {
   localStorage.setItem("contactColors", JSON.stringify(contactColors));
 }
 
 function loadContactColors() {
   const storedColors = localStorage.getItem("contactColors");
   return storedColors ? JSON.parse(storedColors) : {};
-}
+}*/
 
 /*Fetch, add, delete, update contacts*/
+
+/*async function fetchContacts(path = "") {
+  try {
+    const response = await fetch(contactsURL + path + ".json");
+    const data = await response.json();
+    contacts = data
+      ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
+      : [];
+  } catch (error) {
+    console.error("Fehler beim Abrufen der Kontakte:", error);
+  }
+}*/
 
 async function fetchContacts(path = "") {
   try {
@@ -55,6 +77,12 @@ async function fetchContacts(path = "") {
     contacts = data
       ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
       : [];
+    
+    contacts.forEach(contact => {
+      if (!contact.colorClass) {
+        contact.colorClass = colorClasses[contacts.indexOf(contact) % colorClasses.length];
+      }
+    });
   } catch (error) {
     console.error("Fehler beim Abrufen der Kontakte:", error);
   }
