@@ -1,5 +1,6 @@
 function onloadFunc() {
   onloadDatabase();
+  loadDataFromLocalStorage();
 }
 
 //Database for Login
@@ -57,9 +58,11 @@ function redirectToBoard() {
 //Reset form
 
 function resetForm() {
-  document.getElementById("loginEmailInput").value = "";
-  document.getElementById("loginPasswordInput").value = "";
-  document.getElementById("rememberMe").checked = false;
+  if (!document.getElementById("rememberMe").checked) {
+    document.getElementById("loginEmailInput").value = "";
+    document.getElementById("loginPasswordInput").value = "";
+    document.getElementById("rememberMe").checked = false;
+  }
 }
 
 window.addEventListener("pageshow", resetForm);
@@ -125,3 +128,37 @@ async function loginUser() {
     console.error("Fehler beim Abrufen der Benutzerdaten:", error);
   }
 }
+
+//Remember me function
+
+document.querySelector('form').addEventListener('submit', function(event) {
+  if (document.getElementById('rememberMe').checked) {
+    localStorage.setItem('username', document.getElementById('loginEmailInput').value);
+    localStorage.setItem('pass', document.getElementById('loginPasswordInput').value);
+  }
+  event.preventDefault();
+});
+
+function loadDataFromLocalStorage() {
+  var email = localStorage.getItem('username');
+  var password = localStorage.getItem('pass');
+  var rememberMe = localStorage.getItem('rememberMe');
+
+  if (rememberMe === 'true' && email && password) {
+    document.getElementById('loginEmailInput').value = email;
+    document.getElementById('loginPasswordInput').value = password;
+    document.getElementById('rememberMe').checked = true;
+  }
+}
+
+document.getElementById('rememberMe').addEventListener('click', function() {
+  if (this.checked) {
+    localStorage.setItem('username', document.getElementById('loginEmailInput').value);
+    localStorage.setItem('pass', document.getElementById('loginPasswordInput').value);
+    localStorage.setItem('rememberMe', true);
+  } else {
+    localStorage.removeItem('username');
+    localStorage.removeItem('pass');
+    localStorage.setItem('rememberMe', false);
+  }
+});
