@@ -6,7 +6,7 @@ let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
-const SUBTASK_URL = "https://subtasks-3ea88-default-rtdb.europe-west1.firebasedatabase.app/";
+const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
 async function init() {
@@ -40,7 +40,7 @@ async function fetchContacts(path = "") {
 
 
 async function putData(path = "", data = {}) {
-    let response = await fetch(SUBTASK_URL + path + ".json", {
+    let response = await fetch(TASK_URL + path + ".json", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -178,15 +178,55 @@ function showSubtask() {
 
 function addSubTask() {
     let input = document.getElementById('input-subtask');
+    let subTask = {
+        subtask: input.value,
+    }
 
     if (input == '') {
         alert('Bitte eintrag hinzufügen')
     } else {
         task.push(input.value);
         showSubtask();
-        putData("subtask:", "")
+        createTask();
     }
     input.value = '';
+}
+
+async function createTask() {
+    let title = document.getElementById('input-title');
+    let description = document.getElementById('input-description');
+    let initial = getInitial();
+    let assigned = document.getElementById('show-contacts');
+    let date = document.getElementById('input-date');
+    let category = document.getElementById('input-category');
+    let subtask = getTask();
+
+    let task =  {
+        title: title.value,
+        description: description.value,
+        assigned: assigned.value,
+        date: date.valueAsDate,
+        category: category.value,
+        subtask: subtask,
+    };
+
+    await putData("", task);
+}
+
+function getTask() {
+    for(let i = 0; i < task.length; i++) {
+        let tasks = task[i];
+
+        return tasks;
+    }
+}
+
+function getInitial() {
+    for (let j = 0; j < initial.length; j++) {
+        const initials = initial[i];
+        
+        return initials;
+    }
 }
 
 
@@ -212,9 +252,12 @@ function changePrioButtonLow() {
 
 
 function addTask() {
-    let task = document.getElementById('add_task');
-    let overlay = document.getElementsByClassName('overlay-create-task');
-
-    task.classList.remove('d-none');
-    overlay[0].style.transform = 'translateY(0px)';
+    createTask();
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            window.location.href = "board.html"; 
+        }, 3000); 
+    });
 }
+
