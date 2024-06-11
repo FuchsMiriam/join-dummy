@@ -3,109 +3,47 @@ const contactsURL =
 
 let contacts = [];
 
-let contactColors = {};
+const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 let currentContact = 0;
 
 async function initializePage() {
   includeHTML();
   await fetchContacts();
   showContacts();
-
-  /*const contactDivs = document.querySelectorAll(".contactListInner");
-  contactDivs.forEach((contactDiv, index) => {
-    contactDiv.addEventListener("click", () => {
-      showContactDetails(index);
-    });
-  });*/
   setBg();
 }
 
 /*Randomize colours*/
 
-/*const setBg = () => {
-  const elements = document.querySelectorAll(
-    ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
-  );
-  elements.forEach((element) => {
-    const contactId = element.dataset.contactId;
-    if (contactId && contactColors[contactId]) {
-      element.style.backgroundColor = contactColors[contactId];
-    } else {
-      let randomColor;
-      do {
-        randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
-      } while (
-        randomColor === 'rgba(255, 255, 255, 1)' ||
-        randomColor === 'rgba(0, 0, 0, 1)' || 
-        randomColor === 'rgba(0, 0, 0, 0)'
-      );
-      contactColors[contactId] = randomColor;
-      element.style.backgroundColor = randomColor;
-    }
-  });
-  saveContactColors();
-};
+function assignColorsToContacts(contacts) {
+  const coloredContacts = {};
 
-function addContactWithColor(contact) {
-  let randomColor;
-  do {
-    randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 1)`;
-  } while (
-    randomColor === 'rgba(255, 255, 255, 1)' ||
-    randomColor === 'rgba(0, 0, 0, 1)' || 
-    randomColor === 'rgba(0, 0, 0, 0)'  
-  );
-  contactColors[contact.id] = randomColor;
-  saveContactColors();
-}
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    const colorClass = colorClasses[i % colorClasses.length];
 
-function saveContactColors() {
-  localStorage.setItem('contactColors', JSON.stringify(contactColors));
-}*/
-
-window.addEventListener("load", () => {
-  const storedColors = localStorage.getItem("contactColors");
-  if (storedColors) {
-    contactColors = JSON.parse(storedColors);
-  } else {
-    contactColors = {};
+    coloredContacts[contact.id] = { backgroundColor: colorClass };
   }
-  setBg();
-});
 
-const setBg = () => {
-  const elements = document.querySelectorAll(
-    ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
-  );
-  elements.forEach((element) => {
-    const contactId = element.dataset.contactId;
-    if (contactId && contactColors[contactId]) {
-      element.style.backgroundColor = contactColors[contactId].backgroundColor;
-    } else {
-      const randomColor = generateRandomColor();
-      contactColors[contactId] = { backgroundColor: randomColor };
-      element.style.backgroundColor = randomColor;
-    }
-  });
-  saveContactColors();
-};
-
-function generateRandomColor() {
-  let randomColor;
-  do {
-    randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-      Math.random() * 256
-    )}, ${Math.floor(Math.random() * 256)}, 1)`;
-  } while (
-    randomColor === "rgba(255, 255, 255, 1)" ||
-    randomColor === "rgba(0, 0, 0, 1)" ||
-    randomColor === "rgba(0, 0, 0, 0)"
-  );
-  return randomColor;
+  return coloredContacts;
 }
 
-function saveContactColors() {
+function setBg() {
+  const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
+
+  elements.forEach((element, index) => {
+    const colorClass = colorClasses[index % colorClasses.length];
+    element.classList.add(colorClass);
+  });
+}
+
+function saveContactColors(contactColors) {
   localStorage.setItem("contactColors", JSON.stringify(contactColors));
+}
+
+function loadContactColors() {
+  const storedColors = localStorage.getItem("contactColors");
+  return storedColors ? JSON.parse(storedColors) : {};
 }
 
 /*Fetch, add, delete, update contacts*/
