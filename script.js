@@ -1,4 +1,5 @@
 function onloadFunc() {
+  /*showAnimation();*/
   onloadDatabase();
   loadDataFromLocalStorage();
 }
@@ -47,11 +48,14 @@ async function onloadDatabase(path = "") {
   });
 });*/
 
-
-document.getElementById("animatedLogo").addEventListener("animationend", function() {
-  document.getElementById("contentMainpage").classList.add("visibleMainpage");
-  document.getElementById("contentMainpage").classList.remove("hiddenMainpage");
-});
+document
+  .getElementById("animatedLogo")
+  .addEventListener("animationend", function () {
+    document.getElementById("contentMainpage").classList.add("visibleMainpage");
+    document
+      .getElementById("contentMainpage")
+      .classList.remove("hiddenMainpage");
+  });
 
 // Function for redirects
 
@@ -147,34 +151,86 @@ async function loginUser() {
 
 //Remember me function
 
-document.querySelector('form').addEventListener('submit', function(event) {
-  if (document.getElementById('rememberMe').checked) {
-    localStorage.setItem('username', document.getElementById('loginEmailInput').value);
-    localStorage.setItem('pass', document.getElementById('loginPasswordInput').value);
+document.querySelector("form").addEventListener("submit", function (event) {
+  if (document.getElementById("rememberMe").checked) {
+    localStorage.setItem(
+      "username",
+      document.getElementById("loginEmailInput").value
+    );
+    localStorage.setItem(
+      "pass",
+      document.getElementById("loginPasswordInput").value
+    );
   }
   event.preventDefault();
 });
 
 function loadDataFromLocalStorage() {
-  var email = localStorage.getItem('username');
-  var password = localStorage.getItem('pass');
-  var rememberMe = localStorage.getItem('rememberMe');
+  var email = localStorage.getItem("username");
+  var password = localStorage.getItem("pass");
+  var rememberMe = localStorage.getItem("rememberMe");
 
-  if (rememberMe === 'true' && email && password) {
-    document.getElementById('loginEmailInput').value = email;
-    document.getElementById('loginPasswordInput').value = password;
-    document.getElementById('rememberMe').checked = true;
+  if (rememberMe === "true" && email && password) {
+    document.getElementById("loginEmailInput").value = email;
+    document.getElementById("loginPasswordInput").value = password;
+    document.getElementById("rememberMe").checked = true;
   }
 }
 
-document.getElementById('rememberMe').addEventListener('click', function() {
+document.getElementById("rememberMe").addEventListener("click", function () {
   if (this.checked) {
-    localStorage.setItem('username', document.getElementById('loginEmailInput').value);
-    localStorage.setItem('pass', document.getElementById('loginPasswordInput').value);
-    localStorage.setItem('rememberMe', true);
+    localStorage.setItem(
+      "username",
+      document.getElementById("loginEmailInput").value
+    );
+    localStorage.setItem(
+      "pass",
+      document.getElementById("loginPasswordInput").value
+    );
+    localStorage.setItem("rememberMe", true);
   } else {
-    localStorage.removeItem('username');
-    localStorage.removeItem('pass');
-    localStorage.setItem('rememberMe', false);
+    localStorage.removeItem("username");
+    localStorage.removeItem("pass");
+    localStorage.setItem("rememberMe", false);
   }
 });
+
+/*Animation media query*/
+
+/*function showAnimation() {
+  const bodyAnimation = document.getElementById("mainpage");
+  const img = document.getElementById("animatedLogo");
+  const mediaQuery = window.matchMedia("(max-width: 670px)");
+
+  if (mediaQuery.matches) {
+    setTimeout(() => {
+      bodyAnimation.style.display = "none";
+    }, 0);
+    setTimeout(() => {
+      document.body.style.backgroundColor = "#2b3646";
+      img.src = "./assets/img/whiteLogoLarge.svg";
+    }, 10);
+    setTimeout(() => {
+      document.body.style.backgroundColor = "#f6f7f8";
+      img.src = "./assets/img/logoLarge.svg";
+      bodyAnimation.style.display = "block";
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      bodyAnimation.style.display = "none";
+    }, 0);
+    setTimeout(() => {
+      // Hier musst du den entsprechenden Code hinzufügen, um die mainpage anzuzeigen.
+    }, 1000);
+    setTimeout(() => {
+      bodyAnimation.style.display = "block";
+    }, 1500);
+  }
+  img.addEventListener("animationend", function () {
+    // Hier wird die Hauptseite angezeigt
+    document.getElementById("contentMainpage").classList.add("visibleMainpage");
+    document
+      .getElementById("contentMainpage")
+      .classList.remove("hiddenMainpage");
+  });
+}*/
