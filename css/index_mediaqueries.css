@@ -8,6 +8,30 @@
 }
 
 @media (max-width: 1200px) {
+  .loginContainer {
+    left: calc((100vw - 652px) / 2);
+  }
+
+  .mainpageSignUpContainer {
+    left: calc((100vw-292px) / 2);
+  }
+
+  .legalButtonsContainer {
+    left: calc((100vw -246px) / 2);
+  }
+}
+
+@media (max-width: 670px) {
+  #animatedLogo {
+    width: 64px;
+    height: 78.03px;
+    top: 37px;
+    left: 38px;
+    gap: 10px;
+    display: flex;
+  }
+
+  
 }
 
 @media (max-width: 428px) and (max-height: 926px) {
@@ -28,7 +52,7 @@
     gap: 35px;
   }
 
-  .textNotUser{
+  .textNotUser {
     width: 153px;
     height: 24px;
     gap: 0px;
@@ -40,7 +64,7 @@
     text-align: left;
   }
 
-  .mainpageSignUpButton{
+  .mainpageSignUpButton {
     height: 49px;
     padding: 15px 16px 15px 16px;
     gap: 10px;
@@ -112,5 +136,4 @@
     line-height: 19.2px;
     text-align: left;
   }
-
 }

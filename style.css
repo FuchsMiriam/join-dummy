@@ -347,7 +347,7 @@ input[type="password"].error {
 .legalButtonsContainer {
   display: flex;
   position: relative;
-  /*width: 246px;*/
+  width: 246px;
   height: 35px;
   top: 949px;
   left: 597px;
@@ -355,10 +355,6 @@ input[type="password"].error {
 }
 
 .legalButtonLeft {
-  /*width: 121px;
-  height: 35px;*/
-  padding: 8px;
-  gap: 8px;
   display: flex;
   font-family: Inter;
   font-size: 16px;
@@ -371,13 +367,13 @@ input[type="password"].error {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 121px;
+  height: 35px;
+  padding: 8px 0px 0px 0px;
+  gap: 8px;
 }
 
 .legalButtonRight {
-  /*width: 109px;
-  height: 35px;*/
-  padding: 8px;
-  gap: 8px;
   display: flex;
   font-family: Inter;
   font-size: 16px;
@@ -390,6 +386,11 @@ input[type="password"].error {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 109px;
+  height: 35px;
+  left: 137px;
+  padding: 8px 0px 0px 0px;
+  gap: 8px;
 }
 
 .legalButtonRight:hover {
