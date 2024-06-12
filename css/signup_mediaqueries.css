@@ -11,6 +11,12 @@
 @media (max-width: 800px) {
   .logoSignupPage {
     width: 60px;
+    width: 64px;
+    height: 78.03px;
+    top: 37px;
+    left: 38px;
+    gap: 10px;
+    display: flex;
   }
 
   .signupContainer {
@@ -113,4 +119,9 @@
     padding: 8px 0px 0px 0px;
     gap: 8px;
   }
+
+  .overlay.show {
+    transform: translateX(-50%) translateY(-500%);
+  }
 }
+
