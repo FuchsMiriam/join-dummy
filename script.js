@@ -17,7 +17,7 @@ async function onloadDatabase(path = "") {
 
 // Function for animation on the login page
 
-window.onload = function () {
+/*window.onload = function () {
   const logo = document.getElementById("animatedLogo");
   const content = document.getElementById("contentMainpage");
 
@@ -35,7 +35,23 @@ window.onload = function () {
   }
 
   logo.addEventListener("transitionend", onTransitionEnd);
-};
+};*/
+
+/*document.addEventListener("DOMContentLoaded", function () {
+  const logo = document.getElementById("animatedLogo");
+  const content = document.getElementById("contentMainpage");
+
+  logo.addEventListener("transitionend", function () {
+    content.classList.remove("hiddenMainpage");
+    content.classList.add("visibleMainpage");
+  });
+});*/
+
+
+document.getElementById("animatedLogo").addEventListener("animationend", function() {
+  document.getElementById("contentMainpage").classList.add("visibleMainpage");
+  document.getElementById("contentMainpage").classList.remove("hiddenMainpage");
+});
 
 // Function for redirects
 

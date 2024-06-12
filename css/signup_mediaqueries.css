@@ -4,7 +4,7 @@
   }
 
   .legalButtonsContainer {
-    left: calc(50%);
+    left: calc((100% - 246px) / 2);
   }
 }
 
@@ -124,4 +124,3 @@
     transform: translateX(-50%) translateY(-500%);
   }
 }
-

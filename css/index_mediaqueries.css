@@ -13,11 +13,11 @@
   }
 
   .mainpageSignUpContainer {
-    left: calc((100vw-292px) / 2);
+    left: calc((100vw - 292px) / 2);
   }
 
   .legalButtonsContainer {
-    left: calc((100vw -246px) / 2);
+    left: calc((100vw - 246px) / 2);
   }
 }
 

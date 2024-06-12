@@ -16,7 +16,7 @@ body {
 
 /*Animation at the beginning*/
 
-#animatedLogo {
+/*#animatedLogo {
   position: fixed;
   width: 274px;
   height: 334.07px;
@@ -25,12 +25,120 @@ body {
   gap: 0px;
   transition: transform 400ms ease-in-out, width 400ms ease-in-out,
     height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
-}
+}*/
+
+/*neu hinzugefügt - auch in HTML als Klasse - JS ausgeblendet*/
+/*#animatedLogo.animate {
+  width: 100.03px;
+  height: 121.97px;
+  top: 80px;
+  left: 77px;
+}*/
+
+  /* Keyframe animation */
+  /*@-webkit-keyframes slide-tl {
+    0% {
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      -webkit-transform: translateY(-100px) translateX(-100px);
+              transform: translateY(-100px) translateX(-100px);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      -webkit-transform: translateY(-100px) translateX(-100px);
+              transform: translateY(-100px) translateX(-100px);
+    }
+  }
+
+  /* Stil des div */
+  /*#animatedLogo {
+    position: fixed;
+    width: 274px;
+    height: 334.07px;
+    top: 345px;
+    left: 583px;
+    gap: 0px;
+    transition: transform 400ms ease-in-out, width 400ms ease-in-out, height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
+  }*/
+
+  /* Animation bei Seitenlade */
+ /*#animatedLogo.animate {
+    width: 100.03px;
+    height: 121.97px;
+    top: 80px;
+    left: 77px;
+    -webkit-animation: slide-tl 2s forwards;
+    animation: slide-tl 2s forwards;
+  }*/
+
+
+
+
+
+
+  @-webkit-keyframes slide-tl {
+    0% {
+      top: 345px;
+      left: 583px;
+      width: 274px;
+      height: 334.07px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      top: 80px;
+      left: 77px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      top: 345px;
+      left: 583px;
+      width: 274px;
+      height: 334.07px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      top: 80px;
+      left: 77px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+  }
+
+  /* Stil des div */
+  #animatedLogo {
+    position: fixed;
+    width: 274px;
+    height: 334.07px;
+    top: 345px;
+    left: 583px;
+    gap: 0px;
+    transition: transform 400ms ease-in-out, width 400ms ease-in-out, height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
+    animation: slide-tl 1s 1s forwards;
+  }
+
+
 
 /*Mainpage*/
 
 .hiddenMainpage {
-  opacity: 0;
   visibility: hidden;
 }
 
