@@ -1,7 +1,7 @@
 function onloadFunc() {
-  /*showAnimation();*/
   onloadDatabase();
   loadDataFromLocalStorage();
+  showAnimation();
 }
 
 //Database for Login
@@ -197,40 +197,38 @@ document.getElementById("rememberMe").addEventListener("click", function () {
 
 /*Animation media query*/
 
-/*function showAnimation() {
-  const bodyAnimation = document.getElementById("mainpage");
-  const img = document.getElementById("animatedLogo");
-  const mediaQuery = window.matchMedia("(max-width: 670px)");
 
-  if (mediaQuery.matches) {
-    setTimeout(() => {
-      bodyAnimation.style.display = "none";
-    }, 0);
-    setTimeout(() => {
-      document.body.style.backgroundColor = "#2b3646";
-      img.src = "./assets/img/whiteLogoLarge.svg";
-    }, 10);
-    setTimeout(() => {
-      document.body.style.backgroundColor = "#f6f7f8";
-      img.src = "./assets/img/logoLarge.svg";
-      bodyAnimation.style.display = "block";
-    }, 1000);
-  } else {
-    setTimeout(() => {
-      bodyAnimation.style.display = "none";
-    }, 0);
-    setTimeout(() => {
-      // Hier musst du den entsprechenden Code hinzufügen, um die mainpage anzuzeigen.
-    }, 1000);
-    setTimeout(() => {
-      bodyAnimation.style.display = "block";
-    }, 1500);
+  function showAnimation() {
+    const bodyAnimation = document.getElementById("contentMainpage");
+    const img = document.getElementById("animatedLogo");
+    const mediaQuery = window.matchMedia("(max-width: 670px)");
+
+    if (mediaQuery.matches) {
+      setTimeout(() => {
+        bodyAnimation.style.display = "none";
+      }, 0);
+      setTimeout(() => {
+        document.body.style.backgroundColor = "#2b3646";
+        img.src = "./assets/img/whiteLogoLarge.svg";
+      }, 10);
+      setTimeout(() => {
+        document.body.style.backgroundColor = "#f6f7f8";
+        img.src = "./assets/img/logoLarge.svg";
+        bodyAnimation.style.display = "block";
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        bodyAnimation.style.display = "none";
+      }, 0);
+      setTimeout(() => {
+        bodyAnimation.style.display = "block";
+      }, 1500);
+    }
+
+    img.style.animation = "slide-tl 1s forwards";
+    
+    img.addEventListener("animationend", function () {
+      document.getElementById("contentMainpage").classList.add("visibleMainpage");
+      document.getElementById("contentMainpage").classList.remove("hiddenMainpage");
+    });
   }
-  img.addEventListener("animationend", function () {
-    // Hier wird die Hauptseite angezeigt
-    document.getElementById("contentMainpage").classList.add("visibleMainpage");
-    document
-      .getElementById("contentMainpage")
-      .classList.remove("hiddenMainpage");
-  });
-}*/

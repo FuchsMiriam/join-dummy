@@ -4,11 +4,11 @@
   }
 
   .legalButtonsContainer {
-    left: calc((100% - 246px) / 2);
+    left: calc(100vw / 2);
   }
 }
 
-@media (max-width: 800px) {
+/*@media (max-width: 800px) {
   .logoSignupPage {
     width: 60px;
     width: 64px;
@@ -29,6 +29,120 @@
 
   .legalButtonsContainer {
     left: calc(20%);
+  }
+}*/
+
+@media (max-width: 780px) {
+  .logoSignupPage {
+    width: 64px;
+    height: 78.03px;
+    top: 37px;
+    left: 38px;
+    gap: 10px;
+    display: flex;
+  }
+
+  .signupContainer {
+    width: 396px;
+    height: 595px;
+    top: 165.5px;
+    left: 16px;
+    padding: 32px 0px 32px 0px;
+    gap: 32px;
+    border-radius: 30px;
+  }
+
+  .signupHeadline {
+    width: 173px;
+    height: 72px;
+    gap: 16px;
+    font-size: 47px;
+    font-weight: 700;
+    line-height: 56.4px;
+    text-align: center;
+  }
+
+  .signupArrow {
+    top: 32px;
+    left: 32px;
+  }
+
+  .signupInputFields {
+    width: 364px;
+    gap: 24px;
+    height: 296px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .emailContainer {
+    width: auto;
+  }
+
+  .signupEmail {
+    width: 322px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .signupPassword {
+    width: 322px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .signupButton {
+    width: 180px;
+    height: 51px;
+    padding: 4px 0px 4px 0px;
+  }
+
+  .legalButtonsContainer {
+    width: 246px;
+    height: 35px;
+    top: 869px;
+    left: 91px;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .legalButtonLeft {
+    width: 121px;
+    height: 35px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+  }
+
+  .legalButtonRight {
+    width: 109px;
+    height: 35px;
+    left: 137px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+  }
+
+  .overlay {
+    bottom: -550px;
+  }
+
+  /*.overlay.show {
+    transform: translateX(-50%) translateY(calc(-100% + 256px));
+  }*/
+
+  .overlay.show {
+    transform: translateX(-50%);
+    animation: slideUp 0.5s ease-in-out forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      bottom: -550px;
+    }
+    to {
+      bottom: -140px;
+    }
   }
 }
 
@@ -69,22 +183,26 @@
 
   .signupInputFields {
     width: 364px;
-    height: 286px;
     gap: 24px;
+    height: 296px;
     display: flex;
-    align-items: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .emailContainer {
+    width: auto;
   }
 
   .signupEmail {
     width: 322px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .signupPassword {
     width: 322px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .signupButton {
@@ -120,7 +238,6 @@
   }
 
   .overlay.show {
-    transform: translateX(-50%) translateY(-500%);
+    transform: translateX(-50%) translateY(-308px);
   }
-
 }

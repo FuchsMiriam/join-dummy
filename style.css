@@ -16,35 +16,6 @@ body {
 
 /*Animation at the beginning*/
 
-/*#animatedLogo {
-  position: fixed;
-  width: 274px;
-  height: 334.07px;
-  top: 345px;
-  left: 583px;
-  gap: 0px;
-  transition: transform 400ms ease-in-out, width 400ms ease-in-out,
-    height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
-}*/
-
-/*neu hinzugefügt - auch in HTML als Klasse - JS ausgeblendet*/
-/*#animatedLogo.animate {
-  width: 100.03px;
-  height: 121.97px;
-  top: 80px;
-  left: 77px;
-}*/
-
-  /* Animation bei Seitenlade */
- /*#animatedLogo.animate {
-    width: 100.03px;
-    height: 121.97px;
-    top: 80px;
-    left: 77px;
-    -webkit-animation: slide-tl 2s forwards;
-    animation: slide-tl 2s forwards;
-  }*/
-
   @-webkit-keyframes slide-tl {
     0% {
       top: 345px;
@@ -83,7 +54,7 @@ body {
     }
   }
 
-  /* Stil des div */
+  
   #animatedLogo {
     position: fixed;
     width: 274px;
