@@ -6,6 +6,7 @@ function summaryInit(){
   includeHTML();
   loadTasks().then((result2) => {
       hoverSidebar();
+      getSummary();
   });
 }
 
@@ -38,4 +39,77 @@ async function putData(path="", data={}){
   return responseToJson = await response.json();
 }
 
+let nrToDO = 0;
+function getNumberofToDo(){
+  for(let i = 0; i < tasksBoard.length; i++)
+    if(tasksBoard[i]["taskApplication"] == 0)
+      nrToDO++;
+  return nrToDO;
+}
+
+let nrDone = 0;
+function getNumberofDone(){
+  for(let i = 0; i < tasksBoard.length; i++)
+    if(tasksBoard[i]["taskApplication"] == 3)
+      nrDone++;
+  return nrDone;
+}
+
+let nrUrgent = 0;
+function getNumberofUrgent(){
+  for(let i = 0; i < tasksBoard.length; i++)
+    if(tasksBoard[i]["priority"] == 1)
+      nrUrgent++;
+  return nrUrgent;
+}
+
+function getNumberofTasks(){
+  return tasksBoard.length;
+}
+
+let nrProgress = 0;
+function getNumberofProgress(){
+  for(let i = 0; i < tasksBoard.length; i++)
+    if(tasksBoard[i]["taskApplication"] == 1)
+      nrProgress++;
+  return nrProgress;
+}
+
+let nrAwait = 0;
+function getNumberofAwait(){
+  for(let i = 0; i < tasksBoard.length; i++)
+    if(tasksBoard[i]["taskApplication"] == 2)
+      nrAwait++;
+  return nrAwait;
+}
+
+function getSummary(){
+  document.getElementById("summaryToDo").innerHTML = getNumberofToDo();
+  document.getElementById("summaryProgress").innerHTML = getNumberofProgress();
+  document.getElementById("summaryAwait").innerHTML = getNumberofAwait();
+  document.getElementById("summaryDone").innerHTML = getNumberofDone();
+  document.getElementById("summaryNrTask").innerHTML = getNumberofTasks();
+  document.getElementById("summaryNrUrgent").innerHTML = getNumberofUrgent();
+  document.getElementById("summaryDate").innerHTML = getNextDate();
+}
+
+function getNextDate(){
+  let date1 = new Date(tasksBoard[0]["date"]);
+  let date2;
+
+  for(let i = 1; i < tasksBoard.length; i++)
+  {
+    date2 = new Date(tasksBoard[i]["date"]);
+    if(date2 < date1)
+      date1 = date2;
+  }
+  return formatDate(date1);
+}
+
+function formatDate(date) {
+  const month = date.toLocaleString('default', { month: 'long' });
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
 

@@ -29,13 +29,13 @@ let exampleTask = {
 let result = false;
 function boardInit(){
     includeHTML();
-    // loadTasks().then((result) => {
+    loadTasks().then((result) => {
         // for(let i = 0; i<2; i++)
-        tasks[0] = (exampleTask);
+        // tasks[0] = (exampleTask);
         putData(path="", tasks);
         renderTasks();
         hoverSidebar();
-    // });
+    });
 }
 
 async function loadTasks(){

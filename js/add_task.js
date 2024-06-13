@@ -5,39 +5,36 @@ let contactsNames = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
+const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
 async function init() {
     addSubTask();
-    await loadTasks();
     await getNamesFromArray();
     await fetchContacts();
-}
-
-
-async function loadTasks(path = "") {
-    let response = await fetch(URL_CONTACT + path + ".json");
-    let data = await response.json();
-    console.log(data);
-    contacts = data ? Object.values(data) : [];
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
-    console.log(contacts);
+    load()
 }
 
 
 async function fetchContacts(path = "") {
     try {
-        const response = await fetch(URL_CONTACT + path + ".json");
-        const data = await response.json();
-        contacts = data
-            ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
-            : [];
+      const response = await fetch(URL_CONTACT + path + ".json");
+      const data = await response.json();
+      contacts = data
+        ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
+        : [];
+      
+      contacts.forEach(contact => {
+        if (!contact.colorClass) {
+          contact.colorClass = colorClasses[contacts.indexOf(contact) % colorClasses.length];
+        }
+      });
     } catch (error) {
-        console.error("Fehler beim Abrufen der Subtasks:", error);
+      console.error("Fehler beim Abrufen der Kontakte:", error);
     }
-}
+  }
 
 
 async function putData(path = "", data = {}) {
@@ -65,20 +62,19 @@ function showContacts() {
 
         container.classList.remove('d-none');
         container.innerHTML +=
-            displayContactsTemplate(i, contact)
+            displayContactsTemplate(i, contact);
     }
 }
 
 
 function ifIsListContactsLoaded() {
-    document.getElementById('add-button-contacts').addEventListener('click', function () {
         if (listContactsLoaded == false) {
             showContacts();
             closeButtonForShowContacts();
             listContactsLoaded = true;
         }
-    })
-}
+    }
+
 
 
 function closeButtonForShowContacts() {
@@ -113,7 +109,6 @@ function addInitials(i) {
     assigned = contactsNames[i];
     initial.push(initials);
 
-
     ini.innerHTML += `
         <div>
             <span class="initials">${initials}</span>
@@ -127,6 +122,7 @@ function getInitials(name) {
     const initials = nameParts.map(part => part.charAt(0)).join('');
 
     return initials;
+    
 }
 //-------------End initials functions--------------//
 
@@ -179,24 +175,34 @@ function showSubtask() {
 
 function addSubTask() {
     let input = document.getElementById('input-subtask');
-    let subTask = {
-        subtask: input.value,
-    }
 
     if (input == '') {
         alert('Bitte eintrag hinzufügen')
     } else {
         task.push(input.value);
         showSubtask();
-        createTask();
     }
     input.value = '';
+    save()
+}
+
+
+function editSubtask() {
+    let subtask = document.getElementById(`subtask${i}`);
+    let input = document.getElementById('input-subtask');
+    document.getElementById(subtask).innerHTML = `
+        <ul id="subtask${i}">
+        <li onclick="editValue()" class="subtask-span">
+            <span onclick="postData${i}()">${input.value}</span>
+        </li>
+    </ul>
+    `;
 }
 
 async function createTask() {
     let title = document.getElementById('input-title');
     let description = document.getElementById('input-description');
-    let initial = getInitial();
+    let initial = getInitial(initial);
     let assigned = document.getElementById('show-contacts');
     let date = document.getElementById('input-date');
     let category = document.getElementById('input-category');
@@ -228,7 +234,7 @@ function getTask() {
     }
 }
 
-function getInitial() {
+function getInitial(initial) {
     for (let j = 0; j < initial.length; j++) {
         const initials = initial[i];
         
@@ -268,3 +274,14 @@ function addTask() {
     });
 }
 
+function save() {
+    let tasksAsText = JSON.stringify(task);
+    localStorage.setItem('tasks', tasksAsText);
+  }
+  
+  function load() {
+    let tasksAsText = localStorage.getItem('tasks');
+    if (tasksAsText) {
+      task = JSON.parse(tasksAsText);
+    }
+  }

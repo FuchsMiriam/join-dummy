@@ -55,8 +55,9 @@ body {
   }
 
   
-  #animatedLogo {
-    position: fixed;
+  .animate {
+    display: flex;
+    position: absolute;
     width: 274px;
     height: 334.07px;
     top: 345px;
