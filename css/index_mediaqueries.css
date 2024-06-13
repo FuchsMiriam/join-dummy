@@ -93,6 +93,17 @@
   }
 }
 
+@media (max-width: 580px) {
+  .loginContainer {
+    width: 180px;
+    left: calc((100vw - 320px) / 2);
+  }
+
+  .interactionContainer {
+    width: 280px;
+  }
+}
+
 @media (max-width: 428px) and (max-height: 926px) {
   .mainpage {
     overflow-x: hidden;
