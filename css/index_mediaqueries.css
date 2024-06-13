@@ -1,9 +1,5 @@
 @media (max-width: 1320px) {
-<<<<<<< HEAD
-  .mainpageSignUpContainer{
-=======
   .mainpageSignUpContainer {
->>>>>>> ff4bae9553ee33aa8b51bac0eb24227797f6d3b7
     width: 292px;
     height: 49px;
     top: 800px;
@@ -113,7 +109,7 @@
   }
 }
 
-@media (max-width: 426px) and (max-height: 926px) {
+@media (max-width: 426px) or (max-height: 926px) {
   .mainpage {
     overflow-x: hidden;
     overflow-y: auto;
