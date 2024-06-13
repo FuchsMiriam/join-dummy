@@ -1,7 +1,17 @@
-@media (max-width: 1290px) {
-.contactsSidebar{
-  position: static;
+@media (max-width: 1420px){
+  .contactDetailsName {
+    font-size: 28px;
+  }
 }
+
+@media (max-width: 1290px) {
+  .contactsSidebar {
+    position: static;
+  }
+
+  .headlinesContainer{
+    left: 500px;
+  }
 
   .contactsHeadlineContainer {
     flex-direction: column;
@@ -23,9 +33,17 @@
     margin-top: 20px;
   }
 
-  .contactDetailsName{
-    font-size: 24px;
+  .contactDetailsName {
+    font-size: 20px;
   }
+
+  .contactsFullscreen.in {
+    left: 500px;
+  }
+}
+
+@media (max-width: 880px) {
+  
 }
 
 @media (max-width: 428px) and (height: 766px) {
