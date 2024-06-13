@@ -351,3 +351,10 @@
 .red {
   background-color: #e02f2f;
 }
+
+
+/*Add contact Icon media query*/
+
+.addContactIcon{
+  display: none;
+}

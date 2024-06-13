@@ -15,7 +15,7 @@ header {
   background-color: white;
 }
 
-.altImg{
+.altImg {
   display: none;
 }
 
@@ -280,9 +280,10 @@ p {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 110px;
+    height: 50px;
     bottom: 0;
     top: auto;
+    padding: 16px 0px 48px 0px;
   }
 
   .menuSidebar {
