@@ -43,18 +43,23 @@
 }
 
 @media (max-width: 880px) {
-  .addContactButton {
+  .buttonContainer {
     display: none;
   }
 
   .addContactIcon {
     position: absolute;
-    bottom: 15vh;
-    right: 10vw;
-    border-radius: 50%;
-    padding: 15px;
     border: none;
     background-color: #2a3647;
+    width: 56px;
+    height: 56px;
+    top: 758px;
+    left: 356px;
+    padding: 12px 0px 0px 0px;
+    gap: 10px;
+    border-radius: 46px;
+    display: flex;
+    justify-content: center;
   }
 }
 
