@@ -1,4 +1,4 @@
-@media (max-width: 1420px){
+@media (max-width: 1420px) {
   .contactDetailsName {
     font-size: 28px;
   }
@@ -9,7 +9,7 @@
     position: static;
   }
 
-  .headlinesContainer{
+  .headlinesContainer {
     left: 500px;
   }
 
@@ -43,7 +43,19 @@
 }
 
 @media (max-width: 880px) {
-  
+  .addContactButton {
+    display: none;
+  }
+
+  .addContactIcon {
+    position: absolute;
+    bottom: 15vh;
+    right: 10vw;
+    border-radius: 50%;
+    padding: 15px;
+    border: none;
+    background-color: #2a3647;
+  }
 }
 
 @media (max-width: 428px) and (height: 766px) {
