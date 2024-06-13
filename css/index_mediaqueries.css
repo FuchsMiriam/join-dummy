@@ -23,10 +23,14 @@
 
 @media (max-width: 670px) {
   .animate {
-    width: 64px;
-    height: 78.03px !important;
-    top: 37px !important;
-    left: 38px !important;
+    display: none;
+  }
+
+  .animateMobile {
+    width: 100.03px;
+    height: 121.97px;
+    top: 402px;
+    left: 164px;
     gap: 10px;
     display: flex;
     position: absolute;
@@ -127,7 +131,7 @@
     background-color: #b0b0b0;
   }
 
-  .animate {
+  .animateMobile {
     width: 100.03px;
     height: 121.97px;
     top: 402px;
@@ -150,10 +154,11 @@
       transform: translateY(0) translateX(0);
     }
     100% {
-      top: 80px;
-      left: 77px;
-      width: 100.03px;
-      height: 121.97px;
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
       -webkit-transform: translateY(0) translateX(0);
       transform: translateY(0) translateX(0);
     }
@@ -169,10 +174,11 @@
       transform: translateY(0) translateX(0);
     }
     100% {
-      top: 80px;
-      left: 77px;
-      width: 100.03px;
-      height: 121.97px;
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
       -webkit-transform: translateY(0) translateX(0);
       transform: translateY(0) translateX(0);
     }
