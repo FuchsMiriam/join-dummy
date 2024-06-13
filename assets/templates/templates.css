@@ -246,7 +246,7 @@ p {
   font-weight: 700;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1290px) {
   .headerTitel {
     display: none;
   }
@@ -285,6 +285,7 @@ p {
     bottom: 0;
     top: auto;
     padding: 16px 0px 48px 0px;
+    z-index: 1;
   }
 
   .menuSidebar {
@@ -293,5 +294,6 @@ p {
     flex-direction: row;
     width: auto;
     height: 80px;
+    gap: 0px;
   }
 }
