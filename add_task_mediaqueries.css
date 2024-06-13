@@ -1,0 +1,24 @@
+@media(max-width: 1200px) {
+    #content {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        height: 700px;
+    }
+
+    #seperator-content {
+        display: none;
+    }
+
+    .footer {
+        margin-top: 0;
+        justify-content: left;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .footer span{
+        width: 80px;
+        padding-right: 10px;
+    }
+}
