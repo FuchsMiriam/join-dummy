@@ -264,13 +264,14 @@ p {
   }
 
   header {
-    width: auto;
+    width: 100vw;
   }
 
-  /*.altImg {
+  .altImg {
+    display: block;
     height: 50px;
     display: flex;
-  }*/
+  }
 
   nav {
     background-color: rgba(42, 54, 71, 1);
