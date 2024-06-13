@@ -135,6 +135,7 @@ async function signup() {
       name: name,
       email: email,
       password: password,
+      login: false,
     };
 
     const response = await postData("users", newUser);

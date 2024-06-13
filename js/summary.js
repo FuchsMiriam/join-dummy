@@ -2,12 +2,13 @@ let tasksBoard = [];
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let result2 = false;
 
-function summaryInit(){
+async function summaryInit(){
   includeHTML();
   loadTasks().then((result2) => {
       hoverSidebar();
       getSummary();
   });
+  await onloadDatabase();
 }
 
 async function loadTasks(){
@@ -111,5 +112,15 @@ function formatDate(date) {
   const day = date.getDate();
   const year = date.getFullYear();
   return `${month} ${day}, ${year}`;
+}
+
+const databaseURL =
+  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+
+async function onloadDatabase(path = "") {
+  let response = await fetch(databaseURL + path + ".json");
+  let responseToJson = await response.json();
+  console.log(responseToJson);
+  return responseToJson;
 }
 
