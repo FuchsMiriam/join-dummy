@@ -29,6 +29,7 @@
     left: 38px !important;
     gap: 10px;
     display: flex;
+    position: absolute;
   }
 
   .loginContainer {
@@ -104,7 +105,7 @@
   }
 }
 
-@media (max-width: 428px) and (max-height: 926px) {
+@media (max-width: 426px) and (max-height: 926px) {
   .mainpage {
     overflow-x: hidden;
     overflow-y: auto;
@@ -133,7 +134,7 @@
     left: 164px;
     gap: 0px;
     display: flex;
-    position: relative;
+    position: absolute;
     transition: transform 400ms ease-in-out, width 400ms ease-in-out,
       height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out !important;
     animation: slide-tl 0.6s 0.4s forwards !important;
@@ -213,10 +214,14 @@
     width: 396px !important;
     height: 515px !important;
     top: 205.5px !important;
-    left: 16px !important;
+    left: calc((100vw - 408px) / 2);
     padding: 32px 0px 32px 0px !important;
     gap: 32px;
     border-radius: 30px;
+  }
+
+  .interactionContainer {
+    width: 380px;
   }
 
   .loginHeadline {
@@ -290,7 +295,7 @@
     width: 246px;
     height: 35px;
     top: 869px;
-    left: 91px;
     gap: 16px;
+    margin-top: 48px;
   }
 }
