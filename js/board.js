@@ -27,16 +27,15 @@ let exampleTask = {
 };
 
 let result = false;
-function init(){
+function boardInit(){
     includeHTML();
-    // hoverSidebar();
-    loadTasks().then((result) => {
+    // loadTasks().then((result) => {
         // for(let i = 0; i<2; i++)
-        //     tasks.push(exampleTask);
+        tasks[0] = (exampleTask);
         putData(path="", tasks);
         renderTasks();
         hoverSidebar();
-    });
+    // });
 }
 
 async function loadTasks(){
@@ -44,6 +43,7 @@ async function loadTasks(){
     let responseToJSON = await response.json();
     tasks = responseToJSON;
     result = true;
+    return responseToJSON;
 }
 
 async function postData(path="", data=""){
@@ -214,4 +214,8 @@ function drop(category){
     tasks[currentTask]['taskApplication'] = category;
     renderTasks();
     putData(path="", tasks);
+}
+
+function getTasks(){
+    return tasks;
 }

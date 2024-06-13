@@ -20,6 +20,7 @@ async function init() {
 async function loadTasks(path = "") {
     let response = await fetch(URL_CONTACT + path + ".json");
     let data = await response.json();
+    console.log(data);
     contacts = data ? Object.values(data) : [];
     contacts.sort((a, b) => a.name.localeCompare(b.name));
     console.log(contacts);
@@ -209,8 +210,14 @@ async function createTask() {
         category: category.value,
         subtask: subtask,
     };
+    
+    while(tasks == null){
+        tasks = loadTasks();
+      };
 
-    await putData("", task);
+    tasks.push(exampleTask);
+
+    await putData("", tasks);
 }
 
 function getTask() {

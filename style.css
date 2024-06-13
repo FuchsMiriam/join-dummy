@@ -16,21 +16,59 @@ body {
 
 /*Animation at the beginning*/
 
-#animatedLogo {
-  position: fixed;
-  width: 274px;
-  height: 334.07px;
-  top: 345px;
-  left: 583px;
-  gap: 0px;
-  transition: transform 400ms ease-in-out, width 400ms ease-in-out,
-    height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
-}
+  @-webkit-keyframes slide-tl {
+    0% {
+      top: 345px;
+      left: 583px;
+      width: 274px;
+      height: 334.07px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      top: 80px;
+      left: 77px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      top: 345px;
+      left: 583px;
+      width: 274px;
+      height: 334.07px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+    100% {
+      top: 80px;
+      left: 77px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+              transform: translateY(0) translateX(0);
+    }
+  }
+
+  
+  #animatedLogo {
+    position: fixed;
+    width: 274px;
+    height: 334.07px;
+    top: 345px;
+    left: 583px;
+    gap: 0px;
+    transition: transform 400ms ease-in-out, width 400ms ease-in-out, height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out;
+    animation: slide-tl 0.6s 0.4s forwards;
+  }
 
 /*Mainpage*/
 
 .hiddenMainpage {
-  opacity: 0;
   visibility: hidden;
 }
 
@@ -347,7 +385,7 @@ input[type="password"].error {
 .legalButtonsContainer {
   display: flex;
   position: relative;
-  /*width: 246px;*/
+  width: 246px;
   height: 35px;
   top: 949px;
   left: 597px;
@@ -355,10 +393,6 @@ input[type="password"].error {
 }
 
 .legalButtonLeft {
-  /*width: 121px;
-  height: 35px;*/
-  padding: 8px;
-  gap: 8px;
   display: flex;
   font-family: Inter;
   font-size: 16px;
@@ -371,13 +405,13 @@ input[type="password"].error {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 121px;
+  height: 35px;
+  padding: 8px 0px 0px 0px;
+  gap: 8px;
 }
 
 .legalButtonRight {
-  /*width: 109px;
-  height: 35px;*/
-  padding: 8px;
-  gap: 8px;
   display: flex;
   font-family: Inter;
   font-size: 16px;
@@ -390,6 +424,11 @@ input[type="password"].error {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  width: 109px;
+  height: 35px;
+  left: 137px;
+  padding: 8px 0px 0px 0px;
+  gap: 8px;
 }
 
 .legalButtonRight:hover {
