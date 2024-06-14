@@ -109,7 +109,7 @@
   }
 }
 
-@media (max-width: 428px) or (height: 766px) {
+@media (max-width: 428px) and (height: 766px) {
   .contactsSidebar {
     width: 428px;
     height: 766px;
@@ -138,7 +138,10 @@
 @media (max-width: 320px) {
   .contactsSidebar {
     width: 320px;
-    height: -webkit-fill-available;
+  }
+
+  .contactList {
+    width: 380px;
   }
 
   .contactEmail {
@@ -147,6 +150,7 @@
 
   .addContactIcon {
     left: 230px;
+    position: sticky;
   }
 
   .addNewContactOverlay {
@@ -157,19 +161,53 @@
     width: 280px;
   }
 
+  .contactsOverlayHeadline {
+    font-size: 24px;
+    width: 150px;
+  }
+
+  .contactsOverlaySubheadline {
+    width: 150px;
+    font-size: 18px;
+    margin-top: -15px;
+  }
+
   .overlayPersonContainer {
     width: 60px;
     height: 60px;
     left: calc((100vw - 60px) / 2);
+    top: 320px;
   }
 
   .overlayPersonLargeImg {
     width: 60px;
     height: 60px;
     left: calc((100vw - 60px) / 2);
+    top: 320px;
   }
 
   .overlayContactsInput {
-    width: 280px;
+    width: 240px;
+    font-size: 16px;
+  }
+
+  .overlayInputContainer {
+    width: 240px;
+  }
+
+  .contactButtons {
+    width: 101px;
+    left: calc((100vw - 140px) / 2);
+    position: absolute;
+  }
+
+  .contactCreateButton {
+    font-size: 16px;
+    width: 202px;
+  }
+
+  .whiteCloseOverlay {
+    right: calc((100vw - 280px) / 2);
+    left: 220px;
   }
 }
