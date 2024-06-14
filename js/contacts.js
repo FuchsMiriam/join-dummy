@@ -26,15 +26,6 @@ async function assignColorsToContacts(contacts) {
   }
 }
 
-/*function setBg() {
-  const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
-
-  elements.forEach((element, index) => {
-    const colorClass = colorClasses[index % colorClasses.length];
-    element.classList.add(colorClass);
-  });
-}*/
-
 function setBg() {
   const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
 
