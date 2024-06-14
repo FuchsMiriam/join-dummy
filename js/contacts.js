@@ -96,7 +96,7 @@ async function putData(path = "", data = {}) {
   return (responseToJson = await response.json());
 }
 
-/*Contact sidebar*/
+//Contact sidebar
 
 function getInitials(name) {
   const nameParts = name.split(" ");
@@ -364,6 +364,7 @@ async function createContact() {
     await putData(newID, contact);
     contacts.push({ id: newID, ...contact });
     showContacts();
+    setBg();
 
     document.getElementById("contactOverlay").classList.add("hidden");
 

@@ -93,7 +93,6 @@ async function deleteContactFromPopup() {
   }
 }
 
-
 // Funktion zum Schließen des Popups
 function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
