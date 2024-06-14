@@ -150,6 +150,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 25vh;
+  right: 8vw;
+  display: flex;
 }
 
 .dotIcon {
@@ -163,6 +167,10 @@
   border-radius: 56px;
   display: flex;
   position: fixed;
+  left: calc((100vw - 56px) / 2);
+  position: absolute;
+  bottom: 25vh;
+  right: 8vw;
 }
 
 .dotIconContainer:hover {
