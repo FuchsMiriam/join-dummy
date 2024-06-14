@@ -91,7 +91,7 @@
   /*Animation contact created overlay*/
 
   .contactCreatedOverlay {
-    position: absolute;
+    position: fixed;
     animation: myAnim 0.8s ease forwards !important;
     left: calc(50% - 163px);
     transition: bottom 0.8s ease;
@@ -209,5 +209,29 @@
   .whiteCloseOverlay {
     right: calc((100vw - 280px) / 2);
     left: 220px;
+  }
+
+  .contactCreatedOverlay {
+    position: fixed;
+    bottom: -100%;
+    left: calc((100vw - 310px) / 2);
+    transform: translateX(-50%);
+    width: 310px;
+    transition: bottom 0.8s ease;
+  }
+
+  @keyframes slideUp {
+    0% {
+      bottom: -100%;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+  
+  .contactCreatedOverlay.show {
+    animation: slideUp 0.8s ease forwards;
   }
 }
