@@ -56,6 +56,10 @@ body {
   border-radius: 50%;
 }
 
+.whiteCloseOverlay{
+  display: none;
+}
+
 /*Overlay left*/
 .leftOverlayContent {
   width: 467px;

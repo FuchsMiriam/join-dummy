@@ -61,6 +61,34 @@
     display: flex;
   }
 
+  .closeOverlayIcon {
+    display: none;
+  }
+
+  .whiteCloseOverlay {
+    top: 24px;
+    left: 348px;
+    padding: 4px;
+    gap: 0px;
+    border-radius: 56px;
+    opacity: 0px;
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .closeButtonWhite {
+    width: 32px;
+    height: 32px;
+    border-radius: 56px;
+  }
+
+  .closeButtonWhite:hover {
+    border: 1px solid #29abe2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    background-color: #29abe2;
+  }
+
   .leftOverlayContent {
     width: 396px;
     height: 352px;
@@ -140,6 +168,23 @@
     width: 364px;
     height: 41px;
     gap: 8px;
+  }
+
+  .contactCancelButton {
+    display: none;
+  }
+
+  .contactButtons {
+    width: 202px;
+    height: 51px;
+    top: 629px;
+    left: 97px;
+    padding: 18px 10px 18px 10px;
+    gap: 4px;
+    border-radius: 10px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
   }
 }
 
