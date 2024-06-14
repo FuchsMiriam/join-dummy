@@ -289,10 +289,10 @@
           <img id="dotIcon" src="../assets/img/dotIcon.svg" alt="Dot Icon" class="dotIcon" onclick="togglePopup(event)">
       </div>
       <div id="popupOverlay" class="popupOverlay hidden">
-        <button class="popupEditContactButton" onclick="editContact()">
+        <button class="popupEditContactButton" onclick="editContactFromPopup()">
           <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
         </button>
-        <button class="popupDeleteContactButton" onclick="deleteContact('${contact.id}')">
+        <button class="popupDeleteContactButton" onclick="deleteContactFromPopup()">
           <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
         </button>
       </div>
