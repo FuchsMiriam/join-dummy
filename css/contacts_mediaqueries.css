@@ -45,7 +45,8 @@
   .addNewContactOverlay {
     position: fixed;
     top: 50%;
-    left: calc((100vw -396px) / 2) !important;
+    /*left: calc((100vw -396px) / 2) !important;*/
+    left: calc(100vw- 396px);
     transform: translate(-50%, -50%);
     background-color: white;
     box-shadow: -4px 0 6px 0 rgba(0, 0, 0, 0.1);
@@ -476,6 +477,26 @@
     cursor: pointer;
     border: none;
     align-items: center;
+  }
+
+  /*Animation contact created overlay*/
+
+  .contactCreatedOverlay{
+    position: absolute;
+    animation: myAnim 0.8s ease forwards!important;
+    left: calc(50% - 163px);
+    transition: bottom 0.8s ease;
+  }
+
+  @keyframes myAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(250px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
