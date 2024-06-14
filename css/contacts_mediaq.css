@@ -1,138 +1,175 @@
-
 @media (max-width: 768px) {
-    .headlinesContainer {
-      display: none;
-      position: absolute;
-      z-index: 1;
+  .headlinesContainer {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .contactsArrow {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    top: 128px;
+    left: calc((100vw - 338px) / 2);
+    gap: 0px;
+    opacity: 0px;
+    position: absolute;
+    background-image: url(../assets/img/signupArrow.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: -10px;
+  }
+
+  .headlinesContainer {
+    left: calc((100vw - 461px) / 2);
+  }
+
+  .contactsFullscreen.in {
+    left: calc((100vw - 461px) / 2);
+  }
+
+  .contactDetailsButtons {
+    display: none;
+  }
+
+  .popupOverlay {
+    width: 116px;
+    height: 100px;
+    padding: 10px;
+    gap: 0px;
+    border-radius: 20px 20px 0px 20px;
+    position: absolute;
+    display: flex;
+    top: 758px;
+    top: calc((100vh / 2));
+    left: 200px;
+    background-color: white;
+    flex-direction: column;
+  }
+
+  .popupOverlay button:hover {
+    color: #29abe2;
+    font-weight: 700;
+  }
+
+  .popupOverlay button.popupEditContactButton:hover img {
+    content: url("../assets/img/editHover.svg");
+  }
+
+  .popupOverlay button.popupDeleteContactButton:hover img {
+    content: url("../assets/img/deleteHover.svg");
+  }
+
+  .popupEditContactButton {
+    width: 96px;
+    height: 40px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+    opacity: 0px;
+    display: flex;
+    display: flex;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+  }
+
+  .popupDeleteContactButton {
+    width: 96px;
+    height: 40px;
+    padding: 8px 0px 0px 0px;
+    gap: 8px;
+    opacity: 0px;
+    display: flex;
+    display: flex;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+  }
+
+  /*Animation contact created overlay*/
+
+  .contactCreatedOverlay {
+    position: absolute;
+    animation: myAnim 0.8s ease forwards !important;
+    left: calc(50% - 163px);
+    transition: bottom 0.8s ease;
+  }
+
+  @keyframes myAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(250px);
     }
-  
-    .contactsArrow {
-      display: flex;
-      width: 32px;
-      height: 32px;
-      top: 128px;
-      left: calc((100vw - 338px) / 2);
-      gap: 0px;
-      opacity: 0px;
-      position: absolute;
-      background-image: url(../assets/img/signupArrow.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      top: -10px;
-    }
-  
-    .headlinesContainer {
-      left: calc((100vw - 461px) / 2);
-    }
-  
-    .contactsFullscreen.in {
-      left: calc((100vw - 461px) / 2);
-    }
-  
-    .contactDetailsButtons {
-      display: none;
-    }
-  
-    .popupOverlay {
-      width: 116px;
-      height: 100px;
-      padding: 10px;
-      gap: 0px;
-      border-radius: 20px 20px 0px 20px;
-      position: absolute;
-      display: flex;
-      top: 758px;
-      top: calc((100vh / 2));
-      left: 200px;
-      background-color: white;
-      flex-direction: column;
-    }
-  
-    .popupOverlay button:hover {
-      color: #29abe2;
-      font-weight: 700;
-    }
-  
-    .popupOverlay button.popupEditContactButton:hover img {
-      content: url("../assets/img/editHover.svg");
-    }
-  
-    .popupOverlay button.popupDeleteContactButton:hover img {
-      content: url("../assets/img/deleteHover.svg");
-    }
-  
-    .popupEditContactButton {
-      width: 96px;
-      height: 40px;
-      padding: 8px 0px 0px 0px;
-      gap: 8px;
-      opacity: 0px;
-      display: flex;
-      display: flex;
-      background-color: white;
-      cursor: pointer;
-      border: none;
-      align-items: center;
-    }
-  
-    .popupDeleteContactButton {
-      width: 96px;
-      height: 40px;
-      padding: 8px 0px 0px 0px;
-      gap: 8px;
-      opacity: 0px;
-      display: flex;
-      display: flex;
-      background-color: white;
-      cursor: pointer;
-      border: none;
-      align-items: center;
-    }
-  
-    /*Animation contact created overlay*/
-  
-    .contactCreatedOverlay{
-      position: absolute;
-      animation: myAnim 0.8s ease forwards!important;
-      left: calc(50% - 163px);
-      transition: bottom 0.8s ease;
-    }
-  
-    @keyframes myAnim {
-      0% {
-        opacity: 0;
-        transform: translateY(250px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-  
-  @media (max-width: 428px) or (height: 766px) {
-    .contactsSidebar {
-      width: 428px;
-      height: 766px;
-      top: 80px;
-      padding: 0px 14px 0px 14px;
-      gap: 0px;
-      display: flex;
-    }
-  
-    .addContactButton {
-      font-size: 0;
-    }
-  
-    .addContactButton img {
-      width: 56px;
-      height: 56px;
-      top: 758px;
-      left: 356px;
-      padding: 12px 0px 0px 0px;
-      gap: 10px;
-      border-radius: 46px 0px 0px 0px;
-      border: 1px solid transparent;
-    }
+}
+
+@media (max-width: 428px) or (height: 766px) {
+  .contactsSidebar {
+    width: 428px;
+    height: 766px;
+    top: 80px;
+    padding: 0px 14px 0px 14px;
+    gap: 0px;
+    display: flex;
   }
-  
+
+  .addContactButton {
+    font-size: 0;
+  }
+
+  .addContactButton img {
+    width: 56px;
+    height: 56px;
+    top: 758px;
+    left: 356px;
+    padding: 12px 0px 0px 0px;
+    gap: 10px;
+    border-radius: 46px 0px 0px 0px;
+    border: 1px solid transparent;
+  }
+}
+
+@media (max-width: 320px) {
+  .contactsSidebar {
+    width: 320px;
+    height: -webkit-fill-available;
+  }
+
+  .contactEmail {
+    font-size: 14px;
+  }
+
+  .addContactIcon {
+    left: 230px;
+  }
+
+  .addNewContactOverlay {
+    width: 280px;
+  }
+
+  .leftOverlayContent {
+    width: 280px;
+  }
+
+  .overlayPersonContainer {
+    width: 60px;
+    height: 60px;
+    left: calc((100vw - 60px) / 2);
+  }
+
+  .overlayPersonLargeImg {
+    width: 60px;
+    height: 60px;
+    left: calc((100vw - 60px) / 2);
+  }
+
+  .overlayContactsInput {
+    width: 280px;
+  }
+}
