@@ -22,7 +22,7 @@
     width: 59px;
     height: 3px;
     transform: translateX(-260%);
-    bottom: -20px;
+    bottom: -10px;
   }
 
   .subheadingContacts {
@@ -386,13 +386,21 @@
     position: absolute;
     left: 0;
   }
+}
+
+@media (max-width: 768px) {
+  .headlinesContainer {
+    display: none;
+    position: absolute;
+    z-index: 1;
+  }
 
   .contactsArrow {
     display: flex;
     width: 32px;
     height: 32px;
     top: 128px;
-    left: 380px;
+    left: calc((100vw - 338px) / 2);
     gap: 0px;
     opacity: 0px;
     position: absolute;
@@ -400,6 +408,14 @@
     background-size: contain;
     background-repeat: no-repeat;
     top: -10px;
+  }
+
+  .headlinesContainer {
+    left: calc((100vw - 461px) / 2);
+  }
+
+  .contactsFullscreen.in {
+    left: calc((100vw - 461px) / 2);
   }
 }
 
@@ -426,32 +442,5 @@
     gap: 10px;
     border-radius: 46px 0px 0px 0px;
     border: 1px solid transparent;
-  }
-
-  /*Dot icon edit overlay*/
-
-  .dotIconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .dotIcon {
-    cursor: pointer;
-    width: 56px;
-    height: 56px;
-    top: 758px;
-    left: 356px;
-    padding: 12px 0px 0px 0px;
-    gap: 10px;
-    border-radius: 56px;
-    display: flex;
-    position: fixed;
-  }
-
-  .dotIconContainer:hover {
-    background-image: url(../assets/img/dotIconBlue.svg);
-    border: none;
-    box-shadow: 0px 4px 4px 0px #00000040;
   }
 }

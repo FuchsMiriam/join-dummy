@@ -3,7 +3,15 @@ const contactsURL =
 
 let contacts = [];
 
-const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
+const colorClasses = [
+  "orange",
+  "purple",
+  "blue",
+  "pink",
+  "yellow",
+  "green",
+  "red",
+];
 let currentContact = 0;
 
 async function initializePage() {
@@ -27,11 +35,13 @@ async function assignColorsToContacts(contacts) {
 }
 
 function setBg() {
-  const elements = document.querySelectorAll(".contactInitials, .contactDetailsInitials, .overlayInitialsContainer");
+  const elements = document.querySelectorAll(
+    ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
+  );
 
   elements.forEach((element) => {
     const initials = element.textContent.trim();
-    const contact = contacts.find(c => getInitials(c.name) === initials);
+    const contact = contacts.find((c) => getInitials(c.name) === initials);
     if (contact && contact.colorClass) {
       element.classList.add(contact.colorClass);
     }
@@ -68,10 +78,11 @@ async function fetchContacts(path = "") {
     contacts = data
       ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
       : [];
-    
-    contacts.forEach(contact => {
+
+    contacts.forEach((contact) => {
       if (!contact.colorClass) {
-        contact.colorClass = colorClasses[contacts.indexOf(contact) % colorClasses.length];
+        contact.colorClass =
+          colorClasses[contacts.indexOf(contact) % colorClasses.length];
       }
     });
   } catch (error) {
@@ -221,7 +232,7 @@ function createContactDetailsHTML(contact, index) {
   setBg();
 }
 
-function showContactDetails(index) {
+/*function showContactDetails(index) {
   let contact = 0;
   if (index == null) {
     contact = contacts[currentContact];
@@ -229,6 +240,105 @@ function showContactDetails(index) {
     contact = contacts[index];
   }
   createContactDetailsHTML(contact);
+  document.getElementById("contactsFullscreen").classList.remove("out");
+  document.getElementById("contactsFullscreen").classList.add("in");
+
+  // Highlight the active contact in the sidebar
+  let contactDivs = document.querySelectorAll(".contactListInner");
+  contactDivs.forEach((contactDiv, i) => {
+    if (i === index) {
+      contactDiv.classList.add("active");
+      contactDiv.classList.add("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#ffffff";
+    } else {
+      contactDiv.classList.remove("active");
+      contactDiv.classList.remove("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#000000";
+    }
+  });
+
+  //Open editing
+  const editButton = document.querySelector(".editContactButton");
+  editButton.onclick = function () {
+    editContact(contact);
+  };
+}*/
+
+//Show dot icon
+function showDotIcon() {
+  if (window.innerWidth <= 768) {
+    const dotIcon = document.getElementById("dotIcon");
+    dotIcon.style.display = "flex";
+  }
+}
+
+// Function to hide the dotIcon
+function hideDotIcon() {
+  const dotIcon = document.getElementById("dotIcon");
+  dotIcon.style.display = "none";
+}
+
+// Event listener to control the visibility of the dotIcon
+document.addEventListener("DOMContentLoaded", function () {
+  const contactsFullscreen = document.getElementById("contactsFullscreen");
+
+  // Check if contactsFullscreen is visible when the page loads
+  if (contactsFullscreen.classList.contains("in")) {
+    showDotIcon();
+  } else {
+    hideDotIcon();
+  }
+
+  // Event listener for changes in the contactsFullscreen class
+  contactsFullscreen.addEventListener("transitionend", function () {
+    if (contactsFullscreen.classList.contains("in")) {
+      showDotIcon();
+    } else {
+      hideDotIcon();
+    }
+  });
+});
+
+function showContactDetails(index) {
+  let contact = 0;
+  if (index == null) {
+    contact = contacts[currentContact];
+  } else {
+    contact = contacts[index];
+  }
+
+  createContactDetailsHTML(contact);
+
+  // Adjustments for display based on screen width
+  if (window.innerWidth <= 768) {
+    // Hide the contactsSidebar when showContactDetails is called
+    const contactsSidebar = document.querySelector(".contactsSidebar");
+    contactsSidebar.style.display = "none";
+
+    // Show the headlinesContainer above the contactsSidebar only when needed
+    const headlinesContainer = document.querySelector(".headlinesContainer");
+    headlinesContainer.style.display = "block"; // Zeige den Container nur hier an
+
+    // Show the arrow (contactsArrow) and ensure it returns to the Contacts page
+    const contactsArrow = document.querySelector(".contactsArrow");
+    contactsArrow.style.display = "block";
+    contactsArrow.addEventListener("click", function (event) {
+      event.preventDefault(); // Verhindere den Standard-Link-Klick
+      window.location.href = "../html/contacts.html"; // Gehe zur Contacts-Seite
+    });
+  } else {
+    // For larger screen widths, reset to the normal layout
+    const contactsSidebar = document.querySelector(".contactsSidebar");
+    contactsSidebar.style.display = "block";
+
+    const headlinesContainer = document.querySelector(".headlinesContainer");
+    headlinesContainer.style.display = "block";
+
+    const contactsArrow = document.querySelector(".contactsArrow");
+    contactsArrow.style.display = "none";
+  }
+
+  // Additional logic for displaying contact information, etc.
   document.getElementById("contactsFullscreen").classList.remove("out");
   document.getElementById("contactsFullscreen").classList.add("in");
 
@@ -249,6 +359,7 @@ function showContactDetails(index) {
   editButton.onclick = function () {
     editContact(contact);
   };
+  showDotIcon();
 }
 
 /*Delete contact*/
@@ -343,15 +454,19 @@ async function saveContact() {
 
 /*Close Edit contact overlay*/
 
-document.getElementById("closeEditOverlay").addEventListener("click", function () {
-  document.querySelector(".editContactOverlay").classList.add("hidden");
-});
+document
+  .getElementById("closeEditOverlay")
+  .addEventListener("click", function () {
+    document.querySelector(".editContactOverlay").classList.add("hidden");
+  });
 
 /*Close small edit contact overlay*/
 
-document.getElementById("whiteCloseEditOverlay").addEventListener("click", function () {
-  document.querySelector(".editContactOverlay").classList.add("hidden");
-});
+document
+  .getElementById("whiteCloseEditOverlay")
+  .addEventListener("click", function () {
+    document.querySelector(".editContactOverlay").classList.add("hidden");
+  });
 
 /*Create contact*/
 
@@ -404,4 +519,3 @@ async function generateCustomID() {
   const nextID = contacts.length + 1;
   return `contact${nextID}`;
 }
-
