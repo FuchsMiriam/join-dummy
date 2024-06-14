@@ -363,15 +363,7 @@ input[type="tel"]:focus {
 
 .contactListInner.active {
   background: #2a3647;
-} 
-
-/* .contactListInner:hover {
-  background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
 }
-
-.contactListInner:not(.nohover):hover {
-  background: #2a3647;
-} */
 
 .contactListInner:hover:not(.nohover) {
   background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);

@@ -258,6 +258,7 @@
       </div>
 
       <div class="headlinesContainer">
+        <a class="contactsArrow" href="../html/contacts.html"></a>
         <div class="contactsHeadlineContainer">
           <h1 class="contactsHeadline">Contacts</h1>
           <h2 class="subheadingContacts">Better with a team</h2>
@@ -268,12 +269,16 @@
           class="contactsFullscreen"
           onclick="showContactDetails()"
         ></div>
+        <div class="dotIconContainer">
+          <img id="dotIcon" src="../assets/img/dotIcon.svg" alt="Dot Icon" class="dotIcon" onclick="togglePopup(event)">
+      </div>
       </div>
    
       <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
     </div>
 
     <script src="../js/contacts.js"></script>
+    <script src="../js/contacts_mediaqueries.js"></script>
     <script src="../js/template.js"></script>
   </body>
 </html>

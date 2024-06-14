@@ -358,3 +358,11 @@
 .addContactIcon{
   display: none;
 }
+
+.contactsArrow{
+  display: none;
+}
+
+.dotIconContainer{
+  display: none;
+}

@@ -408,3 +408,4 @@ async function generateCustomID() {
   const nextID = contacts.length + 1;
   return `contact${nextID}`;
 }
+
