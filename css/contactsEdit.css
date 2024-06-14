@@ -146,27 +146,33 @@
 
 /*Media query Dot icon edit overlay*/
 
-  .dotIconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.dotIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .dotIcon {
-    cursor: pointer;
-    width: 56px;
-    height: 56px;
-    top: 758px;
-    left: 356px;
-    padding: 12px 0px 0px 0px;
-    gap: 10px;
-    border-radius: 56px;
-    display: flex;
-    position: fixed;
-  }
+.dotIcon {
+  cursor: pointer;
+  width: 56px;
+  height: 56px;
+  top: 758px;
+  left: 356px;
+  padding: 12px 0px 0px 0px;
+  gap: 10px;
+  border-radius: 56px;
+  display: flex;
+  position: fixed;
+}
 
-  .dotIconContainer:hover {
-    background-image: url(../assets/img/dotIconBlue.svg);
-    border: none;
-    box-shadow: 0px 4px 4px 0px #00000040;
-  }
+.dotIconContainer:hover {
+  background-image: url(../assets/img/dotIconBlue.svg);
+  border: none;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/*Dot icon - popup edit and delete buttons*/
+
+/*.popupOverlay {
+  display: none;
+}*/

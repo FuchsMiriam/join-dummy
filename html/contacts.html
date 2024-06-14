@@ -288,6 +288,14 @@
         <div class="dotIconContainer">
           <img id="dotIcon" src="../assets/img/dotIcon.svg" alt="Dot Icon" class="dotIcon" onclick="togglePopup(event)">
       </div>
+      <div id="popupOverlay" class="popupOverlay">
+        <button class="popupEditContactButton" onclick="editContact()">
+          <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
+        </button>
+        <button class="popupDeleteContactButton" onclick="deleteContact('${contact.id}')">
+          <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
+        </button>
+      </div>
       </div>
    
       <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
