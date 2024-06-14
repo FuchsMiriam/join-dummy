@@ -71,7 +71,6 @@
     padding: 4px;
     gap: 0px;
     border-radius: 56px;
-    opacity: 0px;
     position: absolute;
     display: flex;
     cursor: pointer;
@@ -126,7 +125,6 @@
     width: 275px;
     height: 24px;
     gap: 0px;
-    opacity: 0px;
     display: block;
     font-family: Inter;
     font-size: 20px;
@@ -243,7 +241,6 @@
     padding: 4px;
     gap: 0px;
     border-radius: 56px;
-    opacity: 0px;
     position: absolute;
     display: flex;
     cursor: pointer;
