@@ -48,29 +48,6 @@ function setBg() {
   });
 }
 
-/*function saveContactColors(contactColors) {
-  localStorage.setItem("contactColors", JSON.stringify(contactColors));
-}
-
-function loadContactColors() {
-  const storedColors = localStorage.getItem("contactColors");
-  return storedColors ? JSON.parse(storedColors) : {};
-}*/
-
-/*Fetch, add, delete, update contacts*/
-
-/*async function fetchContacts(path = "") {
-  try {
-    const response = await fetch(contactsURL + path + ".json");
-    const data = await response.json();
-    contacts = data
-      ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
-      : [];
-  } catch (error) {
-    console.error("Fehler beim Abrufen der Kontakte:", error);
-  }
-}*/
-
 async function fetchContacts(path = "") {
   try {
     const response = await fetch(contactsURL + path + ".json");
@@ -179,90 +156,6 @@ async function showContacts() {
 }
 
 contacts.sort();
-
-/*Open Add contact overlay*/
-
-function openOverlay() {
-  document.querySelector(".addNewContactOverlay").classList.remove("hidden");
-  document.querySelector(".addNewContactOverlay").classList.add("visible");
-}
-
-/*Close Add contact overlay*/
-
-document.getElementById("closeOverlay").addEventListener("click", function () {
-  document.getElementById("contactOverlay").classList.add("hidden");
-  document.getElementById("contactOverlay").classList.remove("visible");
-});
-
-/*Contact view on the right side*/
-
-function createContactDetailsHTML(contact, index) {
-  document.getElementById("contactsFullscreen").innerHTML = `
-    <div class="fullContactDetails">
-      <div class="fullContactHeader">
-        <div class="contactDetailsInitials">${getInitials(contact.name)}</div>
-        <div class="contactNameButtons"><div class="contactDetailsName">${
-          contact.name
-        }</div>
-        <div class="contactDetailsButtons">
-          <button class="editContactButton" onclick="editContact()">
-            <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
-          </button>
-          <button class="deleteContactButton" onclick="deleteContact('${
-            contact.id
-          }')">
-            <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
-          </button>
-        </div>
-        </div>
-      </div>
-      <div class="contactInfoHeader">Contact Information</div>
-      <div class="contactInfoDetails">
-        <div class="contactInfoEmail">
-          <div class="contactInfoLabelEmail">Email</div>
-          <div class="contactInfoValueEmail">${contact.email}</div>
-        </div>
-        <div class="contactInfoPhone">
-          <div class="contactInfoLabelPhone">Phone</div>
-          <div class="contactInfoValuePhone">${contact.phone}</div>
-        </div>
-      </div>
-    </div>
-  `;
-  setBg();
-}
-
-/*function showContactDetails(index) {
-  let contact = 0;
-  if (index == null) {
-    contact = contacts[currentContact];
-  } else {
-    contact = contacts[index];
-  }
-  createContactDetailsHTML(contact);
-  document.getElementById("contactsFullscreen").classList.remove("out");
-  document.getElementById("contactsFullscreen").classList.add("in");
-
-  // Highlight the active contact in the sidebar
-  let contactDivs = document.querySelectorAll(".contactListInner");
-  contactDivs.forEach((contactDiv, i) => {
-    if (i === index) {
-      contactDiv.classList.add("active");
-      contactDiv.classList.add("nohover");
-      contactDiv.querySelector(".contactName").style.color = "#ffffff";
-    } else {
-      contactDiv.classList.remove("active");
-      contactDiv.classList.remove("nohover");
-      contactDiv.querySelector(".contactName").style.color = "#000000";
-    }
-  });
-
-  //Open editing
-  const editButton = document.querySelector(".editContactButton");
-  editButton.onclick = function () {
-    editContact(contact);
-  };
-}*/
 
 //Show dot icon
 function showDotIcon() {
@@ -451,22 +344,6 @@ async function saveContact() {
   document.querySelector(".editContactOverlay").classList.add("hidden");
   document.querySelector(".editContactOverlay").classList.remove("visible");
 }
-
-/*Close Edit contact overlay*/
-
-document
-  .getElementById("closeEditOverlay")
-  .addEventListener("click", function () {
-    document.querySelector(".editContactOverlay").classList.add("hidden");
-  });
-
-/*Close small edit contact overlay*/
-
-document
-  .getElementById("whiteCloseEditOverlay")
-  .addEventListener("click", function () {
-    document.querySelector(".editContactOverlay").classList.add("hidden");
-  });
 
 /*Create contact*/
 
