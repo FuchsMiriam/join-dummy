@@ -17,6 +17,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeAddOverlay").addEventListener("click", function () {
         document.querySelector(".addNewContactOverlay").classList.add("hidden");
-        document.querySelector(".addNewContactOverlay").classList.remove("visible");
     });
   });
