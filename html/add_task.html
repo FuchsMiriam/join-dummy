@@ -13,7 +13,7 @@
     <script src="../js/template.js"></script>
     <script src="../js/add_task.js"></script>
     <script src="../js/add_task_template.js"></script>
-    <script src="../js/board.js"></script>
+    <!-- <script src="../js/board.js"></script> -->
 </head>
 
 <body onload="includeHTML(); init()">
@@ -24,7 +24,7 @@
         </div>
         <section id="content">
             <div class="content-left">
-                <form onsubmit="return false">
+                <form onsubmit="addTask(); return false">
                     <label for="input-title">Title<span class="span-star">*</span></label>
                     <input type="text" id="input-title" placeholder="Enter a Title" required>
                 </form>
@@ -45,7 +45,7 @@
             <div class="seperator" id="seperator-content"></div>
 
             <div class="content-right">
-                <form onsubmit="return false">
+                <form onsubmit="addTask(); return false">
                     <label for="input-date">Due Date<span class="span-star">*</span></label>
                     <input id="input-date" type="date" required>
                 </form>
@@ -55,7 +55,7 @@
                     <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image btn"></div>
                     <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image btn"></div>
                 </div>
-                <form onsubmit="return false">
+                <form onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
                     <input list="input-categorie" id="input-category" required>
                     <datalist id="input-categorie">

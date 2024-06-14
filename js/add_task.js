@@ -5,16 +5,25 @@ let contactsNames = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
+let tasksBoard = [];
 const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 
 
 async function init() {
-    addSubTask();
     await getNamesFromArray();
     await fetchContacts();
+    await loadTasks();
     load()
+    showSubtask();
+}
+
+async function loadTasks() {
+    let response = await fetch(TASK_URL + ".json");
+    let responseToJson = await response.json();
+    tasksBoard = responseToJson;
+    console.log(tasksBoard); 
 }
 
 
@@ -49,12 +58,22 @@ async function putData(path = "", data = {}) {
 }
 
 
-async function getNamesFromArray() {
+function getNamesFromArray() {
     contactsNames = contacts.map(contact => contact.name);
+}
+
+function ifIsListContactsLoaded() {
+    if (listContactsLoaded == false) {
+        listContactsLoaded = true;
+        showContacts();
+        closeButtonForShowContacts();
+        
+    }
 }
 
 
 function showContacts() {
+    console.log('showContacts aufrufen', 'listContactsLoaded: ', listContactsLoaded);
     let container = document.getElementById('show-contacts');
 
     for (let i = 0; i < contacts.length; i++) {
@@ -65,16 +84,6 @@ function showContacts() {
             displayContactsTemplate(i, contact);
     }
 }
-
-
-function ifIsListContactsLoaded() {
-        if (listContactsLoaded == false) {
-            showContacts();
-            closeButtonForShowContacts();
-            listContactsLoaded = true;
-        }
-    }
-
 
 
 function closeButtonForShowContacts() {
@@ -91,6 +100,7 @@ function closeButtonForShowContacts() {
 
 
 function closeContacts() {
+    console.log('closeContacts aufgerufen');
     let buttonContacts = document.getElementById('close-contacts');
 
     document.getElementById('show-contacts').classList.add('d-none');
@@ -100,12 +110,14 @@ function closeContacts() {
                 <span>+</span>
             </div>
         `;
+        listContactsLoaded = false;
+        console.log('lisContactsLoaded auf', listContactsLoaded, 'gesetzt');
 }
 
 //-------------Begin initials functions--------------//
 function addInitials(i) {
     let ini = document.getElementById('display-initials');
-    const initials = getInitials(contactsNames[i]);
+    const initials = getInitials(contacts[i].name);
     assigned = contactsNames[i];
     initial.push(initials);
 
@@ -122,7 +134,6 @@ function getInitials(name) {
     const initials = nameParts.map(part => part.charAt(0)).join('');
 
     return initials;
-    
 }
 //-------------End initials functions--------------//
 
@@ -131,13 +142,13 @@ function clearInputs() {
     document.getElementById('input-description').value = '';
     document.getElementById("input-date").valueAsDate = null;
     document.getElementById('input-subtask').value = '';
+    document.getElementById('show-subtask').innerHTML = '';
     document.getElementById('input-category').value = '';
     document.getElementById('display-initials').innerHTML = '';
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
     task.splice(0, task.length);
-    addSubTask();
 }
 
 
@@ -176,7 +187,7 @@ function showSubtask() {
 function addSubTask() {
     let input = document.getElementById('input-subtask');
 
-    if (input == '') {
+    if (input.value.trim() == '') {
         alert('Bitte eintrag hinzufügen')
     } else {
         task.push(input.value);
@@ -187,25 +198,13 @@ function addSubTask() {
 }
 
 
-function editSubtask() {
-    let subtask = document.getElementById(`subtask${i}`);
-    let input = document.getElementById('input-subtask');
-    document.getElementById(subtask).innerHTML = `
-        <ul id="subtask${i}">
-        <li onclick="editValue()" class="subtask-span">
-            <span onclick="postData${i}()">${input.value}</span>
-        </li>
-    </ul>
-    `;
-}
-
 async function createTask() {
     let title = document.getElementById('input-title');
     let description = document.getElementById('input-description');
-    let initial = getInitial(initial);
     let assigned = document.getElementById('show-contacts');
     let date = document.getElementById('input-date');
     let category = document.getElementById('input-category');
+    // let initial = addInitials(initial);
     let subtask = getTask();
 
     let task =  {
@@ -217,13 +216,25 @@ async function createTask() {
         subtask: subtask,
     };
     
-    while(tasks == null){
-        tasks = loadTasks();
-      };
+    tasksBoard.push(task);
+    putData(path="", taskBoard);
+    clearInputs();
+}
 
-    tasks.push(exampleTask);
+function getPrio(clicked) {
+    let prio1 = document.getElementById('input-prio1');
+    let prio2 = document.getElementById('input-prio2');
+    let prio3 = document.getElementById('input-prio3');
 
-    await putData("", tasks);
+    if(prio1 == isClicked) {
+        return clicked1;
+    }
+    if(prio2 == isClicked) {
+        return clicked2;
+    }
+    if(prio3 == isClicked) {
+        return clicked3;
+    }
 }
 
 function getTask() {
@@ -247,6 +258,7 @@ function changePrioButtonUrgent() {
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+    isClicked = true;
 }
 
 
@@ -254,6 +266,7 @@ function changePrioButtonMedium() {
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button_active.svg)";
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
+    isClicked = true;
 }
 
 
@@ -261,6 +274,7 @@ function changePrioButtonLow() {
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
+    isClicked = true;
 }
 
 

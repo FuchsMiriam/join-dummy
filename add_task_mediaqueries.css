@@ -3,18 +3,26 @@
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        height: 700px;
+        height: 600px;
+    }
+
+    .content-left {
+        height: auto;
     }
 
     #seperator-content {
         display: none;
     }
 
+    #display-initials {
+        padding-bottom: 20px;
+    }
+
     .footer {
         margin-top: 0;
         justify-content: left;
         position: fixed;
-        bottom: 0;
+        bottom: 80px;
     }
 
     .footer span{

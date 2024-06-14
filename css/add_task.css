@@ -118,7 +118,6 @@ input {
 }
 
 .input-container-contacts {
-    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;   
@@ -127,12 +126,12 @@ input {
 
 #display-initials {
     display: grid;
-    position: fixed;
     bottom: 330px;
     z-index: -1;
     width: 440px;
     grid-template-columns: repeat(8, 1fr);
     grid-row-gap: 30px;
+    padding-top: 20px;
 }
 
 .input-container {
@@ -186,7 +185,10 @@ input {
     height: 40px;
     width: 440px;
     background-color: #2A3647;
-    color: white;
+}
+
+.display-contacts-dropdown:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .contact-span:hover {

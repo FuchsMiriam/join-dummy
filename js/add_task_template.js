@@ -14,12 +14,10 @@ function displayContactsTemplate(i, contact) {
 
 function showSubtaskTemplate(i, tasks) {
     return `
-    <ul id="subtask${i}">
-        <li onclick="editValue()" class="subtask-span">
-            <span onclick="postData${i}()">${tasks}</span>
+        <li onclick="editValue()" class="subtask-span" id="subtask${i}">
+            <span onclick="editSubtask()">${tasks}</span>
             <img id="hover-image-1"></img>
             <img id="hover-image-2"></img>
         </li>
-    </ul>
 `;
 }
