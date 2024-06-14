@@ -344,7 +344,12 @@ async function saveContact() {
 /*Close Edit contact overlay*/
 
 document.getElementById("closeEditOverlay").addEventListener("click", function () {
-  document.querySelector(".editContactOverlay").classList.remove("visible");
+  document.querySelector(".editContactOverlay").classList.add("hidden");
+});
+
+/*Close small edit contact overlay*/
+
+document.getElementById("whiteCloseEditOverlay").addEventListener("click", function () {
   document.querySelector(".editContactOverlay").classList.add("hidden");
 });
 

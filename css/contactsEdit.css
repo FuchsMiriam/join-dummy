@@ -17,7 +17,7 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .leftOverlayContentEdit {
@@ -31,6 +31,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  border-radius: 30px 0px 0px 30px;
 }
 
 .editOverlayHeadline {
