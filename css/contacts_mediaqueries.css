@@ -425,7 +425,6 @@
   .popupOverlay {
     width: 116px;
     height: 100px;
-    left: calc((100vw - 116px) / 2);
     padding: 10px;
     gap: 0px;
     border-radius: 20px 20px 0px 20px;
@@ -433,9 +432,22 @@
     display: flex;
     top: 758px;
     top: calc((100vh / 2));
-    left: 356px;
+    left: 200px;
     background-color: white;
     flex-direction: column;
+  }
+
+  .popupOverlay button:hover {
+    color: #29abe2;
+    font-weight: 700;
+  }
+
+  .popupOverlay button.popupEditContactButton:hover img {
+    content: url("../assets/img/editHover.svg");
+  }
+
+  .popupOverlay button.popupDeleteContactButton:hover img {
+    content: url("../assets/img/deleteHover.svg");
   }
 
   .popupEditContactButton {
@@ -465,7 +477,6 @@
     border: none;
     align-items: center;
   }
-
 }
 
 @media (max-width: 428px) or (height: 766px) {
