@@ -29,13 +29,13 @@ let exampleTask = {
 let result = false;
 function boardInit(){
     includeHTML();
-    loadTasks().then((result) => {
+    // loadTasks().then((result) => {
         // for(let i = 0; i<2; i++)
-        // tasks[0] = (exampleTask);
+        tasks[0] = (exampleTask);
         putData(path="", tasks);
         renderTasks();
-        hoverSidebar();
-    });
+        // hoverSidebar();
+    // });
 }
 
 async function loadTasks(){
@@ -128,18 +128,18 @@ function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     setBackColumns();
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].taskApplication == 0)
-            tasksToDo += addTask(i, "toDO");
+            tasksToDo += addTaskBoard(i, "toDO");
         else if(tasks[i].taskApplication == 1)
-            tasksInProgress += addTask(i, "inProgress");
+            tasksInProgress += addTaskBoard(i, "inProgress");
         else if(tasks[i].taskApplication == 2)
-            tasksAwaitFeedback += addTask(i, "awaitFeedback");
+            tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
         else if(tasks[i].taskApplication == 3)
-            tasksDone += addTask(i, "done");
+            tasksDone += addTaskBoard(i, "done");
     }
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
-function addTask(idTask, idApplication){
+function addTaskBoard(idTask, idApplication){
     document.getElementById(idApplication).innerHTML += cardHTML(idTask);
     return 1;
 }
@@ -185,13 +185,13 @@ function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback,
         let text = tasks[i].text;
         let title = tasks[i].title;
         if(tasks[i].taskApplication == 0 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
-            tasksToDo += addTask(i, "toDO");
+            tasksToDo += addTaskBoard(i, "toDO");
         else if(tasks[i].taskApplication == 1 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
-            tasksInProgress += addTask(i, "inProgress");
+            tasksInProgress += addTaskBoard(i, "inProgress");
         else if(tasks[i].taskApplication == 2 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
-            tasksAwaitFeedback += addTask(i, "awaitFeedback");
+            tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
         else if(tasks[i].taskApplication == 3 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
-            tasksDone += addTask(i, "done");
+            tasksDone += addTaskBoard(i, "done");
     }
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }

@@ -282,7 +282,7 @@ p {
   display: none;
 }
 
-@media (max-width: 1290px) {
+@media (max-width: 1440px) {
   .headerTitel {
     display: none;
   }
