@@ -246,6 +246,42 @@ p {
   font-weight: 700;
 }
 
+.headerNote{
+  /* width: 150px;
+  height: 158px; */
+  z-index: 2;
+  top: 96px;
+  left: calc(1440px - 150px - 24px);
+  position: absolute;
+  border-radius: 20px 0px 20px 20px;
+  padding: 10px;
+  background-color: rgba(42, 54, 71, 1);
+  box-shadow: 0 0 4px 0;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.headerNoteButton{
+  display: flex;
+  align-items: center;
+  width: 138px;
+  height: 46px;
+  border-radius: 8px;
+  padding: 8px 16px 8px 16px;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.2px;
+  color: rgba(205, 205, 205, 1);
+}
+
+.headerNoteButton:hover{
+  background-color: rgb(42, 62, 89);
+}
+
+.d-none{
+  display: none;
+}
+
 @media (max-width: 1290px) {
   .headerTitel {
     display: none;

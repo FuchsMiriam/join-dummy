@@ -76,3 +76,22 @@ function getInitials(name) {
 
   return initials;
 }
+
+let clickName = 0;
+function openNoteHeader(){
+  if(clickName)
+    clickName = 0;
+  else
+  clickName = 1;
+}
+
+window.addEventListener("click", function(event) {
+  if(clickName == 1){
+    document.getElementById("headerNote").classList.remove("d-none");
+    clickName = 2;
+  }
+  else{
+    document.getElementById("headerNote").classList.add("d-none");
+    clickName = 0;
+  }
+});

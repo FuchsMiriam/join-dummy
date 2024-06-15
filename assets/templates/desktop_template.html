@@ -15,9 +15,14 @@
         <img class="altImg" src="../../assets/img/logoLarge.svg" alt="Logo">
         <div class="headerImg">
             <div class="boundingHelp"><img class="imgHelp" src="../../assets/img/help.png" alt=""  onclick="location.href='help.html';"></div>
-            <div class="boundingProfil">
+            <div class="boundingProfil" onclick="openNoteHeader()">
                 <p id="idLoginName"></p>
             </div>
+        </div>
+        <div id="headerNote" class="headerNote d-none">
+            <div class="headerNoteButton" onclick="location.href='legal_notice.html';">Legal Notice</div>
+            <div class="headerNoteButton" onclick="location.href='privacy_policy.html';">Privacy Policy</div>
+            <div class="headerNoteButton" onclick="location.href='index.html';">Log out</div>
         </div>
     </header>
 
