@@ -62,5 +62,17 @@ function hoverSidebar(){
     document.getElementById("frameContacts").classList.add("nohover");
     document.getElementById("frameContacts").classList.add("menuFramesHover");
     document.getElementById("imgFrameContacts").classList.add("imgHoverContacts");
-  } 
+  }
+  setInitialsName(); 
+}
+
+function setInitialsName(){
+  document.getElementById("idLoginName").innerHTML = getInitials(loadLoginName());
+}
+
+function getInitials(name) {
+  const nameParts = name.split(' ');
+  const initials = nameParts.map(part => part.charAt(0)).join('');
+
+  return initials;
 }

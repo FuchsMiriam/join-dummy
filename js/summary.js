@@ -1,6 +1,7 @@
 let tasksBoard = [];
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let result2 = false;
+let loginName;
 
 async function summaryInit(){
   includeHTML();
@@ -8,7 +9,7 @@ async function summaryInit(){
       hoverSidebar();
       getSummary();
   });
-  await onloadDatabase();
+  // await onloadDatabase();
 }
 
 async function loadTasks(){
@@ -92,9 +93,12 @@ function getSummary(){
   document.getElementById("summaryNrTask").innerHTML = getNumberofTasks();
   document.getElementById("summaryNrUrgent").innerHTML = getNumberofUrgent();
   document.getElementById("summaryDate").innerHTML = getNextDate();
+  document.getElementById("greetingSummary").innerHTML = getGreeting();
+  document.getElementById("nameSummary").innerHTML = loadLoginName();
 }
 
 function getNextDate(){
+  let date = tasksBoard[0]["date"];
   let date1 = new Date(tasksBoard[0]["date"]);
   let date2;
 
@@ -102,25 +106,53 @@ function getNextDate(){
   {
     date2 = new Date(tasksBoard[i]["date"]);
     if(date2 < date1)
-      date1 = date2;
+      {
+        date = tasksBoard[i]["date"];
+        date1 = date2;
+      }
   }
-  return formatDate(date1);
+  return formatDate(date);
 }
 
 function formatDate(date) {
-  const month = date.toLocaleString('default', { month: 'long' });
-  const day = date.getDate();
-  const year = date.getFullYear();
-  return `${month} ${day}, ${year}`;
+  let dateParts = date.split("/");
+
+  let day = dateParts[0];
+  let month = dateParts[1];
+  let year = dateParts[2];
+
+  let monthNames = [
+      "January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"
+  ];
+
+  let monthName = monthNames[parseInt(month) - 1];
+  return `${monthName} ${day}, ${year}`;
 }
 
-const databaseURL =
-  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+function getGreeting(){
+  let currentDate = new Date(); 
+  let currentHour = currentDate.getHours();
 
-async function onloadDatabase(path = "") {
-  let response = await fetch(databaseURL + path + ".json");
-  let responseToJson = await response.json();
-  console.log(responseToJson);
-  return responseToJson;
+  if (currentHour >= 5 && currentHour < 12) 
+    return "Good Morning,";
+  else if (currentHour >= 12 && currentHour < 17) 
+    return "Good Afternoon,";
+  else if (currentHour >= 17 && currentHour < 22) 
+    return "Good Evening,";
+  else
+    return "Good Night,";
+}
+
+function getLoginName(name){
+  let nameAsText = JSON.stringify(name);
+  localStorage.setItem("name", nameAsText);
+}
+
+function loadLoginName() {
+  let nameAsText = localStorage.getItem("name", loginName);
+
+  if (nameAsText) 
+    return JSON.parse(nameAsText);
 }
 

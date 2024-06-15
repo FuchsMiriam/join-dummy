@@ -129,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Function for login
-
 async function loginUser() {
   let email = document.getElementById("loginEmailInput").value;
   let password = document.getElementById("loginPasswordInput").value;
@@ -141,6 +140,7 @@ async function loginUser() {
     );
 
     if (user) {
+      getLoginName(user.name);
       window.location.href = "./html/board.html";
       return true;
     }
@@ -231,4 +231,8 @@ document.getElementById("rememberMe").addEventListener("click", function () {
       document.getElementById("contentMainpage").classList.add("visibleMainpage");
       document.getElementById("contentMainpage").classList.remove("hiddenMainpage");
     });
+  }
+
+  function defineLoginName(){
+    return loginName;
   }
