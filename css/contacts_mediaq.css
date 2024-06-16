@@ -164,7 +164,7 @@
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 455px) {
   .contactsSidebar {
     width: 320px;
   }
@@ -198,12 +198,20 @@
     margin-top: -15px;
   }
 
-  .overlayPersonContainer,
+  .overlayPersonContainer {
+    width: 60px;
+    height: 60px;
+    top: 320px;
+    position: fixed;
+    left: calc(50% - 30px);
+  }
+
   .overlayPersonLargeImg {
     width: 60px;
     height: 60px;
-    left: calc((100vw - 60px) / 2);
     top: 320px;
+    position: fixed;
+    left: calc(50% - 30px);
   }
 
   .overlayContactsInput {
@@ -217,8 +225,8 @@
 
   .contactButtons {
     width: 101px;
-    left: calc((100vw - 202px) / 2);
-    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .contactCreateButton {
@@ -273,8 +281,10 @@
   .overlayInitialsContainer {
     width: 60px;
     height: 60px;
-    left: calc((100vw - 60px) / 2);
+    left: 50%;
+    transform: translateX(-50%);
     top: 320px;
+    position: fixed;
   }
 
   .editInitials {
@@ -285,6 +295,8 @@
 
   .editButtons {
     width: 101px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .editButtonOverlay,
@@ -356,8 +368,9 @@
 
   .contactButtons {
     width: 101px;
-    left: calc((100vw - 140px) / 2);
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .contactCreateButton {
@@ -410,7 +423,8 @@
   .overlayInitialsContainer {
     width: 60px;
     height: 60px;
-    left: calc((100vw - 60px) / 2);
+    left: 50%;
+    transform: translateX(-50%);
     top: 320px;
   }
 
@@ -422,8 +436,8 @@
 
   .editButtons {
     width: 101px;
-    left: calc((100vw - 140px) / 2);
-    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .editButtonOverlay {
