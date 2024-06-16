@@ -1,3 +1,5 @@
+/*Media query*/
+
 @media (max-width: 768px) {
   .headlinesContainer {
     display: none;
@@ -137,6 +139,8 @@
   }
 }
 
+/*Media query*/
+
 @media (max-width: 428px) and (height: 766px) {
   .contactsSidebar {
     width: 428px;
@@ -162,6 +166,8 @@
     border: 1px solid transparent;
   }
 }
+
+/*Media query*/
 
 @media (max-width: 455px) {
   .contactsSidebar {
@@ -308,6 +314,8 @@
     width: 100px;
   }
 }
+
+/*Media query*/
 
 @media (max-width: 320px) {
   .contactsSidebar {

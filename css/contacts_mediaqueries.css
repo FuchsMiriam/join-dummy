@@ -1,8 +1,12 @@
+/*Media query*/
+
 @media (max-width: 1420px) {
   .contactDetailsName {
     font-size: 28px;
   }
 }
+
+/*Media query*/
 
 @media (max-width: 1290px) {
   .contactsSidebar {
@@ -42,6 +46,7 @@
   }
 
   /*Add new contact overlay*/
+
   .addNewContactOverlay {
     position: fixed;
     top: 50%;
@@ -210,6 +215,7 @@
   }
 
   /*Edit contact Overlay*/
+
   .editContactOverlay {
     position: fixed;
     top: 50%;
@@ -312,6 +318,8 @@
     align-items: center;
   }
 }
+
+/*Media query*/
 
 @media (max-width: 880px) {
   .buttonContainer {

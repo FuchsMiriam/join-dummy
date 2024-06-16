@@ -1,4 +1,5 @@
 /*Scrollbar*/
+
 .contactsSidebar::-webkit-scrollbar {
   background-color: white;
 }
@@ -12,6 +13,7 @@
 }
 
 /* Arrow Up */
+
 .contactsSidebar::-webkit-scrollbar-button:vertical:decrement {
   height: 14px;
   width: 16px;
@@ -26,6 +28,7 @@
 }
 
 /* Arrow Down */
+
 .contactsSidebar::-webkit-scrollbar-button:vertical:increment {
   height: 14px;
   width: 16px;

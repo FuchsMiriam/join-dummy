@@ -328,6 +328,7 @@ input[type="tel"]:focus {
 }
 
 /*Contact list*/
+
 .contactList {
   display: flex;
   flex-direction: column;
