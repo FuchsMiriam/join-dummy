@@ -147,13 +147,16 @@
 /*Media query Dot icon edit overlay*/
 
 .dotIconContainer {
+  cursor: pointer;
+  width: 56px;
+  height: 56px;
+  padding: 12px 0px 0px 0px;
+  gap: 10px;
+  border-radius: 56px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   bottom: 25vh;
   right: 8vw;
-  display: flex;
 }
 
 .dotIcon {
@@ -173,7 +176,7 @@
   right: 8vw;
 }
 
-.dotIconContainer:hover {
+.dotIcon:hover {
   background-image: url(../assets/img/dotIconBlue.svg);
   border: none;
   box-shadow: 0px 4px 4px 0px #00000040;

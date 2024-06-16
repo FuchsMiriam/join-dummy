@@ -24,11 +24,11 @@
   }
 
   .headlinesContainer {
-    left: calc((100vw - 461px) / 2);
+    left: 50px;
   }
 
   .contactsFullscreen.in {
-    left: calc((100vw - 461px) / 2);
+    left: 50px;
   }
 
   .contactDetailsButtons {
@@ -231,7 +231,7 @@
       opacity: 1;
     }
   }
-  
+
   .contactCreatedOverlay.show {
     animation: slideUp 0.8s ease forwards;
   }
