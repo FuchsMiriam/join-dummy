@@ -45,13 +45,37 @@
     padding: 10px;
     gap: 0px;
     border-radius: 20px 20px 0px 20px;
-    position: fixed;
     display: flex;
-    top: 758px;
     top: calc((100vh / 2));
-    left: 200px;
+    left: calc((100vw - 56px) / 2);
     background-color: white;
     flex-direction: column;
+    bottom: 25vh;
+    right: 8vw;
+    position: absolute;
+    animation: slide-left 0.5s forwards;
+  }
+
+  @-webkit-keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(100px);
+      transform: translateX(100px);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-left {
+    0% {
+      -webkit-transform: translateX(100px);
+      transform: translateX(100px);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
   }
 
   .popupOverlay button:hover {
@@ -238,5 +262,47 @@
 
   .contactCreatedOverlay.show {
     animation: slideUp 0.8s ease forwards;
+  }
+
+  .editContactOverlay {
+    width: 280px;
+  }
+
+  .leftOverlayContentEdit {
+    width: 280px;
+  }
+
+  .editOverlayHeadline {
+    font-size: 24px;
+    width: 150px;
+  }
+
+  .overlayInitialsContainer {
+    width: 60px;
+    height: 60px;
+    left: calc((100vw - 60px) / 2);
+    top: 320px;
+  }
+
+  .editInitials {
+    font-size: 24px;
+    top: 15px;
+    left: -15px;
+  }
+
+  .editButtons {
+    width: 101px;
+    left: calc((100vw - 140px) / 2);
+    position: absolute;
+  }
+
+  .editButtonOverlay {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  .editDeleteButton {
+    font-size: 16px;
+    width: 100px;
   }
 }
