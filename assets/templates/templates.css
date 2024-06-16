@@ -246,7 +246,7 @@ p {
   font-weight: 700;
 }
 
-.headerNote{
+.headerNote {
   /* width: 150px;
   height: 158px; */
   z-index: 2;
@@ -260,7 +260,7 @@ p {
   color: rgba(0, 0, 0, 0.1);
 }
 
-.headerNoteButton{
+.headerNoteButton {
   display: flex;
   align-items: center;
   width: 138px;
@@ -274,12 +274,18 @@ p {
   color: rgba(205, 205, 205, 1);
 }
 
-.headerNoteButton:hover{
+.headerNoteButton:hover {
   background-color: rgb(42, 62, 89);
 }
 
-.d-none{
+.d-none {
   display: none;
+}
+
+@media (min-width: 1440px) {
+  header {
+    width: 100vw !important;
+  }
 }
 
 @media (max-width: 1440px) {
