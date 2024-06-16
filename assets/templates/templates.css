@@ -340,3 +340,14 @@ p {
     gap: 0px;
   }
 }
+
+@media (max-width: 428px) and (height: 766px) {
+  .menuSidebar {
+    width: 428px;
+    font-size: 14px;
+  }
+
+  .menuFrames {
+    padding: 0;
+  }
+}

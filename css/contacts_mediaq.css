@@ -141,34 +141,6 @@
 
 /*Media query*/
 
-@media (max-width: 428px) and (height: 766px) {
-  .contactsSidebar {
-    width: 428px;
-    height: 766px;
-    top: 80px;
-    padding: 0px 14px 0px 14px;
-    gap: 0px;
-    display: flex;
-  }
-
-  .addContactButton {
-    font-size: 0;
-  }
-
-  .addContactButton img {
-    width: 56px;
-    height: 56px;
-    top: 758px;
-    left: 356px;
-    padding: 12px 0px 0px 0px;
-    gap: 10px;
-    border-radius: 46px 0px 0px 0px;
-    border: 1px solid transparent;
-  }
-}
-
-/*Media query*/
-
 @media (max-width: 455px) {
   .contactsSidebar {
     width: 320px;
@@ -314,3 +286,35 @@
     width: 100px;
   }
 }
+
+/*Media query*/
+
+/*@media (max-width: 428px) and (height: 766px) {
+  .contactsSidebar {
+    width: 428px;
+    height: 766px;
+    top: 80px;
+    padding: 0px 14px 0px 14px;
+    gap: 0px;
+    display: flex;
+  }
+
+  .addContactButton {
+    font-size: 0;
+  }
+
+  .addContactButton img {
+    width: 56px;
+    height: 56px;
+    top: 758px;
+    left: 356px;
+    padding: 12px 0px 0px 0px;
+    gap: 10px;
+    border-radius: 46px 0px 0px 0px;
+    border: 1px solid transparent;
+  }
+
+  .dotIconContainer {
+    bottom: 50vh;
+  }
+}*/
