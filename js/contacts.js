@@ -22,7 +22,7 @@ async function initializePage() {
   setBg();
 }
 
-/*Randomize colours*/
+//Randomize colours
 
 async function assignColorsToContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
@@ -255,7 +255,7 @@ function showContactDetails(index) {
   showDotIcon();
 }
 
-/*Delete contact*/
+//Delete contact
 
 async function deleteContact(id) {
   try {
@@ -279,7 +279,7 @@ async function deleteContact(id) {
   }
 }
 
-/*Display Initials Edit function*/
+//Display Initials Edit function
 
 function displayContactInitials(contact) {
   const contactInitialsEdit = document.getElementById("contactInitialsEdit");
@@ -287,7 +287,7 @@ function displayContactInitials(contact) {
   setBg();
 }
 
-/*Edit contact*/
+//Edit contact
 
 function editContact(contact) {
   displayContactInitials(contact);
@@ -345,7 +345,7 @@ async function saveContact() {
   document.querySelector(".editContactOverlay").classList.remove("visible");
 }
 
-/*Create contact*/
+//Create contact
 
 async function createContact() {
   let name = document.getElementById("createNameInput");
