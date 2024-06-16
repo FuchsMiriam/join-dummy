@@ -15,6 +15,7 @@
 
   .headlinesContainer {
     left: 500px;
+    margin: -10px;
   }
 
   .contactsHeadlineContainer {
