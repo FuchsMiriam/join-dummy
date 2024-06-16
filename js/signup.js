@@ -84,7 +84,8 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-// Funktion zum Posten der Daten in die Firebase-Datenbank
+// Function to post data to the Firebase database
+
 async function postData(path = "", data = {}) {
   try {
     let response = await fetch(`${databaseURL}${path}.json`, {
