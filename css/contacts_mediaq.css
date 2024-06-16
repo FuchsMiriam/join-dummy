@@ -164,6 +164,136 @@
   }
 }
 
+@media (max-width: 430px) {
+  .contactsSidebar {
+    width: 320px;
+  }
+
+  .contactList {
+    width: 380px;
+  }
+
+  .contactEmail {
+    font-size: 14px;
+  }
+
+  .addContactIcon {
+    left: 230px;
+    position: sticky;
+  }
+
+  .addNewContactOverlay,
+  .leftOverlayContent {
+    width: 280px;
+  }
+
+  .contactsOverlayHeadline {
+    font-size: 24px;
+    width: 150px;
+  }
+
+  .contactsOverlaySubheadline {
+    width: 150px;
+    font-size: 18px;
+    margin-top: -15px;
+  }
+
+  .overlayPersonContainer,
+  .overlayPersonLargeImg {
+    width: 60px;
+    height: 60px;
+    left: calc((100vw - 60px) / 2);
+    top: 320px;
+  }
+
+  .overlayContactsInput {
+    width: 240px;
+    font-size: 16px;
+  }
+
+  .overlayInputContainer {
+    width: 240px;
+  }
+
+  .contactButtons {
+    width: 101px;
+    left: calc((100vw - 202px) / 2);
+    position: absolute;
+  }
+
+  .contactCreateButton {
+    font-size: 16px;
+    width: 202px;
+  }
+
+  .whiteCloseOverlay {
+    right: calc((100vw - 280px) / 2);
+    left: 220px;
+  }
+
+  .contactCreatedOverlay {
+    position: fixed;
+    bottom: -100%;
+    left: calc((100vw - 310px) / 2);
+    transform: translateX(-50%);
+    width: 310px;
+    transition: bottom 0.8s ease;
+  }
+
+  @keyframes slideUp {
+    0% {
+      bottom: -100%;
+      opacity: 0;
+    }
+    100% {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+
+  .contactCreatedOverlay.show {
+    animation: slideUp 0.8s ease forwards;
+  }
+
+  .editContactOverlay,
+  .leftOverlayContentEdit {
+    width: 280px;
+  }
+
+  .whiteCloseEditOverlay {
+    right: calc((100vw - 280px) / 2);
+    left: 220px;
+  }
+
+  .editOverlayHeadline {
+    font-size: 24px;
+    width: 150px;
+  }
+
+  .overlayInitialsContainer {
+    width: 60px;
+    height: 60px;
+    left: calc((100vw - 60px) / 2);
+    top: 320px;
+  }
+
+  .editInitials {
+    font-size: 24px;
+    top: 15px;
+    left: -15px;
+  }
+
+  .editButtons {
+    width: 101px;
+  }
+
+  .editButtonOverlay,
+  .editDeleteButton {
+    font-size: 16px;
+    width: 100px;
+  }
+}
+
 @media (max-width: 320px) {
   .contactsSidebar {
     width: 320px;
