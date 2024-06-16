@@ -341,6 +341,16 @@ p {
   }
 }
 
+@media (max-width: 880px) {
+  .menuSidebar {
+    width: 880px;
+  }
+
+  .menuFrames {
+    padding: 0;
+  }
+}
+
 @media (max-width: 428px) and (height: 766px) {
   .menuSidebar {
     width: 428px;
