@@ -97,7 +97,6 @@
     padding: 8px 0px 0px 0px;
     gap: 8px;
     display: flex;
-    display: flex;
     background-color: white;
     cursor: pointer;
     border: none;
@@ -273,6 +272,10 @@
     left: 220px;
   }
 
+  .popupOverlay {
+    left: calc((100vw - 28px) / 2);
+  }
+
   .editOverlayHeadline {
     font-size: 24px;
     width: 150px;
@@ -405,6 +408,10 @@
 
   .contactCreatedOverlay.show {
     animation: slideUp 0.8s ease forwards;
+  }
+
+  .popupOverlay {
+    left: calc((100vw - 14px) / 2);
   }
 
   .editContactOverlay {
