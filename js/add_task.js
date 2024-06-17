@@ -296,21 +296,23 @@ function hoverValueFromSubtask(i) {
     let images = document.getElementById(`images-subtask${i}`);
 
     subtask.addEventListener('mouseover', function() {
-        mouseOver(images);
+        mouseOver(subtask, images);
     });
     
      subtask.addEventListener('mouseout', function() {
-        mouseOut(images);
+        mouseOut(subtask, images);
      });
 }
 
-function mouseOver(images) {
+function mouseOver(subtask, images) {
     images.classList.remove('d-none');
+    subtask.style.backgroundColor = '#FFFFFF';
 }
 
 
-function mouseOut(images) {
+function mouseOut(subtask, images) {
     images.classList.add('d-none');
+    subtask.style.backgroundColor = 'rgba(0,0,0,0)';
 }
 
 function deleteTask(i) {
@@ -325,7 +327,7 @@ function editSubtask(i) {
         // editFocus.focus();
     let newValue = document.getElementById(`subtask${i}`);
 
-    push.NewValue(i, newValue);
+    task.push(i, newValue);
     save();
 }
 
