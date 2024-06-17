@@ -293,7 +293,7 @@
 
 /*Overlay for created contact*/
 
-.contactCreatedOverlay {
+/*.contactCreatedOverlay {
   font-size: 20px;
   font-weight: 400;
   line-height: 24px;
@@ -323,7 +323,56 @@
 
 .contactCreatedOverlay.out {
   left: 2000px;
+}*/
+
+.contactCreatedOverlay {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: white;
+  background: #2a3647;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.26);
+  width: 326px;
+  height: 74px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  position: fixed;
+  z-index: 1000;
+  opacity: 0;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  left: calc((100% - 163px) / 2);
+  bottom: -100%;
+  transition: bottom 0.8s ease;
 }
+
+/* Keyframes for animation right to left */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for animation bottom-up */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 250px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 
 /*Colours*/
 
@@ -355,17 +404,16 @@
   background-color: #e02f2f;
 }
 
-
 /*Add contact Icon media query*/
 
-.addContactIcon{
+.addContactIcon {
   display: none;
 }
 
-.contactsArrow{
+.contactsArrow {
   display: none;
 }
 
-.dotIconContainer{
+.dotIconContainer {
   display: none;
 }

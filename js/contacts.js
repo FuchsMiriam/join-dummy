@@ -355,7 +355,7 @@ async function saveContact() {
 
 //Create contact
 
-async function createContact() {
+/*async function createContact() {
   let name = document.getElementById("createNameInput");
   let email = document.getElementById("createEmailInput");
   let phone = document.getElementById("createPhoneInput");
@@ -397,7 +397,44 @@ async function createContact() {
   name.value = "";
   email.value = "";
   phone.value = "";
+}*/
+
+async function createContact() {
+  let name = document.getElementById("createNameInput");
+  let email = document.getElementById("createEmailInput");
+  let phone = document.getElementById("createPhoneInput");
+
+  let newID = await generateCustomID();
+
+  let contact = {
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+  };
+
+  try {
+    await putData(newID, contact);
+    contacts.push({ id: newID, ...contact });
+    showContacts();
+    setBg();
+
+    document.getElementById("contactOverlay").classList.add("hidden");
+
+    const overlay = document.querySelector(".contactCreatedOverlay");
+    overlay.classList.remove("contactCreatedOverlayHidden");
+    void overlay.offsetWidth;
+    overlay.classList.add("in");
+
+  } catch (error) {
+    console.error("Fehler beim Hinzufügen des Kontakts zu Firebase:", error);
+  }
+
+  name.value = "";
+  email.value = "";
+  phone.value = "";
 }
+
+
 
 async function generateCustomID() {
   await fetchContacts();

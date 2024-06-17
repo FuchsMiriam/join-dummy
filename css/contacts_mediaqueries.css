@@ -8,6 +8,14 @@
 
 /*Media query*/
 
+@media (min-width: 1290px) {
+  .contactCreatedOverlay {
+    animation-name: slideInRight;
+  }
+}
+
+/*Media query*/
+
 @media (max-width: 1290px) {
   .contactsSidebar {
     position: static;
@@ -191,7 +199,7 @@
     justify-content: center;
   }
 
-  /*Animation overlay window*/
+  /*Animation overlay window - add and edit*/
 
   @keyframes slide-up {
     0% {
@@ -304,6 +312,10 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
+  }
+
+  .contactCreatedOverlay {
+    animation-name: slideInUp;
   }
 }
 

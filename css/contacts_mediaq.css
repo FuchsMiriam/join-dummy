@@ -120,24 +120,6 @@
 
   /*Animation contact created overlay*/
 
-  .contactCreatedOverlay {
-    position: fixed;
-    animation: myAnim 0.8s ease forwards !important;
-    left: calc(50% - 163px);
-    transition: bottom 0.8s ease;
-  }
-
-  @keyframes myAnim {
-    0% {
-      opacity: 0;
-      transform: translate(-50%, 250px);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, 0);
-    }
-  }
-}
 
 /*Media query*/
 
@@ -318,3 +300,4 @@
     bottom: 50vh;
   }
 }*/
+}
