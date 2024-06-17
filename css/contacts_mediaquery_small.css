@@ -77,7 +77,7 @@
       left: 220px;
     }
   
-    .contactCreatedOverlay {
+    /*.contactCreatedOverlay {
       position: fixed;
       bottom: -100%;
       left: calc((100vw - 310px) / 2);
@@ -99,7 +99,7 @@
   
     .contactCreatedOverlay.show {
       animation: slideUp 0.8s ease forwards;
-    }
+    }*/
   
     .popupOverlay {
       left: calc((100vw - 14px) / 2);
