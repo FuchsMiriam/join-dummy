@@ -103,60 +103,6 @@ async function postData(path = "", data = {}) {
 
 //Function for signup
 
-/*async function signup() {
-  const name = document.getElementById("signupNameInput").value;
-  const email = document.getElementById("signupEmailInput").value;
-  const password = document.getElementById("signupPasswordInput").value;
-  const confirmPassword = document.getElementById(
-    "signupConfirmPassword"
-  ).value;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!name || !email || !password || !confirmPassword) {
-    alert("Please fill in all fields.");
-    return;
-  }
-
-  if (!emailPattern.test(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    document.getElementById("errorMessage").style.display = "block";
-    document.getElementById("signupConfirmPassword").classList.add("error");
-    return;
-  }
-
-  document.getElementById("errorMessage").style.display = "none";
-  document.getElementById("signupConfirmPassword").classList.remove("error");
-
-  try {
-    const newUser = {
-      name: name,
-      email: email,
-      password: password,
-      login: false,
-    };
-
-    const response = await postData("users", newUser);
-
-    if (response) {
-      const overlay = document.getElementById("overlay");
-      overlay.classList.add("show");
-
-      setTimeout(() => {
-        window.location.href = "../index.html";
-      }, 2000);
-    } else {
-      console.error("Error saving user to database:", response);
-    }
-  } catch (error) {
-    console.error("Error creating user:", error.message);
-    alert("Error creating user: " + error.message);
-  }
-}*/
-
 async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
