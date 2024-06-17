@@ -14,10 +14,12 @@ function displayContactsTemplate(i, contact) {
 
 function showSubtaskTemplate(i, tasks) {
     return `
-        <li onclick="editValue()" class="subtask-span" id="subtask${i}">
-            <span onclick="editSubtask()">${tasks}</span>
-            <img id="hover-image-1"></img>
-            <img id="hover-image-2"></img>
+        <li class="subtask-span" id="subtask${i}">
+            <span onmouseover="hoverValueFromSubtask(${i})" contenteditable="true">${tasks}</span>
+            <div id='images-subtask${i}' class="d-none">
+                <img src="../assets/img/close.png" onclick="deleteTask(${i})"></img>
+                <img src="../assets/img/edit.png" onclick="editSubtask(${i})"></img>
+            </div>
         </li>
 `;
 }

@@ -274,7 +274,8 @@ input {
 
 .subtask-span {
     padding-left: 20px;
-    list-style: circle;
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer {

@@ -6,6 +6,9 @@ let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
 let tasksBoard = [];
+let isClicked1 = false;
+let isClicked2 = false;
+let isClicked3 = false;
 const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -23,27 +26,26 @@ async function loadTasks() {
     let response = await fetch(TASK_URL + ".json");
     let responseToJson = await response.json();
     tasksBoard = responseToJson;
-    console.log(tasksBoard); 
 }
 
 
 async function fetchContacts(path = "") {
     try {
-      const response = await fetch(URL_CONTACT + path + ".json");
-      const data = await response.json();
-      contacts = data
-        ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
-        : [];
-      
-      contacts.forEach(contact => {
-        if (!contact.colorClass) {
-          contact.colorClass = colorClasses[contacts.indexOf(contact) % colorClasses.length];
-        }
-      });
+        const response = await fetch(URL_CONTACT + path + ".json");
+        const data = await response.json();
+        contacts = data
+            ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
+            : [];
+
+        contacts.forEach(contact => {
+            if (!contact.colorClass) {
+                contact.colorClass = colorClasses[contacts.indexOf(contact) % colorClasses.length];
+            }
+        });
     } catch (error) {
-      console.error("Fehler beim Abrufen der Kontakte:", error);
+        console.error("Fehler beim Abrufen der Kontakte:", error);
     }
-  }
+}
 
 
 async function putData(path = "", data = {}) {
@@ -67,13 +69,12 @@ function ifIsListContactsLoaded() {
         listContactsLoaded = true;
         showContacts();
         closeButtonForShowContacts();
-        
+
     }
 }
 
 
 function showContacts() {
-    console.log('showContacts aufrufen', 'listContactsLoaded: ', listContactsLoaded);
     let container = document.getElementById('show-contacts');
 
     for (let i = 0; i < contacts.length; i++) {
@@ -86,10 +87,12 @@ function showContacts() {
 }
 
 
+
 function closeButtonForShowContacts() {
     let assigny = document.getElementById('input-assigned');
 
     if (assigny == onfocus) {
+        assigned.innerHTML = '';
         document.getElementById('add-button-contacts').innerHTML = `
             <div>
             <span id="close-contacts" onclick="closeContacts()">-</span>
@@ -100,7 +103,6 @@ function closeButtonForShowContacts() {
 
 
 function closeContacts() {
-    console.log('closeContacts aufgerufen');
     let buttonContacts = document.getElementById('close-contacts');
 
     document.getElementById('show-contacts').classList.add('d-none');
@@ -110,15 +112,12 @@ function closeContacts() {
                 <span>+</span>
             </div>
         `;
-        listContactsLoaded = false;
-        console.log('lisContactsLoaded auf', listContactsLoaded, 'gesetzt');
 }
 
 //-------------Begin initials functions--------------//
 function addInitials(i) {
     let ini = document.getElementById('display-initials');
     const initials = getInitials(contacts[i].name);
-    assigned = contactsNames[i];
     initial.push(initials);
 
     ini.innerHTML += `
@@ -143,12 +142,13 @@ function clearInputs() {
     document.getElementById("input-date").valueAsDate = null;
     document.getElementById('input-subtask').value = '';
     document.getElementById('show-subtask').innerHTML = '';
+    spliceTask();
     document.getElementById('input-category').value = '';
     document.getElementById('display-initials').innerHTML = '';
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-    task.splice(0, task.length);
+    save();
 }
 
 
@@ -198,59 +198,147 @@ function addSubTask() {
 }
 
 
+function addTask() {
+    let title = document.getElementById('input-title');
+    let date = document.getElementById("input-date");
+    let category = document.getElementById('input-category');
+
+    if (title.value == '' ||
+        date.valueAsDate == null ||
+        category.value == '') {
+        alert('Bitte alle pflichtfelder ausfüllen!');
+    } else {
+        createTask();
+
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                window.location.href = "board.html";
+            }, 3000);
+        });
+    }
+    save();
+}
+
+
 async function createTask() {
     let title = document.getElementById('input-title');
     let description = document.getElementById('input-description');
     let assigned = document.getElementById('show-contacts');
     let date = document.getElementById('input-date');
     let category = document.getElementById('input-category');
-    // let initial = addInitials(initial);
+    // let initial = initial;
+    let prio = getPrio();
     let subtask = getTask();
 
-    let task =  {
+    let task = {
         title: title.value,
         description: description.value,
         assigned: assigned.value,
         date: date.valueAsDate,
         category: category.value,
         subtask: subtask,
+        prio: prio,
+        initial: initial,
     };
-    
+
     tasksBoard.push(task);
-    putData(path="", taskBoard);
+    putData(path = "", tasksBoard);
     clearInputs();
+    spliceTask();
+    save();
 }
 
-function getPrio(clicked) {
+
+function spliceTask() {
+    task.splice(0, task.length)
+    return task
+}
+
+
+function getPrio() {
     let prio1 = document.getElementById('input-prio1');
     let prio2 = document.getElementById('input-prio2');
     let prio3 = document.getElementById('input-prio3');
 
-    if(prio1 == isClicked) {
-        return clicked1;
+    if (prio1.onfocus) {
+        isClicked1 == true;
+        return 1;
     }
-    if(prio2 == isClicked) {
-        return clicked2;
+    if (prio2.onfocus) {
+        isClicked2 == true;
+        return 2;
     }
-    if(prio3 == isClicked) {
-        return clicked3;
+    if (prio3.onfocus) {
+        isClicked3 == true;
+        return 3;
     }
 }
 
 function getTask() {
-    for(let i = 0; i < task.length; i++) {
+    for (let i = 0; i < task.length; i++) {
         let tasks = task[i];
 
         return tasks;
     }
 }
 
-function getInitial(initial) {
-    for (let j = 0; j < initial.length; j++) {
-        const initials = initial[i];
-        
-        return initials;
-    }
+// function getInitial(initial) {
+//     for (let j = 0; j < initial.length; j++) {
+//         const initials = initial[i];
+
+//         return initials;
+//     }
+// }
+
+
+function hoverValueFromSubtask(i) {
+    let subtask = document.getElementById(`subtask${i}`);
+    let images = document.getElementById(`images-subtask${i}`);
+
+    subtask.addEventListener('mouseover', function() {
+        mouseOver(images);
+    });
+    
+     subtask.addEventListener('mouseout', function() {
+        mouseOut(images);
+     });
+}
+
+function mouseOver(images) {
+    images.classList.remove('d-none');
+}
+
+
+function mouseOut(images) {
+    images.classList.add('d-none');
+}
+
+function deleteTask(i) {
+    task.splice(i, 1)
+    showSubtask();
+    save();
+}
+
+
+function editSubtask(i) {
+    // let editFocus = document.getElementById('input-subtask');
+        // editFocus.focus();
+    let newValue = document.getElementById(`subtask${i}`);
+
+    push.NewValue(i, newValue);
+    save();
+}
+
+
+function pushNewValue(i, newValue) {
+    task.splice(i, 1);
+    task.addEventListener('keypress', function(e) {
+        if(e.key === 'enter') {
+            task.push(i, newValue
+            )
+        }
+    })
+    task.push(i, newValue);
 }
 
 
@@ -258,7 +346,9 @@ function changePrioButtonUrgent() {
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-    isClicked = true;
+    isClicked1 = true;
+    isClicked2 = false;
+    isClicked3 = false;
 }
 
 
@@ -266,7 +356,9 @@ function changePrioButtonMedium() {
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button_active.svg)";
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button.svg)";
-    isClicked = true;
+    isClicked2 = true;
+    isClicked1 = false;
+    isClicked3 = false;
 }
 
 
@@ -274,28 +366,21 @@ function changePrioButtonLow() {
     document.getElementById('input-prio3').style.backgroundImage = "url(../assets/img/low_button_active.svg)";
     document.getElementById('input-prio1').style.backgroundImage = "url(../assets/img/urgent_button.svg)";
     document.getElementById('input-prio2').style.backgroundImage = "url(../assets/img/medium_button.svg)";
-    isClicked = true;
+    isClicked3 = true;
+    isClicked2 = false;
+    isClicked1 = false;
 }
 
-
-function addTask() {
-    createTask();
-    
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(function() {
-            window.location.href = "board.html"; 
-        }, 3000); 
-    });
-}
 
 function save() {
     let tasksAsText = JSON.stringify(task);
     localStorage.setItem('tasks', tasksAsText);
-  }
-  
-  function load() {
+}
+
+
+function load() {
     let tasksAsText = localStorage.getItem('tasks');
     if (tasksAsText) {
-      task = JSON.parse(tasksAsText);
+        task = JSON.parse(tasksAsText);
     }
-  }
+}
