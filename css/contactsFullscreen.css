@@ -390,36 +390,6 @@
   }
 }
 
-/*Colours*/
-
-.orange {
-  background-color: #ff7a00;
-}
-
-.purple {
-  background-color: #9327ff;
-}
-
-.blue {
-  background-color: #6e52ff;
-}
-
-.pink {
-  background-color: #fc71ff;
-}
-
-.yellow {
-  background-color: #ffbb2b;
-}
-
-.green {
-  background-color: #1fd7c1;
-}
-
-.red {
-  background-color: #e02f2f;
-}
-
 /*Add contact Icon media query*/
 
 .addContactIcon {
