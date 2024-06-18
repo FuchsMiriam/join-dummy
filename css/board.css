@@ -820,7 +820,8 @@ input::placeholder{
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        height: 600px;
+        overflow-x: hidden;
+        height: auto;
         width: calc(100vw - 32px);
         padding: 0px 16px 0px 16px;
         left: 0;
@@ -832,6 +833,7 @@ input::placeholder{
         padding-bottom: 20px;
         height: auto;
         overflow-y: visible;
+        overflow-x: auto;
         flex-direction: row;
     }
 
