@@ -153,6 +153,7 @@ input {
     flex-direction: column;
     font-size: 24px;
     overflow: auto;
+    margin-top: 10px;
 }
 
 #subtask {
@@ -274,7 +275,9 @@ input {
 
 .subtask-span {
     padding-left: 20px;
-    list-style: circle;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .footer {
@@ -393,4 +396,15 @@ input {
     background-color: yellow;
     border-radius: 50%;
     padding: 10px;
+}
+
+.subtask-button {
+    padding: 5px;
+}
+
+.subtask-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
 }

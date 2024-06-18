@@ -147,36 +147,37 @@
 /*Media query Dot icon edit overlay*/
 
 .dotIconContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 25vh;
-  right: 8vw;
-  display: flex;
-}
-
-.dotIcon {
   cursor: pointer;
   width: 56px;
   height: 56px;
-  top: 758px;
-  left: 356px;
   padding: 12px 0px 0px 0px;
   gap: 10px;
   border-radius: 56px;
   display: flex;
-  position: fixed;
+  position: absolute;
+  bottom: 25vh;
+  right: 8vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.dotIcon {
+  cursor: pointer;
+  top: 758px;
+  border-radius: 56px;
+  display: flex;
   left: calc((100vw - 56px) / 2);
   position: absolute;
   bottom: 25vh;
   right: 8vw;
 }
 
-.dotIconContainer:hover {
+.dotIconContainer:hover .dotIcon{
   background-image: url(../assets/img/dotIconBlue.svg);
   border: none;
   box-shadow: 0px 4px 4px 0px #00000040;
+  background-size: cover;
+  background-position: center;
 }
 
 /*Dot icon - popup edit and delete buttons*/

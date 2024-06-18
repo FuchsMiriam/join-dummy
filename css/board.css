@@ -799,3 +799,93 @@ input::placeholder{
     transform: translateX(2000px);
 }
 
+#addTaskMobil{
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+}
+
+@media (max-width: 1440px) {
+    .headerFrame{
+        left: calc((100vw - 1207px) / 2);
+    }
+
+    .contentFrame{
+        left: calc((100vw - 1207px) / 2);
+    }
+}
+
+@media (max-width: 1200px){
+    .contentFrame{
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        width: calc(100vw - 32px);
+        padding: 0px 16px 0px 16px;
+        left: 0;
+        scrollbar-width: none;
+    }
+
+    .columnBoard{
+        padding-bottom: 13px;
+        height: auto;
+        overflow-y: visible;
+        flex-direction: row;
+        overflow-x: clip;
+    }
+
+    .headerFrame{
+        width: calc(100vw - 32px);
+        padding: 0px 16px 0px 16px;
+        left: 0;
+    }
+
+    .titleSearch{
+        width: calc(100vw - 32px);
+        padding: 0px 16px 0px 16px;
+        left: 0;
+        top: calc(128px - 80px);
+    }
+
+    .headersTable{
+        display: none;
+    }
+
+    #searchMobil{
+        display: block;
+    }
+
+    #searchDesktop{
+        display: none;
+    }
+
+    #searchMobil{
+        position: relative;
+        left: 16px;
+        top: calc(224px - 80px - 73px);
+        width: 396px;
+    }
+
+    .formSearch{
+        width: 364px;
+    }
+
+    #addTaskMobil{
+        display: block;
+    }
+
+    #addTaskDesktop{
+        display: none;
+    }
+
+    .addTask{
+        width: 40px;
+        height: 40px;
+        padding: 3px;
+    }
+}
+
+@media (max-width: 780px) {
+
+}
+

@@ -1,3 +1,5 @@
+/*Media query*/
+
 @media (max-width: 1320px) {
   .mainpageSignUpContainer {
     width: 292px;
@@ -6,6 +8,8 @@
     left: 570px;
   }
 }
+
+/*Media query*/
 
 @media (max-width: 1200px) {
   .loginContainer {
@@ -20,6 +24,8 @@
     left: calc((100vw - 246px) / 2);
   }
 }
+
+/*Media query*/
 
 @media (max-width: 670px) {
   .animate {
@@ -98,6 +104,8 @@
   }
 }
 
+/*Media query*/
+
 @media (max-width: 580px) {
   .loginContainer {
     width: 180px;
@@ -108,6 +116,8 @@
     width: 280px;
   }
 }
+
+/*Media query*/
 
  @media (max-width: 426px) or (max-height: 926px) {
   .mainpage {

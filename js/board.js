@@ -25,6 +25,54 @@ let exampleTask = {
     ],
     "taskApplication": 0, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
 };
+let exampleTask1 = {
+    "label": "User Story",
+    "title": "Einkaufen",
+    "text": "Obst, Gemüse, Fleisch",
+    "date": "10/06/2026",
+    "priority": 1, // 1 - High, 2 - Medium, 3 - Low
+    "assigned to": [
+        {
+           "name": "Max Mustermann",
+           "color": "yellow"},
+        {
+           "name": "Anna Müller",
+           "color": "blue"},
+    ],
+    "subtasks": [
+        {
+           "text": "Obst im Rewe",
+           "checked": "0"}, //0 - did not, 1 - did
+        {
+           "text": "Gemüse im Lidl",
+           "checked": "1"}, //0 - did not, 1 - did
+    ],
+    "taskApplication": 1, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
+};
+let exampleTask2 = {
+    "label": "User Story",
+    "title": "Einkaufen",
+    "text": "Obst, Gemüse, Fleisch",
+    "date": "10/06/2026",
+    "priority": 1, // 1 - High, 2 - Medium, 3 - Low
+    "assigned to": [
+        {
+           "name": "Max Mustermann",
+           "color": "yellow"},
+        {
+           "name": "Anna Müller",
+           "color": "blue"},
+    ],
+    "subtasks": [
+        {
+           "text": "Obst im Rewe",
+           "checked": "0"}, //0 - did not, 1 - did
+        {
+           "text": "Gemüse im Lidl",
+           "checked": "1"}, //0 - did not, 1 - did
+    ],
+    "taskApplication": 2, // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
+};
 
 let result = false;
 function boardInit(){
@@ -32,6 +80,13 @@ function boardInit(){
     // loadTasks().then((result) => {
         // for(let i = 0; i<2; i++)
         tasks[0] = (exampleTask);
+        tasks[1] = (exampleTask1);
+        tasks[2] = (exampleTask2);
+        tasks[3] = (exampleTask);
+        tasks[4] = (exampleTask);
+        tasks[5] = (exampleTask);
+        tasks[6] = (exampleTask);
+        tasks[7] = (exampleTask);
         putData(path="", tasks);
         renderTasks();
         // hoverSidebar();

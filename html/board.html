@@ -18,8 +18,24 @@
     <section class="headerFrame">
         <div class="titleSearch">
             <div class="titleBoard">Board</div>
-            <div class="findAddTask">
-                <div class="search-container">
+            <div id="addTaskMobil" class="findAddTask d-none">
+                <div id="searchDesktop" class="search-container">
+                    <form class="formSearch">
+                      <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
+                      <div class="boxSearch">
+                        <div class="vektorSearch"></div>
+                        <div class="widthSearch">
+                                <img class="buttonSearch"  src="../assets/img/search.png" alt="" onclick="foundTask()">
+                        </div>
+                      </div>
+                    </form>
+                </div>
+                <button class="addTask">
+                    <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
+                </button>
+            </div>
+            <div id="addTaskDesktop" class="findAddTask">
+                <div id="searchDesktop" class="search-container">
                     <form class="formSearch">
                       <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
                       <div class="boxSearch">
@@ -35,6 +51,17 @@
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
             </div>
+        </div>
+        <div id="searchMobil" class="search-container d-none">
+            <form class="formSearch">
+              <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
+              <div class="boxSearch">
+                <div class="vektorSearch"></div>
+                <div class="widthSearch">
+                        <img class="buttonSearch"  src="../assets/img/search.png" alt="" onclick="foundTask()">
+                </div>
+              </div>
+            </form>
         </div>
         <div class="headersTable">
             <div class="boardColumn">

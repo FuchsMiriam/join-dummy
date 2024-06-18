@@ -22,7 +22,7 @@ async function initializePage() {
   setBg();
 }
 
-/*Randomize colours*/
+//Randomize colours
 
 async function assignColorsToContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
@@ -157,6 +157,77 @@ async function showContacts() {
 
 contacts.sort();
 
+function adjustLayoutForScreenWidth() {
+  if (window.innerWidth <= 768) {
+    // Hide the contactsSidebar when showContactDetails is called
+    const contactsSidebar = document.querySelector(".contactsSidebar");
+    contactsSidebar.style.display = "none";
+
+    // Show the headlinesContainer above the contactsSidebar only when needed
+    const headlinesContainer = document.querySelector(".headlinesContainer");
+    headlinesContainer.style.display = "block";
+
+    // Show the arrow (contactsArrow) and ensure it returns to the Contacts page
+    const contactsArrow = document.querySelector(".contactsArrow");
+    contactsArrow.style.display = "block";
+    contactsArrow.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the default link click
+      window.location.href = "../html/contacts.html"; // Go to the Contacts page
+    });
+  } else {
+    // For larger screen widths, reset to the normal layout
+    const contactsSidebar = document.querySelector(".contactsSidebar");
+    contactsSidebar.style.display = "block";
+
+    const headlinesContainer = document.querySelector(".headlinesContainer");
+    headlinesContainer.style.display = "block";
+
+    const contactsArrow = document.querySelector(".contactsArrow");
+    contactsArrow.style.display = "none";
+  }
+}
+
+function updateContactDetailsUI(index) {
+  // Update the fullscreen class list
+  document.getElementById("contactsFullscreen").classList.remove("out");
+  document.getElementById("contactsFullscreen").classList.add("in");
+
+  // Update the contact list items
+  let contactDivs = document.querySelectorAll(".contactListInner");
+  contactDivs.forEach((contactDiv, i) => {
+    if (i === index) {
+      contactDiv.classList.add("active");
+      contactDiv.classList.add("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#ffffff";
+    } else {
+      contactDiv.classList.remove("active");
+      contactDiv.classList.remove("nohover");
+      contactDiv.querySelector(".contactName").style.color = "#000000";
+    }
+  });
+}
+
+function showContactDetails(index) {
+  let contact = 0;
+  if (index == null) {
+    contact = contacts[currentContact];
+  } else {
+    contact = contacts[index];
+  }
+
+  createContactDetailsHTML(contact);
+
+  adjustLayoutForScreenWidth();
+
+  updateContactDetailsUI(index);
+
+  const editButton = document.querySelector(".editContactButton");
+  editButton.onclick = function () {
+    editContact(contact);
+  };
+  showDotIcon();
+}
+
 //Show dot icon
 function showDotIcon() {
   if (window.innerWidth <= 768) {
@@ -192,70 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function showContactDetails(index) {
-  let contact = 0;
-  if (index == null) {
-    contact = contacts[currentContact];
-  } else {
-    contact = contacts[index];
-  }
-
-  createContactDetailsHTML(contact);
-
-  // Adjustments for display based on screen width
-  if (window.innerWidth <= 768) {
-    // Hide the contactsSidebar when showContactDetails is called
-    const contactsSidebar = document.querySelector(".contactsSidebar");
-    contactsSidebar.style.display = "none";
-
-    // Show the headlinesContainer above the contactsSidebar only when needed
-    const headlinesContainer = document.querySelector(".headlinesContainer");
-    headlinesContainer.style.display = "block"; // Zeige den Container nur hier an
-
-    // Show the arrow (contactsArrow) and ensure it returns to the Contacts page
-    const contactsArrow = document.querySelector(".contactsArrow");
-    contactsArrow.style.display = "block";
-    contactsArrow.addEventListener("click", function (event) {
-      event.preventDefault(); // Verhindere den Standard-Link-Klick
-      window.location.href = "../html/contacts.html"; // Gehe zur Contacts-Seite
-    });
-  } else {
-    // For larger screen widths, reset to the normal layout
-    const contactsSidebar = document.querySelector(".contactsSidebar");
-    contactsSidebar.style.display = "block";
-
-    const headlinesContainer = document.querySelector(".headlinesContainer");
-    headlinesContainer.style.display = "block";
-
-    const contactsArrow = document.querySelector(".contactsArrow");
-    contactsArrow.style.display = "none";
-  }
-
-  // Additional logic for displaying contact information, etc.
-  document.getElementById("contactsFullscreen").classList.remove("out");
-  document.getElementById("contactsFullscreen").classList.add("in");
-
-  let contactDivs = document.querySelectorAll(".contactListInner");
-  contactDivs.forEach((contactDiv, i) => {
-    if (i === index) {
-      contactDiv.classList.add("active");
-      contactDiv.classList.add("nohover");
-      contactDiv.querySelector(".contactName").style.color = "#ffffff";
-    } else {
-      contactDiv.classList.remove("active");
-      contactDiv.classList.remove("nohover");
-      contactDiv.querySelector(".contactName").style.color = "#000000";
-    }
-  });
-
-  const editButton = document.querySelector(".editContactButton");
-  editButton.onclick = function () {
-    editContact(contact);
-  };
-  showDotIcon();
-}
-
-/*Delete contact*/
+//Delete contact
 
 async function deleteContact(id) {
   try {
@@ -279,7 +287,7 @@ async function deleteContact(id) {
   }
 }
 
-/*Display Initials Edit function*/
+//Display Initials Edit function
 
 function displayContactInitials(contact) {
   const contactInitialsEdit = document.getElementById("contactInitialsEdit");
@@ -287,7 +295,7 @@ function displayContactInitials(contact) {
   setBg();
 }
 
-/*Edit contact*/
+//Edit contact
 
 function editContact(contact) {
   displayContactInitials(contact);
@@ -345,7 +353,7 @@ async function saveContact() {
   document.querySelector(".editContactOverlay").classList.remove("visible");
 }
 
-/*Create contact*/
+//Create contact
 
 async function createContact() {
   let name = document.getElementById("createNameInput");
@@ -369,27 +377,19 @@ async function createContact() {
     document.getElementById("contactOverlay").classList.add("hidden");
 
     const overlay = document.querySelector(".contactCreatedOverlay");
-
     overlay.classList.remove("contactCreatedOverlayHidden");
-
     void overlay.offsetWidth;
-
     overlay.classList.add("in");
 
-    window.location.href = "contacts.html#contactCreatedOverlay";
-
-    setTimeout(() => {
-      overlay.classList.remove("in");
-      overlay.classList.add("out");
-    }, 2000);
   } catch (error) {
-    console.error("Error adding contact to Firebase:", error);
+    console.error("Fehler beim Hinzufügen des Kontakts zu Firebase:", error);
   }
 
   name.value = "";
   email.value = "";
   phone.value = "";
 }
+
 
 async function generateCustomID() {
   await fetchContacts();

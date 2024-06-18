@@ -16,38 +16,6 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-// Function for animation on the login page
-
-/*window.onload = function () {
-  const logo = document.getElementById("animatedLogo");
-  const content = document.getElementById("contentMainpage");
-
-  setTimeout(() => {
-    logo.style.width = "100.03px";
-    logo.style.height = "121.97px";
-    logo.style.top = "80px";
-    logo.style.left = "77px";
-  }, 500);
-
-  function onTransitionEnd() {
-    logo.removeEventListener("transitionend", onTransitionEnd);
-    content.classList.remove("hiddenMainpage");
-    content.classList.add("visibleMainpage");
-  }
-
-  logo.addEventListener("transitionend", onTransitionEnd);
-};*/
-
-/*document.addEventListener("DOMContentLoaded", function () {
-  const logo = document.getElementById("animatedLogo");
-  const content = document.getElementById("contentMainpage");
-
-  logo.addEventListener("transitionend", function () {
-    content.classList.remove("hiddenMainpage");
-    content.classList.add("visibleMainpage");
-  });
-});*/
-
 document
   .getElementById("animatedLogo")
   .addEventListener("animationend", function () {
@@ -195,44 +163,55 @@ document.getElementById("rememberMe").addEventListener("click", function () {
   }
 });
 
-/*Animation media query*/
+//Animation media query
 
+function showAnimation() {
+  const bodyAnimation = document.getElementById("contentMainpage");
+  const img = document.getElementById("animatedLogo");
+  const mediaQuery = window.matchMedia("(max-width: 670px)");
 
-  function showAnimation() {
-    const bodyAnimation = document.getElementById("contentMainpage");
-    const img = document.getElementById("animatedLogo");
-    const mediaQuery = window.matchMedia("(max-width: 670px)");
-
-    if (mediaQuery.matches) {
-      setTimeout(() => {
-        bodyAnimation.style.display = "none";
-      }, 0);
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#2b3646";
-        img.src = "./assets/img/whiteLogoLarge.svg";
-      }, 10);
-      setTimeout(() => {
-        document.body.style.backgroundColor = "#f6f7f8";
-        img.src = "./assets/img/logoLarge.svg";
-        bodyAnimation.style.display = "block";
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        bodyAnimation.style.display = "none";
-      }, 0);
-      setTimeout(() => {
-        bodyAnimation.style.display = "block";
-      }, 1500);
-    }
-
-    img.style.animation = "slide-tl 1s forwards";
-    
-    img.addEventListener("animationend", function () {
-      document.getElementById("contentMainpage").classList.add("visibleMainpage");
-      document.getElementById("contentMainpage").classList.remove("hiddenMainpage");
-    });
+  if (mediaQuery.matches) {
+    handleSmallScreenAnimation(bodyAnimation, img);
+  } else {
+    handleLargeScreenAnimation(bodyAnimation);
   }
 
-  function defineLoginName(){
-    return loginName;
-  }
+  img.style.animation = "slide-tl 1s forwards";
+  addAnimationEndListener(img);
+}
+
+function handleSmallScreenAnimation(bodyAnimation, img) {
+  setTimeout(() => {
+    bodyAnimation.style.display = "none";
+  }, 0);
+  setTimeout(() => {
+    document.body.style.backgroundColor = "#2b3646";
+    img.src = "./assets/img/whiteLogoLarge.svg";
+  }, 10);
+  setTimeout(() => {
+    document.body.style.backgroundColor = "#f6f7f8";
+    img.src = "./assets/img/logoLarge.svg";
+    bodyAnimation.style.display = "block";
+  }, 1000);
+}
+
+function handleLargeScreenAnimation(bodyAnimation) {
+  setTimeout(() => {
+    bodyAnimation.style.display = "none";
+  }, 0);
+  setTimeout(() => {
+    bodyAnimation.style.display = "block";
+  }, 1500);
+}
+
+function addAnimationEndListener(img) {
+  img.addEventListener("animationend", () => {
+    const contentMainpage = document.getElementById("contentMainpage");
+    contentMainpage.classList.add("visibleMainpage");
+    contentMainpage.classList.remove("hiddenMainpage");
+  });
+}
+
+function defineLoginName() {
+  return loginName;
+}

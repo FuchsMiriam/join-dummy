@@ -84,7 +84,8 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-// Funktion zum Posten der Daten in die Firebase-Datenbank
+// Function to post data to the Firebase database
+
 async function postData(path = "", data = {}) {
   try {
     let response = await fetch(`${databaseURL}${path}.json`, {
@@ -106,52 +107,72 @@ async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
-  const confirmPassword = document.getElementById(
-    "signupConfirmPassword"
-  ).value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+  if (!validateSignupForm(name, email, password, confirmPassword)) return;
+
+  resetErrorMessages();
+
+  try {
+    const newUser = createNewUser(name, email, password);
+    const response = await postData("users", newUser);
+
+    if (response) {
+      handleSuccessfulSignup();
+    } else {
+      console.error("Error saving user to database:", response);
+    }
+  } catch (error) {
+    handleSignupError(error);
+  }
+}
+
+function validateSignupForm(name, email, password, confirmPassword) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!name || !email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
-    return;
+    return false;
   }
 
   if (!emailPattern.test(email)) {
     alert("Please enter a valid email address.");
-    return;
+    return false;
   }
 
   if (password !== confirmPassword) {
     document.getElementById("errorMessage").style.display = "block";
     document.getElementById("signupConfirmPassword").classList.add("error");
-    return;
+    return false;
   }
 
+  return true;
+}
+
+function resetErrorMessages() {
   document.getElementById("errorMessage").style.display = "none";
   document.getElementById("signupConfirmPassword").classList.remove("error");
+}
 
-  try {
-    const newUser = {
-      name: name,
-      email: email,
-      password: password,
-      login: false,
-    };
+function createNewUser(name, email, password) {
+  return {
+    name: name,
+    email: email,
+    password: password,
+    login: false
+  };
+}
 
-    const response = await postData("users", newUser);
+function handleSuccessfulSignup() {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.add("show");
 
-    if (response) {
-      const overlay = document.getElementById("overlay");
-      overlay.classList.add("show");
+  setTimeout(() => {
+    window.location.href = "../index.html";
+  }, 2000);
+}
 
-      setTimeout(() => {
-        window.location.href = "../index.html";
-      }, 2000);
-    } else {
-      console.error("Error saving user to database:", response);
-    }
-  } catch (error) {
-    console.error("Error creating user:", error.message);
-    alert("Error creating user: " + error.message);
-  }
+function handleSignupError(error) {
+  console.error("Error creating user:", error.message);
+  alert("Error creating user: " + error.message);
 }
