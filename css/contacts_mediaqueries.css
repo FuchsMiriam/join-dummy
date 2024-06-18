@@ -8,11 +8,11 @@
 
 /*Media query*/
 
-@media (min-width: 1290px) {
+/*@media (min-width: 1290px) {
   .contactCreatedOverlay {
     animation-name: slideInRight;
   }
-}
+}*/
 
 /*Media query*/
 
@@ -314,9 +314,9 @@
     align-items: center;
   }
 
-  .contactCreatedOverlay {
+  /*.contactCreatedOverlay {
     animation-name: slideInUp;
-  }
+  }*/
 }
 
 /*Media query*/

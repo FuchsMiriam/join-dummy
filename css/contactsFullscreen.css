@@ -325,8 +325,6 @@
   left: 2000px;
 }*/
 
-
-
 .contactCreatedOverlay {
   font-size: 20px;
   font-weight: 400;
@@ -349,6 +347,23 @@
   left: calc((100% - 163px) / 2);
   bottom: -100%;
   transition: bottom 0.8s ease;
+}
+
+.contactCreatedOverlay.in {
+  bottom: 25%;
+}
+
+.contactCreatedOverlay.out {
+  bottom: -100%;
+  opacity: 0;
+}
+
+.contactCreatedOverlay.slideInRight {
+  animation-name: slideInRight;
+}
+
+.contactCreatedOverlay.slideInUp {
+  animation-name: slideInUp;
 }
 
 /* Keyframes for animation right to left */
@@ -374,7 +389,6 @@
     transform: translate(-50%, 0);
   }
 }
-
 
 /*Colours*/
 
