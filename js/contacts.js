@@ -267,7 +267,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function deleteContact(id) {
   try {
-    /*await fetchContacts();*/
     await deleteData(id);
     const index = contacts.findIndex((contact) => contact.id === id);
     if (index !== -1) {
@@ -372,7 +371,6 @@ async function createContact() {
     await putData(newID, contact);
     contacts.push({ id: newID, ...contact });
 
-    // Nachdem die Daten erfolgreich hinzugefügt wurden:
     document.getElementById("contactOverlay").classList.add("hidden");
 
     const overlay = document.querySelector(".contactCreatedOverlay");
@@ -389,7 +387,6 @@ async function createContact() {
     void overlay.offsetWidth;
     overlay.classList.add("in");
 
-    // Nachdem das Overlay eingeblendet wurde, fetchContacts aufrufen
     setTimeout(async () => {
       overlay.classList.remove("in");
       overlay.classList.add("out");
@@ -398,7 +395,6 @@ async function createContact() {
         overlay.classList.remove("slideInRight", "slideInUp", "out");
       }, 800);
 
-      // Hier fetchContacts aufrufen
       await fetchContacts();
       showContacts();
       setBg();
@@ -409,7 +405,6 @@ async function createContact() {
     console.error("Fehler beim Hinzufügen des Kontakts zu Firebase:", error);
   }
 
-  // Eingabefelder leeren
   name.value = "";
   email.value = "";
   phone.value = "";
