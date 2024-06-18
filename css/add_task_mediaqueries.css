@@ -1,9 +1,19 @@
-@media(max-width: 1200px) {
+@media(max-width:1440px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 0;
+    }
+}
+
+@media(max-width: 1290px) {
     #content {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
         height: 600px;
+        scrollbar-width: none;
     }
 
     .content-left {
@@ -28,5 +38,98 @@
     .footer span{
         width: 80px;
         padding-right: 10px;
+    }
+}
+
+@media(max-width: 480px) {
+    #content {
+        margin-left: 185px;
+    }
+
+    .input-prio-span {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #input-title {
+        width: 255px;
+        display: flex;
+    }
+
+    #input-description {
+        max-width: 255px;
+        min-width: 0;
+    }
+
+    #input-assigny {
+        width: 255px;
+        font-size: 18px;
+    }
+
+    .input-container-contacts {
+        width: 255px;
+    }
+
+    #show-contacts {
+        width: 255px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .display-contacts-dropdown {
+        width: 255px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #input-date {
+        width: 255px;
+        display: flex;
+        text-align: center;
+    }
+
+    #input-category {
+        width: 255px;
+        display: flex;
+    }
+
+    .input-container {
+        width: 255px;
+    }
+
+    #input-subtask {
+        width: 255px;
+    }
+
+    #show-subtask {
+        width: 255px;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer span {
+        width: 345px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .button-footer {
+        margin-left: 35px;
+    }
+
+    .btn-footer-clear {
+        width: 100px;
+    }
+}
+
+@media(max-height: 740px) {
+    #content {
+        height: 530px;
     }
 }

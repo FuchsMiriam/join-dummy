@@ -15,11 +15,12 @@ const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.
 
 
 async function init() {
-    await getNamesFromArray();
     await fetchContacts();
     await loadTasks();
+    getNamesFromArray();
     load()
     showSubtask();
+    setBg();
 }
 
 async function loadTasks() {
@@ -69,7 +70,6 @@ function ifIsListContactsLoaded() {
         listContactsLoaded = true;
         showContacts();
         closeButtonForShowContacts();
-
     }
 }
 
@@ -106,12 +106,12 @@ function closeContacts() {
     let buttonContacts = document.getElementById('close-contacts');
 
     document.getElementById('show-contacts').classList.add('d-none');
-    buttonContacts.innerHTML = '';
-    buttonContacts.innerHTML = `
-            <div>
-                <span>+</span>
-            </div>
-        `;
+     buttonContacts.innerHTML = '';
+     buttonContacts.innerHTML = `
+             <div>
+                 <span>+</span>
+             </div>
+         `;
 }
 
 //-------------Begin initials functions--------------//
@@ -135,6 +135,22 @@ function getInitials(name) {
     return initials;
 }
 //-------------End initials functions--------------//
+
+
+function setBg() {
+    const elements = document.querySelectorAll(
+      ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
+    );
+  
+    elements.forEach((element) => {
+      const initials = element.textContent.trim();
+      const contact = contacts.find((c) => getInitials(c.name) === initials);
+      if (contact && contact.colorClass) {
+        element.classList.add(contact.colorClass);
+      }
+    });
+  }
+
 
 function clearInputs() {
     document.getElementById('input-title').value = '';
@@ -206,9 +222,10 @@ function addTask() {
     if (title.value == '' ||
         date.valueAsDate == null ||
         category.value == '') {
-        alert('Bitte alle pflichtfelder ausfüllen!');
+        alert('Bitte alle Pflichtfelder ausfüllen!');
     } else {
         createTask();
+        document.getElementById('pop-up-task').classList.remove('d-none');
 
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
@@ -274,6 +291,7 @@ function getPrio() {
     }
 }
 
+
 function getTask() {
     for (let i = 0; i < task.length; i++) {
         let tasks = task[i];
@@ -281,14 +299,6 @@ function getTask() {
         return tasks;
     }
 }
-
-// function getInitial(initial) {
-//     for (let j = 0; j < initial.length; j++) {
-//         const initials = initial[i];
-
-//         return initials;
-//     }
-// }
 
 
 function hoverValueFromSubtask(i) {
@@ -303,6 +313,7 @@ function hoverValueFromSubtask(i) {
         mouseOut(subtask, images);
      });
 }
+
 
 function mouseOver(subtask, images) {
     images.classList.remove('d-none');
@@ -323,9 +334,14 @@ function deleteTask(i) {
 
 
 function editSubtask(i) {
-    // let editFocus = document.getElementById('input-subtask');
-        // editFocus.focus();
-    let newValue = document.getElementById(`subtask${i}`);
+    let button = document.getElementById('add-button-subtask');
+    let newValue = document.getElementById(`input-subtask`);
+
+    button.classList.add('d-none');
+    newValue.focus();
+    newValue.innerHTML = `
+            <img src="../assets/img/edit.png"></img>
+    `;
 
     task.push(i, newValue);
     save();
