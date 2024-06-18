@@ -19,17 +19,6 @@
         <div class="titleSearch">
             <div class="titleBoard">Board</div>
             <div id="addTaskMobil" class="findAddTask d-none">
-                <div id="searchDesktop" class="search-container">
-                    <form class="formSearch">
-                      <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
-                      <div class="boxSearch">
-                        <div class="vektorSearch"></div>
-                        <div class="widthSearch">
-                                <img class="buttonSearch"  src="../assets/img/search.png" alt="" onclick="foundTask()">
-                        </div>
-                      </div>
-                    </form>
-                </div>
                 <button class="addTask">
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -37,7 +26,7 @@
             <div id="addTaskDesktop" class="findAddTask">
                 <div id="searchDesktop" class="search-container">
                     <form class="formSearch">
-                      <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
+                      <input id="searchTaskDesktop" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
                       <div class="boxSearch">
                         <div class="vektorSearch"></div>
                         <div class="widthSearch">
@@ -54,7 +43,7 @@
         </div>
         <div id="searchMobil" class="search-container d-none">
             <form class="formSearch">
-              <input id="searchTask" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
+              <input id="searchTaskMobil" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
               <div class="boxSearch">
                 <div class="vektorSearch"></div>
                 <div class="widthSearch">
@@ -88,9 +77,30 @@
         </div>
     </section>
     <section class="contentFrame">
+        <div class="boardColumn d-none mobilBoardTaskTitles">
+            <div class="titleBoardColumn">To do</div>
+            <button class="addBoardColumn">
+                <div class="plus">+</div>
+            </button>
+        </div>
         <div id="toDO" ondrop="drop(0)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div class="boardColumn d-none mobilBoardTaskTitles">
+            <div class="titleBoardColumn">In progress</div>
+            <button class="addBoardColumn">
+                <div class="plus">+</div>
+            </button>
+        </div>
         <div id="inProgress" ondrop="drop(1)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div class="boardColumn d-none mobilBoardTaskTitles">
+            <div class="titleBoardColumn">Await feedback</div>
+            <button class="addBoardColumn">
+                <div class="plus">+</div>
+            </button>
+        </div>
         <div id="awaitFeedback" ondrop="drop(2)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div class="boardColumn d-none mobilBoardTaskTitles">
+            <div class="titleBoardColumn">Done</div>
+        </div>
         <div id="done" ondrop="drop(3)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
     </section>
     <section id="idDetailCard" class="containerDetailCard">

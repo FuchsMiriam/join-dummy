@@ -223,7 +223,11 @@ function deleteTask(idTask){
 }
 
 function searchTasks() {
-    let input = document.getElementById("searchTask").value;
+    let input = 0;
+    if(window.innerWidth <= 1200)
+        input = document.getElementById("searchTaskMobil").value;
+    else
+        input = document.getElementById("searchTaskDesktop").value
     input = input.toLowerCase();
 
     if(!input.length)
