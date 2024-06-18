@@ -70,12 +70,16 @@ function ifIsListContactsLoaded() {
         listContactsLoaded = true;
         showContacts();
         closeButtonForShowContacts();
+    } else {
+        listContactsLoaded = false
     }
 }
 
 
 function showContacts() {
     let container = document.getElementById('show-contacts');
+
+    container.innerHTML = '';
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i].name;
@@ -114,14 +118,23 @@ function closeContacts() {
          `;
 }
 
+function deleteContacts(i) {
+    initial.splice(i, 1)
+    displayInitials();
+}
+
 //-------------Begin initials functions--------------//
 function addInitials(i) {
     let ini = document.getElementById('display-initials');
     const initials = getInitials(contacts[i].name);
     initial.push(initials);
 
-    ini.innerHTML += `
-        <div>
+    ini.innerHTML += displayInitials(i, initials)
+}
+
+function displayInitials(i, initials) {
+    return `
+        <div onclick='deleteContacts(${i})'>
             <span class="initials">${initials}</span>
         </div>
     `;
