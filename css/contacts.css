@@ -336,6 +336,7 @@ input[type="tel"]:focus {
   justify-content: center;
   height: fit-content;
   width: 456px;
+  padding-bottom: 60px;
 }
 
 .letter {
