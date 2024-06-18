@@ -765,9 +765,9 @@ input::placeholder{
     border: 1px solid rgba(209, 209, 209, 1);
 }
 
-.scrollbarColumn::-webkit-scrollbar {
+/* .scrollbarColumn::-webkit-scrollbar {
     display: none;
-}
+} */
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbarColumn{
@@ -819,7 +819,8 @@ input::placeholder{
     .contentFrame{
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
+        overflow-y: auto;
+        height: 600px;
         width: calc(100vw - 32px);
         padding: 0px 16px 0px 16px;
         left: 0;
@@ -827,11 +828,11 @@ input::placeholder{
     }
 
     .columnBoard{
+        white-space: nowrap;
         padding-bottom: 20px;
         height: auto;
         overflow-y: visible;
         flex-direction: row;
-        overflow-x: clip;
     }
 
     .headerFrame{

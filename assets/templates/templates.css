@@ -251,7 +251,8 @@ p {
   height: 158px; */
   z-index: 2;
   top: 96px;
-  left: calc(1440px - 150px - 24px);
+  /* left: calc(1440px - 150px - 24px); */
+  right: 14px;
   position: absolute;
   border-radius: 20px 0px 20px 20px;
   padding: 10px;
@@ -338,6 +339,10 @@ p {
     width: auto;
     height: 80px;
     gap: 0px;
+  }
+
+  .helpTemplate{
+    display: flex;
   }
 }
 
