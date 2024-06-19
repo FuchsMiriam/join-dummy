@@ -9,6 +9,7 @@ let tasksBoard = [];
 let isClicked1 = false;
 let isClicked2 = false;
 let isClicked3 = false;
+let isChecked = [];
 const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -88,7 +89,8 @@ function showContacts() {
         container.classList.remove('d-none');
         container.innerHTML +=
             displayContactsTemplate(i, contact);
-    }
+        }
+        setBg();
 }
 
 
@@ -111,18 +113,14 @@ function closeContacts() {
     let buttonContacts = document.getElementById('close-contacts');
 
     document.getElementById('show-contacts').classList.add('d-none');
-     buttonContacts.innerHTML = '';
-     buttonContacts.innerHTML = `
+    buttonContacts.innerHTML = '';
+    buttonContacts.innerHTML = `
              <div>
                  <span>+</span>
              </div>
          `;
 }
 
-function deleteContacts(i) {
-    initial.splice(i, 1)
-    displayInitials();
-}
 
 //-------------Begin initials functions--------------//
 function addInitials(i) {
@@ -131,12 +129,13 @@ function addInitials(i) {
     initial.push(initials);
 
     ini.innerHTML += displayInitials(i, initials)
+    setBgIni();
 }
 
 function displayInitials(i, initials) {
     return `
-        <div onclick='deleteContacts(${i})'>
-            <span class="initials">${initials}</span>
+        <div>
+            <span class="initials" id="initials-span${i}">${initials}</span>
         </div>
     `;
 }
@@ -151,19 +150,44 @@ function getInitials(name) {
 //-------------End initials functions--------------//
 
 
+function checkContactsInList(i) {
+    let contactChecked = document.getElementById(`checkbox-contacts${i}`);
+
+    if (contactChecked.checked == true) {
+        displayInitials();
+        isChecked.push(contactChecked.checked);
+    } else {
+        uncheckContactInList(i, contactChecked);
+    }
+    save();
+}
+
+
+function uncheckContactInList(i, contactChecked) {
+    if (contactChecked.checked == false) {
+        initial.splice(i);
+        isChecked.splice(i);
+        displayInitials();
+    }
+}
+
 function setBg() {
-    const elements = document.querySelectorAll(
-      ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
-    );
-  
-    elements.forEach((element) => {
-      const initials = element.textContent.trim();
-      const contact = contacts.find((c) => getInitials(c.name) === initials);
-      if (contact && contact.colorClass) {
-        element.classList.add(contact.colorClass);
-      }
-    });
-  }
+     for (let i = 0; i < colorClasses.length; i++) {
+        const color = colorClasses[i];
+        let ini = document.getElementById(`initials-bg${i}`);
+        
+            ini.style.background = color;
+    }
+}
+
+function setBgIni() {
+    for (let i = 0; i < colorClasses.length; i++) {
+        const color = colorClasses[i];
+        let ini = document.getElementById(`initials-span${i}`);
+        
+            ini.style.background = color;
+    }
+}
 
 
 function clearInputs() {
@@ -319,13 +343,13 @@ function hoverValueFromSubtask(i) {
     let subtask = document.getElementById(`subtask${i}`);
     let images = document.getElementById(`images-subtask${i}`);
 
-    subtask.addEventListener('mouseover', function() {
+    subtask.addEventListener('mouseover', function () {
         mouseOver(subtask, images);
     });
-    
-     subtask.addEventListener('mouseout', function() {
+
+    subtask.addEventListener('mouseout', function () {
         mouseOut(subtask, images);
-     });
+    });
 }
 
 
@@ -364,8 +388,8 @@ function editSubtask(i) {
 
 function pushNewValue(i, newValue) {
     task.splice(i, 1);
-    task.addEventListener('keypress', function(e) {
-        if(e.key === 'enter') {
+    task.addEventListener('keypress', function (e) {
+        if (e.key === 'enter') {
             task.push(i, newValue
             )
         }
