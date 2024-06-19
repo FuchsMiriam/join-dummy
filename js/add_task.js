@@ -21,6 +21,7 @@ async function init() {
     load()
     showSubtask();
     setBg();
+    hoverSidebar();
 }
 
 async function loadTasks() {

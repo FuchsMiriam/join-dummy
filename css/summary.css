@@ -282,22 +282,36 @@
     align-items: center;
 }
 
+.summaryMobil{
+    width: 100vw;
+    height: calc(100vh - 50px - 132px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 @media (max-width: 1440px) {
+    .summaryText {
+        padding-left: calc((100vw - 893px) / 2);
+    }
+
+    #titleSummary{
+        padding-left: calc((100vw - 893px) / 2);
+    }
+}
+
+@media (max-width: 1200px){
+    #textRegards{
+        display: none;
+    }
+
     .summaryText {
         padding-left: calc((100vw - 560px) / 2);
     }
 
     #titleSummary{
         padding-left: calc((100vw - 560px) / 2);
-    }
-
-    #textRegards{
-        display: none;
-    }
-}
-
-@media (max-width: 1200px){
-    #titleSummary{
         padding-top: calc(128px - 96px);
         flex-direction: column;
         align-items: baseline;

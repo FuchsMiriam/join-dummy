@@ -20,6 +20,7 @@ async function initializePage() {
   await assignColorsToContacts(contacts);
   showContacts();
   setBg();
+  hoverSidebar();
 }
 
 //Randomize colours

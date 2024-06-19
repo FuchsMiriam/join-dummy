@@ -77,20 +77,20 @@ let exampleTask2 = {
 let result = false;
 function boardInit(){
     includeHTML();
-    // loadTasks().then((result) => {
-        // for(let i = 0; i<2; i++)
-        tasks[0] = (exampleTask);
-        tasks[1] = (exampleTask1);
-        tasks[2] = (exampleTask2);
-        tasks[3] = (exampleTask);
-        tasks[4] = (exampleTask);
-        tasks[5] = (exampleTask);
-        tasks[6] = (exampleTask);
-        tasks[7] = (exampleTask);
+    loadTasks().then((result) => {
+        // tasks = [];
+        // tasks[0] = (exampleTask);
+        // tasks[1] = (exampleTask1);
+        // tasks[2] = (exampleTask2);
+        // tasks[3] = (exampleTask);
+        // tasks[4] = (exampleTask);
+        // tasks[5] = (exampleTask);
+        // tasks[6] = (exampleTask);
+        // tasks[7] = (exampleTask);
         putData(path="", tasks);
         renderTasks();
-        // hoverSidebar();
-    // });
+        hoverSidebar();
+    });
 }
 
 async function loadTasks(){

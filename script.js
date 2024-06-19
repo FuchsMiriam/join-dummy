@@ -44,6 +44,15 @@ function redirectToBoard() {
   window.location.href = "./html/board.html";
 }
 
+function redirectToSummary(){
+  let test = 0;
+  if(window.innerWidth > 1200)
+    window.location.href = "./html/summary.html";
+  else{
+    window.location.href = "./html/greetingMobil.html";
+  }
+}
+
 //Reset form
 
 function resetForm() {

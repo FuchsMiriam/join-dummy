@@ -97,3 +97,7 @@ window.addEventListener("click", function(event) {
     clickName = 0;
   }
 });
+
+function openIndex() {
+  window.location.href = "../index.html";
+}

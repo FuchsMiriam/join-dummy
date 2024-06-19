@@ -1,22 +1,42 @@
 let tasksBoard = [];
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let result2 = false;
+let result3 = true;
 let loginName;
 
 async function summaryInit(){
   includeHTML();
   loadTasks().then((result2) => {
-      hoverSidebar();
       getSummary();
+      hoverSidebar();
   });
-  // await onloadDatabase();
 }
+
+async function summaryMobilInit(){
+  includeHTML();
+  loadTasks().then((result3) => {
+      window.addEventListener('load', function () {
+        hoverSidebar();
+      });
+      document.getElementById("greetingSummary").innerHTML = getGreeting();
+      document.getElementById("nameSummary").innerHTML = loadLoginName();
+      setTimeout( function() { openSummary(); }, 2000);
+  });
+}
+
+function openSummary(){
+  window.location.href = "./summary.html";
+}
+
+
 
 async function loadTasks(){
   let response = await fetch(TASK_URL + ".json");
   let responseToJSON = await response.json();
   tasksBoard = responseToJSON;
+  tasksBoard = null;
   result2 = true;
+  result3 = true;
   console.log(tasksBoard);
 }
 
@@ -43,6 +63,8 @@ async function putData(path="", data={}){
 
 let nrToDO = 0;
 function getNumberofToDo(){
+  if(tasksBoard == null)
+    return 0;
   for(let i = 0; i < tasksBoard.length; i++)
     if(tasksBoard[i]["taskApplication"] == 0)
       nrToDO++;
@@ -51,6 +73,8 @@ function getNumberofToDo(){
 
 let nrDone = 0;
 function getNumberofDone(){
+  if(tasksBoard == null)
+    return 0;
   for(let i = 0; i < tasksBoard.length; i++)
     if(tasksBoard[i]["taskApplication"] == 3)
       nrDone++;
@@ -59,6 +83,8 @@ function getNumberofDone(){
 
 let nrUrgent = 0;
 function getNumberofUrgent(){
+  if(tasksBoard == null)
+    return 0;
   for(let i = 0; i < tasksBoard.length; i++)
     if(tasksBoard[i]["priority"] == 1)
       nrUrgent++;
@@ -66,11 +92,16 @@ function getNumberofUrgent(){
 }
 
 function getNumberofTasks(){
-  return tasksBoard.length;
+  if(tasksBoard == null)
+    return 0;
+  else
+    return tasksBoard.length;
 }
 
 let nrProgress = 0;
 function getNumberofProgress(){
+  if(tasksBoard == null)
+    return 0;
   for(let i = 0; i < tasksBoard.length; i++)
     if(tasksBoard[i]["taskApplication"] == 1)
       nrProgress++;
@@ -79,6 +110,8 @@ function getNumberofProgress(){
 
 let nrAwait = 0;
 function getNumberofAwait(){
+  if(tasksBoard == null)
+    return 0;
   for(let i = 0; i < tasksBoard.length; i++)
     if(tasksBoard[i]["taskApplication"] == 2)
       nrAwait++;
@@ -98,6 +131,8 @@ function getSummary(){
 }
 
 function getNextDate(){
+  if(tasksBoard == null)
+    return '';
   let date = tasksBoard[0]["date"];
   let date1 = new Date(tasksBoard[0]["date"]);
   let date2;
