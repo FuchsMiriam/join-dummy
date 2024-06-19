@@ -118,6 +118,13 @@ input {
     position: relative;
 }
 
+.initials-contacts {
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+}
+
 .input-container-contacts {
     display: flex;
     flex-direction: column;
@@ -336,6 +343,9 @@ input {
     bottom: 58px;
     left: 360px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .contact-list {

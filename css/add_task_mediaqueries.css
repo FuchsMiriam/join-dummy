@@ -5,6 +5,10 @@
         align-items: center;
         margin-left: 0;
     }
+
+    .footer {
+        gap: 20px;
+}
 }
 
 @media(max-width: 1290px) {
@@ -81,6 +85,10 @@
         width: 255px;
         display: flex;
         flex-direction: column;
+    }
+
+    #display-initials {
+        grid-template-columns: repeat(4, 65px);
     }
 
     #input-date {
