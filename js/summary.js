@@ -130,18 +130,27 @@ function formatDate(date) {
   return `${monthName} ${day}, ${year}`;
 }
 
+function calculateGreeting(currentHour){
+  if (currentHour >= 5 && currentHour < 12) 
+    return "Good Morning";
+  else if (currentHour >= 12 && currentHour < 17) 
+    return "Good Afternoon";
+  else if (currentHour >= 17 && currentHour < 22) 
+    return "Good Evening";
+  else
+    return "Good Night";
+}
+
 function getGreeting(){
   let currentDate = new Date(); 
   let currentHour = currentDate.getHours();
+  let name = loadLoginName();
+  let greeting = calculateGreeting(currentHour);
 
-  if (currentHour >= 5 && currentHour < 12) 
-    return "Good Morning,";
-  else if (currentHour >= 12 && currentHour < 17) 
-    return "Good Afternoon,";
-  else if (currentHour >= 17 && currentHour < 22) 
-    return "Good Evening,";
+  if(name != null)
+    return greeting + ',';
   else
-    return "Good Night,";
+    return greeting;
 }
 
 function getLoginName(name){

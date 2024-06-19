@@ -71,6 +71,8 @@ function setInitialsName(){
 }
 
 function getInitials(name) {
+  if(name == null)
+    return "G";
   const nameParts = name.split(' ');
   const initials = nameParts.map(part => part.charAt(0)).join('');
 

@@ -40,6 +40,7 @@ function redirectToLegalPage() {
 }
 
 function redirectToBoard() {
+  getLoginName(null);
   window.location.href = "./html/board.html";
 }
 
