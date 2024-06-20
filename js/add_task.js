@@ -150,6 +150,8 @@ function addInitials(i) {
   initial.push(initials);
 
   ini.innerHTML += displayInitials(i, initials);
+  initalsBackgroundColor(i);
+
   namesFromContacts.push(contacts[i].name);
 }
 
@@ -166,6 +168,12 @@ function getInitials(name) {
   const initials = nameParts.map((part) => part.charAt(0)).join("");
 
   return initials;
+}
+
+function initalsBackgroundColor(i) {
+  let ini = document.getElementById(`initials-span${i}`);
+
+  ini.style.backgroundColor = contacts[i].colorClass;
 }
 //-------------End initials functions--------------//
 
