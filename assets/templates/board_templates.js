@@ -153,9 +153,12 @@ function cardHTML(idTask){
 }
 
 function cardHTMLLabel(idTask){
+    if(tasks[idTask].category == "User Story")
+        return /*html*/`
+            <div class="labelCard labelCard-blue">${tasks[idTask].category}</div>`
+    else
     return /*html*/`
-        <div class="labelCard">${tasks[idTask].category}</div>
-    `
+            <div class="labelCard labelCard-green">${tasks[idTask].category}</div>`    
 }
 
 function cardHTMLTitle(idTask){
