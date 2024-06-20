@@ -1,7 +1,7 @@
 function displayContactsTemplate(i, contact) {
-    const nameParts = contact.split(' ');
-    const initials = nameParts.map(part => part.charAt(0)).join('');
-    return `
+  const nameParts = contact.split(" ");
+  const initials = nameParts.map((part) => part.charAt(0)).join("");
+  return `
     <div class="display-contacts-dropdown"  id='contacts${i}'>
             <div class="contact-list">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
@@ -13,7 +13,7 @@ function displayContactsTemplate(i, contact) {
 }
 
 function showSubtaskTemplate(i, tasks) {
-    return `
+  return `
         <li class="subtask-span" id="subtask${i}">
             <span onmouseover="hoverValueFromSubtask(${i})" contenteditable="true" id="task-edit">${tasks}</span>
             <div id='images-subtask${i}' class="d-none">
