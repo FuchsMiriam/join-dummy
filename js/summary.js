@@ -37,15 +37,15 @@ async function loadTasks(){
   result3 = true;
 }
 
-function addTask(){
-  let task =  {
-    title: "Test",
-    description: "Test Des",
-  };
+// function addTask(){
+//   let task =  {
+//     title: "Test",
+//     description: "Test Des",
+//   };
 
-  tasksBoard.push(task);
-  putData(path="", tasksBoard);
-}
+//   tasksBoard.push(task);
+//   putData(path="", tasksBoard);
+// }
 
 async function putData(path="", data={}){
   let response = await fetch(SUMMARY_URL + path + ".json", {
