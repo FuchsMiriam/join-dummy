@@ -42,7 +42,6 @@ async function init() {
   showSubtask();
   setTimeout(() => {}, 5000);
   hoverSidebar();
-  // setBg();
 }
 
 async function loadTasks() {
@@ -109,7 +108,6 @@ function showContacts() {
     container.innerHTML += displayContactsTemplate(i, contact);
     initialsBackgroundColor(i);
   }
-  //   setBg();
 }
 
 function initialsBackgroundColor(i) {
@@ -197,24 +195,6 @@ function uncheckContactInList(i, contactChecked) {
   }
 }
 
-function setBg() {
-  for (let i = 0; i < colorClasses.length; i++) {
-    const color = colorClasses[i];
-    let ini = document.getElementById(`initials-bg${i}`);
-
-    ini.style.background = color;
-  }
-}
-
-function setBgIni() {
-  for (let i = 0; i < colorClasses.length; i++) {
-    const color = colorClasses[i];
-    let ini = document.getElementById(`initials-span${i}`);
-
-    ini.style.background = color;
-  }
-}
-
 function clearInputs() {
   document.getElementById("input-title").value = "";
   document.getElementById("input-description").value = "";
@@ -283,7 +263,7 @@ function addTask() {
     alert("Bitte alle Pflichtfelder ausfüllen!");
   } else {
     createTask();
-    document.getElementById("pop-up-task").classList.remove("d-none");
+    // document.getElementById("pop-up-task").classList.remove("d-none");
 
     document.addEventListener("DOMContentLoaded", function () {
       setTimeout(function () {
@@ -294,15 +274,15 @@ function addTask() {
   save();
 }
 
-async function createTask() {
+async function createTask(i) {
   let title = document.getElementById("input-title");
   let description = document.getElementById("input-description");
   let assigned = document.getElementById("show-contacts");
   let date = document.getElementById("input-date").valueAsDate;
   date.valueAsDate = formDate(date);
   let category = document.getElementById("input-category");
-  let contacts = namesFromContacts.value;
-  let prio = getPrio();
+  let names = namesFromContacts;
+  let prio = getPrio(prio);
   let subtask = getTask();
 
   let task = {
@@ -313,7 +293,9 @@ async function createTask() {
     category: category.value,
     subtask: subtask,
     prio: prio,
-    contacts: contacts,
+    assigned_to: {
+      name: names,
+    },
     taskApplication: 0,
   };
 
