@@ -55,3 +55,24 @@ p {
 .arrow-backwards-link {
     color: #29ABE2;
 }
+
+@media(max-width: 1440px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
+
+@media(max-width: 420px) {
+    .head {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .head a {
+        margin-left: auto;
+    }
+}

@@ -5,6 +5,7 @@ let contactsNames = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
+let namesFromContacts = [];
 let tasksBoardAdd = [];
 let isClicked1 = false;
 let isClicked2 = false;
@@ -144,7 +145,7 @@ function addInitials(i) {
     initial.push(initials);
 
     ini.innerHTML += displayInitials(i, initials)
-    setBgIni();
+    namesFromContacts.push(contacts[i].name)
 }
 
 function displayInitials(i, initials) {
@@ -297,7 +298,7 @@ async function createTask() {
     let date = document.getElementById('input-date').valueAsDate;
     date.valueAsDate = formDate(date);
     let category = document.getElementById('input-category');
-    // let initial = initial;
+    let contacts = namesFromContacts.value;
     let prio = getPrio();
     let subtask = getTask();
 
@@ -309,7 +310,7 @@ async function createTask() {
         category: category.value,
         subtask: subtask,
         prio: prio,
-        initial: initial,
+        contacts: contacts,
         taskApplication: 0,
     };
 

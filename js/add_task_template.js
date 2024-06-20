@@ -5,7 +5,7 @@ function displayContactsTemplate(i, contact) {
     <div class="display-contacts-dropdown"  id='contacts${i}'>
             <div class="contact-list">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
-                <span class="contact-span">${contact} </span>
+                <span class="contact-span" id="contact-span-name${i}">${contact} </span>
                 <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}, '${contact}'); checkContactsInList(${i})">
             </div>
     </div>
