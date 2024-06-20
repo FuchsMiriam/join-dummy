@@ -5,7 +5,7 @@ let contactsNames = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
-let tasksBoard = [];
+let tasksBoardAdd = [];
 let isClicked1 = false;
 let isClicked2 = false;
 let isClicked3 = false;
@@ -13,22 +13,37 @@ let isChecked = [];
 const colorClasses = ['orange', 'purple', 'blue', 'pink', 'yellow', 'green', 'red'];
 const URL_CONTACT = "https://contacts-c645d-default-rtdb.europe-west1.firebasedatabase.app/";
 const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
-
+let resultTask = false;
 
 async function init() {
+    includeHTML();
     await fetchContacts();
+    // loadTasks().then((resultTask) => {
+    //     getNamesFromArray();
+    //     load()
+    //     showSubtask();
+    //     hoverSidebar();
+    // });
     await loadTasks();
+    while(resultTask == false);
     getNamesFromArray();
     load()
     showSubtask();
-    setBg();
+    setTimeout(() => {
+        
+    }, 5000);
     hoverSidebar();
+    // setBg();
 }
 
 async function loadTasks() {
     let response = await fetch(TASK_URL + ".json");
     let responseToJson = await response.json();
-    tasksBoard = responseToJson;
+    if(responseToJson == null)
+        tasksBoardAdd = [];
+    else
+    tasksBoardAdd = responseToJson;
+    resultTask = true;
 }
 
 
@@ -279,7 +294,8 @@ async function createTask() {
     let title = document.getElementById('input-title');
     let description = document.getElementById('input-description');
     let assigned = document.getElementById('show-contacts');
-    let date = document.getElementById('input-date');
+    let date = document.getElementById('input-date').valueAsDate;
+    date.valueAsDate = formDate(date);
     let category = document.getElementById('input-category');
     // let initial = initial;
     let prio = getPrio();
@@ -294,13 +310,25 @@ async function createTask() {
         subtask: subtask,
         prio: prio,
         initial: initial,
+        taskApplication: 0,
     };
 
-    tasksBoard.push(task);
-    putData(path = "", tasksBoard);
+    tasksBoardAdd.push(task);
+    putData(path = "", tasksBoardAdd);
     clearInputs();
     spliceTask();
     save();
+}
+
+function formDate(dateTask)
+{
+    const isoDate = dateTask;
+    const date = new Date(isoDate);
+
+    const day = date.getUTCDate().toString().padStart(2, '0');
+    const month = (date.getUTCMonth() + 1).toString().padStart(2, '0'); // Monate sind 0-basiert
+    const year = date.getUTCFullYear();
+    return `${day}/${month}/${year}`;
 }
 
 

@@ -1,5 +1,5 @@
 let tasksBoard = [];
-const TASK_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
+const SUMMARY_URL = "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let result2 = false;
 let result3 = true;
 let loginName;
@@ -28,16 +28,13 @@ function openSummary(){
   window.location.href = "./summary.html";
 }
 
-
-
 async function loadTasks(){
-  let response = await fetch(TASK_URL + ".json");
+  let response = await fetch(SUMMARY_URL + ".json");
   let responseToJSON = await response.json();
   tasksBoard = responseToJSON;
   tasksBoard = null;
   result2 = true;
   result3 = true;
-  console.log(tasksBoard);
 }
 
 function addTask(){
@@ -51,7 +48,7 @@ function addTask(){
 }
 
 async function putData(path="", data={}){
-  let response = await fetch(TASK_URL + path + ".json", {
+  let response = await fetch(SUMMARY_URL + path + ".json", {
       method: "PUT",
       header: {
           "Content-Type": "application/json",
@@ -131,12 +128,10 @@ function getSummary(){
 }
 
 function getNextDate(){
-  if(tasksBoard == null)
-    return '';
+  if(tasksBoard == null) return '';
   let date = tasksBoard[0]["date"];
   let date1 = new Date(tasksBoard[0]["date"]);
   let date2;
-
   for(let i = 1; i < tasksBoard.length; i++)
   {
     date2 = new Date(tasksBoard[i]["date"]);
@@ -156,10 +151,7 @@ function formatDate(date) {
   let month = dateParts[1];
   let year = dateParts[2];
 
-  let monthNames = [
-      "January", "February", "March", "April", "May", "June", 
-      "July", "August", "September", "October", "November", "December"
-  ];
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
   let monthName = monthNames[parseInt(month) - 1];
   return `${monthName} ${day}, ${year}`;

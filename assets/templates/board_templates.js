@@ -1,7 +1,7 @@
 function detailCardHTMLLabel(idTask){
     return /*html*/`
         <div class="labelClose">
-            <div class="labelDetailCard">${tasks[idTask].label}</div>
+            <div class="labelDetailCard">${tasks[idTask].category}</div>
             <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard(${idTask})">
                 <img class="closeDetailCard" src="../assets/img/close.png" alt="">
             </div>
@@ -16,12 +16,16 @@ function detailCardHTMLTitle(idTask){
 }
 
 function detailCardHTMLContent(idTask){
+    if(tasks[idTask].description == null)
+        return '';
     return /*html*/`
-        <div class="textDetailCardContent">${tasks[idTask].text}</div>
+        <div class="textDetailCardContent">${tasks[idTask].description}</div>
     `
 }
 
 function detailCardHTMLDate(idTask){
+    if(tasks[idTask].date == null)
+        return '';
     return /*html*/`
         <div class="textDetailCardDate">
             <div>Due date:</div>
@@ -31,6 +35,8 @@ function detailCardHTMLDate(idTask){
 }
 
 function detailCardHTMLPriority(idTask){
+    if(tasks[idTask].prio == null)
+        return '';
     return /*html*/`
         <div class="textDetailCardPriority">
             <div>Priority:</div>
@@ -42,15 +48,17 @@ function detailCardHTMLPriority(idTask){
     `
 }
 function cardHTMLPriorityName(idTask){// 1 - High, 2 - Medium, 3 - Low
-    if(tasks[idTask].priority == 1)
+    if(tasks[idTask].prio == 1)
         return "Low";
-    if(tasks[idTask].priority == 2)
+    if(tasks[idTask].prio == 2)
         return "LMedium";
-    if(tasks[idTask].priority == 3)
+    if(tasks[idTask].prio == 3)
         return "Urgent";
 }
 
 function detailCardHTMLContacts(idTask){
+    if(tasks[idTask]["assigned to"] == null)
+        return '';
     return /*html*/`
         <div class="textDetailCardContacts">
                 <div>Assigned To:</div>
@@ -76,6 +84,8 @@ function getdetailcardHTMLContacts(idTask){
 }
 
 function detailCardHTMLSubtasks(idTask){
+    if(tasks[idTask]["subtasks"] == null)
+        return '';
     return /*html*/`
         <div class="textDetailCardContacts">
             <div>Subtasks:</div>
@@ -91,7 +101,7 @@ function getDetailcardHTMLSubtasks(idTask){
         subtasksCards += /*html*/`
             <div class="subtasksListCard">
                 <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
-                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
+                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].description}</label>
             </div>`;
     } 
     
@@ -144,7 +154,7 @@ function cardHTML(idTask){
 
 function cardHTMLLabel(idTask){
     return /*html*/`
-        <div class="labelCard">${tasks[idTask].label}</div>
+        <div class="labelCard">${tasks[idTask].category}</div>
     `
 }
 
@@ -155,12 +165,16 @@ function cardHTMLTitle(idTask){
 }
 
 function cardHTMLContent(idTask){
+    if(tasks[idTask].description == null)
+        tasks[idTask].description = '';
     return /*html*/`
-        <div class="textCardContent">${tasks[idTask].text}</div>
+        <div class="textCardContent">${tasks[idTask].description}</div>
     `
 }
 
 function cardHTMLProgressBar(idTask){
+    if(tasks[idTask]["subtasks"] == null)
+        return '';
     let maxSubtasks = tasks[idTask]["subtasks"].length;
     let checkedTasks = getCheckedTasks(idTask);
     let widthProgress = 128 * (checkedTasks / maxSubtasks);
@@ -177,11 +191,13 @@ function cardHTMLProgressBar(idTask){
 }
 
 function cardHTMLPriority(idTask){// 1 - High, 2 - Medium, 3 - Low
-    if(tasks[idTask].priority == 1)
+    if(tasks[idTask].prio == null)
+        return '';
+    if(tasks[idTask].prio == 1)
         return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Urgent.png" alt="">`
-    if(tasks[idTask].priority == 2)
+    if(tasks[idTask].prio == 2)
         return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Medium.png" alt="">`
-    if(tasks[idTask].priority == 3)
+    if(tasks[idTask].prio == 3)
         return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Low.png" alt="">`
 }
 
@@ -189,6 +205,9 @@ function cardHTMLContacts(idTask){
     let initials = 0;
     let contactCards = '';
     let leftPosition = 0;
+
+    if(tasks[idTask]["assigned to"] == null)
+        return '';
 
     for(let i = 0; i < tasks[idTask]["assigned to"].length; i++){
         leftPosition = i * 8;
@@ -207,6 +226,8 @@ function cardHTMLNoTasks(idTask){
 }
 
 function getInitials(name) {
+    if(name == null)
+        return "";
     const nameParts = name.split(' ');
     const initials = nameParts.map(part => part.charAt(0)).join('');
 

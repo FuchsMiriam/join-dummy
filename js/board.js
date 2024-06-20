@@ -77,7 +77,7 @@ let exampleTask2 = {
 let result = false;
 function boardInit(){
     includeHTML();
-    loadTasks().then((result) => {
+    loadTasksBoard().then((result) => {
         // tasks = [];
         // tasks[0] = (exampleTask);
         // tasks[1] = (exampleTask1);
@@ -87,16 +87,17 @@ function boardInit(){
         // tasks[5] = (exampleTask);
         // tasks[6] = (exampleTask);
         // tasks[7] = (exampleTask);
-        putData(path="", tasks);
+        // putData(path="", tasks);
         renderTasks();
         hoverSidebar();
     });
 }
 
-async function loadTasks(){
+async function loadTasksBoard(){
     let response = await fetch(BASE_URL + ".json");
     let responseToJSON = await response.json();
     tasks = responseToJSON;
+    console.log(tasks);
     result = true;
     return responseToJSON;
 }
@@ -155,6 +156,8 @@ function closeDetailCard(idTask){
 }
 
 function checkSubtasks(idTask){
+    if(tasks[idTask]["subtasks"] == null)
+        return '';
     for(let i = 0; i < tasks[idTask]["subtasks"].length; i++)
         {
             let name = "checkCard" + idTask + i;
@@ -212,14 +215,14 @@ function toggleCheckbox(idTask, idCheckBox){
 
     tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
     renderTasks();
-    putData(path="", tasks);
+    // putData(path="", tasks);
 }
 
 function deleteTask(idTask){
     tasks.splice(idTask, 1);
     closeDetailCard(idTask);
     renderTasks();
-    putData(path="", tasks);
+    // putData(path="", tasks);
 }
 
 function searchTasks() {
@@ -241,7 +244,7 @@ function searchTasks() {
 function showSearchTasks(input){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
     for(let i = 0; i < tasks.length; i++){
-        let text = tasks[i].text;
+        let text = tasks[i].description;
         let title = tasks[i].title;
         if(tasks[i].taskApplication == 0 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input)))
             tasksToDo += addTaskBoard(i, "toDO");
@@ -272,7 +275,7 @@ function allowDrop(ev){
 function drop(category){
     tasks[currentTask]['taskApplication'] = category;
     renderTasks();
-    putData(path="", tasks);
+    // putData(path="", tasks);
 }
 
 function getTasks(){

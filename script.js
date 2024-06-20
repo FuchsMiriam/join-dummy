@@ -40,12 +40,12 @@ function redirectToLegalPage() {
 }
 
 function redirectToBoard() {
-  getLoginName(null);
   window.location.href = "./html/board.html";
 }
 
 function redirectToSummary(){
   let test = 0;
+  getLoginName(null);
   if(window.innerWidth > 1200)
     window.location.href = "./html/summary.html";
   else{
