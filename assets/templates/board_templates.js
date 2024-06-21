@@ -76,13 +76,13 @@ function detailCardHTMLContacts(idTask){
 function getdetailcardHTMLContacts(idTask){
     let initials = 0;
     let contactCards = '';
-    for(let i = 0; i < tasks[idTask]["assigned to"].name.length; i++){
-        initials = getInitials(tasks[idTask]["assigned to"].name[i]);
+    for(let i = 0; i < tasks[idTask]["assigned to"].length; i++){
+        initials = getInitials(tasks[idTask]["assigned to"][i].name);
         contactCards += /*html*/`
             <div class="contactsDetailCard">
                 <div class="contactsListCard">
-                    <p class="cardContactDetailCard ${tasks[idTask]["assigned to"].color}">${initials}</p>
-                    <p class="nameContactDetailCard">${tasks[idTask]["assigned to"].name[i]}</p>
+                    <p class="cardContactDetailCard ${tasks[idTask]["assigned to"][i].color}">${initials}</p>
+                    <p class="nameContactDetailCard">${tasks[idTask]["assigned to"][i].name}</p>
                 </div>
             </div>`;
     }  
@@ -218,10 +218,10 @@ function cardHTMLContacts(idTask){
     if(tasks[idTask]["assigned to"] == null)
         return '';
 
-    for(let i = 0; i < tasks[idTask]["assigned to"].name.length; i++){
+    for(let i = 0; i < tasks[idTask]["assigned to"].length; i++){
         leftPosition = i * 8;
-        initials = getInitials(tasks[idTask]["assigned to"].name[i]);
-        contactCards += /*html*/`<div class="cardContact ${tasks[idTask]["assigned to"].color} leftPosition${leftPosition}">${initials}</div>`;
+        initials = getInitials(tasks[idTask]["assigned to"][i].name);
+        contactCards += /*html*/`<div class="cardContact ${tasks[idTask]["assigned to"][i].color} leftPosition${leftPosition}">${initials}</div>`;
     }
         
     return /*html*/`

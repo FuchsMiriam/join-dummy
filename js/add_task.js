@@ -286,6 +286,14 @@ async function createTask(i) {
   let prio = getPrio();
   let subtask = getTask();
 
+  let sumContacts = [];
+  for(let i = 0; i < name.length; i++)
+    {
+        sumContacts[i] = {
+            name: name[i],
+            color: color,}
+    }
+
   let task = {
     title: title.value,
     description: description.value,
@@ -295,11 +303,12 @@ async function createTask(i) {
     subtask: subtask,
     prio: prio,
     "assigned to": {
-     "name": name,
-     "color": color,
+     "name": "",//name,
+     "color": "",//color,
   },
     taskApplication: 0,
   };
+  task["assigned to"] = sumContacts;
 
   tasksBoardAdd.push(task);
   putData((path = ""), tasksBoardAdd);

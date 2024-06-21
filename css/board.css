@@ -558,6 +558,10 @@ input::placeholder{
     background-color: blue;
 }
 
+.orange{
+    background-color: rgba(255, 122, 0, 1);
+}
+
 .leftPosition0{
     left: 0px;
 }
