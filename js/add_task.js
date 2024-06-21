@@ -282,7 +282,7 @@ async function createTask(i) {
   date.valueAsDate = formDate(date);
   let category = document.getElementById("input-category");
   let names = namesFromContacts;
-  let prio = getPrio(prio);
+  let prio = getPrio();
   let subtask = getTask();
 
   let task = {
@@ -322,20 +322,15 @@ function spliceTask() {
 }
 
 function getPrio() {
-  let prio1 = document.getElementById("input-prio1");
-  let prio2 = document.getElementById("input-prio2");
-  let prio3 = document.getElementById("input-prio3");
+ 
 
-  if (prio1.onfocus) {
-    isClicked1 == true;
+  if (isClicked1 == true) {
     return 1;
   }
-  if (prio2.onfocus) {
-    isClicked2 == true;
+  if (isClicked2 == true) {
     return 2;
   }
-  if (prio3.onfocus) {
-    isClicked3 == true;
+  if (isClicked3 == true) {
     return 3;
   }
 }
@@ -421,8 +416,8 @@ function changePrioButtonMedium() {
     "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio3").style.backgroundImage =
     "url(../assets/img/low_button.svg)";
-  isClicked2 = true;
   isClicked1 = false;
+  isClicked2 = true;
   isClicked3 = false;
 }
 
@@ -433,9 +428,9 @@ function changePrioButtonLow() {
     "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio2").style.backgroundImage =
     "url(../assets/img/medium_button.svg)";
-  isClicked3 = true;
-  isClicked2 = false;
-  isClicked1 = false;
+    isClicked1 = false;
+    isClicked2 = false;
+    isClicked3 = true;
 }
 
 function save() {
