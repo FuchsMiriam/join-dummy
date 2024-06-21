@@ -281,7 +281,8 @@ async function createTask(i) {
   let date = document.getElementById("input-date").valueAsDate;
   date.valueAsDate = formDate(date);
   let category = document.getElementById("input-category");
-  let names = namesFromContacts;
+  let name = namesFromContacts;
+  let color = getColorClass();
   let prio = getPrio();
   let subtask = getTask();
 
@@ -293,9 +294,10 @@ async function createTask(i) {
     category: category.value,
     subtask: subtask,
     prio: prio,
-    assigned_to: {
-      name: names,
-    },
+    "assigned to": {
+     "name": name,
+     "color": color,
+  },
     taskApplication: 0,
   };
 
@@ -304,6 +306,14 @@ async function createTask(i) {
   clearInputs();
   spliceTask();
   save();
+}
+
+function getColorClass() {
+  for (let i = 0; i < contacts.length; i++) {
+    const colorClass = contacts[i].colorClass;
+    
+    return colorClass;
+  }
 }
 
 function formDate(dateTask) {
