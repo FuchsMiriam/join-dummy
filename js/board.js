@@ -87,6 +87,7 @@ function boardInit(){
         // tasks[5] = (exampleTask);
         // tasks[6] = (exampleTask);
         // tasks[7] = (exampleTask);
+        // tasks.push(exampleTask);
         // putData(path="", tasks);
         renderTasks();
         hoverSidebar();
@@ -215,14 +216,14 @@ function toggleCheckbox(idTask, idCheckBox){
 
     tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
     renderTasks();
-    // putData(path="", tasks);
+    putData(path="", tasks);
 }
 
 function deleteTask(idTask){
     tasks.splice(idTask, 1);
     closeDetailCard(idTask);
     renderTasks();
-    // putData(path="", tasks);
+    putData(path="", tasks);
 }
 
 function searchTasks() {
@@ -275,7 +276,7 @@ function allowDrop(ev){
 function drop(category){
     tasks[currentTask]['taskApplication'] = category;
     renderTasks();
-    // putData(path="", tasks);
+    putData(path="", tasks);
 }
 
 function getTasks(){

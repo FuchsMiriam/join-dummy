@@ -1,12 +1,18 @@
 function detailCardHTMLLabel(idTask){
-    return /*html*/`
+    if(tasks[idTask].category == "User Story"){return /*html*/`
         <div class="labelClose">
-            <div class="labelDetailCard">${tasks[idTask].category}</div>
+            <div class="labelDetailCard labelCard-blue">${tasks[idTask].category}</div>
             <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard(${idTask})">
                 <img class="closeDetailCard" src="../assets/img/close.png" alt="">
             </div>
-        </div>
-    `;
+        </div>`;}
+    else{return /*html*/`
+        <div class="labelClose">
+            <div class="labelDetailCard labelCard-green">${tasks[idTask].category}</div>
+            <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard(${idTask})">
+                <img class="closeDetailCard" src="../assets/img/close.png" alt="">
+            </div>
+        </div>`;} 
 }
 
 function detailCardHTMLTitle(idTask){
@@ -51,7 +57,7 @@ function cardHTMLPriorityName(idTask){// 1 - High, 2 - Medium, 3 - Low
     if(tasks[idTask].prio == 1)
         return "Low";
     if(tasks[idTask].prio == 2)
-        return "LMedium";
+        return "Medium";
     if(tasks[idTask].prio == 3)
         return "Urgent";
 }
