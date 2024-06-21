@@ -197,11 +197,11 @@ function cardHTMLPriority(idTask){// 1 - High, 2 - Medium, 3 - Low
     if(tasks[idTask].prio == null)
         return '';
     if(tasks[idTask].prio == 1)
-        return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Urgent.png" alt="">`
+        return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Low.png" alt="">`
     if(tasks[idTask].prio == 2)
         return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Medium.png" alt="">`
     if(tasks[idTask].prio == 3)
-        return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Low.png" alt="">`
+        return /*html*/`<img class="imgPrio" src="../../assets/img/Property 1=Urgent.png" alt="">`
 }
 
 function cardHTMLContacts(idTask){
