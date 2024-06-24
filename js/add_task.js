@@ -2,6 +2,7 @@ let task = [];
 let savedTask = [];
 let contacts = [];
 let contactsNames = [];
+let colorClassForContact = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
@@ -30,18 +31,19 @@ async function init() {
   includeHTML();
   await fetchContacts();
   loadTasks().then((resultTask) => {
-      getNamesFromArray();
-      load();
-      showSubtask();
-      hoverSidebar();
+    getNamesFromArray();
+    getColorClass();
+    load();
+    showSubtask();
+    hoverSidebar();
   });
-//   await loadTasks();
-//   while (resultTask == false);
-//   getNamesFromArray();
-//   load();
-//   showSubtask();
-//   setTimeout(() => {}, 5000);
-//   hoverSidebar();
+  //   await loadTasks();
+  //   while (resultTask == false);
+  //   getNamesFromArray();
+  //   load();
+  //   showSubtask();
+  //   setTimeout(() => {}, 5000);
+  //   hoverSidebar();
 }
 
 async function loadTasks() {
@@ -282,17 +284,17 @@ async function createTask(i) {
   date.valueAsDate = formDate(date);
   let category = document.getElementById("input-category");
   let name = namesFromContacts;
-  let color = getColorClass();
+  let color = colorClassForContact;
   let prio = getPrio();
   let subtask = getTask();
 
   let sumContacts = [];
-  for(let i = 0; i < name.length; i++)
-    {
-        sumContacts[i] = {
-            name: name[i],
-            color: color,}
-    }
+  for (let i = 0; i < name.length; i++) {
+    sumContacts[i] = {
+      name: name[i],
+      color: color[i],
+    };
+  }
 
   let task = {
     title: title.value,
@@ -303,9 +305,9 @@ async function createTask(i) {
     subtask: subtask,
     prio: prio,
     "assigned to": {
-     "name": "",//name,
-     "color": "",//color,
-  },
+      name: "", //name,
+      color: "", //color,
+    },
     taskApplication: 0,
   };
   task["assigned to"] = sumContacts;
@@ -320,8 +322,8 @@ async function createTask(i) {
 function getColorClass() {
   for (let i = 0; i < contacts.length; i++) {
     const colorClass = contacts[i].colorClass;
-    
-    return colorClass;
+
+    colorClassForContact.push(colorClass);
   }
 }
 
@@ -341,8 +343,6 @@ function spliceTask() {
 }
 
 function getPrio() {
- 
-
   if (isClicked1 == true) {
     return 1;
   }
@@ -447,9 +447,9 @@ function changePrioButtonLow() {
     "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio2").style.backgroundImage =
     "url(../assets/img/medium_button.svg)";
-    isClicked1 = false;
-    isClicked2 = false;
-    isClicked3 = true;
+  isClicked1 = false;
+  isClicked2 = false;
+  isClicked3 = true;
 }
 
 function save() {
