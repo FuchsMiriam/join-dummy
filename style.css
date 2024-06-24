@@ -14,6 +14,11 @@ body {
   overflow: hidden;
 }
 
+.d-none{
+  display: none;
+}
+
+
 /*Animation at the beginning*/
 
   @-webkit-keyframes slide-tl {

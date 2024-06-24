@@ -119,7 +119,7 @@ async function loginUser() {
 
     if (user) {
       getLoginName(user.name);
-      window.location.href = "./html/board.html";
+      window.location.href = "./html/summary.html";
       return true;
     }
   } catch (error) {

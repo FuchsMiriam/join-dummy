@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.d-none {
+  display: none;
+}
+
 header {
   width: 1440px;
   height: 96px;
@@ -133,7 +137,7 @@ p {
   width: 232px;
   height: 317px;
   gap: 4px;
-  padding: 243px 0px 0px 52px;
+  padding: 243px 0px 0px 0px;
   display: flex;
   flex-direction: column;
   color: rgba(168, 168, 168, 1);
@@ -177,6 +181,10 @@ p {
   background-color: rgba(9, 25, 49, 1);
 }
 
+.framesPolicy{
+  background-color: rgba(9, 25, 49, 1);
+}
+
 .imgAddTask {
   background: url("../img/imgAddTask.png");
   object-fit: cover;
@@ -189,6 +197,10 @@ p {
   object-fit: cover;
   background-position: center;
   background-size: cover;
+}
+
+.padding8px60px{
+  padding: 8px 60px 8px 60px;
 }
 
 /* .menuFrames:hover .imgAddTask{
@@ -279,10 +291,6 @@ p {
   background-color: rgb(42, 62, 89);
 }
 
-.d-none {
-  display: none;
-}
-
 @media (min-width: 1440px) {
   header {
     width: 100vw;
@@ -371,4 +379,8 @@ p {
     font-size: 14px;
     line-height: 16.8px;
   }
+}
+
+.d-none {
+  display: none;
 }

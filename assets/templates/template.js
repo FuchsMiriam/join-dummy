@@ -1,4 +1,5 @@
 //Template einbinden
+let resultTemplate = false;
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
@@ -26,16 +27,32 @@ function includeHTML() {
       xhttp.open("GET", file, true);
       xhttp.send();
       /* Exit the function: */
+      resultTemplate = true;
       return;
     }
   }
+}
+
+function initHTML(){
+  includeHTML();
+  setTimeout(() => {
+    hoverSidebar();
+  }, 500);
+  
 }
 
 
 function hoverSidebar(){
   var path = window.location.pathname;
   var page = path.split("/").pop();
-  
+
+  let docu = document.referrer;
+    const index = docu.lastIndexOf('/') + 1; // Find the position of the last '/'
+    const fileName = docu.substring(index);
+    if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html")))
+      document.getElementById("menu_Sidebar").classList.add("d-none");
+    else
+    document.getElementById("menu_Sidebar").classList.remove("d-none");
   if(page == "summary.html")
   {
     document.getElementById("frameSummary").classList.add("nohover");
@@ -62,6 +79,16 @@ function hoverSidebar(){
     document.getElementById("frameContacts").classList.add("nohover");
     document.getElementById("frameContacts").classList.add("menuFramesHover");
     document.getElementById("imgFrameContacts").classList.add("imgHoverContacts");
+  }
+
+  if(page == "privacy_policy.html")
+  {
+    document.getElementById("framePolicy").classList.add("framesPolicy");
+  }
+
+  if(page == "legal_notice.html")
+  {
+    document.getElementById("frameNotice").classList.add("framesPolicy");
   }
   setInitialsName(); 
 }
