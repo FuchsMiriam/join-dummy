@@ -6,7 +6,7 @@ let loginName;
 
 async function summaryInit(){
   includeHTML();
-  loadTasks().then((result2) => {
+  loadTasksSummary().then((result2) => {
       getSummary();
       hoverSidebar();
   });
@@ -14,7 +14,7 @@ async function summaryInit(){
 
 async function summaryMobilInit(){
   includeHTML();
-  loadTasks().then((result3) => {
+  loadTasksSummary().then((result3) => {
       window.addEventListener('load', function () {
         hoverSidebar();
       });
@@ -28,7 +28,7 @@ function openSummary(){
   window.location.href = "./summary.html";
 }
 
-async function loadTasks(){
+async function loadTasksSummary(){
   let response = await fetch(SUMMARY_URL + ".json");
   let responseToJSON = await response.json();
   tasksBoard = responseToJSON;
@@ -47,7 +47,7 @@ async function loadTasks(){
 //   putData(path="", tasksBoard);
 // }
 
-async function putData(path="", data={}){
+async function putDataSummary(path="", data={}){
   let response = await fetch(SUMMARY_URL + path + ".json", {
       method: "PUT",
       header: {

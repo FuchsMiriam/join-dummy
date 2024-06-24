@@ -71,7 +71,7 @@ async function fetchContacts(path = "") {
   }
 }
 
-async function putData(path = "", data = {}) {
+async function putDataTasks(path = "", data = {}) {
   let response = await fetch(TASK_URL + path + ".json", {
     method: "PUT",
     headers: {
@@ -311,7 +311,7 @@ async function createTask(i) {
   task["assigned to"] = sumContacts;
 
   tasksBoardAdd.push(task);
-  putData((path = ""), tasksBoardAdd);
+  putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();
   save();

@@ -120,7 +120,7 @@ async function deleteData(path=""){
     return responseToJSON = await response.json();
 }
 
-async function putData(path="", data={}){
+async function putDataBoard(path="", data={}){
     let response = await fetch(BASE_URL + path + ".json", {
         method: "PUT",
         header: {
@@ -216,14 +216,14 @@ function toggleCheckbox(idTask, idCheckBox){
 
     tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
     renderTasks();
-    putData(path="", tasks);
+    putDataBoard(path="", tasks);
 }
 
 function deleteTask(idTask){
     tasks.splice(idTask, 1);
     closeDetailCard(idTask);
     renderTasks();
-    putData(path="", tasks);
+    putDataBoard(path="", tasks);
 }
 
 function searchTasks() {
@@ -276,7 +276,7 @@ function allowDrop(ev){
 function drop(category){
     tasks[currentTask]['taskApplication'] = category;
     renderTasks();
-    putData(path="", tasks);
+    putDataBoard(path="", tasks);
 }
 
 function getTasks(){
