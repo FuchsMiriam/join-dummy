@@ -2,15 +2,6 @@ const BASE_URL =
   "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks = [];
 let currentTask = 0;
-const colorClasses = [
-  "orange",
-  "purple",
-  "blue",
-  "pink",
-  "yellow",
-  "green",
-  "red",
-];
 let exampleTask = {
   label: "User Story",
   title: "Einkaufen",
@@ -113,15 +104,7 @@ function boardInit() {
     // putData(path="", tasks);
     renderTasks();
     hoverSidebar();
-    getColorClassBackground();
   });
-}
-
-function getColorClassBackground() {
-  const contact = contacts.find((c) => getInitials(c.name) === initials);
-  if (contact && contact.colorClass) {
-    element.classList.add(contact.colorClass);
-  }
 }
 
 async function loadTasksBoard() {

@@ -105,7 +105,7 @@ function getDetailcardHTMLSubtasks(idTask) {
     subtasksCards += /*html*/ `
             <div class="subtasksListCard">
                 <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
-                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].description}</label>
+                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
             </div>`;
   }
 

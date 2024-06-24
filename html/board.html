@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,15 @@
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/add_task_board.css">
     <script src="../js/board.js"></script>
     <script src="../assets/templates/template.js"></script>
     <script src="../js/summary.js"></script>
     <script src="../assets/templates/js/board_templates.js"></script>
-    <link
-      rel="shortcut icon"
-      href="../assets/img/favicon.ico"
-      type="image/x-icon"
-    />
+    <script src="../js/add_task_board.js"></script>
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon" />
 </head>
+
 <body onload="boardInit()">
     <div w3-include-html="../assets/templates/template.html"></div>
     <section class="headerFrame">
@@ -31,16 +31,17 @@
             <div id="addTaskDesktop" class="findAddTask">
                 <div id="searchDesktop" class="search-container">
                     <form class="formSearch">
-                      <input id="searchTaskDesktop" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
-                      <div class="boxSearch">
-                        <div class="vektorSearch"></div>
-                        <div class="widthSearch">
-                                <img class="buttonSearch"  src="../assets/img/search.png" alt="" onclick="foundTask()">
+                        <input id="searchTaskDesktop" class="inputSearch" type="text" placeholder="Find Task"
+                            name="search" oninput="searchTasks()">
+                        <div class="boxSearch">
+                            <div class="vektorSearch"></div>
+                            <div class="widthSearch">
+                                <img class="buttonSearch" src="../assets/img/search.png" alt="" onclick="foundTask()">
+                            </div>
                         </div>
-                      </div>
                     </form>
                 </div>
-                <button class="addTask">
+                <button class="addTask" onclick="displayAddTask()">
                     <div class="widthTitelAdd">Add task</div>
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -48,13 +49,14 @@
         </div>
         <div id="searchMobil" class="search-container d-none">
             <form class="formSearch">
-              <input id="searchTaskMobil" class="inputSearch" type="text" placeholder="Find Task" name="search" oninput="searchTasks()">
-              <div class="boxSearch">
-                <div class="vektorSearch"></div>
-                <div class="widthSearch">
-                        <img class="buttonSearch"  src="../assets/img/search.png" alt="" onclick="foundTask()">
+                <input id="searchTaskMobil" class="inputSearch" type="text" placeholder="Find Task" name="search"
+                    oninput="searchTasks()">
+                <div class="boxSearch">
+                    <div class="vektorSearch"></div>
+                    <div class="widthSearch">
+                        <img class="buttonSearch" src="../assets/img/search.png" alt="" onclick="foundTask()">
+                    </div>
                 </div>
-              </div>
             </form>
         </div>
         <div class="headersTable">
@@ -102,7 +104,8 @@
                 <div class="plus">+</div>
             </button>
         </div>
-        <div id="awaitFeedback" ondrop="drop(2)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
+        <div id="awaitFeedback" ondrop="drop(2)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn">
+        </div>
         <div class="boardColumn d-none mobilBoardTaskTitles">
             <div class="titleBoardColumn">Done</div>
         </div>
@@ -111,4 +114,5 @@
     <section id="idDetailCard" class="containerDetailCard">
     </section>
 </body>
+
 </html>

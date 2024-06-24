@@ -1,4 +1,5 @@
 let task = [];
+let subtask = [];
 let savedTask = [];
 let contacts = [];
 let contactsNames = [];
@@ -265,13 +266,11 @@ function addTask() {
     alert("Bitte alle Pflichtfelder ausfüllen!");
   } else {
     createTask();
-    // document.getElementById("pop-up-task").classList.remove("d-none");
+    document.getElementById("add_task").classList.remove("d-none");
 
-    document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(function () {
-        window.location.href = "board.html";
-      }, 3000);
-    });
+    setTimeout(function () {
+      window.open("board.html");
+    }, 2000);
   }
   save();
 }
@@ -302,7 +301,12 @@ async function createTask(i) {
     assigned: assigned.value,
     date: date.valueAsDate,
     category: category.value,
-    subtask: subtask,
+    subtasks: [
+      {
+        text: subtask,
+        checked: "0",
+      },
+    ],
     prio: prio,
     "assigned to": {
       name: "", //name,
@@ -404,17 +408,6 @@ function editSubtask(i) {
   task.push(i, newValue);
   save();
 }
-
-// function pushNewValue(i, newValue) {
-//     task.splice(i, 1);
-//     task.addEventListener('keypress', function (e) {
-//         if (e.key === 'enter') {
-//             task.push(i, newValue
-//             )
-//         }
-//     })
-//     task.push(i, newValue);
-// }
 
 function changePrioButtonUrgent() {
   document.getElementById("input-prio1").style.backgroundImage =
