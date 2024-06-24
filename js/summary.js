@@ -187,7 +187,8 @@ function getLoginName(name){
 
 function loadLoginName() {
   let nameAsText = localStorage.getItem("name", loginName);
-
+  if (nameAsText == "null")
+    return null; 
   if (nameAsText) 
     return JSON.parse(nameAsText);
 }

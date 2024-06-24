@@ -67,7 +67,15 @@ function hoverSidebar(){
 }
 
 function setInitialsName(){
-  document.getElementById("idLoginName").innerHTML = getInitials(loadLoginName());
+  let name = loadLoginName();
+  if(name == null)
+    document.getElementById("idLoginName").innerHTML = "G";
+  else{
+    const nameParts = name.split(' ');
+    const initials = nameParts.map(part => part.charAt(0)).join('');
+  
+    document.getElementById("idLoginName").innerHTML =  initials;
+  }
 }
 
 function getInitials(name) {
