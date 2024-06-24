@@ -29,19 +29,19 @@ let resultTask = false;
 async function init() {
   includeHTML();
   await fetchContacts();
-  // loadTasks().then((resultTask) => {
-  //     getNamesFromArray();
-  //     load()
-  //     showSubtask();
-  //     hoverSidebar();
-  // });
-  await loadTasks();
-  while (resultTask == false);
-  getNamesFromArray();
-  load();
-  showSubtask();
-  setTimeout(() => {}, 5000);
-  hoverSidebar();
+  loadTasks().then((resultTask) => {
+      getNamesFromArray();
+      load();
+      showSubtask();
+      hoverSidebar();
+  });
+//   await loadTasks();
+//   while (resultTask == false);
+//   getNamesFromArray();
+//   load();
+//   showSubtask();
+//   setTimeout(() => {}, 5000);
+//   hoverSidebar();
 }
 
 async function loadTasks() {

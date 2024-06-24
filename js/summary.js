@@ -32,7 +32,7 @@ async function loadTasks(){
   let response = await fetch(SUMMARY_URL + ".json");
   let responseToJSON = await response.json();
   tasksBoard = responseToJSON;
-  tasksBoard = null;
+  // tasksBoard = null;
   result2 = true;
   result3 = true;
 }

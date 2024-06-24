@@ -98,7 +98,6 @@ async function loadTasksBoard(){
     let response = await fetch(BASE_URL + ".json");
     let responseToJSON = await response.json();
     tasks = responseToJSON;
-    console.log(tasks);
     result = true;
     return responseToJSON;
 }
@@ -185,6 +184,8 @@ function detailCardHTML(idTask){
 function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
     let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
     setBackColumns();
+    if(tasks == null)
+        return checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
     for(let i = 0; i < tasks.length; i++){
         if(tasks[i].taskApplication == 0)
             tasksToDo += addTaskBoard(i, "toDO");
@@ -193,8 +194,7 @@ function showTasks(){ // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
         else if(tasks[i].taskApplication == 2)
             tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
         else if(tasks[i].taskApplication == 3)
-            tasksDone += addTaskBoard(i, "done");
-    }
+            tasksDone += addTaskBoard(i, "done");}
     checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
