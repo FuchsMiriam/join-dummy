@@ -67,8 +67,11 @@ function setHoverFrames(page){
     setHover("frameContacts", "imgFrameContacts", "imgHoverContacts");
   if(page == "privacy_policy.html")
     document.getElementById("framePolicy").classList.add("framesPolicy");
-  if(page == "legal_notice.html")
+  if(page == "legal_notice.html"){
+    document.getElementById("idLoginName").innerHTML = "";
     document.getElementById("frameNotice").classList.add("framesPolicy");
+  }
+    
 }
 
 function setHover(frame, imgFrame, imgHover){

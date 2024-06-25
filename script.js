@@ -2,6 +2,7 @@ function onloadFunc() {
   onloadDatabase();
   loadDataFromLocalStorage();
   showAnimation();
+  getLoginName("");
 }
 
 //Database for Login

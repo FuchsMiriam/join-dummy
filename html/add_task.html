@@ -59,17 +59,19 @@
                 </div>
                 <form onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
-                    <input list="input-categorie" id="input-category" required>
-                    <datalist id="input-categorie">
-                        <option value="Technical Task"></option>
-                        <option value="User Story"></option>
-                    </datalist>
+                    <div class="input-categorie-container">
+                        <input id="input-category" required>
+                        <img class="input-categorie-arrow-down" id="input-categorie-image-down" src="../assets/img/arrow_drop_down.svg" alt=""  onclick="showCategorie()">
+                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up" onclick="closeCategorie()" class="d-none" alt="">
+                    </div>
+                    <div id="display-categorie" class="d-none"></div>
                 </form>
                 <label for="input-subtask">Subtasks</label>
                 <div class="input-container">
-                    <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button" id="add-button-subtask"
-                        onclick="addSubTask()">+</button>
-                    <div id="show-subtask"></div>
+                    <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button"
+                        id="add-button-subtask" onclick="addSubTask()">+</button>
+                    <div id="show-subtask">
+                    </div>
                 </div>
             </div>
         </section>
@@ -77,7 +79,8 @@
             <span>*This field is required</span>
             <div class="button-footer">
                 <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
-                <button class="btn-footer-create btn" onclick="addTask()">Create Task <img src="../assets/img/check.svg"></button>
+                <button class="btn-footer-create btn" onclick="addTask()">Create Task <img
+                        src="../assets/img/check.svg"></button>
             </div>
         </div>
     </div>
