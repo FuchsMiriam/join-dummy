@@ -32,7 +32,7 @@
     display: none;
   }
 
-  .animateMobile {
+  /* .animateMobile {
     width: 100.03px;
     height: 121.97px;
     top: 402px;
@@ -40,6 +40,59 @@
     gap: 10px;
     display: flex;
     position: absolute;
+  } */
+
+  .animateMobile {
+    width: 100.03px;
+    height: 121.97px;
+    top: 402px;
+    left: 164px;
+    gap: 0px;
+    display: flex;
+    position: absolute;
+    transition: transform 400ms ease-in-out, width 400ms ease-in-out,
+      height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out !important;
+    animation: slide-tl 0.6s 0.4s forwards !important;
+  }
+
+  @-webkit-keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
   }
 
   .loginContainer {
@@ -108,8 +161,8 @@
 
 @media (max-width: 580px) {
   .loginContainer {
-    width: 180px;
-    left: calc((100vw - 320px) / 2);
+    width: 160px;
+    left: calc((100vw - 300px) / 2);
   }
 
   .interactionContainer {
@@ -141,7 +194,7 @@
     background-color: #b0b0b0;
   }
 
-  .animateMobile {
+  /* .animateMobile {
     width: 100.03px;
     height: 121.97px;
     top: 402px;
@@ -152,9 +205,9 @@
     transition: transform 400ms ease-in-out, width 400ms ease-in-out,
       height 400ms ease-in-out, top 400ms ease-in-out, left 400ms ease-in-out !important;
     animation: slide-tl 0.6s 0.4s forwards !important;
-  }
+  } */
 
-  @-webkit-keyframes slide-tl {
+  /* @-webkit-keyframes slide-tl {
     0% {
       top: 402px;
       left: 164px;
@@ -192,13 +245,13 @@
       -webkit-transform: translateY(0) translateX(0);
       transform: translateY(0) translateX(0);
     }
-  }
+  } */
 
   .mainpageSignUpContainer {
     width: 292px;
     height: 49px;
     top: 778px;
-    left: 70px;
+    left: calc((100vw - 292px) / 2);
     gap: 35px;
     margin-top: 48px;
   }
@@ -226,7 +279,7 @@
     text-align: left;
   }
 
-  .loginContainer {
+  /* .loginContainer {
     width: 396px !important;
     height: 515px !important;
     top: 205.5px !important;
@@ -234,10 +287,10 @@
     padding: 32px 0px 32px 0px !important;
     gap: 32px;
     border-radius: 30px;
-  }
+  } */
 
   .interactionContainer {
-    width: 380px;
+    width: 290px;
   }
 
   .loginHeadline {
@@ -251,7 +304,7 @@
   }
 
   .mainCredentials {
-    width: 364px;
+    width: auto;
     height: 192px;
     gap: 16px;
   }
@@ -294,7 +347,7 @@
   }
 
   .loginInputFields {
-    width: 422px;
+    width: auto;
     height: 152px;
     display: flex;
   }
@@ -313,5 +366,23 @@
     top: 869px;
     gap: 16px;
     margin-top: 48px;
+  }
+}
+
+@media (max-width: 419px){
+  .loginContainer {
+    width: 160px;
+  }
+
+  .mainCredentials {
+    width: 290px;
+  }
+
+  .loginEmail{
+    width: auto;
+  }
+
+  .loginPassword{
+    width: auto;
   }
 }
