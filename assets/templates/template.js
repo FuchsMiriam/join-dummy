@@ -38,59 +38,43 @@ function initHTML(){
   setTimeout(() => {
     hoverSidebar();
   }, 500);
-  
 }
-
 
 function hoverSidebar(){
   var path = window.location.pathname;
   var page = path.split("/").pop();
-
   let docu = document.referrer;
-    const index = docu.lastIndexOf('/') + 1; // Find the position of the last '/'
-    const fileName = docu.substring(index);
-    if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html")))
-      document.getElementById("menu_Sidebar").classList.add("d-none");
-    else
-    document.getElementById("menu_Sidebar").classList.remove("d-none");
-  if(page == "summary.html")
-  {
-    document.getElementById("frameSummary").classList.add("nohover");
-    document.getElementById("frameSummary").classList.add("menuFramesHover");
-    document.getElementById("imgFrameSummary").classList.add("imgHoverSummary");
-  }
+  const index = docu.lastIndexOf('/') + 1; // Find the position of the last '/'
+  const fileName = docu.substring(index);
 
-  if(page == "add_task.html")
-  {
-    document.getElementById("frameAddtasks").classList.add("nohover");
-    document.getElementById("frameAddtasks").classList.add("menuFramesHover");
-    document.getElementById("imgFrameAddtask").classList.add("imgHoverAddtask");
-  }
-
-  if(page == "board.html")
-  {
-    document.getElementById("frameBoard").classList.add("nohover");
-    document.getElementById("frameBoard").classList.add("menuFramesHover");
-    document.getElementById("imgFrameBoard").classList.add("imgBoardHover");
-  }
-
-  if(page == "contacts.html")
-  {
-    document.getElementById("frameContacts").classList.add("nohover");
-    document.getElementById("frameContacts").classList.add("menuFramesHover");
-    document.getElementById("imgFrameContacts").classList.add("imgHoverContacts");
-  }
-
-  if(page == "privacy_policy.html")
-  {
-    document.getElementById("framePolicy").classList.add("framesPolicy");
-  }
-
-  if(page == "legal_notice.html")
-  {
-    document.getElementById("frameNotice").classList.add("framesPolicy");
-  }
+  if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html")))
+    document.getElementById("menu_Sidebar").classList.add("d-none");
+  else
+  document.getElementById("menu_Sidebar").classList.remove("d-none");
+  
+  setHoverFrames(page)
   setInitialsName(); 
+}
+
+function setHoverFrames(page){
+  if(page == "summary.html")
+    setHover("frameSummary", "imgFrameSummary", "imgHoverSummary");
+  if(page == "add_task.html")
+    setHover("frameAddtasks", "imgFrameAddtask", "imgHoverAddtask");
+  if(page == "board.html")
+    setHover("frameBoard", "imgFrameBoard", "imgBoardHover");
+  if(page == "contacts.html")
+    setHover("frameContacts", "imgFrameContacts", "imgHoverContacts");
+  if(page == "privacy_policy.html")
+    document.getElementById("framePolicy").classList.add("framesPolicy");
+  if(page == "legal_notice.html")
+    document.getElementById("frameNotice").classList.add("framesPolicy");
+}
+
+function setHover(frame, imgFrame, imgHover){
+  document.getElementById(frame).classList.add("nohover");
+  document.getElementById(frame).classList.add("menuFramesHover");
+  document.getElementById(imgFrame).classList.add(imgHover);
 }
 
 function setInitialsName(){
