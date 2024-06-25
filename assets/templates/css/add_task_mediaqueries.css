@@ -43,6 +43,10 @@
         width: 80px;
         padding-right: 10px;
     }
+
+    #display-categorie {
+        bottom: 420px;
+    }
 }
 
 @media(max-width: 480px) {

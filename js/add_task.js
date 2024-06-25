@@ -250,9 +250,9 @@ function showCategorie() {
 
   function addToInputTechnical() {
     let value = document.getElementById('input-category');
-    let newValue = document.getElementById('technical-input').value;
+    let newValue = document.getElementById('technical-input');
 
-    value = newValue;
+    value = newValue.value;
   }
 
   function closeCategorie() {
