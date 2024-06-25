@@ -233,6 +233,39 @@ function imageOnSubtask() {
   }
 }
 
+function showCategorie() {
+    let display = document.getElementById('display-categorie');
+    document.getElementById('input-categorie-image-down').classList.add('d-none');
+    document.getElementById('input-categorie-image-up').classList.remove('d-none');
+    display.classList.remove('d-none');
+
+    display.innerHTML = '';
+    display.innerHTML = `
+      <div>
+        <h2 class="technical-categorie" id="technical-input" onclick="addToInputTechnical()">Technical Task</h2>
+        <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
+      </div>
+    `;
+  }
+
+  function addToInputTechnical() {
+    let value = document.getElementById('input-category');
+    let newValue = document.getElementById('technical-input').value;
+
+    value = newValue;
+  }
+
+  function closeCategorie() {
+    let display = document.getElementById('display-categorie');
+    let down = document.getElementById('input-categorie-image-down');
+    let up = document.getElementById('input-categorie-image-up');
+
+      up.classList.add('d-none');
+      display.classList.add('d-none');
+      down.classList.remove('d-none')
+  }
+
+
 function showSubtask() {
   let inputs = document.getElementById("show-subtask");
   inputs.innerHTML = "";
