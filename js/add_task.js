@@ -301,12 +301,11 @@ async function createTask(i) {
     assigned: assigned.value,
     date: date.valueAsDate,
     category: category.value,
-    subtasks: [
+    subtasks: 
       {
         text: subtask,
         checked: "0",
       },
-    ],
     prio: prio,
     "assigned to": {
       name: "", //name,
