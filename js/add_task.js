@@ -234,36 +234,41 @@ function imageOnSubtask() {
 }
 
 function showCategorie() {
-    let display = document.getElementById('display-categorie');
-    document.getElementById('input-categorie-image-down').classList.add('d-none');
-    document.getElementById('input-categorie-image-up').classList.remove('d-none');
-    display.classList.remove('d-none');
+  let display = document.getElementById('display-categorie');
+  document.getElementById('input-categorie-image-down').classList.add('d-none');
+  document.getElementById('input-categorie-image-up').classList.remove('d-none');
+  display.classList.remove('d-none');
 
-    display.innerHTML = '';
-    display.innerHTML = `
+  display.innerHTML = '';
+  display.innerHTML = `
       <div>
         <h2 class="technical-categorie" id="technical-input" onclick="addToInputTechnical()">Technical Task</h2>
         <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
       </div>
     `;
-  }
+}
 
-  function addToInputTechnical() {
-    let value = document.getElementById('input-category');
-    let newValue = document.getElementById('technical-input');
+function addToInputTechnical() {
+  let value = document.getElementById('input-category');
+  value.value = "Technical Task";
+  closeCategorie();
+}
 
-    value = newValue.value;
-  }
+function addToInputUser() {
+  let value = document.getElementById('input-category');
+  value.value = "User Story";  // setze den Textinhalt anstelle des Elements
+  closeCategorie();
+}
 
-  function closeCategorie() {
-    let display = document.getElementById('display-categorie');
-    let down = document.getElementById('input-categorie-image-down');
-    let up = document.getElementById('input-categorie-image-up');
+function closeCategorie() {
+  let display = document.getElementById('display-categorie');
+  let down = document.getElementById('input-categorie-image-down');
+  let up = document.getElementById('input-categorie-image-up');
 
-      up.classList.add('d-none');
-      display.classList.add('d-none');
-      down.classList.remove('d-none')
-  }
+  up.classList.add('d-none');
+  display.classList.add('d-none');
+  down.classList.remove('d-none')
+}
 
 
 function showSubtask() {
@@ -334,11 +339,11 @@ async function createTask(i) {
     assigned: assigned.value,
     date: date.valueAsDate,
     category: category.value,
-    subtasks: 
-      {
-        text: subtask,
-        checked: "0",
-      },
+    subtasks:
+    {
+      text: subtask,
+      checked: "0",
+    },
     prio: prio,
     "assigned to": {
       name: "", //name,
