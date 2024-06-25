@@ -13,7 +13,6 @@ const databaseURL =
 async function onloadDatabase(path = "") {
   let response = await fetch(databaseURL + path + ".json");
   let responseToJson = await response.json();
-  console.log(responseToJson);
   return responseToJson;
 }
 

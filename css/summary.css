@@ -403,3 +403,85 @@
         padding-left: calc((100vw - 396px) / 2);
     }
 }
+
+@media (max-width: 419px) {
+    .summaryTitle{
+        font-size: 40px;
+        line-height: 56.4px;
+    }
+
+    .summaryTitleText{
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .summaryToDO{
+        width: 140px;
+        height: 100px;
+        gap: 10px;
+    }
+
+    .summaryDoneImg{
+        width: 40px;
+        height: 40px;
+    }
+
+    .summaryNumber{
+        font-size: 40px;
+        line-height: 56.4px;
+    }
+
+    .summaryTaskText{
+        font-size: 10px;
+        line-height: 16.8px;
+    }
+
+    .timeLineDateNumber{
+        font-size: 18px;
+    }
+
+    .timeLineDateText{
+        font-size: 14px;
+    }
+
+    .summaryUrgentImg{
+        width: 40px;
+        height: 40px;
+    }
+
+    .summaryDate{
+        font-size: 16px;
+        line-height: 19.2px;
+    }
+
+    .timeLine{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 110px;
+        padding: 28px 0px 28px 0px;
+        gap: 20px;
+    }
+
+    .timeLineVektor{
+        height: 68px;
+    }
+
+    .summarySeparateTasks{
+        width: 90px;
+        height: 90px;
+    }
+
+    .summaryText{
+        padding-top: calc(272px - 147px - 80px);
+    }
+
+    .summaryText {
+        padding-left: calc((100vw - 300px) / 2);
+    }
+
+    #titleSummary{
+        padding-left: calc((100vw - 300px) / 2);
+    }
+}
