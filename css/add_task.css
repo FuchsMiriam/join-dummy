@@ -92,6 +92,7 @@ input {
     height: 48px;
     padding: 12px 16px;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .input-categorie-container {
@@ -111,6 +112,24 @@ input {
     cursor: pointer;
 }
 
+#display-categorie {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#display-categorie h2{
+    font-size: 24px;
+    padding: 5px;
+    font-weight: 400;
+}
+
+#display-categorie h2:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
 .input-categorie-arrow-down:hover {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.1);
@@ -127,13 +146,14 @@ input {
 
 #display-categorie {
     width: 440px;
-    height: 100px;
-    background-color: inherit;
-    border: 1px solid black;
+    height: 90px;
+    border: 1px solid #D1D1D1;
     border-radius: 0 0 15px 15px;
-    margin-top: -10px;
+    margin-top: -5px;
     background-color: #FFFFFF;
-    padding: 10px;
+    position: absolute;
+    bottom: 436px;
+    z-index: 10;
 }
 
 #input-title {
