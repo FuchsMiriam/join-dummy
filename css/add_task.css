@@ -144,11 +144,11 @@ input {
     width: 440px;
     height: 90px;
     border: 1px solid #D1D1D1;
-    border-radius: 0 0 15px 15px;
+    border-radius: 15px 15px 15px 15px;
     margin-top: -5px;
     background-color: #FFFFFF;
     position: absolute;
-    bottom: 436px;
+    bottom: 445px;
     z-index: 10;
 }
 
@@ -325,7 +325,7 @@ input {
 
 #input-date {
     padding: 25px 16px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     cursor: pointer;
 }
 
@@ -376,7 +376,8 @@ input {
 
 .btn-footer-create {
     width: 110px;
-    background-image: url(../assets/img/Property\ 1=check.svg);
+    /* background-image: url(../assets/img/Property\ 1=check.svg); */
+    background-image: url(../assets/img/check.svg);
     background-repeat: no-repeat;
     background-position-x: 150px;
     background-position-y: 15px;

@@ -77,9 +77,12 @@
       left: 220px;
     }
   
-    .popupOverlay {
-      left: calc((100vw - 14px) / 2);
-    }
+    /* .popupOverlay { */
+      /* left: calc((100vw - 14px) / 2); */
+      /* right: 6px;
+      bottom: 84px;
+      z-index: 3; */
+    /* } */
   
     .editContactOverlay {
       width: 280px;

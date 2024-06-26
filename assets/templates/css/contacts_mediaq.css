@@ -48,14 +48,17 @@
     gap: 0px;
     border-radius: 20px 20px 0px 20px;
     display: flex;
-    top: calc((100vh / 2));
-    left: calc((100vw - 56px) / 2);
+    /* top: calc((100vh / 2));
+    left: calc((100vw - 56px) / 2); */
     background-color: white;
     flex-direction: column;
-    bottom: 25vh;
-    right: 8vw;
+    /* bottom: 25vh;
+    right: 8vw; */
     position: absolute;
     animation: slide-left 0.5s forwards;
+    bottom: 84px;
+    right: 6px;
+    z-index: 3;
   }
 
   @-webkit-keyframes slide-left {
@@ -120,11 +123,14 @@
 
   .contactsSidebar {
     width: 100vw;
+    height: 100vh;
+    max-height: 1240px;
   }
 
   .contactList {
     width: 100vw;
 }
+
 /* } */
   /*Animation contact created overlay*/
 
@@ -143,18 +149,19 @@
 .contactListInner {
   width: 290px;
   padding-left: 15px;
+  gap: 15px;
 }
 
   .contactEmail {
     font-size: 14px;
   }
 
-  .addContactIcon {
+  /* .addContactIcon { */
     /* left: 230px;
     position: sticky; */
     /* right: 10px;
     bottom: 10px; */
-  }
+  /* } */
 
   .addNewContactOverlay,
   .leftOverlayContent {
@@ -248,7 +255,8 @@
   }
 
   .popupOverlay {
-    left: calc((100vw - 28px) / 2);
+    /* left: calc((100vw - 28px) / 2); */
+    right: 6px;
   }
 
   .editOverlayHeadline {
@@ -315,4 +323,16 @@
     bottom: 50vh;
   }*/
 }
+}
+
+@media(min-width: 769px){
+  .dotIconContainer{
+    opacity: 0;
+  }
+}
+
+@media(max-width: 768px){
+  .dotIconContainer{
+    opacity: 1;
+  }
 }
