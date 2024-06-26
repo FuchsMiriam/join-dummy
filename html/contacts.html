@@ -264,6 +264,17 @@
       <button class="addContactIcon" onclick="openOverlay()">
         <img src="../assets/img/contact_add.svg" alt="Person" />
       </button>
+      <div id="dotIcon" class="dotIconContainer">
+        <img  src="../assets/img/dotIcon.svg" alt="Dot Icon" class="dotIcon" onclick="togglePopup(event)">
+      </div>
+      <div id="popupOverlay" class="popupOverlay hidden">
+        <button class="popupEditContactButton" onclick="editContactFromPopup()">
+          <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
+        </button>
+        <button class="popupDeleteContactButton" onclick="deleteContactFromPopup()">
+          <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
+        </button>
+      </div>
       <div class="contactsSidebar">
         <div class="buttonContainer">
           <button class="addContactButton" onclick="openOverlay()">
@@ -291,17 +302,17 @@
           class="contactsFullscreen"
           onclick="showContactDetails()"
         ></div>
-        <div class="dotIconContainer">
+        <!-- <div class="dotIconContainer">
           <img id="dotIcon" src="../assets/img/dotIcon.svg" alt="Dot Icon" class="dotIcon" onclick="togglePopup(event)">
-      </div>
-      <div id="popupOverlay" class="popupOverlay hidden">
+      </div> -->
+      <!-- <div id="popupOverlay" class="popupOverlay hidden">
         <button class="popupEditContactButton" onclick="editContactFromPopup()">
           <img class="editImg" src="../assets/img/edit.svg" alt="Edit" /> Edit
         </button>
         <button class="popupDeleteContactButton" onclick="deleteContactFromPopup()">
           <img class="deleteImg" src="../assets/img/delete.svg" alt="Delete" /> Delete
         </button>
-      </div>
+      </div> -->
       </div>
    
       <div class="contactCreatedOverlay contactCreatedOverlayHidden">Contact successfully created</div>
