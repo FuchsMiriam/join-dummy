@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/add_task_board.css">
+    <link rel="stylesheet" href="../css/add-task-board.css">
     <script src="../js/board.js"></script>
     <script src="../assets/templates/template.js"></script>
     <script src="../js/summary.js"></script>
@@ -113,6 +114,50 @@
     </section>
     <section id="idDetailCard" class="containerDetailCard">
     </section>
+
+    <div class="container d-none" id="container-add-task-board">
+        <h2 class="headline">Add Task</h2>
+        <div id="content">
+            <div class="content-left">
+                <form onsubmit="addTaskToBoard(); return false">
+                    <label for="input-title-board">Title <span class="span-star">*</span></label>
+                    <input type="text" id="input-title-board" placeholder="Enter a Title" required>
+                </form>
+                <label for="input-description-board">Description</label>
+                <textarea id="input-description-board" placeholder="Enter a Description"></textarea>
+                <label for="input-assigned-board">Assigned To</label>
+                <input type="text" id="input-assigned-board" placeholder="Select contacts to assign">
+            </div>
+            <div class="seperator"></div>
+            <div class="content-right">
+                <form onsubmit="addTaskToBoard()"></form>
+                <label for="input-date-board">Due Date <span class="span-star">*</span></label>
+                <input type="date" id="input-date-board" required>
+                <label for="input-prio-board">Prio</label>
+                <div class="input-prio-board">
+                    <div id="input-prio1-board" onclick="changePrioButtonUrgent()" class="urgent-image btn">Urgent</div>
+                    <div id="input-prio2-board" onclick="changePrioButtonMedium()" class="medium-image btn">Medium</div>
+                    <div id="input-prio3-board" onclick="changePrioButtonLow()" class="low-image btn">Low</div>
+                </div>
+                <label for="input-categorie-board">Category<span class="span-star">*</span></label>
+                <div class="input-categorie-container-board">
+                    <input type="text" id="input-categorie-board" required>
+                    <img class="input-categorie-arrow-down-board" id="input-categorie-image-down-board"
+                        src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie()">
+                    <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up-board"
+                        onclick="closeCategorie()" class="d-none" alt="">
+                </div>
+                <label for="input-subtasks-board">Subtasks</label>
+                <input type="text" id="input-subtasks-board" placeholder="Add new subtask">
+            </div>
+        </div>
+        <footer>
+            <span><span class="span-star">*</span> This field is Required</span>
+            <div class="button-footer">
+                <button class="btn btn-footer-clear-board">Clear</button>
+                <button class="btn btn-footer-create-board">Add Task</button>
+            </div>
+        </footer>
 </body>
 
 </html>

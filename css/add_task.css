@@ -42,7 +42,7 @@ h1 {
 }
 
 .btn:active {
-   box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0);
 }
 
 .span-star {
@@ -99,10 +99,6 @@ input {
     position: relative;
 }
 
-#input-category {
-
-}
-
 .input-categorie-arrow-down {
     position: absolute;
     right: 15px;
@@ -118,7 +114,7 @@ input {
     justify-content: space-around;
 }
 
-#display-categorie h2{
+#display-categorie h2 {
     font-size: 24px;
     padding: 5px;
     font-weight: 400;
@@ -190,8 +186,8 @@ input {
 .input-container-contacts {
     display: flex;
     flex-direction: column;
-    align-items: center;   
-    position: relative; 
+    align-items: center;
+    position: relative;
 }
 
 #display-initials {
@@ -249,7 +245,7 @@ input {
     border-radius: 50%;
     background-color: lightgray;
 }
-  
+
 .display-contacts-dropdown {
     display: flex;
     flex-direction: column;

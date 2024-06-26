@@ -149,6 +149,12 @@ function renderTasks() {
   showTasks();
 }
 
+function displayAddTask() {
+  document
+    .getElementById("container-add-task-board")
+    .classList.remove("d-none");
+}
+
 function setBackColumns() {
   document.getElementById("toDO").innerHTML = ``;
   document.getElementById("inProgress").innerHTML = ``;
