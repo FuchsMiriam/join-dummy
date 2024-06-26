@@ -43,7 +43,7 @@
   }
 
   .contactsFullscreen.in {
-    left: 500px;
+    left: 490px;
   }
 
   /*Add new contact overlay*/
@@ -324,14 +324,18 @@
     background-color: #2a3647;
     width: 56px;
     height: 56px;
-    top: 758px;
+    /* top: 758px;
     left: 356px;
-    padding: 12px 0px 0px 0px;
+    padding: 12px 0px 0px 0px; */
     gap: 10px;
     border-radius: 46px;
     display: flex;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
+    right: 10px;
+    bottom: 90px;
+    z-index: 1;
   }
 
   .addContactIcon:hover {
@@ -382,4 +386,8 @@
     position: absolute;
     left: 0;
   }
+
+  .fullContactDetails {
+    top: 260px;
+}
 }

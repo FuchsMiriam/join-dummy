@@ -18,13 +18,14 @@
   height: 14px;
   width: 16px;
   background-position: center;
-  background-image: url("../assets/img/arrowUp.svg");
+  /* background-image: url("../assets/img/arrowUp.svg"); */
+  background-image: url("../../img/arrowUp.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .contactsSidebar::-webkit-scrollbar-button:vertical:decrement:active {
-  background-image: url("../assets/img/arrowUp_active.svg");
+  background-image: url("../../img/arrowUp_active.svg");
 }
 
 /* Arrow Down */
@@ -33,13 +34,13 @@
   height: 14px;
   width: 16px;
   background-position: center;
-  background-image: url("../assets/img/arrowDown.svg");
+  background-image: url("../../img/arrowDown.svg");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .contactsSidebar::-webkit-scrollbar-button:vertical:increment:active {
-  background-image: url("../assets/img/arrowDown_active.svg");
+  background-image: url("../../img/arrowDown_active.svg");
 }
 
 /*Right side*/
@@ -118,6 +119,7 @@
   height: 120px;
   gap: 54px;
   display: flex;
+  align-items: center;
 }
 
 .contactDetailsInitials {
@@ -209,11 +211,11 @@
 }
 
 .contactDetailsButtons button.editContactButton:hover img {
-  content: url("../assets/img/editHover.svg");
+  content: url("../../img/editHover.svg");
 }
 
 .contactDetailsButtons button.deleteContactButton:hover img {
-  content: url("../assets/img/deleteHover.svg");
+  content: url("../../img/deleteHover.svg");
 }
 
 .contactInfoHeader {

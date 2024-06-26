@@ -50,10 +50,18 @@ function hoverSidebar(){
   if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html")))
     document.getElementById("menu_Sidebar").classList.add("d-none");
   else
-  document.getElementById("menu_Sidebar").classList.remove("d-none");
+    document.getElementById("menu_Sidebar").classList.remove("d-none");
   
   setHoverFrames(page)
   setInitialsName(); 
+  setHelpTemplate();
+}
+
+function setHelpTemplate(){
+  // if(window.screen.width < 1440)
+  //   document.getElementById("headerNoteHelpTemplate").classList.remove("d-none");
+  // else
+  //   document.getElementById("headerNoteHelpTemplate").classList.add("d-none");
 }
 
 function setHoverFrames(page){
@@ -68,7 +76,6 @@ function setHoverFrames(page){
   if(page == "privacy_policy.html")
     document.getElementById("framePolicy").classList.add("framesPolicy");
   if(page == "legal_notice.html"){
-    document.getElementById("idLoginName").innerHTML = "";
     document.getElementById("frameNotice").classList.add("framesPolicy");
   }
     

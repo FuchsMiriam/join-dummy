@@ -15,7 +15,7 @@
     left: calc((100vw - 338px) / 2);
     gap: 0px;
     position: absolute;
-    background-image: url(../assets/img/signupArrow.png);
+    background-image: url(../../img/signupArrow.png);
     background-size: contain;
     background-repeat: no-repeat;
     top: -10px;
@@ -26,7 +26,7 @@
   }
 
   .contactsArrow:hover {
-    background-image: url(../assets/img/signupArrowHover.png);
+    background-image: url(../../img/signupArrowHover.png);
   }
 
   .headlinesContainer {
@@ -86,11 +86,11 @@
   }
 
   .popupOverlay button.popupEditContactButton:hover img {
-    content: url("../assets/img/editHover.svg");
+    content: url("../../img/editHover.svg");
   }
 
   .popupOverlay button.popupDeleteContactButton:hover img {
-    content: url("../assets/img/deleteHover.svg");
+    content: url("../../img/deleteHover.svg");
   }
 
   .popupEditContactButton {
@@ -118,27 +118,42 @@
     align-items: center;
   }
 
+  .contactsSidebar {
+    width: 100vw;
+  }
+
+  .contactList {
+    width: 100vw;
+}
+/* } */
   /*Animation contact created overlay*/
 
 
 /*Media query*/
 
 @media (max-width: 455px) {
-  .contactsSidebar {
+  /* .contactsSidebar {
     width: 320px;
-  }
+  } */
 
-  .contactList {
+  /* .contactList {
     width: 380px;
-  }
+  } */
+
+.contactListInner {
+  width: 290px;
+  padding-left: 15px;
+}
 
   .contactEmail {
     font-size: 14px;
   }
 
   .addContactIcon {
-    left: 230px;
-    position: sticky;
+    /* left: 230px;
+    position: sticky; */
+    /* right: 10px;
+    bottom: 10px; */
   }
 
   .addNewContactOverlay,
@@ -267,7 +282,7 @@
     font-size: 16px;
     width: 100px;
   }
-}
+
 
 /*Media query*/
 
@@ -298,6 +313,6 @@
 
   .dotIconContainer {
     bottom: 50vh;
-  }
-}*/
+  }*/
+}
 }

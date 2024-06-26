@@ -315,6 +315,7 @@ input::placeholder{
 .labelDetailCard{
     height: 36px;
     width: fit-content;
+    align-items: center;
     padding: 4px 24px 4px 24px;
     border-radius: 8px;
     display: flex;
@@ -976,9 +977,48 @@ input::placeholder{
     .deleteEditDetailCard {
         width: 348px;
     }
+}
 
+@media (max-width: 459px){
+    #searchMobil{
+        width: 240px;
+    }
 
+    .inputSearch{
+        width: 170px;
+    }
 
+    .formSearch{
+        width: auto;
+    }
 
+    .detailCardTaskToDo {
+        width: 270px;
+    }
+
+    .deleteEditDetailCard {
+        width: 270px;
+    }
+
+    .textDetailCardTitle {
+        width: 270px;
+        font-size: 30px;
+    }
+
+    .labelClose {
+        width: 230px;
+        height: 34px;
+    }
+
+    .deleteEditDetailCard {
+        width: 230px;
+    }
+    
+}
+
+@media (max-width: 330px){
+    .TasksToDo{
+        width: 240px;
+    }
 }
 

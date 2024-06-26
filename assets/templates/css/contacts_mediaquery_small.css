@@ -1,22 +1,22 @@
 /*Media query*/
 
 @media (max-width: 320px) {
-    .contactsSidebar {
+    /* .contactsSidebar {
       width: 320px;
-    }
+    } */
   
-    .contactList {
+    /* .contactList {
       width: 380px;
-    }
+    } */
   
     .contactEmail {
       font-size: 14px;
     }
   
-    .addContactIcon {
+    /* .addContactIcon {
       left: 230px;
       position: sticky;
-    }
+    } */
   
     .addNewContactOverlay {
       width: 280px;
