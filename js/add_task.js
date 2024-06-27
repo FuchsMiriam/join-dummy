@@ -99,8 +99,7 @@ function ifIsListContactsLoaded(event, stopPro) {
   } else {
     listContactsLoaded = false;
   }
-  if(stopPro)
-    event.stopPropagation();
+  if (stopPro) event.stopPropagation();
   openContacts = true;
 }
 
@@ -119,10 +118,10 @@ function showContacts() {
   }
 }
 
-function updateCheckbox(i){
+function updateCheckbox(i) {
   let idcheckbox = "checkbox-contacts" + i;
-  if(contactChoose[i] == true)
-     document.getElementById(idcheckbox).setAttribute("checked", "checked");
+  if (contactChoose[i] == true)
+    document.getElementById(idcheckbox).setAttribute("checked", "checked");
 }
 
 function initialsBackgroundColor(i) {
@@ -155,8 +154,7 @@ function closeContacts(event, stopPro) {
              </div>
          `;
   openContacts = false;
-  if(stopPro)
-    event.stopPropagation();
+  if (stopPro) event.stopPropagation();
   document.getElementById("add-button-contacts").innerHTML = "+";
   listContactsLoaded = false;
 }
@@ -165,24 +163,18 @@ function closeContacts(event, stopPro) {
 function addInitials(i) {
   let ini = document.getElementById("display-initials");
   const initials = getInitials(contacts[i].name);
-  if(contactChoose[i] != true)
-  {
+  if (contactChoose[i] != true) {
     ini.classList.remove("d-none");
     initial.push(initials);
     namesFromContacts.push(contacts[i].name);
-  }
-  else
-  {
-    for(let i = 0; i < initial.length; i++)
-    {
-      if(initial[i] == initials)
-        initial.splice(i, 1);
+  } else {
+    for (let i = 0; i < initial.length; i++) {
+      if (initial[i] == initials) initial.splice(i, 1);
     }
   }
-  
-  ini.innerHTML = '';
-  for(let i = 0; i < initial.length; i++)
-  {
+
+  ini.innerHTML = "";
+  for (let i = 0; i < initial.length; i++) {
     ini.innerHTML += displayInitials(i, initial[i]);
     initalsBackgroundColor(i);
   }
@@ -221,8 +213,7 @@ function checkContactsInList(i, event, stopPro) {
     uncheckContactInList(i, contactChecked);
   }
   save();
-  if(stopPro)
-    event.stopPropagation();
+  if (stopPro) event.stopPropagation();
 }
 
 function uncheckContactInList(i, contactChecked) {
@@ -284,8 +275,7 @@ function showCategorie(event, stopPro) {
         <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
       </div>
     `;
-  if(stopPro == true)
-    event.stopPropagation();
+  if (stopPro == true) event.stopPropagation();
 }
 
 function addToInputTechnical() {
@@ -300,7 +290,6 @@ function addToInputUser() {
   closeCategorie();
 }
 
-
 function closeCategorie(event, stopPro) {
   let display = document.getElementById("display-categorie");
   let down = document.getElementById("input-categorie-image-down");
@@ -310,8 +299,7 @@ function closeCategorie(event, stopPro) {
   display.classList.add("d-none");
   down.classList.remove("d-none");
 
-  if(stopPro == true)
-    event.stopPropagation();
+  if (stopPro == true) event.stopPropagation();
   openCategorie = false;
 }
 
@@ -328,7 +316,10 @@ function showSubtask() {
 
 function addSubTask() {
   let input = document.getElementById("input-subtask");
-  checkRequieredValues(input, document.getElementById('error-message-subtasks'));
+  checkRequieredValues(
+    input,
+    document.getElementById("error-message-subtasks")
+  );
   if (input.value.trim() != "") {
     task.push(input.value);
     showSubtask();
@@ -341,27 +332,30 @@ function addTask() {
   let title = document.getElementById("input-title");
   let date = document.getElementById("input-date");
   let category = document.getElementById("input-category");
-  checkRequieredValues(title, document.getElementById('error-message-title'));
-  checkRequieredValues(date, document.getElementById('error-message-date'));
-  checkRequieredValues(category, document.getElementById('error-message-category'));
+  checkRequieredValues(title, document.getElementById("error-message-title"));
+  checkRequieredValues(date, document.getElementById("error-message-date"));
+  checkRequieredValues(
+    category,
+    document.getElementById("error-message-category")
+  );
 
   if (title.value != "" && date.valueAsDate != null && category.value != "") {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
     setTimeout(function () {
-      window.open("board.html");
+      open("board.html");
     }, 2000);
   }
   save();
 }
 
-function checkRequieredValues(data, error){
+function checkRequieredValues(data, error) {
   if (!data.value) {
-    data.classList.add('error');
-    error.style.display = 'inline';
+    data.classList.add("error");
+    error.style.display = "inline";
   } else {
-    data.classList.remove('error');
-    error.style.display = 'none';
+    data.classList.remove("error");
+    error.style.display = "none";
   }
 }
 
@@ -547,17 +541,14 @@ function load() {
   }
 }
 
-window.addEventListener("click", function(event) {
-  if(openCategorie)
-  {
+window.addEventListener("click", function (event) {
+  if (openCategorie) {
     openCategorie = false;
     closeCategorie();
     closeButtonForShowContacts();
   }
-  if(openContacts)
-  {
+  if (openContacts) {
     openContacts = false;
     closeContacts();
   }
-    
 });
