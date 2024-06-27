@@ -13,6 +13,7 @@ let isClicked1 = false;
 let isClicked2 = false;
 let isClicked3 = false;
 let isChecked = [];
+let contactChoose = [];
 const colorClasses = [
   "orange",
   "purple",
@@ -113,8 +114,15 @@ function showContacts() {
 
     container.classList.remove("d-none");
     container.innerHTML += displayContactsTemplate(i, contact);
+    updateCheckbox(i);
     initialsBackgroundColor(i);
   }
+}
+
+function updateCheckbox(i){
+  let idcheckbox = "checkbox-contacts" + i;
+  if(contactChoose[i] == true)
+     document.getElementById(idcheckbox).setAttribute("checked", "checked");
 }
 
 function initialsBackgroundColor(i) {
@@ -190,12 +198,12 @@ function initalsBackgroundColor(i) {
 
 function checkContactsInList(i, event, stopPro) {
   let contactChecked = document.getElementById(`checkbox-contacts${i}`);
-  console.log(i);
-  console.log(contactChecked.checked);
   if (contactChecked.checked == true) {
+    contactChoose[i] = true;
     displayInitials();
     isChecked.push(contactChecked.checked);
   } else {
+    contactChoose[i] = false;
     uncheckContactInList(i, contactChecked);
   }
   save();
