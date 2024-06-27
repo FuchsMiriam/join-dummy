@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/add_task_board.css">
-    <link rel="stylesheet" href="../css/add-task-board.css">
+    <link rel="stylesheet" href="../css/add_task.css">
     <script src="../js/board.js"></script>
     <script src="../assets/templates/template.js"></script>
     <script src="../js/summary.js"></script>
     <script src="../assets/templates/js/board_templates.js"></script>
     <script src="../js/add_task_board.js"></script>
+    <script src="../assets/templates/js/add_task_template.js"></script>
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon" />
 </head>
 
@@ -115,49 +115,92 @@
     <section id="idDetailCard" class="containerDetailCard">
     </section>
 
-    <div class="container d-none" id="container-add-task-board">
-        <h2 class="headline">Add Task</h2>
-        <div id="content">
+    <div class="container-board d-none" id="container-add-task-board">
+        <div class="head">
+            <h1 class="h1-board">Add Task</h1>
+            <div id="close-button" onclick="closeAddTaskBoard()">X</div>
+        </div>
+        <section id="content">
             <div class="content-left">
-                <form onsubmit="addTaskToBoard(); return false">
-                    <label for="input-title-board">Title <span class="span-star">*</span></label>
-                    <input type="text" id="input-title-board" placeholder="Enter a Title" required>
+                <form class="flex8gap" onsubmit="addTask(); return false">
+                    <label for="input-title">Title<span class="span-star">*</span></label>
+                    <input type="text" id="input-title" placeholder="Enter a Title" required>
+                    <span id="error-message-title" class="error-message">Field required</span>
                 </form>
-                <label for="input-description-board">Description</label>
-                <textarea id="input-description-board" placeholder="Enter a Description"></textarea>
-                <label for="input-assigned-board">Assigned To</label>
-                <input type="text" id="input-assigned-board" placeholder="Select contacts to assign">
+                <div class="flex8gap">
+                    <label for="input-description">Description</label>
+                    <textarea name="input-description" id="input-description"
+                        placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="flex8gap">
+                    <label for="input-assigny">Assigned to</label>
+                    <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1)">
+                        <input list="input-assigned" id="input-assigny" class="dropbtn"
+                            placeholder="Select contacts to assign">
+                        <button class="add-button" id="add-button-contacts"
+                            onclick="ifIsListContactsLoaded(event, 1)">+</button>
+                        <div id="show-contacts" class="d-none">
+                        </div>
+                    </div>
+                </div>
+                <div id="display-initials" class="d-none"></div>
             </div>
-            <div class="seperator"></div>
-            <div class="content-right">
-                <form onsubmit="addTaskToBoard()"></form>
-                <label for="input-date-board">Due Date <span class="span-star">*</span></label>
-                <input type="date" id="input-date-board" required>
-                <label for="input-prio-board">Prio</label>
-                <div class="input-prio-board">
-                    <div id="input-prio1-board" onclick="changePrioButtonUrgent()" class="urgent-image btn">Urgent</div>
-                    <div id="input-prio2-board" onclick="changePrioButtonMedium()" class="medium-image btn">Medium</div>
-                    <div id="input-prio3-board" onclick="changePrioButtonLow()" class="low-image btn">Low</div>
+
+            <div class="seperator" id="seperator-content"></div>
+
+            <div class="content-right flex24gap">
+                <form class="flex8gap" onsubmit="addTask(); return false">
+                    <label for="input-date">Due Date<span class="span-star">*</span></label>
+                    <input id="input-date" type="date" required>
+                    <span id="error-message-date" class="error-message">Field required</span>
+                </form>
+                <div class="flex8gap">
+                    <label>Prio</label>
+                    <div class="input-prio-span">
+                        <div id="input-prio1" onclick="changePrioButtonUrgent()" class="urgent-image btn"></div>
+                        <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image btn"></div>
+                        <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image btn"></div>
+                    </div>
                 </div>
-                <label for="input-categorie-board">Category<span class="span-star">*</span></label>
-                <div class="input-categorie-container-board">
-                    <input type="text" id="input-categorie-board" required>
-                    <img class="input-categorie-arrow-down-board" id="input-categorie-image-down-board"
-                        src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie()">
-                    <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up-board"
-                        onclick="closeCategorie()" class="d-none" alt="">
+                <form class="flex8gap" onsubmit="addTask(); return false">
+                    <label for="input-category">Category<span class="span-star">*</span></label>
+                    <div class="input-categorie-container input-categorie-container-board"
+                        onclick="showCategorie(event, 1)">
+                        <input id="input-category" required>
+                        <img class="input-categorie-arrow-down" id="input-categorie-image-down"
+                            src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie(event, 1)">
+                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up"
+                            onclick="closeCategorie(event, 1)" class="d-none" alt="">
+                    </div>
+                    <div id="display-categorie" class="d-none display-categorie-board"></div>
+                    <span id="error-message-category" class="error-message">Field required</span>
+                </form>
+                <div class="flex8gap">
+                    <label for="input-subtask">Subtasks</label>
+                    <div class="input-container">
+                        <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button"
+                            id="add-button-subtask" onclick="addSubTask()">+</button>
+                    </div>
+                    <div id="show-subtask"></div>
+                    <span id="error-message-subtasks" class="error-message">please fill in</span>
                 </div>
-                <label for="input-subtasks-board">Subtasks</label>
-                <input type="text" id="input-subtasks-board" placeholder="Add new subtask">
+            </div>
+        </section>
+        <div class="footer" id="footer-board">
+            <span>*This field is required</span>
+            <div class="button-footer">
+                <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
+                <button class="btn-footer-create btn" onclick="addTask()">Create Task
+                    <img src="../assets/img/check.svg" alt="">
+                </button>
             </div>
         </div>
-        <footer>
-            <span><span class="span-star">*</span> This field is Required</span>
-            <div class="button-footer">
-                <button class="btn btn-footer-clear-board">Clear</button>
-                <button class="btn btn-footer-create-board">Add Task</button>
-            </div>
-        </footer>
+    </div>
+    <div class="pop-up-task d-none" id="add_task">
+        <div class="overlay-create-task" id="overlay-task">
+            <p>Task added to Board</p><img src="../assets/img/imgBoard.png">
+        </div>
+    </div>
 </body>
 
 </html>

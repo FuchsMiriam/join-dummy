@@ -22,10 +22,6 @@ body {
     max-width: 1440px;
 }
 
-h1 {
-    font-size: 61px;
-}
-
 .d-none {
     display: none !important;
 }
@@ -50,6 +46,62 @@ h1 {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
+}
+
+.container-board {
+    position: absolute;
+    top: 12%;
+    right: 10%;
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: #f6f7f8;
+    width: 1000px;
+    height: 700px;
+}
+
+#footer-board {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-right: 35px;
+}
+
+.h1-board {
+    font-size: 61px;
+    margin-top: -50px;
+    margin-left: 50px;
+}
+
+#close-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.display-categorie-board {
+    width: 440px;
+    height: 90px;
+    border: 1px solid #D1D1D1;
+    border-radius: 15px 15px 15px 15px;
+    margin-top: -5px;
+    background-color: #FFFFFF;
+    position: absolute;
+    bottom: 145px;
+    z-index: 10;
+}
+
+.input-categorie-container-board {
+    z-index: 12;
+}
+
+#footer-board {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+    margin-right: 35px;
 }
 
 #content {
@@ -491,19 +543,20 @@ input {
 .error {
     border: 2px solid red;
 }
+
 .error-message {
     color: red;
     font-size: 12px;
     display: none;
 }
 
-.flex8gap{
+.flex8gap {
     display: flex;
     gap: 8px;
     flex-direction: column;
 }
 
-.add-subtasks{
+.add-subtasks {
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
@@ -513,4 +566,3 @@ input {
     justify-content: center;
     align-items: center;
 }
-
