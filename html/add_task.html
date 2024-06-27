@@ -28,19 +28,23 @@
                 <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-title">Title<span class="span-star">*</span></label>
                     <input type="text" id="input-title" placeholder="Enter a Title" required>
+                    <span id="error-message-title" class="error-message">Field required</span>
                 </form>
-                <label for="input-description">Description</label>
-                <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
-                <label for="input-assigny">Assigned to</label>
-                <div class="input-container-contacts">
-                    <input list="input-assigned" id="input-assigny" class="dropbtn"
-                        placeholder="Select contacts to assign">
-                    <button class="add-button" id="add-button-contacts" onclick="ifIsListContactsLoaded()">+
-                    </button>
-                    <div id="show-contacts" class="d-none">
+                <div class="flex8gap">
+                    <label for="input-description">Description</label>
+                    <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="flex8gap">
+                    <label for="input-assigny">Assigned to</label>
+                    <div class="input-container-contacts"  onclick="ifIsListContactsLoaded(event, 1)">
+                        <input list="input-assigned" id="input-assigny" class="dropbtn"
+                            placeholder="Select contacts to assign">
+                        <button class="add-button" id="add-button-contacts" onclick="ifIsListContactsLoaded(event, 1)">+</button>
+                        <div id="show-contacts" class="d-none">
+                        </div>
                     </div>
                 </div>
-                <div id="display-initials"></div>
+                <div id="display-initials" class="d-none"></div>
             </div>
 
             <div class="seperator" id="seperator-content"></div>
@@ -49,33 +53,35 @@
                 <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-date">Due Date<span class="span-star">*</span></label>
                     <input id="input-date" type="date" required>
+                    <span id="error-message-date" class="error-message">Field required</span>
                 </form>
                 <div class="flex8gap">
-                    <label for="input-prio">Prio</label>
+                    <label>Prio</label>
                     <div class="input-prio-span">
                         <div id="input-prio1" onclick="changePrioButtonUrgent()" class="urgent-image btn"></div>
                         <div id="input-prio2" onclick="changePrioButtonMedium()" class="medium-image btn"></div>
                         <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image btn"></div>
                     </div>
                 </div>
-                <form class="flex8gap" onsubmit="addTask(); return false">
+                <form class="flex8gap"  onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
-                    <div class="input-categorie-container">
+                    <div class="input-categorie-container" onclick="showCategorie(event, 1)" >
                         <input id="input-category" required>
-                        <img class="input-categorie-arrow-down" id="input-categorie-image-down" src="../assets/img/arrow_drop_down.svg" alt=""  onclick="showCategorie()">
-                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up" onclick="closeCategorie()" class="d-none" alt="">
+                        <img class="input-categorie-arrow-down" id="input-categorie-image-down" src="../assets/img/arrow_drop_down.svg" alt=""  onclick="showCategorie(event, 1)">
+                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up" onclick="closeCategorie(event, 1)" class="d-none" alt="">
                     </div>
                     <div id="display-categorie" class="d-none"></div>
+                    <span id="error-message-category" class="error-message">Field required</span>
                 </form>
                 <div class="flex8gap">
                     <label for="input-subtask">Subtasks</label>
                     <div class="input-container">
                         <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button"
                             id="add-button-subtask" onclick="addSubTask()">+</button>
-                        </div>
-                        <div id="show-subtask">
                     </div>
-                    </div>
+                    <div id="show-subtask"></div>
+                    <span id="error-message-subtasks" class="error-message">please fill in</span>
+                </div>
             </div>
         </section>
         <div class="footer">

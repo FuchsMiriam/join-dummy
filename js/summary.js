@@ -5,10 +5,11 @@ let result3 = true;
 let loginName;
 
 async function summaryInit(){
-  includeHTML();
+  // includeHTML();
+  initHTML()
   loadTasksSummary().then((result2) => {
       getSummary();
-      hoverSidebar();
+      // hoverSidebar();
   });
 }
 

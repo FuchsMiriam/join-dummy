@@ -1,4 +1,4 @@
-@media(max-width:1440px) {
+@media(max-width:1400px) {
     .container {
         display: flex;
         flex-direction: column;
@@ -11,13 +11,14 @@
 }
 }
 
-@media(max-width: 1290px) {
+@media(max-width: 1400px) {
     #content {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
-        height: 440px;
+        height: fit-content;
         scrollbar-width: none;
+        max-height: 600px;
     }
 
     .content-left {
@@ -36,7 +37,7 @@
         margin-top: 0;
         justify-content: left;
         position: fixed;
-        bottom: 80px;
+        bottom: 150px;
     }
 
     .footer span{
@@ -44,9 +45,9 @@
         padding-right: 10px;
     }
 
-    #display-categorie {
+    /* #display-categorie {
         bottom: 420px;
-    }
+    } */
 }
 
 @media(max-width: 480px) {

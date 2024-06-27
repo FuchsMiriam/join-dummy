@@ -1,6 +1,6 @@
 /*Media query*/
 
-@media (max-width: 1420px) {
+@media (max-width: 1400px) {
   .contactDetailsName {
     font-size: 28px;
   }
@@ -8,7 +8,7 @@
 
 /*Media query*/
 
-@media (max-width: 1290px) {
+@media (max-width: 1400px) {
   .contactsSidebar {
     position: static;
   }

@@ -820,7 +820,7 @@ input::placeholder{
     padding: 3px;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1400px) {
     .headerFrame{
         left: calc((100vw - 1207px) / 2);
     }

@@ -6,7 +6,7 @@ function displayContactsTemplate(i, contact) {
             <div class="contact-list">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
                 <span class="contact-span" id="contact-span-name${i}">${contact} </span>
-                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}, '${contact}'); checkContactsInList(${i})">
+                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}, '${contact}'); checkContactsInList(${i}, event, 1)">
             </div>
     </div>
     `;
@@ -15,7 +15,7 @@ function displayContactsTemplate(i, contact) {
 function showSubtaskTemplate(i, tasks) {
   return `
         <li class="subtask-span" id="subtask${i}">
-            <span onmouseover="hoverValueFromSubtask(${i})" contenteditable="true" id="task-edit">${tasks}</span>
+            <span onmouseover="hoverValueFromSubtask(${i})" class="add-subtasks" contenteditable="true" id="task-edit">${tasks}</span>
             <div id='images-subtask${i}' class="d-none">
                 <img src="../assets/img/close.png" class="subtask-button" onclick="deleteTask(${i})"></img>
                 <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})"></img>

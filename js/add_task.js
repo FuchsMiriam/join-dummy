@@ -89,7 +89,8 @@ function getNamesFromArray() {
   contactsNames = contacts.map((contact) => contact.name);
 }
 
-function ifIsListContactsLoaded() {
+let openContacts = false;
+function ifIsListContactsLoaded(event, stopPro) {
   if (listContactsLoaded == false) {
     listContactsLoaded = true;
     showContacts();
@@ -97,6 +98,9 @@ function ifIsListContactsLoaded() {
   } else {
     listContactsLoaded = false;
   }
+  if(stopPro)
+    event.stopPropagation();
+  openContacts = true;
 }
 
 function showContacts() {
@@ -126,28 +130,34 @@ function closeButtonForShowContacts() {
     assigned.innerHTML = "";
     document.getElementById("add-button-contacts").innerHTML = `
             <div>
-            <span id="close-contacts" onclick="closeContacts()">-</span>
+            <span id="close-contacts" onclick="closeContacts(event, 1)">-</span>
             </div>
         `;
   }
 }
 
-function closeContacts() {
+function closeContacts(event, stopPro) {
   let buttonContacts = document.getElementById("close-contacts");
 
   document.getElementById("show-contacts").classList.add("d-none");
-  buttonContacts.innerHTML = "";
+  // buttonContacts.innerHTML = "";
   buttonContacts.innerHTML = `
              <div>
                  <span>+</span>
              </div>
          `;
+  openContacts = false;
+  if(stopPro)
+    event.stopPropagation();
+  document.getElementById("add-button-contacts").innerHTML = "+";
+  listContactsLoaded = false;
 }
 
 //-------------Begin initials functions--------------//
 function addInitials(i) {
   let ini = document.getElementById("display-initials");
   const initials = getInitials(contacts[i].name);
+  ini.classList.remove("d-none");
   initial.push(initials);
 
   ini.innerHTML += displayInitials(i, initials);
@@ -178,9 +188,10 @@ function initalsBackgroundColor(i) {
 }
 //-------------End initials functions--------------//
 
-function checkContactsInList(i) {
+function checkContactsInList(i, event, stopPro) {
   let contactChecked = document.getElementById(`checkbox-contacts${i}`);
-
+  console.log(i);
+  console.log(contactChecked.checked);
   if (contactChecked.checked == true) {
     displayInitials();
     isChecked.push(contactChecked.checked);
@@ -188,6 +199,8 @@ function checkContactsInList(i) {
     uncheckContactInList(i, contactChecked);
   }
   save();
+  if(stopPro)
+    event.stopPropagation();
 }
 
 function uncheckContactInList(i, contactChecked) {
@@ -233,14 +246,15 @@ function imageOnSubtask() {
   }
 }
 
-function showCategorie() {
+let openCategorie = false;
+function showCategorie(event, stopPro) {
   let display = document.getElementById("display-categorie");
   document.getElementById("input-categorie-image-down").classList.add("d-none");
   document
     .getElementById("input-categorie-image-up")
     .classList.remove("d-none");
   display.classList.remove("d-none");
-
+  openCategorie = true;
   display.innerHTML = "";
   display.innerHTML = `
       <div>
@@ -248,6 +262,8 @@ function showCategorie() {
         <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
       </div>
     `;
+  if(stopPro == true)
+    event.stopPropagation();
 }
 
 function addToInputTechnical() {
@@ -262,7 +278,8 @@ function addToInputUser() {
   closeCategorie();
 }
 
-function closeCategorie() {
+
+function closeCategorie(event, stopPro) {
   let display = document.getElementById("display-categorie");
   let down = document.getElementById("input-categorie-image-down");
   let up = document.getElementById("input-categorie-image-up");
@@ -270,6 +287,10 @@ function closeCategorie() {
   up.classList.add("d-none");
   display.classList.add("d-none");
   down.classList.remove("d-none");
+
+  if(stopPro == true)
+    event.stopPropagation();
+  openCategorie = false;
 }
 
 function showSubtask() {
@@ -285,10 +306,8 @@ function showSubtask() {
 
 function addSubTask() {
   let input = document.getElementById("input-subtask");
-
-  if (input.value.trim() == "") {
-    alert("Bitte eintrag hinzufügen");
-  } else {
+  checkRequieredValues(input, document.getElementById('error-message-subtasks'));
+  if (input.value.trim() != "") {
     task.push(input.value);
     showSubtask();
   }
@@ -300,18 +319,28 @@ function addTask() {
   let title = document.getElementById("input-title");
   let date = document.getElementById("input-date");
   let category = document.getElementById("input-category");
+  checkRequieredValues(title, document.getElementById('error-message-title'));
+  checkRequieredValues(date, document.getElementById('error-message-date'));
+  checkRequieredValues(category, document.getElementById('error-message-category'));
 
-  if (title.value == "" || date.valueAsDate == null || category.value == "") {
-    alert("Bitte alle Pflichtfelder ausfüllen!");
-  } else {
+  if (title.value != "" && date.valueAsDate != null && category.value != "") {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
-
     setTimeout(function () {
       window.open("board.html");
     }, 2000);
   }
   save();
+}
+
+function checkRequieredValues(data, error){
+  if (!data.value) {
+    data.classList.add('error');
+    error.style.display = 'inline';
+  } else {
+    data.classList.remove('error');
+    error.style.display = 'none';
+  }
 }
 
 async function createTask(i) {
@@ -495,3 +524,18 @@ function load() {
     task = JSON.parse(tasksAsText);
   }
 }
+
+window.addEventListener("click", function(event) {
+  if(openCategorie)
+  {
+    openCategorie = false;
+    closeCategorie();
+    closeButtonForShowContacts();
+  }
+  if(openContacts)
+  {
+    openContacts = false;
+    closeContacts();
+  }
+    
+});

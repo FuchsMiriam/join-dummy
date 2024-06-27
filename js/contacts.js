@@ -181,7 +181,7 @@ function adjustLayoutForScreenWidth() {
     contactsSidebar.style.display = "block";
 
     const headlinesContainer = document.querySelector(".headlinesContainer");
-    headlinesContainer.style.display = "block";
+    // headlinesContainer.style.display = "block";
 
     const contactsArrow = document.querySelector(".contactsArrow");
     contactsArrow.style.display = "none";

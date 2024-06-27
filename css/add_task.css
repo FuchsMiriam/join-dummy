@@ -56,7 +56,7 @@ h1 {
     display: flex;
     justify-content: space-around;
     font-size: 20px;
-    gap: 30px;
+    gap: 24px;
 }
 
 input {
@@ -74,11 +74,12 @@ input {
     justify-content: space-evenly;
     width: 440px;
     height: 424px;
+    gap: 24px;
 }
 
-.content-right {
+/* .content-right {
     gap: 8px;
-}
+} */
 
 #input-title,
 #input-description,
@@ -97,6 +98,7 @@ input {
 
 .input-categorie-container {
     position: relative;
+    cursor: pointer;
 }
 
 .input-categorie-arrow-down {
@@ -147,20 +149,20 @@ input {
     border-radius: 15px 15px 15px 15px;
     margin-top: -5px;
     background-color: #FFFFFF;
-    position: absolute;
-    bottom: 445px;
+    /* position: absolute; */
+    /* bottom: 445px; */
     z-index: 10;
 }
 
 #input-title {
     padding: 12px 21px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 #input-description {
     padding: 18px 16px;
     gap: 8px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     padding: 18px 16px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -197,7 +199,7 @@ input {
     width: 440px;
     grid-template-columns: repeat(8, 1fr);
     grid-row-gap: 30px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 .input-container {
@@ -213,13 +215,14 @@ input {
 }
 
 #show-subtask {
-    width: 400px;
-    height: 130px;
+    width: 440px;
+    /* height: 130px; */
+    height: fit-content;
     display: flex;
     flex-direction: column;
     font-size: 24px;
     overflow: auto;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 #subtask {
@@ -374,10 +377,15 @@ input {
     color: #29ABE2;
 }
 
+.btn:hover {
+    border: 1px solid #29ABE2;
+    background-color: #29ABE2;
+}
+
 .btn-footer-create {
     width: 110px;
     /* background-image: url(../assets/img/Property\ 1=check.svg); */
-    background-image: url(../assets/img/check.svg);
+    /* background-image: url(../assets/img/check.svg); */
     background-repeat: no-repeat;
     background-position-x: 150px;
     background-position-y: 15px;
@@ -479,3 +487,30 @@ input {
     padding: 5px;
     border-radius: 50%;
 }
+
+.error {
+    border: 2px solid red;
+}
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.flex8gap{
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.add-subtasks{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    color: black;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

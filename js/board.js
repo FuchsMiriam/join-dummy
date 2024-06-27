@@ -89,7 +89,8 @@ let exampleTask2 = {
 
 let result = false;
 function boardInit() {
-  includeHTML();
+  // includeHTML();
+  initHTML();
   loadTasksBoard().then((result) => {
     // tasks = [];
     // tasks[0] = (exampleTask);
@@ -103,7 +104,7 @@ function boardInit() {
     // tasks.push(exampleTask);
     // putData(path="", tasks);
     renderTasks();
-    hoverSidebar();
+    // hoverSidebar();
   });
 }
 

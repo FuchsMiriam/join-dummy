@@ -1,4 +1,10 @@
 /*Media query*/
+@media(min-width: 768px){
+  .contactsSidebar{
+    display: block !important;
+  }
+}
+
 
 @media (max-width: 768px) {
   .headlinesContainer {
@@ -129,6 +135,10 @@
 
   .contactList {
     width: 100vw;
+}
+
+.headlinesContainer{
+  display: none;
 }
 
 /* } */
