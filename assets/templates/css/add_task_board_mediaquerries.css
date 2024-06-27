@@ -1,0 +1,50 @@
+ @media(max-width: 1440px) {
+     .container-board {
+         width: 70%;
+     }
+
+     input {
+         width: 70%;
+     }
+
+     .input-prio-span {
+         width: 70%;
+         gap: 15px;
+     }
+
+     .input-categorie-container {
+         width: 70%;
+     }
+
+     #input-category {
+         width: 100%;
+     }
+
+     #display-categorie {
+         width: 70%
+     }
+
+     #input-description {
+         width: 70%;
+     }
+
+     .input-container-contacts {
+         width: 70%
+     }
+
+     #input-assigny {
+         width: 100%;
+     }
+
+     .input-container {
+         width: 70%;
+     }
+
+     #input-subtask {
+         width: 100%;
+     }
+
+     .content-left {
+         padding-left: 30px;
+     }
+ }
