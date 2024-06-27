@@ -165,13 +165,27 @@ function closeContacts(event, stopPro) {
 function addInitials(i) {
   let ini = document.getElementById("display-initials");
   const initials = getInitials(contacts[i].name);
-  ini.classList.remove("d-none");
-  initial.push(initials);
-
-  ini.innerHTML += displayInitials(i, initials);
-  initalsBackgroundColor(i);
-
-  namesFromContacts.push(contacts[i].name);
+  if(contactChoose[i] != true)
+  {
+    ini.classList.remove("d-none");
+    initial.push(initials);
+    namesFromContacts.push(contacts[i].name);
+  }
+  else
+  {
+    for(let i = 0; i < initial.length; i++)
+    {
+      if(initial[i] == initials)
+        initial.splice(i, 1);
+    }
+  }
+  
+  ini.innerHTML = '';
+  for(let i = 0; i < initial.length; i++)
+  {
+    ini.innerHTML += displayInitials(i, initial[i]);
+    initalsBackgroundColor(i);
+  }
 }
 
 function displayInitials(i, initials) {
