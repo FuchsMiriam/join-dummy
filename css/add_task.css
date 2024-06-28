@@ -96,6 +96,16 @@ body {
     z-index: 12;
 }
 
+.show-subtask-board {
+    width: 440px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    overflow: auto;
+    overflow-y: auto;
+}
+
 #footer-board {
     margin-top: 10px;
     display: flex;

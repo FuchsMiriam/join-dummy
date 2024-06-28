@@ -1,4 +1,4 @@
-let task = [];
+let tasks = [];
 let subtask = [];
 let savedTask = [];
 let contacts = [];
@@ -321,7 +321,7 @@ function addSubTask() {
     document.getElementById("error-message-subtasks")
   );
   if (input.value.trim() != "") {
-    task.push(input.value);
+    tasks.push(input.value);
     showSubtask();
   }
   input.value = "";
@@ -369,7 +369,6 @@ async function createTask(i) {
   let name = namesFromContacts;
   let color = colorClassForContact;
   let prio = getPrio();
-  let subtask = getTask();
 
   let sumContacts = [];
   for (let i = 0; i < name.length; i++) {
@@ -379,18 +378,20 @@ async function createTask(i) {
     };
   }
 
+  let subtasks = [];
+  for (let j = 0; j < tasks.length; j++) {
+    subtasks[j] = {
+      text: tasks[j],
+      checked: "0",
+    };
+  }
+
   let task = {
     title: title.value,
     description: description.value,
     assigned: assigned.value,
     date: date.valueAsDate,
     category: category.value,
-    subtasks: [
-      {
-        text: subtask,
-        checked: "0",
-      },
-    ],
     prio: prio,
     "assigned to": {
       name: "", //name,
@@ -399,6 +400,7 @@ async function createTask(i) {
     taskApplication: 0,
   };
   task["assigned to"] = sumContacts;
+  task["subtasks"] = subtasks;
 
   tasksBoardAdd.push(task);
   putDataTasks((path = ""), tasksBoardAdd);
@@ -442,14 +444,6 @@ function getPrio() {
   }
 }
 
-function getTask() {
-  for (let i = 0; i < task.length; i++) {
-    let tasks = task[i];
-
-    return tasks;
-  }
-}
-
 function hoverValueFromSubtask(i) {
   let subtask = document.getElementById(`subtask${i}`);
   let images = document.getElementById(`images-subtask${i}`);
@@ -485,10 +479,8 @@ function editSubtask(i) {
 
   button.classList.add("d-none");
   newValue.focus();
-  newValue.innerHTML = `
-            <img src="../assets/img/edit.png"></img>
-    `;
 
+  task.splice(i, 1);
   task.push(i, newValue);
   save();
 }
