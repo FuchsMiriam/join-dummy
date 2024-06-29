@@ -179,7 +179,7 @@ function checkSubtasks(idTask) {
   if (tasks[idTask]["subtasks"] == null) return "";
   for (let i = 0; i < tasks[idTask]["subtasks"].length; i++) {
     let name = "checkCard" + idTask + i;
-    if (tasks[idTask]["subtasks"][i]["checked"])
+    if (tasks[idTask]["subtasks"][i].checked == '1')
       document.getElementById(name).setAttribute("checked", "checked");
   }
 }

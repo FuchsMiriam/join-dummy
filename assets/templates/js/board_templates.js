@@ -90,6 +90,7 @@ function getdetailcardHTMLContacts(idTask) {
 
 function detailCardHTMLSubtasks(idTask) {
   if (tasks[idTask]["subtasks"] == null) return "";
+  if(tasks[idTask]["subtasks"][0].text == null) return "";
   return /*html*/ `
         <div class="textDetailCardContacts">
             <div>Subtasks:</div>
@@ -102,11 +103,11 @@ function getDetailcardHTMLSubtasks(idTask) {
   let subtasksCards = "";
 
   for (let i = 0; i < tasks[idTask]["subtasks"].length; i++) {
-    subtasksCards += /*html*/ `
-            <div class="subtasksListCard">
-                <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
-                <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
-            </div>`;
+      subtasksCards += /*html*/ `
+        <div class="subtasksListCard">
+            <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
+            <label for="checkCard${idTask}${i}" class="checkboxCard">${tasks[idTask]["subtasks"][i].text}</label>
+        </div>`;
   }
 
   return /*html*/ ` <div class="subtasksDetailCard">${subtasksCards}</div>`;
@@ -188,6 +189,7 @@ function cardHTMLProgressBar(idTask) {
   let widthProgress = 128 * (checkedTasks / maxSubtasks);
 
   if (!maxSubtasks) return ``;
+  else if(tasks[idTask]["subtasks"][0].text == null) return "";
   else {
     return /*html*/ `
             <div class="textCardProgress">

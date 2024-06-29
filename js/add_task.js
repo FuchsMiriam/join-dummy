@@ -388,7 +388,7 @@ async function createTask(i) {
     subtasks: [
       {
         text: subtask,
-        checked: "0",
+        checked: 0,
       },
     ],
     prio: prio,
