@@ -118,25 +118,27 @@
 
     <!-----------------add_task_board------------------>
 
-    <div class="container-board d-none" id="container-add-task-board">
-        <div class="head">
-            <h1 class="h1-board">Add Task</h1>
-            <div id="close-button" onclick="closeAddTaskBoard()">X</div>
+    <div class="container-board-addTask d-none" id="container-add-task-board">
+        <div id="close-button-addTask" class="hoverCloseDetailCard flex-center" onclick="closeAddTaskBoard()">
+            <img src="../assets/img/close.png" alt="">
         </div>
-        <section id="content">
-            <div class="content-left">
+        <div class="head-addTask">
+            <h1 class="h1-board">Add Task</h1>
+        </div>
+        <section id="content-addTask">
+            <div class="content-left content-left-padding">
                 <form class="flex8gap" onsubmit="addTask(); return false">
-                    <label for="input-title">Title<span class="span-star">*</span></label>
+                    <label for="input-title">Title<span class="span-star width440">*</span></label>
                     <input type="text" id="input-title" placeholder="Enter a Title" required>
                     <span id="error-message-title" class="error-message">Field required</span>
                 </form>
                 <div class="flex8gap">
-                    <label for="input-description">Description</label>
-                    <textarea name="input-description" id="input-description"
+                    <label for="input-description" class="width440">Description</label>
+                    <textarea name="input-description" id="input-description-addTask"
                         placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex8gap">
-                    <label for="input-assigny">Assigned to</label>
+                    <label for="input-assigny" class="width440">Assigned to</label>
                     <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1)">
                         <input list="input-assigned" id="input-assigny" class="dropbtn"
                             placeholder="Select contacts to assign">
@@ -149,9 +151,9 @@
                 <div id="display-initials" class="d-none"></div>
             </div>
 
-            <div class="seperator" id="seperator-content"></div>
+            <div class="seperator content-top-padding" id="seperator-content"></div>
 
-            <div class="content-right flex24gap">
+            <div class="content-right flex24gap content-right-padding">
                 <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-date">Due Date<span class="span-star">*</span></label>
                     <input id="input-date" type="date" required>
@@ -189,15 +191,18 @@
                 </div>
             </div>
         </section>
-        <div class="footer" id="footer-board">
-            <span>*This field is required</span>
-            <div class="button-footer">
+        <div class="fiel-required">
+            <span class="span-star">*</span>
+            <span>This field is required</span>
+        </div>
+        <!-- <div class="footer" id="footer-board"> -->
+            <div class="button-footer-addTask">
                 <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
                 <button class="btn-footer-create btn" onclick="addTask()">Create Task
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
     <div class="pop-up-task d-none" id="add_task">
         <div class="overlay-create-task" id="overlay-task">
