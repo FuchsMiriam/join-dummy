@@ -307,10 +307,9 @@ function showSubtask() {
   let inputs = document.getElementById("show-subtask");
   inputs.innerHTML = "";
 
-  for (let i = 0; i < task.length; i++) {
-    let tasks = task[i];
-
-    inputs.innerHTML += showSubtaskTemplate(i, tasks);
+  for (let i = 0; i < tasks.length; i++) {
+    let showtasks = tasks[i];
+    inputs.innerHTML += showSubtaskTemplate(i, showtasks);
   }
 }
 
