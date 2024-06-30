@@ -56,3 +56,16 @@
          padding-left: 30px;
      }
  }
+
+ @media(max-width: 1400px) {
+    .container-board-addTask {
+        left: 5%;
+    }
+ }
+
+@media(max-width: 1200px) {
+    .container-board-addTask {
+        width: 100%;
+        left: 0%;
+    }
+}
