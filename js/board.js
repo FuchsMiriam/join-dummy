@@ -104,6 +104,7 @@ function boardInit() {
     // tasks.push(exampleTask);
     // putData(path="", tasks);
     renderTasks();
+    fetchContacts();
     // hoverSidebar();
   });
 }

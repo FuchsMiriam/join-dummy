@@ -242,13 +242,13 @@ function clearInputs() {
   save();
 }
 
-function catergoryClear() {
-  let category = document.getElementById("input-category");
-  if (category == !"") {
-    category = document.createElement("IMG");
-    category.src = "../assets/img/close.png";
-  }
-}
+// function catergoryClear() {
+//   let category = document.getElementById("input-category");
+//   if (category == !"") {
+//     category = document.createElement("IMG");
+//     category.src = "../assets/img/close.png";
+//   }
+// }
 
 function imageOnSubtask() {
   let subtask = document.getElementById("input-subtask");

@@ -32,6 +32,14 @@
          width: 70%
      }
 
+     #show-contacts {
+        width: 100%;
+     }
+
+     .display-contacts-dropdown {
+        width: 300px;
+     }
+
      #input-assigny {
          width: 100%;
      }

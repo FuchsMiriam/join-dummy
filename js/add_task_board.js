@@ -115,6 +115,7 @@ function ifIsListContactsLoaded(event, stopPro) {
 
 function showContacts() {
   let container = document.getElementById("show-contacts");
+  container.classList.remove('d-none');
 
   container.innerHTML = "";
 

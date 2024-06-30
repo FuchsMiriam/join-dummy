@@ -134,7 +134,7 @@
                 </form>
                 <div class="flex8gap">
                     <label for="input-description" class="width440">Description</label>
-                    <textarea name="input-description" id="input-description-addTask"
+                    <textarea name="input-description" id="input-description"
                         placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex8gap">
@@ -170,8 +170,8 @@
                 <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
                     <div class="input-categorie-container input-categorie-container-board"
-                        onclick="showCategorie(event, 1)">
-                        <input id="input-category" required>
+                    onclick="showCategorie(event, 1)">
+                    <input id="input-category" required>
                         <img class="input-categorie-arrow-down" id="input-categorie-image-down"
                             src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie(event, 1)">
                         <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up"
