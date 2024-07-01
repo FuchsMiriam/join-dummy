@@ -25,7 +25,7 @@
     <section class="headerFrame">
         <div class="titleSearch">
             <div class="titleBoard">Board</div>
-            <div id="addTaskMobil" class="findAddTask">
+            <div id="addTaskMobil" class="findAddTask" onclick="initBoard()">
                 <button class="addTask">
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -43,7 +43,7 @@
                         </div>
                     </form>
                 </div>
-                <button class="addTask" onclick="displayAddTask()">
+                <button class="addTask" onclick="initBoard()">
                     <div class="widthTitelAdd">Add task</div>
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -119,11 +119,11 @@
     <!-----------------add_task_board------------------>
 
     <div class="container-board-addTask d-none" id="container-add-task-board">
-        <div id="close-button-addTask" class="hoverCloseDetailCard flex-center" onclick="closeAddTaskBoard()">
-            <img src="../assets/img/close.png" alt="">
-        </div>
-        <div class="head-addTask">
-            <h1 class="h1-board">Add Task</h1>
+        <div class="header-addTask">
+            <h1 class="headline">Add Task</h1>
+            <div id="close-button-addTask" onclick="closeAddTaskBoard()">
+                <img src="../assets/img/close.png" alt="">
+            </div>
         </div>
         <section id="content-addTask">
             <div class="content-left content-left-padding">
@@ -133,13 +133,13 @@
                     <span id="error-message-title" class="error-message">Field required</span>
                 </form>
                 <div class="flex8gap">
-                    <label for="input-description" class="width440">Description</label>
+                    <label for="input-description">Description</label>
                     <textarea name="input-description" id="input-description"
                         placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex8gap">
                     <label for="input-assigny" class="width440">Assigned to</label>
-                    <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1)">
+                    <div class="input-container-contacts">
                         <input list="input-assigned" id="input-assigny" class="dropbtn"
                             placeholder="Select contacts to assign">
                         <button class="add-button" id="add-button-contacts"
@@ -192,16 +192,16 @@
             </div>
         </section>
         <div class="fiel-required">
-            <span class="span-star">*</span>
-            <span>This field is required</span>
-        </div>
-        <!-- <div class="footer" id="footer-board"> -->
+              <span><span class="span-star">*</span>This field is required</span>
             <div class="button-footer-addTask">
                 <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
                 <button class="btn-footer-create btn" onclick="addTask()">Create Task
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
+        </div>
+        <!-- <div class="footer" id="footer-board"> -->
+            
         <!-- </div> -->
     </div>
     <div class="pop-up-task d-none" id="add_task">

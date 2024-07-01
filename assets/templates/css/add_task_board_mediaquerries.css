@@ -8,9 +8,30 @@
      }
 
      .input-prio-span {
-         width: 70%;
-         gap: 15px;
+        width: 70%;
+        gap: 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        justify-items: center;
+        align-items: center;
      }
+
+     #input-prio1 {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #input-prio2 {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    #input-prio3 {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        justify-self: center;
+    }
 
      .input-categorie-container {
          width: 70%;
@@ -21,11 +42,13 @@
      }
 
      #display-categorie {
-         width: 70%
+         width: 28%;
+         top: 550px;
      }
 
      #input-description {
          width: 70%;
+         min-width: 0;
      }
 
      .input-container-contacts {
@@ -51,10 +74,6 @@
      #input-subtask {
          width: 100%;
      }
-
-     .content-left {
-         padding-left: 30px;
-     }
  }
 
  @media(max-width: 1400px) {
@@ -69,3 +88,114 @@
         left: 0%;
     }
 }
+
+@media(max-width: 970px) {
+    #content-addTask {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        height: 440px;
+    }
+
+    .content-left {
+        width: 80%;
+    }
+
+    .seperator {
+        display: none;
+    }
+
+    .content-right {
+        width: 80%;
+        margin-left: 74px;
+    }
+
+    .content-right, 
+    .content-left {
+        width: 80%;
+    }
+
+    input {
+        width: 70%;
+    }
+
+    .input-prio-span {
+        display: flex;
+    }
+
+    .input-container-contacts {
+        align-items: flex-start;
+        min-width: 170px;
+        max-width: 70%;
+    }
+
+    #show-contacts {
+        min-width: 170px;
+        max-width: 100%;
+    }
+
+    .display-contacts-dropdown {
+        width: 100%;
+    }
+
+    #input-date {
+        width: 70%;
+    }
+
+    #input-description {
+        min-width: 170px;
+        max-width: 70%;
+    }
+
+    .input-prio-span {
+        width: 70%;
+    }
+
+    #display-categorie {
+        width: 55%;
+        top: 475px;
+    }
+}
+
+@media(max-width: 640px) {
+    .input-prio-span {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 540px) {
+    .content-right {
+        margin-left: 74px;
+    }
+
+    .header-addTask {
+        height: 150px;
+        padding-top: 10px;
+    }
+
+    #content-addTask {
+        height: 530px;
+        display: flex;
+    }
+
+    .fiel-required {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .button-footer-addTask {
+        flex-direction: column;
+    }
+
+    #show-subtask {
+        width: 70%;
+    }
+
+    #display-categorie {
+        top: 571px;
+    }
+}
+

@@ -29,15 +29,16 @@ const TASK_URL =
   "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let resultTask = false;
 
-async function init() {
-  includeHTML();
+
+
+async function initBoard() {
   await fetchContacts();
   loadTasks().then((resultTask) => {
     getNamesFromArray();
     getColorClass();
     load();
     showSubtask();
-    hoverSidebar();
+    displayAddTask();
   });
   //   await loadTasks();
   //   while (resultTask == false);
@@ -354,7 +355,8 @@ function addTask() {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
     setTimeout(function () {
-      window.open("board.html");
+      document.getElementById('add_task').classList.add('d-none');
+      document.getElementById('container-add-task-board').classList.add('d-none');
     }, 2000);
   }
   save();
@@ -380,13 +382,20 @@ async function createTask(i) {
   let name = namesFromContacts;
   let color = colorClassForContact;
   let prio = getPrio();
-  let subtask = getTask();
 
   let sumContacts = [];
   for (let i = 0; i < name.length; i++) {
     sumContacts[i] = {
       name: name[i],
       color: color[i],
+    };
+  }
+
+  let subtasks = [];
+  for (let j = 0; j < tasks.length; j++) {
+    subtasks[j] = {
+      text: tasks[j],
+      checked: "0",
     };
   }
 
@@ -410,6 +419,7 @@ async function createTask(i) {
     taskApplication: 0,
   };
   task["assigned to"] = sumContacts;
+  task["subtasks"] = subtasks;
 
   tasksBoardAdd.push(task);
   putDataTasks((path = ""), tasksBoardAdd);
