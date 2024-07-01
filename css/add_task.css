@@ -31,6 +31,10 @@ body {
     display: none !important;
 }
 
+.z1 {
+    z-index: 1 !important;
+}
+
 .btn {
     width: 136px;
     height: 56px;

@@ -90,6 +90,7 @@ function getdetailcardHTMLContacts(idTask) {
 
 function detailCardHTMLSubtasks(idTask) {
   if (tasksBd[idTask]["subtasks"] == null) return "";
+  if (tasksBd[idTask]["subtasks"].length <= 0) return "";
   if(tasksBd[idTask]["subtasks"][0].text == null) return "";
   return /*html*/ `
         <div class="textDetailCardContacts">
@@ -116,7 +117,7 @@ function getDetailcardHTMLSubtasks(idTask) {
 function detailCardHTMLDeleteEdit(idTask) {
   return /*html*/ `
         <div class="deleteEditDetailCard">
-        <div class="deleteDetailCard" onclick="deleteTask(${idTask})">
+        <div class="deleteDetailCard" onclick="deleteTaskBoard(${idTask})">
             <div class="imgDetaildelete"></div>
             <p class="textDeleteCard">Delete</p>
         </div>

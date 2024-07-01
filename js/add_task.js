@@ -7,6 +7,7 @@ let colorClassForContact = [];
 let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
+let initialName = [];
 let namesFromContacts = [];
 let tasksBoardAdd = [];
 let isClicked1 = false;
@@ -91,10 +92,10 @@ function getNamesFromArray() {
 }
 
 let openContacts = false;
-function ifIsListContactsLoaded(event, stopPro) {
+function ifIsListContactsLoaded(event, stopPro, fktEdit) {
   if (listContactsLoaded == false) {
     listContactsLoaded = true;
-    showContacts();
+    showContacts(fktEdit);
     closeButtonForShowContacts();
   } else {
     listContactsLoaded = false;
@@ -122,6 +123,21 @@ function updateCheckbox(i) {
   let idcheckbox = "checkbox-contacts" + i;
   if (contactChoose[i] == true)
     document.getElementById(idcheckbox).setAttribute("checked", "checked");
+}
+
+function updateCheckEdit(nameEdit){
+  for(let i = 0; i < contacts.length; i++)
+  {
+    if(nameEdit == contacts[i].name)
+    {
+      contactChoose[i] = true;
+      initial.push(getInitials(nameEdit));
+      initialName.push(nameEdit);
+    }
+      
+    else if(contactChoose[i] != true)
+      contactChoose[i] = false;
+  }
 }
 
 function initialsBackgroundColor(i) {
@@ -166,10 +182,17 @@ function addInitials(i) {
   if (contactChoose[i] != true) {
     ini.classList.remove("d-none");
     initial.push(initials);
+    initialName.push(contacts[i].name);
     namesFromContacts.push(contacts[i].name);
+    contactChoose[i] = true;
   } else {
-    for (let i = 0; i < initial.length; i++) {
-      if (initial[i] == initials) initial.splice(i, 1);
+    for (let id = 0; id < initial.length; id++) {
+      if (initial[id] == initials) 
+      {
+        initial.splice(id, 1);
+        initialName.splice(id, 1);
+        contactChoose[i] = false;
+      }
     }
   }
 
@@ -218,9 +241,9 @@ function checkContactsInList(i, event, stopPro) {
 
 function uncheckContactInList(i, contactChecked) {
   if (contactChecked.checked == false) {
-    initial.splice(i);
-    isChecked.splice(i);
-    displayInitials();
+    // initial.splice(i);
+    // isChecked.splice(i);
+    // displayInitials();
   }
 }
 
@@ -348,6 +371,31 @@ function addTask() {
   save();
 }
 
+function addTaskEdit(){
+  let title = document.getElementById("input-title");
+  let date = document.getElementById("input-date");
+  let category = document.getElementById("input-category");
+  checkRequieredValues(title, document.getElementById("error-message-title"));
+  checkRequieredValues(date, document.getElementById("error-message-date"));
+  checkRequieredValues(
+    category,
+    document.getElementById("error-message-category")
+  );
+
+  if (title.value != "" && date.valueAsDate != null && category.value != "") {
+    editTask();
+    renderTasks();
+    document.getElementById("idDetailCard").innerHTML = detailCardHTML(openTask);
+    closeAddTaskBoard();
+    tasks = [];
+    // document.getElementById("add_task").classList.remove("d-none");
+    // setTimeout(function () {
+    //   open("board.html");
+    // }, 2000);
+  }
+  save();
+}
+
 function checkRequieredValues(data, error) {
   if (!data.value) {
     data.classList.add("error");
@@ -393,7 +441,7 @@ async function createTask(i) {
     category: category.value,
     subtasks: [
       {
-        text: subtask,
+        text: "",//subtask,
         checked: 0,
       },
     ],
@@ -411,6 +459,59 @@ async function createTask(i) {
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();
+  save();
+}
+
+async function editTask(i) {
+  let title = document.getElementById("input-title");
+  let description = document.getElementById("input-description-addTask");
+  let assigned = document.getElementById("show-contacts");
+  let date = document.getElementById("input-date").valueAsDate;
+  date.valueAsDate = formDate(date);
+  let category = document.getElementById("input-category");
+  let color = colorClassForContact;
+  let prio = getPrio();
+
+  let sumContacts = [];
+  for (let i = 0; i < initialName.length; i++) {
+    sumContacts[i] = {
+      name: initialName[i],
+      color: color[i],
+    };
+  }
+
+  let subtasks = [];
+  for (let j = 0; j < tasks.length; j++) {
+    subtasks[j] = {
+      text: tasks[j],
+      checked: "0",
+    };
+  }
+
+  let task = {
+    title: title.value,
+    description: description.value,
+    assigned: assigned.value,
+    date: date.valueAsDate,
+    category: category.value,
+    subtasks: [
+      {
+        text: "",
+        checked: 0,
+      },
+    ],
+    prio: prio,
+    "assigned to": {
+      name: "", //name,
+      color: "", //color,
+    },
+    taskApplication: 0,
+  };
+  task["assigned to"] = sumContacts;
+  task["subtasks"] = subtasks;
+
+  tasksBd[openTask] = task;
+  putDataTasks((path = ""), tasksBd);
   save();
 }
 
@@ -473,7 +574,7 @@ function mouseOut(subtask, images) {
 }
 
 function deleteTask(i) {
-  task.splice(i, 1);
+  tasks.splice(i, 1);
   showSubtask();
   save();
 }
@@ -527,7 +628,7 @@ function changePrioButtonLow() {
 }
 
 function save() {
-  let tasksAsText = JSON.stringify(task);
+  let tasksAsText = JSON.stringify(tasks);
   localStorage.setItem("tasks", tasksAsText);
 }
 

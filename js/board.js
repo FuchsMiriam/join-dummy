@@ -2,6 +2,7 @@ const BASE_URL =
   "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasksBd = [];
 let currentTask = 0;
+let openTask = 0;
 let exampleTask = {
   label: "User Story",
   title: "Einkaufen",
@@ -93,6 +94,7 @@ function boardInit() {
   loadTasksBoard().then((result) => {
     renderTasks();
   });
+  fetchContacts();
 }
 
 async function loadTasksBoard() {
@@ -155,6 +157,7 @@ function openDetailCard(idTask) {
   document.getElementById("idDetailCard").classList.add("leftPart");
   document.getElementById("idDetailCard").classList.remove("leftPartOut");
   checkSubtasks(idTask);
+  openTask = idTask;
 }
 
 function closeDetailCard(idTask) {
@@ -234,7 +237,7 @@ function toggleCheckbox(idTask, idCheckBox) {
   putDataBoard((path = ""), tasksBd);
 }
 
-function deleteTask(idTask) {
+function deleteTaskBoard(idTask) {
   tasksBd.splice(idTask, 1);
   closeDetailCard(idTask);
   renderTasks();
@@ -331,14 +334,34 @@ function openEdit(idTask){
   let ini = document.getElementById("display-initials");
   ini.innerHTML = "";
   let initial = [];
-  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
+  if(tasksBd[idTask]["assigned to"])
   {
-    initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+    for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
+      {
+        initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+        updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
+        namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
+      }
+      for (let i = 0; i < initial.length; i++) {
+        ini.innerHTML += displayInitials(i, initial[i]);
+        initalsBackgroundColor(i);
+      }
+    
   }
-  for (let i = 0; i < initial.length; i++) {
-    ini.innerHTML += displayInitials(i, initial[i]);
-    // initalsBackgroundColor(i);
+  document.getElementById("display-initials").classList.remove("d-none");
+  document.getElementById("display-initials").classList.add("z1");
+  let inputs = document.getElementById("show-subtask");
+  inputs.innerHTML = "";
+
+  if(tasksBd[idTask].subtasks)
+  {
+    for (let i = 0; i < tasksBd[idTask].subtasks.length; i++) {
+      let showtasks = tasksBd[idTask].subtasks[i];
+      tasks.push(showtasks.text);
+      inputs.innerHTML += showSubtaskTemplate(i, showtasks.text);
+    }    
   }
+  
 }
 
 function formatDateEdit(inputDate) {

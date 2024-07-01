@@ -134,17 +134,17 @@
                     <span id="error-message-title" class="error-message">Field required</span>
                 </form>
                 <div class="flex8gap">
-                    <label for="input-description" class="width440">Description</label>
+                    <label for="input-description-addTask" class="width440">Description</label>
                     <textarea name="input-description" id="input-description-addTask"
                         placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex8gap">
                     <label for="input-assigny" class="width440">Assigned to</label>
-                    <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1)">
+                    <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1, 1)">
                         <input list="input-assigned" id="input-assigny" class="dropbtn"
                             placeholder="Select contacts to assign">
                         <button class="add-button" id="add-button-contacts"
-                            onclick="ifIsListContactsLoaded(event, 1)">+</button>
+                            onclick="ifIsListContactsLoaded(event, 1, 1)">+</button>
                         <div id="show-contacts" class="d-none">
                         </div>
                     </div>
@@ -198,8 +198,7 @@
         </div>
         <!-- <div class="footer" id="footer-board"> -->
             <div class="button-footer-addTask">
-                <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
-                <button class="btn-footer-create btn" onclick="addTask()">Create Task
+                <button class="btn-footer-create btn" onclick="addTaskEdit()">OK
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
