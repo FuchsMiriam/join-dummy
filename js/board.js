@@ -93,6 +93,8 @@ function boardInit() {
   initHTML();
   loadTasksBoard().then((result) => {
     renderTasks();
+    fetchContacts();
+    // hoverSidebar();
   });
   fetchContacts();
 }

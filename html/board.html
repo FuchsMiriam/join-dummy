@@ -26,7 +26,7 @@
     <section class="headerFrame">
         <div class="titleSearch">
             <div class="titleBoard">Board</div>
-            <div id="addTaskMobil" class="findAddTask">
+            <div id="addTaskMobil" class="findAddTask" onclick="initBoard()">
                 <button class="addTask">
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -44,7 +44,7 @@
                         </div>
                     </form>
                 </div>
-                <button class="addTask" onclick="displayAddTask()">
+                <button class="addTask" onclick="initBoard()">
                     <div class="widthTitelAdd">Add task</div>
                     <div class="widthAdd"><img class="imgAdd" src="../assets/img/add.png" alt=""></div>
                 </button>
@@ -120,11 +120,11 @@
     <!-----------------add_task_board------------------>
 
     <div class="container-board-addTask d-none" id="container-add-task-board">
-        <div id="close-button-addTask" class="hoverCloseDetailCard flex-center" onclick="closeAddTaskBoard()">
-            <img src="../assets/img/close.png" alt="">
-        </div>
-        <div class="head-addTask">
-            <h1 class="h1-board">Add Task</h1>
+        <div class="header-addTask">
+            <h1 class="headline">Add Task</h1>
+            <div id="close-button-addTask" onclick="closeAddTaskBoard()">
+                <img src="../assets/img/close.png" alt="">
+            </div>
         </div>
         <section id="content-addTask">
             <div class="content-left content-left-padding">
@@ -171,8 +171,8 @@
                 <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
                     <div class="input-categorie-container input-categorie-container-board"
-                        onclick="showCategorie(event, 1)">
-                        <input id="input-category" required>
+                    onclick="showCategorie(event, 1)">
+                    <input id="input-category" required>
                         <img class="input-categorie-arrow-down" id="input-categorie-image-down"
                             src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie(event, 1)">
                         <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up"
@@ -193,15 +193,15 @@
             </div>
         </section>
         <div class="fiel-required">
-            <span class="span-star">*</span>
-            <span>This field is required</span>
-        </div>
-        <!-- <div class="footer" id="footer-board"> -->
+              <span><span class="span-star">*</span>This field is required</span>
             <div class="button-footer-addTask">
                 <button class="btn-footer-create btn" onclick="addTaskEdit()">OK
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
+        </div>
+        <!-- <div class="footer" id="footer-board"> -->
+            
         <!-- </div> -->
     </div>
     <div class="pop-up-task d-none" id="add_task">
