@@ -39,7 +39,7 @@ async function initBoard() {
     load();
     showSubtask();
     displayAddTask();
-  });
+  });}
 // async function init() {
 //   includeHTML();
 //   await fetchContacts();
@@ -361,16 +361,16 @@ function getNamesFromArray() {
 //     document.getElementById("error-message-category")
 //   );
 
-  if (title.value != "" && date.valueAsDate != null && category.value != "") {
-    createTask();
-    document.getElementById("add_task").classList.remove("d-none");
-    setTimeout(function () {
-      document.getElementById('add_task').classList.add('d-none');
-      document.getElementById('container-add-task-board').classList.add('d-none');
-    }, 2000);
-  }
-  save();
-}
+//   if (title.value != "" && date.valueAsDate != null && category.value != "") {
+//     createTask();
+//     document.getElementById("add_task").classList.remove("d-none");
+//     setTimeout(function () {
+//       document.getElementById('add_task').classList.add('d-none');
+//       document.getElementById('container-add-task-board').classList.add('d-none');
+//     }, 2000);
+//   }
+//   save();
+// }
 
 // function checkRequieredValues(data, error) {
 //   if (!data.value) {
