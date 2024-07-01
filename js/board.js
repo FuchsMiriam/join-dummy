@@ -1,6 +1,6 @@
 const BASE_URL =
   "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
-let tasks = [];
+let tasksBd = [];
 let currentTask = 0;
 let exampleTask = {
   label: "User Story",
@@ -89,29 +89,16 @@ let exampleTask2 = {
 
 let result = false;
 function boardInit() {
-  // includeHTML();
   initHTML();
   loadTasksBoard().then((result) => {
-    // tasks = [];
-    // tasks[0] = (exampleTask);
-    // tasks[1] = (exampleTask1);
-    // tasks[2] = (exampleTask2);
-    // tasks[3] = (exampleTask);
-    // tasks[4] = (exampleTask);
-    // tasks[5] = (exampleTask);
-    // tasks[6] = (exampleTask);
-    // tasks[7] = (exampleTask);
-    // tasks.push(exampleTask);
-    // putData(path="", tasks);
     renderTasks();
-    // hoverSidebar();
   });
 }
 
 async function loadTasksBoard() {
   let response = await fetch(BASE_URL + ".json");
   let responseToJSON = await response.json();
-  tasks = responseToJSON;
+  tasksBd = responseToJSON;
   result = true;
   return responseToJSON;
 }
@@ -176,10 +163,10 @@ function closeDetailCard(idTask) {
 }
 
 function checkSubtasks(idTask) {
-  if (tasks[idTask]["subtasks"] == null) return "";
-  for (let i = 0; i < tasks[idTask]["subtasks"].length; i++) {
+  if (tasksBd[idTask]["subtasks"] == null) return "";
+  for (let i = 0; i < tasksBd[idTask]["subtasks"].length; i++) {
     let name = "checkCard" + idTask + i;
-    if (tasks[idTask]["subtasks"][i].checked == '1')
+    if (tasksBd[idTask]["subtasks"][i].checked == '1')
       document.getElementById(name).setAttribute("checked", "checked");
   }
 }
@@ -206,20 +193,20 @@ function showTasks() {
   let tasksAwaitFeedback = 0;
   let tasksDone = 0;
   setBackColumns();
-  if (tasks == null)
+  if (tasksBd == null)
     return checkNoTasks(
       tasksToDo,
       tasksInProgress,
       tasksAwaitFeedback,
       tasksDone
     );
-  for (let i = 0; i < tasks.length; i++) {
-    if (tasks[i].taskApplication == 0) tasksToDo += addTaskBoard(i, "toDO");
-    else if (tasks[i].taskApplication == 1)
+  for (let i = 0; i < tasksBd.length; i++) {
+    if (tasksBd[i].taskApplication == 0) tasksToDo += addTaskBoard(i, "toDO");
+    else if (tasksBd[i].taskApplication == 1)
       tasksInProgress += addTaskBoard(i, "inProgress");
-    else if (tasks[i].taskApplication == 2)
+    else if (tasksBd[i].taskApplication == 2)
       tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
-    else if (tasks[i].taskApplication == 3)
+    else if (tasksBd[i].taskApplication == 3)
       tasksDone += addTaskBoard(i, "done");
   }
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
@@ -232,8 +219,8 @@ function addTaskBoard(idTask, idApplication) {
 
 function getCheckedTasks(idTask) {
   let checkedTasks = 0;
-  for (let i = 0; i < tasks[idTask]["subtasks"].length; i++)
-    if (tasks[idTask]["subtasks"][i]["checked"] == 1) checkedTasks++;
+  for (let i = 0; i < tasksBd[idTask]["subtasks"].length; i++)
+    if (tasksBd[idTask]["subtasks"][i]["checked"] == 1) checkedTasks++;
   return checkedTasks;
 }
 
@@ -242,16 +229,16 @@ function toggleCheckbox(idTask, idCheckBox) {
     "checkCard" + idTask + idCheckBox
   ).checked;
 
-  tasks[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
+  tasksBd[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
   renderTasks();
-  putDataBoard((path = ""), tasks);
+  putDataBoard((path = ""), tasksBd);
 }
 
 function deleteTask(idTask) {
-  tasks.splice(idTask, 1);
+  tasksBd.splice(idTask, 1);
   closeDetailCard(idTask);
   renderTasks();
-  putDataBoard((path = ""), tasks);
+  putDataBoard((path = ""), tasksBd);
 }
 
 function searchTasks() {
@@ -274,29 +261,29 @@ function showSearchTasks(input) {
   let tasksInProgress = 0;
   let tasksAwaitFeedback = 0;
   let tasksDone = 0;
-  for (let i = 0; i < tasks.length; i++) {
-    let text = tasks[i].description;
-    let title = tasks[i].title;
+  for (let i = 0; i < tasksBd.length; i++) {
+    let text = tasksBd[i].description;
+    let title = tasksBd[i].title;
     if (
-      tasks[i].taskApplication == 0 &&
+      tasksBd[i].taskApplication == 0 &&
       (text.toLowerCase().includes(input) ||
         title.toLowerCase().includes(input))
     )
       tasksToDo += addTaskBoard(i, "toDO");
     else if (
-      tasks[i].taskApplication == 1 &&
+      tasksBd[i].taskApplication == 1 &&
       (text.toLowerCase().includes(input) ||
         title.toLowerCase().includes(input))
     )
       tasksInProgress += addTaskBoard(i, "inProgress");
     else if (
-      tasks[i].taskApplication == 2 &&
+      tasksBd[i].taskApplication == 2 &&
       (text.toLowerCase().includes(input) ||
         title.toLowerCase().includes(input))
     )
       tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
     else if (
-      tasks[i].taskApplication == 3 &&
+      tasksBd[i].taskApplication == 3 &&
       (text.toLowerCase().includes(input) ||
         title.toLowerCase().includes(input))
     )
@@ -320,11 +307,43 @@ function allowDrop(ev) {
 }
 
 function drop(category) {
-  tasks[currentTask]["taskApplication"] = category;
+  tasksBd[currentTask]["taskApplication"] = category;
   renderTasks();
-  putDataBoard((path = ""), tasks);
+  putDataBoard((path = ""), tasksBd);
 }
 
 function getTasks() {
-  return tasks;
+  return tasksBd;
+}
+
+function openEdit(idTask){
+  displayAddTask();
+  document.getElementById("input-title").value = tasksBd[idTask].title;
+  document.getElementById("input-description-addTask").value = tasksBd[idTask].description;
+  document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
+  document.getElementById("input-category").value = tasksBd[idTask].category;
+  if(tasksBd[idTask].prio == 3)
+    changePrioButtonUrgent();
+  else if(tasksBd[idTask].prio == 2)
+    changePrioButtonMedium();
+  else if(tasksBd[idTask].prio == 1)
+    changePrioButtonLow();
+  let ini = document.getElementById("display-initials");
+  ini.innerHTML = "";
+  let initial = [];
+  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
+  {
+    initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+  }
+  for (let i = 0; i < initial.length; i++) {
+    ini.innerHTML += displayInitials(i, initial[i]);
+    // initalsBackgroundColor(i);
+  }
+}
+
+function formatDateEdit(inputDate) {
+  let dateParts = inputDate.split('/');
+  let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+  console.log(formattedDate);
+  return formattedDate;
 }
