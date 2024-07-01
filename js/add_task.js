@@ -365,7 +365,8 @@ function addTask() {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
     setTimeout(function () {
-      open("board.html");
+      // open("board.html");
+      window.location.href = "../html/board.html";
     }, 2000);
   }
   save();
