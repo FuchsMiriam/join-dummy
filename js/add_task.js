@@ -394,6 +394,7 @@ function addTaskEdit(){
     //   open("board.html");
     // }, 2000);
   }
+  clearInputs();
   save();
 }
 
@@ -465,7 +466,7 @@ async function createTask(i) {
 
 async function editTask(i) {
   let title = document.getElementById("input-title");
-  let description = document.getElementById("input-description-addTask");
+  let description = document.getElementById("input-description");
   let assigned = document.getElementById("show-contacts");
   let date = document.getElementById("input-date").valueAsDate;
   date.valueAsDate = formDate(date);
@@ -535,8 +536,8 @@ function formDate(dateTask) {
 }
 
 function spliceTask() {
-  task.splice(0, task.length);
-  return task;
+  tasks.splice(0, tasks.length);
+  return tasks;
 }
 
 function getPrio() {

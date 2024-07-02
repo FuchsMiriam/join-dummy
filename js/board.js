@@ -206,6 +206,9 @@ function showTasks() {
       tasksDone
     );
   for (let i = 0; i < tasksBd.length; i++) {
+    if(tasksBd[i] === null) {
+      tasksBd[i]++;
+    } else {
     if (tasksBd[i].taskApplication == 0) tasksToDo += addTaskBoard(i, "toDO");
     else if (tasksBd[i].taskApplication == 1)
       tasksInProgress += addTaskBoard(i, "inProgress");
@@ -215,6 +218,7 @@ function showTasks() {
       tasksDone += addTaskBoard(i, "done");
   }
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
+}
 }
 
 function addTaskBoard(idTask, idApplication) {
@@ -324,7 +328,7 @@ function getTasks() {
 function openEdit(idTask){
   displayAddTask();
   document.getElementById("input-title").value = tasksBd[idTask].title;
-  document.getElementById("input-description-addTask").value = tasksBd[idTask].description;
+  document.getElementById("input-description").value = tasksBd[idTask].description;
   document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
   document.getElementById("input-category").value = tasksBd[idTask].category;
   if(tasksBd[idTask].prio == 3)

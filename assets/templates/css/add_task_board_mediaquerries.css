@@ -199,3 +199,12 @@
     }
 }
 
+@media(max-width: 480px) {
+    .input-categorie-container {
+        width: 255px;
+    }
+
+    #display-categorie {
+        width: 255px;
+    }
+}
