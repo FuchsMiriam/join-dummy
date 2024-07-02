@@ -231,12 +231,6 @@ input {
     cursor: pointer;
 }
 
-#display-categorie {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 #display-categorie h2 {
     font-size: 24px;
     padding: 5px;
@@ -273,6 +267,9 @@ input {
     /* position: absolute; */
     /* bottom: 445px; */
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 #input-title {
