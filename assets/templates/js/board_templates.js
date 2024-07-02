@@ -204,11 +204,11 @@ function cardHTMLProgressBar(idTask) {
 function cardHTMLPriority(idTask) {
   // 1 - High, 2 - Medium, 3 - Low
   if (tasksBd[idTask].prio == null) return "";
-  if (tasksBd[idTask].prio == 1)
+  if (tasksBd[idTask].prio == 3)
     return /*html*/ `<img class="imgPrio" src="../assets/img/Property 1=Low.png" alt="">`;
   if (tasksBd[idTask].prio == 2)
     return /*html*/ `<img class="imgPrio" src="../assets/img/Property 1=Medium.png" alt="">`;
-  if (tasksBd[idTask].prio == 3)
+  if (tasksBd[idTask].prio == 1)
     return /*html*/ `<img class="imgPrio" src="../assets/img/Property 1=Urgent.png" alt="">`;
 }
 

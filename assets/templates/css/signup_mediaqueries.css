@@ -11,8 +11,8 @@
 }
 
 /*Media query*/
-
-@media (max-width: 780px) {
+@media (max-width: 980px)
+{
   .logoSignupPage {
     width: 64px;
     height: 78.03px;
@@ -21,7 +21,9 @@
     gap: 10px;
     display: flex;
   }
+}
 
+@media (max-width: 780px) {
   .signupContainer {
     width: 396px;
     height: 595px;

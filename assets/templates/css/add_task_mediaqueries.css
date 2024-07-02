@@ -128,7 +128,7 @@
     .footer span {
         width: 345px;
         font-size: 18px;
-        display: flex;
+        /* display: flex; */
         justify-content: center;
     }
 
@@ -144,5 +144,17 @@
 @media(max-height: 740px) {
     #content {
         height: 530px;
+    }
+}
+
+@media(max-width: 680px){
+    .footer{
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 328px){
+    #content {
+        max-height: 500px;
     }
 }

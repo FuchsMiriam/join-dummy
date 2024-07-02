@@ -292,9 +292,11 @@ input.confirmPassword.error {
   border-radius: 20px;
   padding: 0px 25px;
   z-index: 10;
+  opacity: 0;
 }
 
 .overlay.show {
+  opacity: 1;
   transform: translateX(-50%) translateY(-750%);
 }
 

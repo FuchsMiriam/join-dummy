@@ -327,11 +327,11 @@ function openEdit(idTask){
   document.getElementById("input-description-addTask").value = tasksBd[idTask].description;
   document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
   document.getElementById("input-category").value = tasksBd[idTask].category;
-  if(tasksBd[idTask].prio == 3)
+  if(tasksBd[idTask].prio == 1)
     changePrioButtonUrgent();
   else if(tasksBd[idTask].prio == 2)
     changePrioButtonMedium();
-  else if(tasksBd[idTask].prio == 1)
+  else if(tasksBd[idTask].prio == 3)
     changePrioButtonLow();
   let ini = document.getElementById("display-initials");
   ini.innerHTML = "";

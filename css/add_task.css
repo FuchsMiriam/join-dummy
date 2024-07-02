@@ -615,6 +615,7 @@ input {
     border-radius: 15px;
     transition: all 125ms ease-in-out;
     z-index: 10;
+    opacity: 1;
 }
 
 

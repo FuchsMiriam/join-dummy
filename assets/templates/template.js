@@ -130,3 +130,8 @@ window.addEventListener("click", function(event) {
 function openIndex() {
   window.location.href = "../index.html";
 }
+
+function backToSide(){
+  let docu = document.referrer;
+  window.location.href = docu;
+}

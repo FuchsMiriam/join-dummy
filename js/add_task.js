@@ -265,6 +265,24 @@ function clearInputs() {
   save();
 }
 
+function clearInputsEdit() {
+  document.getElementById("input-title").value = "";
+  document.getElementById("input-description-addTask").value = "";
+  document.getElementById("input-date").valueAsDate = null;
+  document.getElementById("input-subtask").value = "";
+  document.getElementById("show-subtask").innerHTML = "";
+  // spliceTask();
+  document.getElementById("input-category").value = "";
+  document.getElementById("display-initials").innerHTML = "";
+  document.getElementById("input-prio1").style.backgroundImage =
+    "url(../assets/img/urgent_button.svg)";
+  document.getElementById("input-prio2").style.backgroundImage =
+    "url(../assets/img/medium_button.svg)";
+  document.getElementById("input-prio3").style.backgroundImage =
+    "url(../assets/img/low_button.svg)";
+  save();
+}
+
 // function catergoryClear() {
 //   let category = document.getElementById("input-category");
 //   if (category == !"") {
@@ -394,6 +412,7 @@ function addTaskEdit(){
     //   open("board.html");
     // }, 2000);
   }
+  clearInputsEdit();
   save();
 }
 

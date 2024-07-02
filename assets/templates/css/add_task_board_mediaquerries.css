@@ -7,6 +7,10 @@
          width: 70%;
      }
 
+     #input-description-addTask{
+        width: 70%;
+     }
+
      .input-prio-span {
         width: 70%;
         gap: 15px;
@@ -84,12 +88,12 @@
 
 @media(max-width: 1200px) {
     .container-board-addTask {
-        width: 100%;
-        left: 0%;
+        width: fit-content;
+        left: 8px;
     }
 }
 
-@media(max-width: 970px) {
+@media(max-width: 1070px) {
     #content-addTask {
         display: flex;
         flex-direction: column;
