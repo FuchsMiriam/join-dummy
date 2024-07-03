@@ -327,6 +327,7 @@ function getTasks() {
 }
 
 function openEdit(idTask){
+  clearInputsEdit();
   useEditFunction = 1;
   displayAddTask();
   document.getElementById("input-title").value = tasksBd[idTask].title;

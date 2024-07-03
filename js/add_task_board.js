@@ -38,6 +38,7 @@ async function initBoard(indexColumn) {
     getColorClass();
     load();
     showSubtask();
+    clearInputs();
     displayAddTask();
     renderTasks();
     currentColumn = indexColumn;

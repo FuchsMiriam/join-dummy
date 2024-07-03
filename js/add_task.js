@@ -269,7 +269,8 @@ function clearInputs() {
 function clearInputsEdit() {
   document.getElementById("input-title").value = "";
   // document.getElementById("input-description-addTask").value = "";
-  document.getElementById("input-date").valueAsDate = null;
+  document.getElementById("input-category").value = "";
+  document.getElementById("input-date").value = "";
   document.getElementById("input-subtask").value = "";
   document.getElementById("show-subtask").innerHTML = "";
   // spliceTask();
@@ -408,9 +409,7 @@ function addTaskEdit(){
   let category = document.getElementById("input-category");
   checkRequieredValues(title, document.getElementById("error-message-title"));
   checkRequieredValues(date, document.getElementById("error-message-date"));
-  checkRequieredValues(
-    category,
-    document.getElementById("error-message-category")
+  checkRequieredValues(category,document.getElementById("error-message-category")
   );
 
   if (title.value != "" && date.valueAsDate != null && category.value != "") {
@@ -419,10 +418,6 @@ function addTaskEdit(){
     document.getElementById("idDetailCard").innerHTML = detailCardHTML(openTask);
     closeAddTaskBoard();
     tasks = [];
-    // document.getElementById("add_task").classList.remove("d-none");
-    // setTimeout(function () {
-    //   open("board.html");
-    // }, 2000);
   }
   clearInputsEdit();
   save();
@@ -489,7 +484,7 @@ async function createTask(i) {
       name: "", //name,
       color: "", //color,
     },
-    taskApplication: currentColumn,
+    taskApplication: 0,
   };
   task["assigned to"] = sumContacts;
   task["subtasks"] = subtasks;
