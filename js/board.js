@@ -3,6 +3,7 @@ const BASE_URL =
 let tasksBd = [];
 let currentTask = 0;
 let openTask = 0;
+let useEditFunction = 0;
 let exampleTask = {
   label: "User Story",
   title: "Einkaufen",
@@ -217,8 +218,8 @@ function showTasks() {
     else if (tasksBd[i].taskApplication == 3)
       tasksDone += addTaskBoard(i, "done");
   }
+  }
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
-}
 }
 
 function addTaskBoard(idTask, idApplication) {
@@ -326,6 +327,7 @@ function getTasks() {
 }
 
 function openEdit(idTask){
+  useEditFunction = 1;
   displayAddTask();
   document.getElementById("input-title").value = tasksBd[idTask].title;
   document.getElementById("input-description").value = tasksBd[idTask].description;

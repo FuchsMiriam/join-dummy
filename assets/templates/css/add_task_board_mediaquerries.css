@@ -181,10 +181,6 @@
      }
  }
 
- @media(max-width: 600px) {
-     #show-contacts {}
- }
-
  #display-initials {
      grid-template-columns: repeat(3, 70px);
  }

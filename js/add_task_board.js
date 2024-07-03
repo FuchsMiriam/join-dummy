@@ -29,9 +29,9 @@
 //   "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 // let resultTask = false;
 
+let currentColumn = 0;
 
-
-async function initBoard() {
+async function initBoard(indexColumn) {
   await fetchContacts();
   loadTasks().then((resultTask) => {
     getNamesFromArray();
@@ -39,6 +39,8 @@ async function initBoard() {
     load();
     showSubtask();
     displayAddTask();
+    renderTasks();
+    currentColumn = indexColumn;
   });}
 // async function init() {
 //   includeHTML();
@@ -104,6 +106,7 @@ function displayAddTask() {
 }
 
 function closeAddTaskBoard() {
+  useEditFunction = 0;
   document.getElementById("container-add-task-board").classList.add("d-none");
 }
 

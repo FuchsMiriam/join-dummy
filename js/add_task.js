@@ -8,6 +8,7 @@ let assigned = [];
 let listContactsLoaded = false;
 let initial = [];
 let initialName = [];
+let initialColor = [];
 let namesFromContacts = [];
 let tasksBoardAdd = [];
 let isClicked1 = false;
@@ -267,7 +268,7 @@ function clearInputs() {
 
 function clearInputsEdit() {
   document.getElementById("input-title").value = "";
-  document.getElementById("input-description-addTask").value = "";
+  // document.getElementById("input-description-addTask").value = "";
   document.getElementById("input-date").valueAsDate = null;
   document.getElementById("input-subtask").value = "";
   document.getElementById("show-subtask").innerHTML = "";
@@ -368,6 +369,10 @@ function addSubTask() {
   save();
 }
 
+function shortURL(url){
+  return url.substring(url.lastIndexOf("/") + 1);
+}
+
 function addTask() {
   let title = document.getElementById("input-title");
   let date = document.getElementById("input-date");
@@ -384,7 +389,14 @@ function addTask() {
     document.getElementById("add_task").classList.remove("d-none");
     setTimeout(function () {
       // open("board.html");
-      window.location.href = "../html/board.html";
+      if(shortURL(document.referrer) != "board.html")
+        window.location.href = "../html/board.html";
+      else
+      {
+        document.getElementById("add_task").classList.add("d-none");
+        closeAddTaskBoard();
+        renderTasks();
+      }
     }, 2000);
   }
   save();
@@ -414,6 +426,13 @@ function addTaskEdit(){
   }
   clearInputsEdit();
   save();
+}
+
+function addOrEditTask(){
+  if(useEditFunction)
+    addTaskEdit();
+  else
+    addTask();
 }
 
 function checkRequieredValues(data, error) {
@@ -470,12 +489,13 @@ async function createTask(i) {
       name: "", //name,
       color: "", //color,
     },
-    taskApplication: 0,
+    taskApplication: currentColumn,
   };
   task["assigned to"] = sumContacts;
   task["subtasks"] = subtasks;
 
   tasksBoardAdd.push(task);
+  tasksBd[openTask] = task;
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();
@@ -496,7 +516,7 @@ async function editTask(i) {
   for (let i = 0; i < initialName.length; i++) {
     sumContacts[i] = {
       name: initialName[i],
-      color: color[i],
+      color: getColor(initialName[i]),
     };
   }
 
@@ -525,7 +545,7 @@ async function editTask(i) {
       name: "", //name,
       color: "", //color,
     },
-    taskApplication: 0,
+    taskApplication: getTaskApplication(),
   };
   task["assigned to"] = sumContacts;
   task["subtasks"] = subtasks;
@@ -535,12 +555,27 @@ async function editTask(i) {
   save();
 }
 
+function getColor(name){
+  for(let i = 0; i < contacts.length; i++)
+  {
+    if(contacts[i].name == name)
+      return contacts[i].colorClass;
+  }
+}
+
 function getColorClass() {
   for (let i = 0; i < contacts.length; i++) {
     const colorClass = contacts[i].colorClass;
 
     colorClassForContact.push(colorClass);
   }
+}
+
+function getTaskApplication(){
+  if(tasksBd[openTask].taskApplication != null)
+    return tasksBd[openTask].taskApplication;
+  else 
+  return 0;
 }
 
 function formDate(dateTask) {

@@ -65,19 +65,19 @@
         <div class="headersTable">
             <div class="boardColumn">
                 <div class="titleBoardColumn">To do</div>
-                <button class="addBoardColumn">
+                <button class="addBoardColumn" onclick="initBoard(0)">
                     <div class="plus">+</div>
                 </button>
             </div>
             <div class="boardColumn">
                 <div class="titleBoardColumn">In progress</div>
-                <button class="addBoardColumn">
+                <button class="addBoardColumn" onclick="initBoard(1)">
                     <div class="plus">+</div>
                 </button>
             </div>
             <div class="boardColumn">
                 <div class="titleBoardColumn">Await feedback</div>
-                <button class="addBoardColumn">
+                <button class="addBoardColumn" onclick="initBoard(2)">
                     <div class="plus">+</div>
                 </button>
             </div>
@@ -195,7 +195,7 @@
         <div class="fiel-required">
               <span><span class="span-star">*</span>This field is required</span>
             <div class="button-footer-addTask">
-                <button class="btn-footer-create btn" onclick="addTaskEdit()">OK
+                <button class="btn-footer-create btn" onclick="addOrEditTask()">OK
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
