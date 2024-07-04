@@ -110,13 +110,15 @@ function hoverValueFromSubtask(i) {
   let subtask = document.getElementById(`subtask${i}`);
   let images = document.getElementById(`images-subtask${i}`);
 
-  subtask.addEventListener("mouseover", function () {
-    mouseOver(subtask, images);
-  });
+  if (subtask && images) {
+    subtask.addEventListener("mouseover", function () {
+      mouseOver(subtask, images);
+    });
 
-  subtask.addEventListener("mouseout", function () {
-    mouseOut(subtask, images);
-  });
+    subtask.addEventListener("mouseout", function () {
+      mouseOut(subtask, images);
+    });
+  }
 }
 
 function mouseOver(subtask, images) {
@@ -136,10 +138,7 @@ function deleteTask(i) {
 }
 
 function editSubtask(i) {
-  let input = document.getElementById("input-subtask");
   let subtask = document.getElementById(`subtask${i}`);
-
-  document.getElementById("");
 
   subtask.innerHTML = `
   <div class="input-update-subtask">
@@ -157,10 +156,10 @@ function editSubtask(i) {
 function updateSubtask(i) {
   let input = document.getElementById(`update-subtask-input${i}`).value;
 
-  tasks.splice(i, 1);
-  tasks.push(input);
+  tasks[i] = input;
 
   showSubtask();
+  save();
 }
 
 function changePrioButtonUrgent() {
