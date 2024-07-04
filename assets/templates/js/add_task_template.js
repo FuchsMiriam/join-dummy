@@ -14,12 +14,28 @@ function displayContactsTemplate(i, contact) {
 
 function showSubtaskTemplate(i, tasks) {
   return `
-        <li class="subtask-span" id="subtask${i}">
-            <span onmouseover="hoverValueFromSubtask(${i})" class="add-subtasks" contenteditable="true" id="task-edit">${tasks}</span>
+        <li class="subtask-span" id="subtask${i}" onmouseover="hoverValueFromSubtask(${i})">
+            ${tasks}
             <div id='images-subtask${i}' class="d-none">
-                <img src="../assets/img/close.png" class="subtask-button" onclick="deleteTask(${i})"></img>
-                <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})"></img>
+                <img src="../assets/img/close.png" class="subtask-button" onclick="deleteTask(${i})" class="d-none" id="images-subtask-value"></img>
+                <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>
             </div>
         </li>
 `;
 }
+
+function displayInitials(i, initials) {
+    return `
+          <div>
+              <span class="initials" id="initials-span${i}">${initials}</span>
+          </div>
+      `;
+  }
+
+  function closeButtonForShowContactsTemplate() {
+  return `
+            <div>
+            <span id="close-contacts" onclick="closeContacts(event, 1)">-</span>
+            </div>
+        `;
+  }

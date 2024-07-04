@@ -487,7 +487,6 @@ input {
 }
 
 .subtask-span {
-    padding-left: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -632,6 +631,30 @@ input {
     cursor: pointer;
     padding: 5px;
     border-radius: 50%;
+}
+
+.edit-subtask-image {
+    outline: none;
+    border-bottom: 1px solid #29ABE2;
+}
+
+.input-edit-subtask {
+    width: 440px;
+}
+
+#images-subtask-hover {
+    position: absolute;
+    top: 5px;
+    right: 0;
+}
+
+.input-update-subtask {
+    width: 100%;
+    position: relative;
+}
+
+.seperator-edit-subtask {
+    border: 1px solid black;
 }
 
 .error {

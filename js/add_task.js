@@ -1,6 +1,5 @@
 let tasks = [];
 let subtaskAdd = [];
-// let savedTask = [];
 let contacts = [];
 let contactsNames = [];
 let colorClassForContact = [];
@@ -145,11 +144,8 @@ function closeButtonForShowContacts() {
 
   if (assigny == onfocus) {
     assigned.innerHTML = "";
-    document.getElementById("add-button-contacts").innerHTML = `
-            <div>
-            <span id="close-contacts" onclick="closeContacts(event, 1)">-</span>
-            </div>
-        `;
+    document.getElementById("add-button-contacts").innerHTML = 
+    closeButtonForShowContactsTemplate()
   }
 }
 
@@ -157,7 +153,6 @@ function closeContacts(event, stopPro) {
   let buttonContacts = document.getElementById("close-contacts");
 
   document.getElementById("show-contacts").classList.add("d-none");
-  // buttonContacts.innerHTML = "";
   buttonContacts.innerHTML = `
              <div>
                  <span>+</span>
@@ -197,14 +192,6 @@ function addInitials(i) {
   }
 }
 
-function displayInitials(i, initials) {
-  return `
-        <div>
-            <span class="initials" id="initials-span${i}">${initials}</span>
-        </div>
-    `;
-}
-
 function getInitials(name) {
   const nameParts = name.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
@@ -235,9 +222,6 @@ function checkContactsInList(i, event, stopPro) {
 
 function uncheckContactInList(i, contactChecked) {
   if (contactChecked.checked == false) {
-    // initial.splice(i);
-    // isChecked.splice(i);
-    // displayInitials();
   }
 }
 
@@ -259,14 +243,6 @@ function clearInputs() {
   save();
 }
 
-// function catergoryClear() {
-//   let category = document.getElementById("input-category");
-//   if (category == !"") {
-//     category = document.createElement("IMG");
-//     category.src = "../assets/img/close.png";
-//   }
-// }
-
 function imageOnSubtask() {
   let subtask = document.getElementById("input-subtask");
 
@@ -280,9 +256,7 @@ let openCategorie = false;
 function showCategorie(event, stopPro) {
   let display = document.getElementById("display-categorie");
   document.getElementById("input-categorie-image-down").classList.add("d-none");
-  document
-    .getElementById("input-categorie-image-up")
-    .classList.remove("d-none");
+  document.getElementById("input-categorie-image-up").classList.remove("d-none");
   display.classList.remove("d-none");
   openCategorie = true;
   display.innerHTML = "";
@@ -444,7 +418,7 @@ async function createTask(i) {
   task["subtasks"] = subtasks;
 
   tasksBoardAdd.push(task);
-  tasksBd[openTask] = task;
+  pushTask()[openTask] = task;
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();
@@ -528,6 +502,34 @@ function deleteTask(i) {
   tasks.splice(i, 1);
   showSubtask();
   save();
+}
+
+function editSubtask(i) {
+let input = document.getElementById('input-subtask');
+let subtask = document.getElementById(`subtask${i}`);
+
+document.getElementById('')
+
+subtask.innerHTML = `
+<div class="input-update-subtask">
+      <input id="update-subtask-input${i}" class="input-update-subtask" type="text" value="${tasks[i]}">
+    <div id="images-subtask-hover">
+      <img src="../assets/img/close.png" class="subtask-button" onclick="deleteTask(${i})" class="d-none images-subtask-hover-1"></img>
+      <img src="../assets/img/edit.png" class="subtask-button" onclick="updateSubtask(${i})" class="d-none images-subtask-hover-2"></img>
+    </div>
+  </div> 
+  `;
+
+  save();
+}
+
+function updateSubtask(i) {
+  let input = document.getElementById(`update-subtask-input${i}`).value;
+
+  tasks.splice(i, 1);
+  tasks.push(input);
+  
+  showSubtask();
 }
 
 function changePrioButtonUrgent() {
