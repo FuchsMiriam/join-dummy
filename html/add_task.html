@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../assets/templates/templates.css">
     <link rel="stylesheet" href="../css/add_task.css">
+    <link rel="stylesheet" href="../css/add_task_2.css">
     <link rel="stylesheet" href="../assets/templates/css/add_task_mediaqueries.css">
     <script src="../js/add_task.js"></script>
+    <script src="../js/add_task_2.js"></script>
     <script src="../assets/templates/js/add_task_template.js"></script>
     <script src="../assets/templates/template.js"></script>
     <script src="../js/summary.js"></script>
@@ -66,7 +68,7 @@
                 <form class="flex8gap"  onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
                     <div class="input-categorie-container" onclick="showCategorie(event, 1)" >
-                        <input id="input-category" required value="Select task category">
+                        <input id="input-category" required placeholder="Select task category">
                         <img class="input-categorie-arrow-down" id="input-categorie-image-down" src="../assets/img/arrow_drop_down.svg" alt=""  onclick="showCategorie(event, 1)">
                         <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up" onclick="closeCategorie(event, 1)" class="d-none" alt="">
                     </div>
