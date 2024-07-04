@@ -412,13 +412,14 @@ async function createTask(i) {
       name: "", //name,
       color: "", //color,
     },
-    taskApplication: 0,
+    taskApplication: currentColumn,
   };
   task["assigned to"] = sumContacts;
   task["subtasks"] = subtasks;
 
   tasksBoardAdd.push(task);
-  pushTask()[openTask] = task;
+  tasksBd.push(task);
+
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();

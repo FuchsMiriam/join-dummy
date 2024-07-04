@@ -376,6 +376,5 @@ function openEdit(idTask){
 function formatDateEdit(inputDate) {
   let dateParts = inputDate.split('/');
   let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-  console.log(formattedDate);
   return formattedDate;
 }

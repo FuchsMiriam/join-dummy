@@ -10,7 +10,10 @@ async function initBoard(indexColumn) {
     clearInputs();
     displayAddTask();
     renderTasks();
-    currentColumn = indexColumn;
+    if(indexColumn != null)
+      currentColumn = indexColumn;
+    else
+      currentColumn = 0;
   });}
 
 function displayAddTask() {
