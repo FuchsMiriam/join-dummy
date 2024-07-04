@@ -15,6 +15,8 @@ let isClicked2 = false;
 let isClicked3 = false;
 let isChecked = [];
 let contactChoose = [];
+let currentColumn = 0;
+let tasksBd = [];
 const colorClasses = [
   "orange",
   "purple",
@@ -128,6 +130,12 @@ function updateCheckEdit(nameEdit) {
   }
 }
 
+function cleanCheckbox(){
+  for (let i = 0; i < contacts.length; i++) {
+    document.getElementById(`checkbox-contacts${i}`).checked = false;
+  }
+}
+
 function initialsBackgroundColor(i) {
   let initials = document.getElementById(`initials-bg${i}`);
 
@@ -229,11 +237,12 @@ function clearInputs() {
   document.getElementById("input-category").value = "";
   document.getElementById("display-initials").innerHTML = "";
   document.getElementById("input-prio1").style.backgroundImage =
-    "url(../assets/img/urgent_button.svg)";
+  "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio2").style.backgroundImage =
     "url(../assets/img/medium_button.svg)";
   document.getElementById("input-prio3").style.backgroundImage =
     "url(../assets/img/low_button.svg)";
+
   save();
 }
 
@@ -347,6 +356,7 @@ function addTask() {
 }
 
 function addOrEditTask() {
+  contactChoose = [];
   if (useEditFunction) addTaskEdit();
   else addTask();
 }

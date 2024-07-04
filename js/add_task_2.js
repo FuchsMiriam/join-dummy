@@ -1,6 +1,3 @@
-let currentColumn = 0;
-let tasksBd = [];
-
 async function createTask(i) {
   let title = document.getElementById("input-title");
   let description = document.getElementById("input-description");

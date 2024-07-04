@@ -1,5 +1,3 @@
-let currentColumn = 0;
-
 async function initBoard(indexColumn) {
   await fetchContacts();
   loadTasks().then((resultTask) => {
@@ -23,6 +21,7 @@ function displayAddTask() {
 
 function closeAddTaskBoard() {
   useEditFunction = 0;
+  contactChoose = [];
   document.getElementById("container-add-task-board").classList.add("d-none");
   document.getElementById("idEditCard").classList.add("d-none");
 }
