@@ -41,13 +41,6 @@ async function init() {
     showSubtask();
     hoverSidebar();
   });
-  //   await loadTasks();
-  //   while (resultTask == false);
-  //   getNamesFromArray();
-  //   load();
-  //   showSubtask();
-  //   setTimeout(() => {}, 5000);
-  //   hoverSidebar();
 }
 
 async function loadTasks() {
@@ -266,25 +259,6 @@ function clearInputs() {
   save();
 }
 
-function clearInputsEdit() {
-  document.getElementById("input-title").value = "";
-  // document.getElementById("input-description-addTask").value = "";
-  document.getElementById("input-category").value = "";
-  document.getElementById("input-date").value = "";
-  document.getElementById("input-subtask").value = "";
-  document.getElementById("show-subtask").innerHTML = "";
-  // spliceTask();
-  document.getElementById("input-category").value = "";
-  document.getElementById("display-initials").innerHTML = "";
-  document.getElementById("input-prio1").style.backgroundImage =
-    "url(../assets/img/urgent_button.svg)";
-  document.getElementById("input-prio2").style.backgroundImage =
-    "url(../assets/img/medium_button.svg)";
-  document.getElementById("input-prio3").style.backgroundImage =
-    "url(../assets/img/low_button.svg)";
-  save();
-}
-
 // function catergoryClear() {
 //   let category = document.getElementById("input-category");
 //   if (category == !"") {
@@ -403,26 +377,6 @@ function addTask() {
   save();
 }
 
-function addTaskEdit(){
-  let title = document.getElementById("input-title");
-  let date = document.getElementById("input-date");
-  let category = document.getElementById("input-category");
-  checkRequieredValues(title, document.getElementById("error-message-title"));
-  checkRequieredValues(date, document.getElementById("error-message-date"));
-  checkRequieredValues(category,document.getElementById("error-message-category")
-  );
-
-  if (title.value != "" && date.valueAsDate != null && category.value != "") {
-    editTask();
-    renderTasks();
-    document.getElementById("idDetailCard").innerHTML = detailCardHTML(openTask);
-    closeAddTaskBoard();
-    tasks = [];
-  }
-  clearInputsEdit();
-  save();
-}
-
 function addOrEditTask(){
   if(useEditFunction)
     addTaskEdit();
@@ -494,59 +448,6 @@ async function createTask(i) {
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();
-  save();
-}
-
-async function editTask(i) {
-  let title = document.getElementById("input-title");
-  let description = document.getElementById("input-description");
-  let assigned = document.getElementById("show-contacts");
-  let date = document.getElementById("input-date").valueAsDate;
-  date.valueAsDate = formDate(date);
-  let category = document.getElementById("input-category");
-  let color = colorClassForContact;
-  let prio = getPrio();
-
-  let sumContacts = [];
-  for (let i = 0; i < initialName.length; i++) {
-    sumContacts[i] = {
-      name: initialName[i],
-      color: getColor(initialName[i]),
-    };
-  }
-
-  let subtasks = [];
-  for (let j = 0; j < tasks.length; j++) {
-    subtasks[j] = {
-      text: tasks[j],
-      checked: "0",
-    };
-  }
-
-  let task = {
-    title: title.value,
-    description: description.value,
-    assigned: assigned.value,
-    date: date.valueAsDate,
-    category: category.value,
-    subtasks: [
-      {
-        text: "",
-        checked: 0,
-      },
-    ],
-    prio: prio,
-    "assigned to": {
-      name: "", //name,
-      color: "", //color,
-    },
-    taskApplication: getTaskApplication(),
-  };
-  task["assigned to"] = sumContacts;
-  task["subtasks"] = subtasks;
-
-  tasksBd[openTask] = task;
-  putDataTasks((path = ""), tasksBd);
   save();
 }
 
@@ -629,25 +530,10 @@ function deleteTask(i) {
   save();
 }
 
-function editSubtask(i) {
-  let button = document.getElementById("add-button-subtask");
-  let newValue = document.getElementById(`input-subtask`);
-
-  button.classList.add("d-none");
-  newValue.focus();
-
-  task.splice(i, 1);
-  task.push(i, newValue);
-  save();
-}
-
 function changePrioButtonUrgent() {
-  document.getElementById("input-prio1").style.backgroundImage =
-    "url(../assets/img/urgent_button_active.svg)";
-  document.getElementById("input-prio2").style.backgroundImage =
-    "url(../assets/img/medium_button.svg)";
-  document.getElementById("input-prio3").style.backgroundImage =
-    "url(../assets/img/low_button.svg)";
+  document.getElementById("input-prio1").style.backgroundImage = "url(../assets/img/urgent_button_active.svg)";
+  document.getElementById("input-prio2").style.backgroundImage = "url(../assets/img/medium_button.svg)";
+  document.getElementById("input-prio3").style.backgroundImage = "url(../assets/img/low_button.svg)";
   isClicked1 = true;
   isClicked2 = false;
   isClicked3 = false;

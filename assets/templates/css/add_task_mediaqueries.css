@@ -8,7 +8,14 @@
 
     .footer {
         gap: 20px;
-}
+    }
+
+    .container-board-addTask {
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+
 }
 
 @media(max-width: 1400px) {
@@ -171,4 +178,13 @@
     #content {
         max-height: 500px;
     }
+}
+
+@media(max-width:1400px) {
+    .container-board-addTask {
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+
 }

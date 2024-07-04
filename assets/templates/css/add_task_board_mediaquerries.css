@@ -1,88 +1,17 @@
- @media(max-width: 1440px) {
-     /* .container-board {
-         width: 70%;
+@media (min-width: 1400px)
+{
+    .container-board-addTask {
+        right: auto;
      }
-
-     input {
-         width: 70%;
-     }
-
-     #input-description-addTask{
-        width: 70%;
-     } */
-
-     /* .input-prio-span {
-         /* width: 70%; */
-         /* gap: 15px;
-         display: grid;
-         grid-template-columns: 1fr 1fr;
-         grid-template-rows: auto auto;
-         justify-items: center;
-         align-items: center;
-     }
-
-     #input-prio1 {
-         grid-column: 1;
-         grid-row: 1;
-     }
-
-     #input-prio2 {
-         grid-column: 2;
-         grid-row: 1;
-     }
-
-     #input-prio3 {
-         grid-column: 1 / span 2;
-         grid-row: 2;
-         justify-self: center;
-     } */ 
-
-     /* .input-categorie-container {
-         width: 70%;
-     } */
-
-     /* #input-category {
-         width: 100%;
-     }
-
-     #display-categorie {
-         width: 28%;
-         top: 550px;
-     }
-
-     #input-description {
-         /* width: 70%; */
-         /* min-width: 0; 
-     } */
-
-     /* .input-container-contacts {
-         width: 70%
-     } */
-
-     /* #show-contacts {
-         width: 100%;
-     }
-
-     .display-contacts-dropdown {
-         width: 300px;
-     }
-
-     #input-assigny {
-         width: 100%;
-     } */
-
-     /* .input-container {
-         width: 70%;
-     } */
-
-     /* #input-subtask {
-         width: 100%;
-     } */
- }
+}
 
  @media(max-width: 1400px) {
      .container-board-addTask {
-         left: 5%;
+        right: auto;
+     }
+
+     .containerDetailCard {
+        height: 100vh;
      }
 
      #content-addTask{
@@ -94,7 +23,6 @@
 @media(max-width: 1200px) {
     .container-board-addTask {
         width: fit-content;
-        left: 8px;
     }
 
     input{
@@ -237,7 +165,7 @@
 
 @media(max-width: 1070px) {
 
-       #content-addTask {
+    #content-addTask {
         display: flex;
         flex-direction: column;
         overflow-y: auto;
@@ -248,29 +176,9 @@
         margin-left: 40px;
     }
 
-
-     /* .content-left {
-         width: 80%;
-     } */
-
-     .seperator {
+    .seperator {
          display: none;
      }
-
-     /* .content-right {
-         width: 80%;
-         margin-left: 74px;
-     } */
-/* 
-     .content-right,
-     .content-left {
-         width: 80%;
-         height: auto;
-     } */
-
-     /* input {
-         width: 70%;
-     } */
 
      .input-prio-span {
          display: flex;
@@ -279,7 +187,6 @@
      .input-container-contacts {
          align-items: flex-start;
          min-width: 170px;
-         /* max-width: 70%; */
      }
 
      #show-contacts {
@@ -291,18 +198,9 @@
          width: 100%;
      }
 
-     /* #input-date {
-         width: 70%;
-     } */
-
      #input-description {
          min-width: 170px;
-         /* max-width: 70%; */
      }
-
-     /* .input-prio-span {
-         width: 70%;
-     } */
 
      #display-categorie {
          width: 55%;
@@ -334,15 +232,6 @@
  }
 
  @media(max-width: 540px) {
-     /* .content-right {
-         margin-left: 74px;
-     } */
-
-     /* .header-addTask {
-         height: 150px;
-         padding-top: 10px;
-     } */
-
      #content-addTask {
          height: 530px;
          display: flex;
@@ -358,10 +247,6 @@
      .button-footer-addTask {
          flex-direction: column;
      }
-
-     /* #show-subtask {
-         width: 70%;
-     } */
 
      #display-categorie {
          top: 571px;
