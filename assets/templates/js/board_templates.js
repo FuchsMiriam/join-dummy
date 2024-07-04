@@ -57,9 +57,9 @@ function detailCardHTMLPriority(idTask) {
 }
 function cardHTMLPriorityName(idTask) {
   // 1 - High, 2 - Medium, 3 - Low
-  if (tasksBd[idTask].prio == 1) return "Low";
+  if (tasksBd[idTask].prio == 1) return "Urgent";
   if (tasksBd[idTask].prio == 2) return "Medium";
-  if (tasksBd[idTask].prio == 3) return "Urgent";
+  if (tasksBd[idTask].prio == 3) return "Low";
 }
 
 function detailCardHTMLContacts(idTask) {
@@ -91,7 +91,7 @@ function getdetailcardHTMLContacts(idTask) {
 function detailCardHTMLSubtasks(idTask) {
   if (tasksBd[idTask]["subtasks"] == null) return "";
   if (tasksBd[idTask]["subtasks"].length <= 0) return "";
-  if(tasksBd[idTask]["subtasks"][0].text == null) return "";
+  if (tasksBd[idTask]["subtasks"][0].text == null) return "";
   return /*html*/ `
         <div class="textDetailCardContacts">
             <div>Subtasks:</div>
@@ -104,7 +104,7 @@ function getDetailcardHTMLSubtasks(idTask) {
   let subtasksCards = "";
 
   for (let i = 0; i < tasksBd[idTask]["subtasks"].length; i++) {
-      subtasksCards += /*html*/ `
+    subtasksCards += /*html*/ `
         <div class="subtasksListCard">
             <input class="checkboxRememberCard" type="checkbox" id="checkCard${idTask}${i}" onclick="toggleCheckbox(${idTask}, ${i})">
             <label for="checkCard${idTask}${i}" class="checkboxCard">${tasksBd[idTask]["subtasks"][i].text}</label>
@@ -190,7 +190,7 @@ function cardHTMLProgressBar(idTask) {
   let widthProgress = 128 * (checkedTasks / maxSubtasks);
 
   if (!maxSubtasks) return ``;
-  else if(tasksBd[idTask]["subtasks"][0].text == null) return "";
+  else if (tasksBd[idTask]["subtasks"][0].text == null) return "";
   else {
     return /*html*/ `
             <div class="textCardProgress">
