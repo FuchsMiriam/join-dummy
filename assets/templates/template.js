@@ -132,6 +132,7 @@ function openIndex() {
 }
 
 function backToSide(){
-  let docu = document.referrer;
-  window.location.href = docu;
+  // let docu = document.referrer;
+  // window.location.href = docu;
+  history.back();
 }

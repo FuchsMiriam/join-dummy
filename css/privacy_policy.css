@@ -22,7 +22,7 @@ html {
 
 .container {
     max-width: 1014px;
-    height: 840px;
+    height: calc(100vh - 100px);
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -75,5 +75,11 @@ li {
 
     .head a {
         margin-left: auto;
+    }
+}
+
+@media(max-width: 1440px){
+    .container{
+        height: calc(100vh - 100px - 100px);
     }
 }

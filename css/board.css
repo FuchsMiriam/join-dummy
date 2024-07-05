@@ -7,7 +7,8 @@
 
 .contentFrame{
     padding-left: 232px;
-    height: 688px;
+    /* height: 688px; */
+    height: calc(100vh - 340px);
     width: 1208px;
     padding: 0px 51px 0px 51px;
     display: flex;
@@ -241,7 +242,7 @@ input::placeholder{
 
 .columnBoard{
     /* width: 278px; */ 
-    height: 688px;
+    /* height: 688px; */
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
