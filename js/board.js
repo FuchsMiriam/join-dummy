@@ -71,6 +71,8 @@ function setBackColumns() {
 }
 
 function openDetailCard(idTask) {
+  document.body.classList.add("overflow-hidden");
+  document.getElementById("idDetailCard").classList.remove("d-none");
   document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
   document.getElementById("idDetailCard").classList.add("leftPart");
   document.getElementById("idDetailCard").classList.remove("leftPartOut");
@@ -79,8 +81,10 @@ function openDetailCard(idTask) {
 }
 
 function closeDetailCard(idTask) {
+  document.body.classList.remove("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("leftPart");
   document.getElementById("idDetailCard").classList.add("leftPartOut");
+  document.getElementById("idDetailCard").classList.add("d-none");
 }
 
 function checkSubtasks(idTask) {
