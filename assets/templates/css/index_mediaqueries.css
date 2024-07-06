@@ -116,7 +116,7 @@
   }
 
   .rememberMeSection {
-    width: 327px;
+    /* width: 327px; */
     height: 24px;
     padding: 0px 16px 0px 16px;
     gap: 16px;
@@ -167,6 +167,14 @@
 
   .interactionContainer {
     width: 280px;
+  }
+
+  .loginEmail{
+    width: 230px;
+  }
+
+  .loginPassword{
+    width: 230px;
   }
 }
 
@@ -310,7 +318,7 @@
   }
 
   .rememberMeSection {
-    width: 327px;
+    /* width: 327px; */
     height: 24px;
     padding: 0px 16px 0px 16px;
     gap: 16px;
@@ -352,13 +360,13 @@
     display: flex;
   }
 
-  .loginEmail {
+  /* .loginEmail {
     width: 85%;
   }
 
   .loginPassword {
     width: 85%;
-  }
+  } */
 
   .legalButtonsContainer {
     width: 246px;
@@ -378,11 +386,11 @@
     width: 290px;
   }
 
-  .loginEmail{
+  /* .loginEmail{
     width: auto;
   }
 
   .loginPassword{
     width: auto;
-  }
+  } */
 }

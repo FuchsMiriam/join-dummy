@@ -301,6 +301,13 @@
     }
 }
 
+@media(max-width: 1400px)
+{
+    .summaryText{
+        margin-bottom: 90px;
+    }
+}
+
 @media (max-width: 1200px){
     #textRegards{
         display: none;
