@@ -4,6 +4,8 @@
         flex-direction: column;
         align-items: center;
         margin-left: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     .footer {
@@ -187,4 +189,16 @@
         left: 0;
     }
 
+}
+
+@media(max-height: 880px) {
+    #content {
+        max-height: 500px;
+    }
+}
+
+@media(max-height: 790px) {
+    #content {
+        max-height: 200px;
+    }
 }
