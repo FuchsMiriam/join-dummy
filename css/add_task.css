@@ -179,6 +179,7 @@ input {
     width: 440px;
     height: 424px;
     gap: 24px;
+    height: auto;
 }
 
 /* .content-right {
