@@ -27,7 +27,7 @@
         overflow-y: auto;
         height: fit-content;
         scrollbar-width: none;
-        max-height: 600px;
+        max-height: 480px;
     }
 
     .content-left {
@@ -178,7 +178,7 @@
 
 @media(max-width: 328px){
     #content {
-        max-height: 500px;
+        max-height: 100px;
     }
 }
 
@@ -188,8 +188,22 @@
         right: 0;
         left: 0;
     }
-
 }
+
+@media(max-width: 345px) {
+    #content {
+        max-height: 450px;
+    }
+}
+
+@media(min-width: 375px) and (min-height: 667px) {
+    h1 {
+        margin-left: 0;
+    }
+}
+
+
+/*--------------------- max-heigh ------------------------*/
 
 @media(max-height: 880px) {
     #content {
