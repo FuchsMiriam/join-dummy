@@ -263,7 +263,7 @@
   .loginButtons {
     flex-direction: column;
     align-items: center;
-    margin-top: 32px;
+    /* margin-top: 32px; */
   }
 
   .mainpageLoginButton {
@@ -350,6 +350,11 @@
   }
 
   .loginPassword {
+    width: 70%;
+    margin-left: 40px;
+  }
+
+  #errorMessage{
     width: 70%;
     margin-left: 40px;
   }
