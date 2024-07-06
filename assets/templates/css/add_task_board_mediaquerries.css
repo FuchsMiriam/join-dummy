@@ -161,6 +161,12 @@
         padding-left: 20px;
     }
 
+    #input-title,
+    #input-date,
+    #input-description
+     {
+        width: 100%;
+    }
 }
 
 @media(max-width: 1070px) {
@@ -173,7 +179,7 @@
     }
 
     .content-right {
-        margin-left: 40px;
+        margin-left: 20px;
     }
 
     .seperator {
