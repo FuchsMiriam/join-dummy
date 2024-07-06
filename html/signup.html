@@ -1,114 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign up</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="../css/signup.css" />
-    <link rel="stylesheet" href="../fonts.css" />
-    <link rel="stylesheet" href="../assets/templates/css/signup_mediaqueries.css">
-    <link
-      rel="shortcut icon"
-      href="../assets/img/favicon.ico"
-      type="image/x-icon"
-    />
-    <script src="../js/signup.js"></script>
-  </head>
-  <body onload="onloadDatabase()">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign up</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/signup.css" />
+  <link rel="stylesheet" href="../fonts.css" />
+  <link rel="stylesheet" href="../assets/templates/css/signup_mediaqueries.css">
+  <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon" />
+  <script src="../js/signup.js"></script>
+</head>
+
+<body onload="onloadDatabase()">
+  <div class="container">
     <img class="logoSignupPage" src="../assets/img/logoLarge.svg" alt="Logo" />
     <div class="signupContainer">
-      <a class="signupArrow" href="../index.html"></a>
-      <h1 class="signupHeadline">Sign up</h1>
+      <header>
+        <a class="signupArrow" href="../index.html"></a>
+        <h1 class="signupHeadline">Sign up</h1>
+      </header>
       <div class="mainCredentialsSignup">
         <div class="signupInputFields">
           <div id="overlay" class="overlay">You signed up successfully</div>
-          <form
-            action=""
-            style="
+          <form action="" style="
               display: flex;
               flex-direction: column;
               align-items: center;
               gap: 32px;
-            "
-            onsubmit="signup(); return false"
-          >
+            " onsubmit="signup(); return false">
             <div class="emailContainer">
-              <input
-                class="signupEmail"
-                type="text"
-                placeholder="Name"
-                id="signupNameInput"
-                required
-              />
-              <img
-                class="emailIcon"
-                src="../assets/img/personIcon.svg"
-                alt="Person"
-              />
+              <input class="signupEmail" type="text" placeholder="Name" id="signupNameInput" required />
+              <img class="emailIcon" src="../assets/img/personIcon.svg" alt="Person" />
             </div>
             <div class="emailContainer">
-              <input
-                class="signupEmail"
-                type="email"
-                placeholder="Email"
-                id="signupEmailInput"
-                required
-              />
-              <img
-                class="emailIcon"
-                src="../assets/img/mailIcon.svg"
-                alt="Email"
-              />
+              <input class="signupEmail" type="email" placeholder="Email" id="signupEmailInput" required />
+              <img class="emailIcon" src="../assets/img/mailIcon.svg" alt="Email" />
             </div>
             <div class="emailContainer">
-              <input
-                class="signupPassword"
-                type="password"
-                placeholder="Password"
-                id="signupPasswordInput"
-                required
-              />
-              <img
-                class="emailIcon"
-                src="../assets/img/lockIcon.svg"
-                alt="Schloss"
-                id="signupLockIcon"
-              />
+              <input class="signupPassword" type="password" placeholder="Password" id="signupPasswordInput" required />
+              <img class="emailIcon" src="../assets/img/lockIcon.svg" alt="Schloss" id="signupLockIcon" />
             </div>
             <div class="emailContainer">
-              <input
-                class="signupPassword confirmPassword"
-                type="password"
-                placeholder="Confirm Password"
-                id="signupConfirmPassword"
-                required
-              />
-              <img
-                class="emailIcon"
-                src="../assets/img/lockIcon.svg"
-                alt="Schloss"
-                id="signupValidationLockIcon"
-              />
+              <input class="signupPassword confirmPassword" type="password" placeholder="Confirm Password"
+                id="signupConfirmPassword" required />
+              <img class="emailIcon" src="../assets/img/lockIcon.svg" alt="Schloss" id="signupValidationLockIcon" />
             </div>
-          <div id="errorMessage" class="errorMessageSignup">
-            Ups! Your password does not match.
-          </div>
+            <div id="errorMessage" class="errorMessageSignup">
+              Ups! Your password does not match.
+            </div>
         </div>
         <div class="privacyPolicySection">
           <input class="checkboxRemember" type="checkbox" id="rememberMe" />
-          <label for="rememberMe" class="checkboxLabel"
-            >I accept the
-            <a href="./privacy_policy.html" class="linkPolicy"
-              >Privacy Policy</a
-            ></label
-          >
+          <label for="rememberMe" class="checkboxLabel">I accept the
+            <a href="./privacy_policy.html" class="linkPolicy">Privacy Policy</a></label>
         </div>
       </div>
       <button type="submit" id="signupButton">
         Sign up
       </button>
-    </form>
+      </form>
     </div>
     <div class="legalButtonsContainer">
       <button class="legalButtonLeft" onclick="redirectToPrivacyPage()">
@@ -118,5 +70,7 @@
         Legal Notice
       </button>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

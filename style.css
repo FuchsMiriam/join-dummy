@@ -1,7 +1,4 @@
 body {
-  overflow-x: hidden;
-  width: 1440px;
-  height: 1024px;
   background-color: #f6f7f8;
   font-family: "Inter";
   box-sizing: border-box;
@@ -389,12 +386,8 @@ input[type="password"].error {
 
 .legalButtonsContainer {
   display: flex;
-  position: relative;
-  width: 246px;
-  height: 35px;
-  top: 949px;
-  left: 597px;
   gap: 16px;
+  margin-top: 100px;
 }
 
 .legalButtonLeft {
