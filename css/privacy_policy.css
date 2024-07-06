@@ -13,6 +13,10 @@ html {
     margin-left: 328px;
 }
 
+a {
+    cursor: pointer;
+}
+
 .head {
     display: flex;
     justify-content: space-between;
