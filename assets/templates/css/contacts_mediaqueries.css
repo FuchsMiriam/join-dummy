@@ -11,7 +11,7 @@
 @media (max-width: 1400px) {
   .contactsSidebar {
     position: static;
-    max-height: 812px;
+    /* max-height: 812px; */
   }
 
   .headlinesContainer {

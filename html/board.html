@@ -92,21 +92,21 @@
     <section class="contentFrame">
         <div class="boardColumn mobilBoardTaskTitles">
             <div class="titleBoardColumn">To do</div>
-            <button class="addBoardColumn">
+            <button class="addBoardColumn" onclick="initBoard(0)">
                 <div class="plus">+</div>
             </button>
         </div>
         <div id="toDO" ondrop="drop(0)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
         <div class="boardColumn mobilBoardTaskTitles">
             <div class="titleBoardColumn">In progress</div>
-            <button class="addBoardColumn">
+            <button class="addBoardColumn" onclick="initBoard(1)">
                 <div class="plus">+</div>
             </button>
         </div>
         <div id="inProgress" ondrop="drop(1)" ondragover="allowDrop(event)" class="columnBoard scrollbarColumn"></div>
         <div class="boardColumn mobilBoardTaskTitles">
             <div class="titleBoardColumn">Await feedback</div>
-            <button class="addBoardColumn">
+            <button class="addBoardColumn"  onclick="initBoard(2)">
                 <div class="plus">+</div>
             </button>
         </div>

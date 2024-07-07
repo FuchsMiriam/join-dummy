@@ -130,11 +130,12 @@
   .contactsSidebar {
     width: 100vw;
     height: 100vh;
-    max-height: 815px;
+    /* max-height: 815px; */
   }
 
   .contactList {
     width: 100vw;
+    margin-bottom: 130px;
 }
 
 .headlinesContainer{
