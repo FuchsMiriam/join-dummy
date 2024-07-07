@@ -51,8 +51,6 @@ async function createTask(i) {
   tasksBoardAdd.push(task);
   tasksBd.push(task);
 
-  tasksBoardAdd.push(task);
-  // pushTask()[openTask] = task;
   putDataTasks((path = ""), tasksBoardAdd);
   clearInputs();
   spliceTask();

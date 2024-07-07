@@ -342,7 +342,6 @@ function addTask() {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
     setTimeout(function () {
-      // open("board.html");
       if (shortURL(document.referrer) != "board.html")
         window.location.href = "../html/board.html";
       else {
