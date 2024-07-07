@@ -8,7 +8,7 @@
 .contentFrame{
     padding-left: 232px;
     /* height: 688px; */
-    height: calc(100vh - 340px);
+    height: calc(100vh - 410px);
     width: 1208px;
     padding: 0px 51px 0px 51px;
     display: flex;
