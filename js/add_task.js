@@ -346,8 +346,11 @@ function addTask() {
         window.location.href = "../html/board.html";
       else {
         document.getElementById("add_task").classList.add("d-none");
-        closeAddTaskBoard();
-        renderTasks();
+        if(window.location.href = "../html/board.html") {
+          closeAddTaskBoard();
+        } else {
+          renderTasks();
+        }
       }
     }, 2000);
   }
