@@ -179,12 +179,11 @@ input {
     width: 440px;
     height: 424px;
     gap: 24px;
-    height: auto;
 }
 
-/* .content-right {
-    gap: 8px;
-} */
+.content-left {
+    height: auto;
+}
 
 .content-left-padding{
     margin-top: calc(174px - 141px);
