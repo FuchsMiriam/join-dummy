@@ -10,7 +10,6 @@ function boardInit() {
   loadTasksBoard().then((result) => {
     renderTasks();
     fetchContacts();
-    // hoverSidebar();
   });
   fetchContacts();
 }
@@ -112,32 +111,18 @@ function detailCardHTML(idTask) {
 }
 
 function showTasks() {
-  // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
-  let tasksToDo = 0;
-  let tasksInProgress = 0;
-  let tasksAwaitFeedback = 0;
-  let tasksDone = 0;
+  let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
   setBackColumns();
   if (tasksBd == null)
-    return checkNoTasks(
-      tasksToDo,
-      tasksInProgress,
-      tasksAwaitFeedback,
-      tasksDone
-    );
+    return checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback,tasksDone);
   for (let i = 0; i < tasksBd.length; i++) {
-    if(tasksBd[i] === null) {
-      tasksBd[i]++;
-    } else {
-    if (tasksBd[i].taskApplication == 0) tasksToDo += addTaskBoard(i, "toDO");
-    else if (tasksBd[i].taskApplication == 1)
-      tasksInProgress += addTaskBoard(i, "inProgress");
-    else if (tasksBd[i].taskApplication == 2)
-      tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
-    else if (tasksBd[i].taskApplication == 3)
-      tasksDone += addTaskBoard(i, "done");
-  }
-  }
+    if(tasksBd[i] === null) tasksBd[i]++;
+    else {
+      if (tasksBd[i].taskApplication == 0) tasksToDo += addTaskBoard(i, "toDO");
+      else if (tasksBd[i].taskApplication == 1) tasksInProgress += addTaskBoard(i, "inProgress");
+      else if (tasksBd[i].taskApplication == 2) tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
+      else if (tasksBd[i].taskApplication == 3) tasksDone += addTaskBoard(i, "done");
+    }}
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
@@ -185,38 +170,14 @@ function searchTasks() {
 }
 
 function showSearchTasks(input) {
-  // 0 - toDo, 1 - inProgress, 2 - awaitFeedback, 3 - done
-  let tasksToDo = 0;
-  let tasksInProgress = 0;
-  let tasksAwaitFeedback = 0;
-  let tasksDone = 0;
+  let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
   for (let i = 0; i < tasksBd.length; i++) {
     let text = tasksBd[i].description;
     let title = tasksBd[i].title;
-    if (
-      tasksBd[i].taskApplication == 0 &&
-      (text.toLowerCase().includes(input) ||
-        title.toLowerCase().includes(input))
-    )
-      tasksToDo += addTaskBoard(i, "toDO");
-    else if (
-      tasksBd[i].taskApplication == 1 &&
-      (text.toLowerCase().includes(input) ||
-        title.toLowerCase().includes(input))
-    )
-      tasksInProgress += addTaskBoard(i, "inProgress");
-    else if (
-      tasksBd[i].taskApplication == 2 &&
-      (text.toLowerCase().includes(input) ||
-        title.toLowerCase().includes(input))
-    )
-      tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
-    else if (
-      tasksBd[i].taskApplication == 3 &&
-      (text.toLowerCase().includes(input) ||
-        title.toLowerCase().includes(input))
-    )
-      tasksDone += addTaskBoard(i, "done");
+    if      (tasksBd[i].taskApplication == 0 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksToDo += addTaskBoard(i, "toDO");
+    else if (tasksBd[i].taskApplication == 1 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksInProgress += addTaskBoard(i, "inProgress");
+    else if (tasksBd[i].taskApplication == 2 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
+    else if (tasksBd[i].taskApplication == 3 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksDone += addTaskBoard(i, "done");
   }
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
@@ -224,7 +185,6 @@ function showSearchTasks(input) {
 function foundTask() {
   setBackColumns();
   renderTasks();
-  // document.getElementById("searchTask").value = '';
 }
 
 function startDragging(idTask) {
@@ -245,38 +205,23 @@ function getTasks() {
   return tasksBd;
 }
 
-function openEdit(idTask){
-  clearInputsEdit();
-  useEditFunction = 1;
-  displayAddTask();
-  document.getElementById("input-title").value = tasksBd[idTask].title;
-  document.getElementById("input-description").value = tasksBd[idTask].description;
-  document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
-  document.getElementById("input-category").value = tasksBd[idTask].category;
+function openEditPrio(){
   if(tasksBd[idTask].prio == 1)
     changePrioButtonUrgent();
   else if(tasksBd[idTask].prio == 2)
     changePrioButtonMedium();
   else if(tasksBd[idTask].prio == 3)
     changePrioButtonLow();
-  let ini = document.getElementById("display-initials");
-  ini.innerHTML = "";
-  let initial = [];
-  if(tasksBd[idTask]["assigned to"])
-  {
-    for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
-      {
-        initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
-        updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
-        namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
-      }
-      for (let i = 0; i < initial.length; i++) {
-        ini.innerHTML += displayInitials(i, initial[i]);
-        initalsBackgroundColor(i);
-      }
-  }
-  document.getElementById("display-initials").classList.remove("d-none");
-  document.getElementById("display-initials").classList.add("z1");
+}
+
+function openEditTitleDescriptionDateCategory(){
+  document.getElementById("input-title").value = tasksBd[idTask].title;
+  document.getElementById("input-description").value = tasksBd[idTask].description;
+  document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
+  document.getElementById("input-category").value = tasksBd[idTask].category;
+}
+
+function openEditSubtasks(){
   let inputs = document.getElementById("show-subtask");
   inputs.innerHTML = "";
 
@@ -287,7 +232,36 @@ function openEdit(idTask){
       tasks.push(showtasks.text);
       inputs.innerHTML += showSubtaskTemplate(i, showtasks.text);
     }    
-  }  
+  } 
+}
+
+function openEditContacts(){
+  let initial = [];
+  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
+    {
+      initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+      updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
+      namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
+    }
+    for (let i = 0; i < initial.length; i++) {
+      ini.innerHTML += displayInitials(i, initial[i]);
+      initalsBackgroundColor(i);
+    }
+}
+
+function openEdit(idTask){
+  clearInputsEdit();
+  useEditFunction = 1;
+  displayAddTask();
+  openEditTitleDescriptionDateCategory();
+  openEditPrio();
+  let ini = document.getElementById("display-initials");
+  ini.innerHTML = "";
+  if(tasksBd[idTask]["assigned to"])
+    openEditContacts();
+  document.getElementById("display-initials").classList.remove("d-none");
+  document.getElementById("display-initials").classList.add("z1");
+  openEditSubtasks();
 }
 
 function formatDateEdit(inputDate) {

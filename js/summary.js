@@ -5,11 +5,9 @@ let result3 = true;
 let loginName;
 
 async function summaryInit(){
-  // includeHTML();
   initHTML()
   loadTasksSummary().then((result2) => {
       getSummary();
-      // hoverSidebar();
   });
 }
 
@@ -33,20 +31,9 @@ async function loadTasksSummary(){
   let response = await fetch(SUMMARY_URL + ".json");
   let responseToJSON = await response.json();
   tasksBoard = responseToJSON;
-  // tasksBoard = null;
   result2 = true;
   result3 = true;
 }
-
-// function addTask(){
-//   let task =  {
-//     title: "Test",
-//     description: "Test Des",
-//   };
-
-//   tasksBoard.push(task);
-//   putData(path="", tasksBoard);
-// }
 
 async function putDataSummary(path="", data={}){
   let response = await fetch(SUMMARY_URL + path + ".json", {

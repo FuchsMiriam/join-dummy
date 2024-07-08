@@ -1,21 +1,29 @@
 function detailCardHTMLLabel(idTask) {
   if (tasksBd[idTask].category == "User Story") {
-    return /*html*/ `
+    detailCardHTMLLabelUser();
+  } else {
+    detailCardHTMLLabelTechnical();
+  }
+}
+
+function detailCardHTMLLabelUser(){
+  return /*html*/ `
         <div class="labelClose">
             <div class="labelDetailCard labelCard-blue">${tasksBd[idTask].category}</div>
             <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard(${idTask})">
                 <img class="closeDetailCard" src="../assets/img/close.png" alt="">
             </div>
         </div>`;
-  } else {
-    return /*html*/ `
+}
+
+function detailCardHTMLLabelTechnical(){
+  return /*html*/ `
         <div class="labelClose">
             <div class="labelDetailCard labelCard-green">${tasksBd[idTask].category}</div>
             <div class="imgPrio hoverCloseDetailCard flex-center" onclick="closeDetailCard(${idTask})">
                 <img class="closeDetailCard" src="../assets/img/close.png" alt="">
             </div>
         </div>`;
-  }
 }
 
 function detailCardHTMLTitle(idTask) {
@@ -55,8 +63,8 @@ function detailCardHTMLPriority(idTask) {
         </div>
     `;
 }
+
 function cardHTMLPriorityName(idTask) {
-  // 1 - High, 2 - Medium, 3 - Low
   if (tasksBd[idTask].prio == 1) return "Urgent";
   if (tasksBd[idTask].prio == 2) return "Medium";
   if (tasksBd[idTask].prio == 3) return "Low";
@@ -130,12 +138,7 @@ function detailCardHTMLDeleteEdit(idTask) {
     `;
 }
 
-function checkNoTasks(
-  tasksToDo,
-  tasksInProgress,
-  tasksAwaitFeedback,
-  tasksDone
-) {
+function checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
   if (!tasksToDo) document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
   if (!tasksInProgress)
     document.getElementById("inProgress").innerHTML = cardHTMLNoTasks();
@@ -188,7 +191,6 @@ function cardHTMLProgressBar(idTask) {
   let maxSubtasks = tasksBd[idTask]["subtasks"].length;
   let checkedTasks = getCheckedTasks(idTask);
   let widthProgress = 128 * (checkedTasks / maxSubtasks);
-
   if (!maxSubtasks) return ``;
   else if (tasksBd[idTask]["subtasks"][0].text == null) return "";
   else {
@@ -202,7 +204,6 @@ function cardHTMLProgressBar(idTask) {
 }
 
 function cardHTMLPriority(idTask) {
-  // 1 - High, 2 - Medium, 3 - Low
   if (tasksBd[idTask].prio == null) return "";
   if (tasksBd[idTask].prio == 3)
     return /*html*/ `<img class="imgPrio" src="../assets/img/Property 1=Low.png" alt="">`;
@@ -218,15 +219,12 @@ function cardHTMLContacts(idTask) {
   let leftPosition = 0;
 
   if (tasksBd[idTask]["assigned to"] == null) return "";
-
   for (let i = 0; i < tasksBd[idTask]["assigned to"].length; i++) {
     leftPosition = i * 8;
     initials = getInitials(tasksBd[idTask]["assigned to"][i].name);
     contactCards += /*html*/ `<div class="cardContact leftPosition${leftPosition}" style="background-color: ${tasksBd[idTask]["assigned to"][i].color}">${initials}</div>`;
   }
-
-  return /*html*/ `
-        <div class="cardContacts">${contactCards}</div>`;
+  return /*html*/ `<div class="cardContacts">${contactCards}</div>`;
 }
 
 function cardHTMLNoTasks(idTask) {

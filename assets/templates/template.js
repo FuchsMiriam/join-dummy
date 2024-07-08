@@ -58,10 +58,6 @@ function hoverSidebar(){
 }
 
 function setHelpTemplate(){
-  // if(window.screen.width < 1440)
-  //   document.getElementById("headerNoteHelpTemplate").classList.remove("d-none");
-  // else
-  //   document.getElementById("headerNoteHelpTemplate").classList.add("d-none");
 }
 
 function setHoverFrames(page){
@@ -132,7 +128,5 @@ function openIndex() {
 }
 
 function backToSide(){
-  // let docu = document.referrer;
-  // window.location.href = docu;
   history.back();
 }
