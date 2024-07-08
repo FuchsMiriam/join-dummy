@@ -97,7 +97,7 @@ body {
   width: 279px;
   height: 49px;
   top: 67px;
-  left: 1055px;
+  left: calc(100% / 1.5);
   gap: 35px;
   position: absolute;
   display: flex;
