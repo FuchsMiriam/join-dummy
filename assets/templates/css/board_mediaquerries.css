@@ -194,8 +194,12 @@
     }
 
     .textDetailCardTitle {
-        width: 270px;
+        width: 220px;
         font-size: 30px;
+    }
+
+    .textDetailCardContent{
+        width: 220px;
     }
 
     .labelClose {

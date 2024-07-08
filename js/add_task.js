@@ -67,7 +67,6 @@ async function fetchContacts(path = "") {
       }
     });
   } catch (error) {
-    console.error("Fehler beim Abrufen der Kontakte:", error);
   }
 }
 

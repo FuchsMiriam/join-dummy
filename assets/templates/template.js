@@ -121,6 +121,16 @@ window.addEventListener("click", function(event) {
     document.getElementById("headerNote").classList.add("d-none");
     clickName = 0;
   }
+
+  if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))
+  {
+    if(event.target == document.getElementById('idDetailCard'))
+      document.getElementById("idDetailCard").classList.add("d-none");
+  }
+  // else if( !document.getElementById("idEditCard").classList.contains("d-none"))
+  else if(event.target == document.getElementById('idEditCard'))
+    document.getElementById("idEditCard").classList.add("d-none");
+
 });
 
 function openIndex() {

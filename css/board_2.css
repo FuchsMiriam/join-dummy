@@ -151,6 +151,20 @@
     position: relative;
 }
 
+.cardContactPlus{
+    width: 32px;
+    height: 32px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 14.4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    position: relative;
+    left: -20px;
+}
+
 .yellow{
     background-color: rgba(255, 122, 0, 1);
 }
@@ -253,6 +267,10 @@
     gap: 24px;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.16);
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 .centered-axis-xy {
@@ -381,7 +399,8 @@
 
 .containerDetailCard{
     width: 100vw;
-    height: 1024px;
+    height: 100vh;
+    /* height: 1024px; */
     display: flex;
     justify-content: center;
     align-items: center;

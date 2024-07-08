@@ -203,13 +203,6 @@ p {
   padding: 8px 60px 8px 60px;
 }
 
-/* .menuFrames:hover .imgAddTask{
-    background: url("../img/imgHoverAddTasks.png");
-    object-fit: cover;
-    background-position: center;
-    background-size: cover;
-} */
-
 .imgBoard {
   background: url("../img/imgBoard.png");
   object-fit: cover;
@@ -238,13 +231,6 @@ p {
   background-size: cover;
 }
 
-/* .menuFrames:hover .imgContacts{
-    background: url("../img/imgHoverContacts.png");
-    object-fit: cover;
-    background-position: center;
-    background-size: cover;
-} */
-
 .privacyColor:hover {
   color: rgba(41, 171, 226, 1);
   font-weight: 700;
@@ -259,11 +245,8 @@ p {
 }
 
 .headerNote {
-  /* width: 150px;
-  height: 158px; */
   z-index: 2;
   top: 96px;
-  /* left: calc(1440px - 150px - 24px); */
   right: 14px;
   position: absolute;
   border-radius: 20px 0px 20px 20px;

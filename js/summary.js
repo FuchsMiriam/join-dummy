@@ -71,7 +71,7 @@ function getNumberofUrgent(){
   if(tasksBoard == null)
     return 0;
   for(let i = 0; i < tasksBoard.length; i++)
-    if(tasksBoard[i]["priority"] == 1)
+    if(tasksBoard[i]["prio"] == 1)
       nrUrgent++;
   return nrUrgent;
 }

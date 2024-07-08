@@ -1,12 +1,12 @@
 function detailCardHTMLLabel(idTask) {
   if (tasksBd[idTask].category == "User Story") {
-    detailCardHTMLLabelUser();
+    return detailCardHTMLLabelUser(idTask);
   } else {
-    detailCardHTMLLabelTechnical();
+    return detailCardHTMLLabelTechnical(idTask);
   }
 }
 
-function detailCardHTMLLabelUser(){
+function detailCardHTMLLabelUser(idTask){
   return /*html*/ `
         <div class="labelClose">
             <div class="labelDetailCard labelCard-blue">${tasksBd[idTask].category}</div>
@@ -16,7 +16,7 @@ function detailCardHTMLLabelUser(){
         </div>`;
 }
 
-function detailCardHTMLLabelTechnical(){
+function detailCardHTMLLabelTechnical(idTask){
   return /*html*/ `
         <div class="labelClose">
             <div class="labelDetailCard labelCard-green">${tasksBd[idTask].category}</div>
@@ -91,7 +91,7 @@ function getdetailcardHTMLContacts(idTask) {
                     <p class="cardContactDetailCard" style="background-color: ${tasksBd[idTask]["assigned to"][i].color}">${initials}</p>
                     <p class="nameContactDetailCard" >${tasksBd[idTask]["assigned to"][i].name}</p>
                 </div>
-            </div>`;
+            </div>`;      
   }
   return /*html*/ ` <div class="detailcardContacts">${contactCards}</div>`;
 }
@@ -149,7 +149,7 @@ function checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
 
 function cardHTML(idTask) {
   return /*html*/ `
-        <div draggable="true" id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(${idTask})" ondragstart="startDragging(${idTask})">
+        <div draggable="true" id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(event, ${idTask}, true)" ondragstart="startDragging(${idTask})">
             ${cardHTMLLabel(idTask)}
             <div class="textCard">
                 ${cardHTMLTitle(idTask)}
@@ -214,17 +214,27 @@ function cardHTMLPriority(idTask) {
 }
 
 function cardHTMLContacts(idTask) {
-  let initials = 0;
-  let contactCards = "";
-  let leftPosition = 0;
+  let initials = 0; let contactCards = "";let leftPosition = 0;
 
   if (tasksBd[idTask]["assigned to"] == null) return "";
   for (let i = 0; i < tasksBd[idTask]["assigned to"].length; i++) {
     leftPosition = i * 8;
     initials = getInitials(tasksBd[idTask]["assigned to"][i].name);
     contactCards += /*html*/ `<div class="cardContact leftPosition${leftPosition}" style="background-color: ${tasksBd[idTask]["assigned to"][i].color}">${initials}</div>`;
+    if(i > 2){
+      contactCards += checkMoreContacts(idTask, i);
+      break;
+    }  
   }
   return /*html*/ `<div class="cardContacts">${contactCards}</div>`;
+}
+
+function checkMoreContacts(idTask, i){
+    let countContacts = tasksBd[idTask]["assigned to"].length - 4;
+    if(countContacts)
+      return /*html*/ `<div class="cardContactPlus">+ ${countContacts}</div>`;
+    else
+    return ``;
 }
 
 function cardHTMLNoTasks(idTask) {

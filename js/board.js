@@ -69,7 +69,7 @@ function setBackColumns() {
   document.getElementById("done").innerHTML = ``;
 }
 
-function openDetailCard(idTask) {
+function openDetailCard(event, idTask, stopPro) {
   document.body.classList.add("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("d-none");
   document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
@@ -77,6 +77,8 @@ function openDetailCard(idTask) {
   document.getElementById("idDetailCard").classList.remove("leftPartOut");
   checkSubtasks(idTask);
   openTask = idTask;
+  if (stopPro) 
+    event.stopPropagation();
 }
 
 function closeDetailCard(idTask) {
@@ -97,7 +99,7 @@ function checkSubtasks(idTask) {
 
 function detailCardHTML(idTask) {
   return /*html*/ `
-        <div class="detailCardTaskToDo">
+        <div id="detailCardID" class="detailCardTaskToDo">
             ${detailCardHTMLLabel(idTask)}
             ${detailCardHTMLTitle(idTask)}
             ${detailCardHTMLContent(idTask)}
@@ -205,7 +207,7 @@ function getTasks() {
   return tasksBd;
 }
 
-function openEditPrio(){
+function openEditPrio(idTask){
   if(tasksBd[idTask].prio == 1)
     changePrioButtonUrgent();
   else if(tasksBd[idTask].prio == 2)
@@ -214,14 +216,14 @@ function openEditPrio(){
     changePrioButtonLow();
 }
 
-function openEditTitleDescriptionDateCategory(){
+function openEditTitleDescriptionDateCategory(idTask){
   document.getElementById("input-title").value = tasksBd[idTask].title;
   document.getElementById("input-description").value = tasksBd[idTask].description;
   document.getElementById("input-date").value = formatDateEdit(tasksBd[idTask].date);
   document.getElementById("input-category").value = tasksBd[idTask].category;
 }
 
-function openEditSubtasks(){
+function openEditSubtasks(idTask){
   let inputs = document.getElementById("show-subtask");
   inputs.innerHTML = "";
 
@@ -235,8 +237,10 @@ function openEditSubtasks(){
   } 
 }
 
-function openEditContacts(){
+function openEditContacts(idTask){
   let initial = [];
+  let ini = document.getElementById("display-initials");
+  ini.innerHTML = "";
   for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
     {
       initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
@@ -253,15 +257,13 @@ function openEdit(idTask){
   clearInputsEdit();
   useEditFunction = 1;
   displayAddTask();
-  openEditTitleDescriptionDateCategory();
-  openEditPrio();
-  let ini = document.getElementById("display-initials");
-  ini.innerHTML = "";
+  openEditTitleDescriptionDateCategory(idTask);
+  openEditPrio(idTask);
   if(tasksBd[idTask]["assigned to"])
-    openEditContacts();
+    openEditContacts(idTask);
   document.getElementById("display-initials").classList.remove("d-none");
   document.getElementById("display-initials").classList.add("z1");
-  openEditSubtasks();
+  openEditSubtasks(idTask);
 }
 
 function formatDateEdit(inputDate) {

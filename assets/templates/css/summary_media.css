@@ -193,9 +193,12 @@
 
     .summaryText {
         padding-left: calc((100vw - 300px) / 2);
+        padding-top: 8px;
     }
 
     #titleSummary{
         padding-left: calc((100vw - 300px) / 2);
+        padding-top: 8px;
+        gap: 8px;
     }
 }
