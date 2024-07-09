@@ -1,3 +1,4 @@
+let contactBase = [];
 //Function to redirect to the Privacy Policy page
 
 function redirectToPrivacyPage() {
@@ -81,6 +82,7 @@ const databaseURL =
 async function onloadDatabase(path = "") {
   let response = await fetch(databaseURL + path + ".json");
   let responseToJson = await response.json();
+  contactBase = responseToJson;
   return responseToJson;
 }
 
@@ -128,12 +130,24 @@ async function signup() {
 }
 
 function validateSignupForm(name, email, password, confirmPassword) {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
 
   if (!name || !email || !password || !confirmPassword) {
     alert("Please fill in all fields.");
     return false;
   }
+
+  // let checkMail = 0;
+  // for(let i = 0; i < contactBase.length; i++)
+  // {
+  //   if(contactBase[i].email == email)
+  //     checkMail = 1;
+  // }
+  // if(checkMail)
+  // {
+  //   alert("Email already excists.");
+  //   return false;
+  // }
 
   if (!emailPattern.test(email)) {
     alert("Please enter a valid email address.");

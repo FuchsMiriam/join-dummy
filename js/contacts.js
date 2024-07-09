@@ -313,6 +313,13 @@ function editContact(contact) {
   deleteButton.setAttribute("onclick", `deleteContact('${contact.id}')`);
 }
 
+function validatePhoneNumber(phone) {
+  // Einfache Überprüfung für internationale und nationale Telefonnummern
+  const phonePattern = /^\+?[0-9\s-]{7,15}$/;
+
+  return phonePattern.test(phone);
+}
+
 async function saveContact() {
   const editedContact = {
     name: document.getElementById("editNameInput").value,
@@ -324,6 +331,17 @@ async function saveContact() {
     console.error("Keine gültige Kontakt-ID gefunden");
     return;
   }
+
+  // const nameParts = editContact.name.trim().split(/\s+/);
+  // if (nameParts.length < 2) {
+  //   alert("Please enter both first and last name.");
+  //   return false;
+  // }
+
+  // if (!validatePhoneNumber(editedContact.phone)) {
+  //   alert("Please enter a valid phone number.");
+  //   return false;
+  // }
 
   const contactId = contacts[currentContact]?.id;
 
