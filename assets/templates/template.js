@@ -137,19 +137,21 @@ window.addEventListener("click", function(event) {
     document.getElementById("headerNote").classList.add("d-none");
     clickName = 0;
   }
-
   var path = window.location.pathname;
   var page = path.split("/").pop();
   if(page == "board.html")
-    closeDetailCard(event);
+    closeEdit(event);
 });
 
-function closeDetailCard(event){
+function closeEdit(event){
   if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))
-  {
-    if(event.target == document.getElementById('idDetailCard'))
-      document.getElementById("idDetailCard").classList.add("d-none");
-  }
+    {
+      if(event.target == document.getElementById('idDetailCard'))
+        document.getElementById("idDetailCard").classList.add("d-none");
+    }
+  
+    else if(event.target == document.getElementById('idEditCard'))
+      document.getElementById("idEditCard").classList.add("d-none");
 }
 
 function openIndex() {
