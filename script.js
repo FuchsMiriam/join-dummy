@@ -16,14 +16,25 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-document
+/*document
   .getElementById("animatedLogo")
   .addEventListener("animationend", function () {
     document.getElementById("contentMainpage").classList.add("visibleMainpage");
     document
       .getElementById("contentMainpage")
       .classList.remove("hiddenMainpage");
+  });*/
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const animatedLogo = document.getElementById("animatedLogo");
+    const contentMainpage = document.getElementById("contentMainpage");
+  
+    animatedLogo.addEventListener("animationend", function () {
+      contentMainpage.classList.add("visibleMainpage");
+      contentMainpage.classList.remove("hiddenMainpage");
+    });
   });
+  
 
 // Function for redirects
 
