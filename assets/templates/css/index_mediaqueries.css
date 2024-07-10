@@ -19,7 +19,7 @@
   }
 }
 
-@media(max-width: 890px) {
+@media (max-width: 890px) {
   .mainpageSignUpContainer {
     left: calc(100% / 2);
   }
@@ -165,18 +165,18 @@
     width: 280px;
   }
 
-  .loginEmail{
+  .loginEmail {
     width: 230px;
   }
 
-  .loginPassword{
+  .loginPassword {
     width: 230px;
   }
 }
 
 /*Media query*/
 
- @media (max-width: 426px) or (max-height: 926px) {
+@media (max-width: 426px) or (max-height: 926px) {
   .mainpage {
     overflow-x: hidden;
     overflow-y: auto;
@@ -203,7 +203,7 @@
     height: 49px;
     top: 778px;
     left: calc((100vw - 292px) / 2);
-    margin-top: 80px;
+    margin-top: 10px;
   }
 
   .textNotUser {
@@ -299,7 +299,7 @@
   }
 }
 
-@media (max-width: 419px){
+@media (max-width: 419px) {
   .loginContainer {
     width: 160px;
   }
@@ -311,7 +311,7 @@
 
 /* -----------height--------------- */
 
-@media(max-height: 840px) {
+@media (max-height: 840px) {
   .loginContainer {
     padding: 32px 70px 0 32px;
   }
@@ -325,7 +325,7 @@
   }
 }
 
-@media(max-height: 770px) {
+@media (max-height: 770px) {
   .loginContainer {
     margin-top: 70px;
     height: 460px;
@@ -348,7 +348,7 @@
     margin-left: 40px;
   }
 
-  #errorMessage{
+  #errorMessage {
     width: 70%;
     margin-left: 40px;
   }
