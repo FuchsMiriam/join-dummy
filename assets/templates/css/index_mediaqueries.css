@@ -23,6 +23,13 @@
   .mainpageSignUpContainer {
     left: calc(100% / 2);
   }
+
+  .animateMobile {
+    width: 100.03px;
+    height: 121.97px;
+    top: 402px;
+    left: 164px;
+  }
 }
 
 /*Media query*/
@@ -165,10 +172,7 @@
     width: 280px;
   }
 
-  .loginEmail {
-    width: 230px;
-  }
-
+  .loginEmail,
   .loginPassword {
     width: 230px;
   }
@@ -338,16 +342,8 @@
     width: 60%;
   }
 
-  .loginEmail {
-    width: 70%;
-    margin-left: 40px;
-  }
-
-  .loginPassword {
-    width: 70%;
-    margin-left: 40px;
-  }
-
+  .loginEmail,
+  .loginPassword,
   #errorMessage {
     width: 70%;
     margin-left: 40px;

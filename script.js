@@ -16,14 +16,7 @@ async function onloadDatabase(path = "") {
   return responseToJson;
 }
 
-/*document
-  .getElementById("animatedLogo")
-  .addEventListener("animationend", function () {
-    document.getElementById("contentMainpage").classList.add("visibleMainpage");
-    document
-      .getElementById("contentMainpage")
-      .classList.remove("hiddenMainpage");
-  });*/
+ //Animation beginning
 
   document.addEventListener("DOMContentLoaded", function() {
     const animatedLogo = document.getElementById("animatedLogo");
@@ -35,7 +28,6 @@ async function onloadDatabase(path = "") {
     });
   });
   
-
 // Function for redirects
 
 function redirectToSignUpPage() {
