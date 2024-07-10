@@ -105,7 +105,7 @@ async function postData(path = "", data = {}) {
 
 //Function for signup
 
-async function signup() {
+/*async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
@@ -127,7 +127,38 @@ async function signup() {
   } catch (error) {
     handleSignupError(error);
   }
+}*/
+
+async function signup() {
+  const name = document.getElementById("signupNameInput").value;
+  const email = document.getElementById("signupEmailInput").value;
+  const password = document.getElementById("signupPasswordInput").value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+  if (!validateSignupForm(name, email, password, confirmPassword)) return;
+
+  resetErrorMessages();
+
+  try {
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+      alert("Email address is already registered.");
+      return;
+    }
+
+    const newUser = createNewUser(name, email, password);
+    const response = await postData("users", newUser);
+
+    if (response) {
+      handleSuccessfulSignup();
+    } else {
+      console.error("Error saving user to database:", response);
+    }
+  } catch (error) {
+    handleSignupError(error);
+  }
 }
+
 
 function validateSignupForm(name, email, password, confirmPassword) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
@@ -136,18 +167,6 @@ function validateSignupForm(name, email, password, confirmPassword) {
     alert("Please fill in all fields.");
     return false;
   }
-
-  // let checkMail = 0;
-  // for(let i = 0; i < contactBase.length; i++)
-  // {
-  //   if(contactBase[i].email == email)
-  //     checkMail = 1;
-  // }
-  // if(checkMail)
-  // {
-  //   alert("Email already excists.");
-  //   return false;
-  // }
 
   if (!emailPattern.test(email)) {
     alert("Please enter a valid email address.");
@@ -190,3 +209,23 @@ function handleSignupError(error) {
   console.error("Error creating user:", error.message);
   alert("Error creating user: " + error.message);
 }
+
+//Check if email address exists
+
+async function checkEmailExists(email) {
+  try {
+    const response = await fetch(`${databaseURL}users.json`);
+    const data = await response.json();
+
+    if (data) {
+      const users = Object.values(data);
+      return users.some(user => user.email === email);
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error checking email existence:", error);
+    throw error;
+  }
+}
+
