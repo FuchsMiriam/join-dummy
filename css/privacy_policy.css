@@ -26,8 +26,9 @@ a {
 
 .container {
     max-width: 1014px;
-    height: calc(100vh - 100px);
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
+    padding-bottom: 90px;
     scrollbar-width: none;
 }
 
@@ -83,7 +84,7 @@ li {
 }
 
 @media(max-width: 1440px){
-    .container{
+    /* .container{
         height: calc(100vh - 100px - 100px);
-    }
+    } */
 }

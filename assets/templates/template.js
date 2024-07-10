@@ -40,21 +40,36 @@ function initHTML(){
   }, 500);
 }
 
+let noneLoginName = 0;
+
 function hoverSidebar(){
   var path = window.location.pathname;
   var page = path.split("/").pop();
   let docu = document.referrer;
   const index = docu.lastIndexOf('/') + 1; // Find the position of the last '/'
   const fileName = docu.substring(index);
+  noneLoginName = 1;
 
-  if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html")))
-    document.getElementById("menu_Sidebar").classList.add("d-none");
-  else
-    document.getElementById("menu_Sidebar").classList.remove("d-none");
+  if((fileName == "index.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html"))) dnoneSidbar();
+  else if((fileName == "signup.html") && ((page == "privacy_policy.html") || (page == "legal_notice.html"))) dnoneSidbar();
+  else dSidbar();
   
   setHoverFrames(page)
   setInitialsName(); 
   setHelpTemplate();
+}
+
+function dnoneSidbar(){
+  document.getElementById("menu_Sidebar").classList.add("d-none");
+  document.getElementById("privacyNav").classList.add("d-none");
+  document.getElementById("headerNote").classList.add("d-none");
+  noneLoginName = 0;
+}
+
+function dSidbar(){
+  document.getElementById("menu_Sidebar").classList.remove("d-none");
+  document.getElementById("privacyNav").classList.remove("d-none");
+  // document.getElementById("headerNote").classList.remove("d-none");
 }
 
 function setHelpTemplate(){
@@ -73,8 +88,7 @@ function setHoverFrames(page){
     document.getElementById("framePolicy").classList.add("framesPolicy");
   if(page == "legal_notice.html"){
     document.getElementById("frameNotice").classList.add("framesPolicy");
-  }
-    
+  }    
 }
 
 function setHover(frame, imgFrame, imgHover){
@@ -106,10 +120,12 @@ function getInitials(name) {
 
 let clickName = 0;
 function openNoteHeader(){
-  if(clickName)
+  if(!noneLoginName)
+    clickName = 0;
+  else if(clickName)
     clickName = 0;
   else
-  clickName = 1;
+    clickName = 1;
 }
 
 window.addEventListener("click", function(event) {
@@ -122,16 +138,19 @@ window.addEventListener("click", function(event) {
     clickName = 0;
   }
 
+  var path = window.location.pathname;
+  var page = path.split("/").pop();
+  if(page == "board.html")
+    closeDetailCard(event);
+});
+
+function closeDetailCard(event){
   if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))
   {
     if(event.target == document.getElementById('idDetailCard'))
       document.getElementById("idDetailCard").classList.add("d-none");
   }
-  // else if( !document.getElementById("idEditCard").classList.contains("d-none"))
-  else if(event.target == document.getElementById('idEditCard'))
-    document.getElementById("idEditCard").classList.add("d-none");
-
-});
+}
 
 function openIndex() {
   window.location.href = "../index.html";

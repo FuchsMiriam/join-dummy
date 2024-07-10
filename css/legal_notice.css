@@ -20,7 +20,7 @@ html {
 .container {
     max-width: 1014px;
     /* height: 840px; */
-    height: calc(100vh - 100px);
+    height: 100vh;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -93,8 +93,8 @@ ul {
     }
 }
 
-@media(max-width: 1440px){
+@media(max-width: 1400px){
     .container{
-        height: calc(100vh - 100px - 100px);
+        height: calc(100vh - 100px - 80px);
     }
 }

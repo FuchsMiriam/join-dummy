@@ -134,18 +134,18 @@
                 <div class="content-left content-left-padding">
                     <form class="flex8gap" onsubmit="addTask(); return false">
                         <label for="input-title">Title<span class="span-star width440">*</span></label>
-                        <input type="text" id="input-title" placeholder="Enter a Title" required>
+                        <input type="text" id="input-title" class="widthInputAddTask" placeholder="Enter a Title" required>
                         <span id="error-message-title" class="error-message">Field required</span>
                     </form>
                     <div class="flex8gap">
-                        <label for="input-description-addTask" class="width440">Description</label>
-                        <textarea name="input-description" id="input-description"
+                        <label for="input-description" class="width440">Description</label>
+                        <textarea name="input-description" id="input-description" class="widthInputAddTask"
                             placeholder="Enter a Description"></textarea>
                     </div>
                     <div class="flex8gap">
                         <label for="input-assigny" class="width440">Assigned to</label>
                         <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1, 1)">
-                            <input list="input-assigned" id="input-assigny" class="dropbtn"
+                            <input list="input-assigned" id="input-assigny" class="dropbtn widthInputAddTask"
                                 placeholder="Select contacts to assign">
                             <button class="add-button" id="add-button-contacts"
                                 onclick="ifIsListContactsLoaded(event, 1, 1)">+</button>
@@ -174,9 +174,8 @@
                     </div>
                     <form class="flex8gap" onsubmit="addTask(); return false">
                         <label for="input-category">Category<span class="span-star">*</span></label>
-                        <div class="input-categorie-container input-categorie-container-board"
-                        onclick="showCategorie(event, 1)">
-                        <input id="input-category" required>
+                        <div class="input-categorie-container input-categorie-container-board" onclick="showCategorie(event, 1)">
+                            <input id="input-category" required class="widthInputAddTask">
                             <img class="input-categorie-arrow-down" id="input-categorie-image-down"
                                 src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie(event, 1)">
                             <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up"
@@ -188,7 +187,7 @@
                     <div class="flex8gap">
                         <label for="input-subtask">Subtasks</label>
                         <div class="input-container">
-                            <input type="text" id="input-subtask" placeholder="Add new subtask"><button class="add-button"
+                            <input type="text" id="input-subtask" placeholder="Add new subtask" class="widthInputAddTask"><button class="add-button"
                                 id="add-button-subtask" onclick="addSubTask()">+</button>
                         </div>
                         <div id="show-subtask" class="show-subtask-board"></div>

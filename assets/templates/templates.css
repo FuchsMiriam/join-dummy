@@ -27,13 +27,14 @@ nav {
   position: absolute;
   top: 0;
   background-color: rgba(42, 54, 71, 1);
-  height: unset;
+  height: fit-content;
   width: 232px;
   padding: 64px 0px 64px 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  bottom: 0;
 }
 
 p {
@@ -257,7 +258,7 @@ p {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .flexMax1440{
@@ -310,7 +311,7 @@ p {
   }
 }
 
-@media((min-width: 1441px) and (min-height: 950px))
+@media((min-width: 1440px) and (min-height: 950px))
 {
   nav{
     height: 100vh;

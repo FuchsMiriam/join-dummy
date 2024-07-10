@@ -436,3 +436,17 @@
     height: 40px;
     padding: 3px;
 }
+
+.container-board-addTask {
+    overflow-y: auto;
+}
+
+.display-categorie-board{
+    bottom: 0 !important;
+}
+
+#display-categorie{
+    position: relative;
+    margin-top: -8px;
+}
+
