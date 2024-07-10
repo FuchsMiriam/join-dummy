@@ -6,16 +6,11 @@
 .display-contacts-dropdown {
     display: flex;
     flex-direction: column;
-    height: 40px;
     width: 440px;
     background-color: #2A3647;
 }
 
 .display-contacts-dropdown:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.contact-span:hover {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
@@ -165,7 +160,6 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .contact-list {
@@ -175,6 +169,10 @@
     padding-right: 40px;
     background-color: #FFFFFF;
     color: black;
+}
+
+.contact-list:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .contacts-checkbox {

@@ -2,7 +2,7 @@ function displayContactsTemplate(i, contact) {
   const nameParts = contact.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
   return `
-    <div class="display-contacts-dropdown"  id='contacts${i}'>
+    <div class="display-contacts-dropdown"  id='contacts${i}' onclick="addInitials(${i})">
             <div class="contact-list">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
                 <span class="contact-span" id="contact-span-name${i}">${contact} </span>
@@ -25,17 +25,17 @@ function showSubtaskTemplate(i, tasks) {
 }
 
 function displayInitials(i, initials) {
-    return `
+  return `
           <div>
               <span class="initials" id="initials-span${i}">${initials}</span>
           </div>
       `;
-  }
+}
 
-  function closeButtonForShowContactsTemplate() {
+function closeButtonForShowContactsTemplate() {
   return `
             <div>
             <span id="close-contacts" onclick="closeContacts(event, 1)">-</span>
             </div>
         `;
-  }
+}

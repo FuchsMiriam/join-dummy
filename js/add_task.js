@@ -66,8 +66,7 @@ async function fetchContacts(path = "") {
           colorClasses[contacts.indexOf(contact) % colorClasses.length];
       }
     });
-  } catch (error) {
-  }
+  } catch (error) {}
 }
 
 async function putDataTasks(path = "", data = {}) {
@@ -113,6 +112,27 @@ function showContacts() {
   }
 }
 
+// function checkMoreUsers() {
+//   let initials = document.getElementById("display-initials");
+//   let countContacts = initialName.length - 4;
+//   if (countContacts) {
+//     initials.innerHTML = `<div class="cardContactPlus">+ ${countContacts}</div>`;
+//   } else {
+//     return ``;
+//   }
+// }
+
+// function checkedInput(i) {
+//   let checked = document.getElementById(`checkbox-contacts${i}`);
+//   if (checked.unchecked) {
+//     updateCheckbox(i);
+//     updateCheckEdit();
+//   }
+//   if (checked.checked) {
+//     cleanCheckbox();
+//   }
+// }
+
 function updateCheckbox(i) {
   let idcheckbox = "checkbox-contacts" + i;
   if (contactChoose[i] == true)
@@ -129,7 +149,7 @@ function updateCheckEdit(nameEdit) {
   }
 }
 
-function cleanCheckbox(){
+function cleanCheckbox() {
   for (let i = 0; i < contacts.length; i++) {
     document.getElementById(`checkbox-contacts${i}`).checked = false;
   }
@@ -236,7 +256,7 @@ function clearInputs() {
   document.getElementById("input-category").value = "";
   document.getElementById("display-initials").innerHTML = "";
   document.getElementById("input-prio1").style.backgroundImage =
-  "url(../assets/img/urgent_button.svg)";
+    "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio2").style.backgroundImage =
     "url(../assets/img/medium_button.svg)";
   document.getElementById("input-prio3").style.backgroundImage =
@@ -345,7 +365,7 @@ function addTask() {
         window.location.href = "../html/board.html";
       else {
         document.getElementById("add_task").classList.add("d-none");
-        if(window.location.href = "../html/board.html") {
+        if ((window.location.href = "../html/board.html")) {
           closeAddTaskBoard();
         } else {
           renderTasks();
