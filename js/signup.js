@@ -105,7 +105,7 @@ async function postData(path = "", data = {}) {
 
 //Function for signup
 
-async function signup() {
+/*async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
@@ -132,6 +132,40 @@ async function signup() {
     }
   } catch (error) {
     handleSignupError(error);
+  }
+}*/
+
+async function signup() {
+  const name = document.getElementById("signupNameInput").value;
+  const email = document.getElementById("signupEmailInput").value;
+  const password = document.getElementById("signupPasswordInput").value;
+  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+
+  if (!validateSignupForm(name, email, password, confirmPassword)) return;
+
+  resetErrorMessages();
+
+  try {
+    await handleEmailCheckAndUserCreation(name, email, password);
+  } catch (error) {
+    handleSignupError(error);
+  }
+}
+
+async function handleEmailCheckAndUserCreation(name, email, password) {
+  const emailExists = await checkEmailExists(email);
+  if (emailExists) {
+    alert("Email address is already registered.");
+    return;
+  }
+
+  const newUser = createNewUser(name, email, password);
+  const response = await postData("users", newUser);
+
+  if (response) {
+    handleSuccessfulSignup();
+  } else {
+    console.error("Error saving user to database:", response);
   }
 }
 
