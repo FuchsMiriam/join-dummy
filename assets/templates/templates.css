@@ -27,7 +27,6 @@ nav {
   position: absolute;
   top: 0;
   background-color: rgba(42, 54, 71, 1);
-  height: fit-content;
   width: 232px;
   padding: 64px 0px 64px 0px;
   display: flex;

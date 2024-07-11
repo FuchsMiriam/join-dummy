@@ -66,7 +66,7 @@ async function fetchContacts(path = "") {
           colorClasses[contacts.indexOf(contact) % colorClasses.length];
       }
     });
-  } catch (error) {}
+  } catch (error) { }
 }
 
 async function putDataTasks(path = "", data = {}) {
@@ -114,8 +114,9 @@ function showContacts() {
 
 function updateCheckbox(i) {
   let idcheckbox = "checkbox-contacts" + i;
-  if (contactChoose[i] == true)
+  if (contactChoose[i] == true) {
     document.getElementById(idcheckbox).setAttribute("checked", "checked");
+  }
 }
 
 function updateCheckEdit(nameEdit) {
@@ -179,10 +180,6 @@ function addInitials(i) {
     }
   }
   ini.innerHTML = "";
-  // for (let i = 0; i < initial.length; i++) {
-  //   ini.innerHTML += displayInitials(i, initial[i]);
-  //   initalsBackgroundColor(i);
-  // }
   showSelectedContacts(ini);
 }
 
