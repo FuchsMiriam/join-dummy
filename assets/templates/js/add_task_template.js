@@ -32,6 +32,14 @@ function displayInitials(i, initials) {
       `;
 }
 
+function displayInitialsNumber(count){
+return `
+    <div>
+        <span>+${count}</span>
+    </div>
+`;
+}
+
 function closeButtonForShowContactsTemplate() {
   return `
             <div>

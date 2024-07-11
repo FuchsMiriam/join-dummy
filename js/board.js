@@ -71,6 +71,10 @@ function setBackColumns() {
 
 function openDetailCard(event, idTask, stopPro) {
   document.body.classList.add("overflow-hidden");
+  initial = [];
+  initialName = [];
+  addTaskInitials(idTask);
+  document.body.classList.add("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("d-none");
   document.getElementById("idDetailCard").innerHTML = detailCardHTML(idTask);
   document.getElementById("idDetailCard").classList.add("leftPart");
@@ -81,7 +85,16 @@ function openDetailCard(event, idTask, stopPro) {
     event.stopPropagation();
 }
 
+function addTaskInitials(idTask){
+  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
+  {
+    initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+    initialName.push(tasksBd[idTask]["assigned to"][i].name);
+  }
+}
+
 function closeDetailCard(idTask) {
+  document.body.classList.remove("overflow-hidden");
   document.body.classList.remove("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("leftPart");
   document.getElementById("idDetailCard").classList.add("leftPartOut");
@@ -241,16 +254,23 @@ function openEditContacts(idTask){
   let initial = [];
   let ini = document.getElementById("display-initials");
   ini.innerHTML = "";
+  let count = 0;
   for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
-    {
-      initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
-      updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
-      namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
-    }
+  {
+    initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
+    updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
+    namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
+  }
     for (let i = 0; i < initial.length; i++) {
-      ini.innerHTML += displayInitials(i, initial[i]);
-      initalsBackgroundColor(i);
+      if(i < 4){
+        ini.innerHTML += displayInitials(i, initial[i]);
+        initalsBackgroundColor(i);
+      }
+      else
+        count++;
     }
+    if(count)
+      ini.innerHTML += displayInitialsNumber(count);
 }
 
 function openEdit(idTask){
@@ -271,3 +291,7 @@ function formatDateEdit(inputDate) {
   let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
   return formattedDate;
 }
+
+// myObject.addEventListener("touchstart", (e) => {
+//   console.log("touch");
+// });

@@ -143,8 +143,8 @@ function updateCheckEdit(nameEdit) {
   for (let i = 0; i < contacts.length; i++) {
     if (nameEdit == contacts[i].name) {
       contactChoose[i] = true;
-      initial.push(getInitials(nameEdit));
-      initialName.push(nameEdit);
+      // initial.push(getInitials(nameEdit));
+      // initialName.push(nameEdit);
     } else if (contactChoose[i] != true) contactChoose[i] = false;
   }
 }
@@ -191,11 +191,7 @@ function addInitials(i) {
   let ini = document.getElementById("display-initials");
   const initials = getInitials(contacts[i].name);
   if (contactChoose[i] != true) {
-    ini.classList.remove("d-none");
-    initial.push(initials);
-    initialName.push(contacts[i].name);
-    namesFromContacts.push(contacts[i].name);
-    contactChoose[i] = true;
+    addNewSelectedContact(i, initials, ini);
   } else {
     for (let id = 0; id < initial.length; id++) {
       if (initial[id] == initials) {
@@ -205,12 +201,34 @@ function addInitials(i) {
       }
     }
   }
-
   ini.innerHTML = "";
+  // for (let i = 0; i < initial.length; i++) {
+  //   ini.innerHTML += displayInitials(i, initial[i]);
+  //   initalsBackgroundColor(i);
+  // }
+  showSelectedContacts(ini);
+}
+
+function addNewSelectedContact(i, initials, ini){
+  ini.classList.remove("d-none");
+  initial.push(initials);
+  initialName.push(contacts[i].name);
+  namesFromContacts.push(contacts[i].name);
+  contactChoose[i] = true;
+}
+
+function showSelectedContacts(ini){
+  let count = 0;
   for (let i = 0; i < initial.length; i++) {
-    ini.innerHTML += displayInitials(i, initial[i]);
-    initalsBackgroundColor(i);
+    if(i < 4){
+      ini.innerHTML += displayInitials(i, initial[i]);
+      initalsBackgroundColor(i);
+    }
+    else
+      count++;
   }
+  if(count)
+    ini.innerHTML += displayInitialsNumber(count);
 }
 
 function getInitials(name) {

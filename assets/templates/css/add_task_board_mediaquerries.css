@@ -223,17 +223,17 @@
          width: 55%;
      }
 
-     #display-initials {
+     /* #display-initials {
          display: grid;
          grid-template-columns: repeat(6, 70px);
-     }
+     } */
  }
 
  @media(max-width: 800px) {
-     #display-initials {
+     /* #display-initials {
          display: grid;
          grid-template-columns: repeat(4, 70px);
-     }
+     } */
  }
 
  @media(max-width: 640px) {
@@ -250,9 +250,9 @@
     }
  }
 
- #display-initials {
-     grid-template-columns: repeat(3, 70px);
- }
+ /* #display-initials { */
+     /* grid-template-columns: repeat(3, 70px);
+ } */
 
  @media(max-width: 540px) {
      #content-addTask {
@@ -266,9 +266,9 @@
  }
 
  @media(max-width: 480px) {
-     #display-initials {
+     /* #display-initials {
          grid-template-columns: repeat(2, 70px);
-     }
+     } */
 
      /* #display-categorie {
          width: 200px;
@@ -328,6 +328,10 @@
     .container-board-addTask {
         max-height: calc(100vh - 120px);
     }
+
+    #content-addTask{
+        max-height: calc(100vh - 120px - 200px);
+    }
 }
 
 @media(max-width: 700px)
@@ -373,6 +377,9 @@
         width: calc(624px - 120px);
     }
     
+    #content-addTask{
+        max-height: calc(100vh - 120px - 200px);
+    }
 }
 
 @media(max-width: 640px)
@@ -425,6 +432,10 @@
     .input-container{
         width: calc(624px - 310px);
     }
+
+    #content-addTask{
+        max-height: calc(100vh - 120px - 200px);
+    }
 }
 
 @media(max-width: 500px)
@@ -475,5 +486,9 @@
 
     #display-categorie {
         width: calc(624px - 390px);
+    }
+
+    #content-addTask{
+        max-height: calc(100vh - 120px - 200px);
     }
 }

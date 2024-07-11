@@ -24,7 +24,10 @@
 }
 
 @media (max-width: 1200px){
-
+    .width440{
+        width: 240px;
+    }
+    
     .contentFrame{
         display: flex;
         flex-direction: column;
@@ -210,7 +213,14 @@
     .deleteEditDetailCard {
         width: 230px;
     }
+
+    .contactsDetailCard {
+        width: 200px;
+    }
     
+    .contactsListCard{
+        width: 200px;
+    }
 }
 
 @media (max-width: 330px){
