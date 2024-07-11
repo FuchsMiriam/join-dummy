@@ -70,7 +70,7 @@ window.addEventListener("pageshow", resetForm);
 
 //Functions for toggling display type - icons and text input
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   resetForm();
   const passwordInput = document.getElementById("loginPasswordInput");
   const lockIcon = document.getElementById("lockIcon");
@@ -94,6 +94,43 @@ document.addEventListener("DOMContentLoaded", () => {
       passwordInput.type = "password"; //
     }
   });
+});*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  resetForm();
+  const passwordInput = document.getElementById("loginPasswordInput");
+  const lockIcon = document.getElementById("lockIcon");
+
+  // Event listener for the input event
+  passwordInput.addEventListener("input", handlePasswordInput);
+
+  // Event listener for clicking on the lock icon
+  lockIcon.addEventListener("click", handleLockIconClick);
+
+  // Function to update the lock icon based on password visibility
+  function updateLockIcon(passwordVisible) {
+    lockIcon.src = passwordVisible ? "./assets/img/visibility_on.svg" : "./assets/img/visibility_off.svg";
+    passwordInput.type = passwordVisible ? "text" : "password";
+  }
+
+  // Handler for the input event
+  function handlePasswordInput() {
+    if (passwordInput.value.length > 0) {
+      lockIcon.src = "./assets/img/visibility_off.svg";
+    } else {
+      lockIcon.src = "./assets/img/lockIcon.svg";
+    }
+  }
+
+  // Handler for clicking on the lock icon
+  function handleLockIconClick() {
+    passwordVisible = !passwordVisible;
+    updateLockIcon(passwordVisible);
+  }
+
+  // Initialize password visibility
+  let passwordVisible = false;
+  updateLockIcon(passwordVisible);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
