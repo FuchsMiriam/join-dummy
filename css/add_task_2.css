@@ -262,8 +262,11 @@
 
 #images-subtask-hover {
     position: absolute;
-    top: 5px;
+    top: 12px;
     right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-update-subtask {

@@ -19,8 +19,9 @@ function showSubtaskTemplate(i, tasks) {
         <li class="subtask-span" id="subtask${i}" onmouseover="hoverValueFromSubtask(${i})">
             ${tasks}
             <div id='images-subtask${i}' class="d-none">
-                <img src="../assets/img/close.png" class="subtask-button" onclick="deleteTask(${i})" class="d-none" id="images-subtask-value"></img>
-                <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>
+            <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>
+            |
+            <img src="../assets/img/delete.png" class="subtask-button" onclick="deleteTask(${i})" class="d-none" id="images-subtask-value"></img>
             </div>
         </li>
 `;
