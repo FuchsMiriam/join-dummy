@@ -70,32 +70,6 @@ window.addEventListener("pageshow", resetForm);
 
 //Functions for toggling display type - icons and text input
 
-/*document.addEventListener("DOMContentLoaded", () => {
-  resetForm();
-  const passwordInput = document.getElementById("loginPasswordInput");
-  const lockIcon = document.getElementById("lockIcon");
-
-  passwordInput.addEventListener("input", () => {
-    if (passwordInput.value.length > 0) {
-      lockIcon.src = "./assets/img/visibility_off.svg";
-    } else {
-      lockIcon.src = "./assets/img/lockIcon.svg";
-    }
-  });
-
-  let passwordVisible = false;
-  lockIcon.addEventListener("click", () => {
-    passwordVisible = !passwordVisible;
-    if (passwordVisible) {
-      lockIcon.src = "./assets/img/visibility_on.svg";
-      passwordInput.type = "text";
-    } else {
-      lockIcon.src = "./assets/img/visibility_off.svg";
-      passwordInput.type = "password"; //
-    }
-  });
-});*/
-
 document.addEventListener("DOMContentLoaded", () => {
   resetForm();
   const passwordInput = document.getElementById("loginPasswordInput");
@@ -220,23 +194,19 @@ function loadDataFromLocalStorage() {
   }
 }
 
-document.getElementById("rememberMe").addEventListener("click", function () {
-  if (this.checked) {
-    localStorage.setItem(
-      "username",
-      document.getElementById("loginEmailInput").value
-    );
-    localStorage.setItem(
-      "pass",
-      document.getElementById("loginPasswordInput").value
-    );
-    localStorage.setItem("rememberMe", true);
+document.getElementById("rememberMe").addEventListener("click", function() {
+  const rememberMe = this.checked;
+
+  localStorage.setItem("rememberMe", rememberMe);
+  if (rememberMe) {
+    localStorage.setItem("username", document.getElementById("loginEmailInput").value);
+    localStorage.setItem("pass", document.getElementById("loginPasswordInput").value);
   } else {
     localStorage.removeItem("username");
     localStorage.removeItem("pass");
-    localStorage.setItem("rememberMe", false);
   }
 });
+
 
 //Animation media query
 
