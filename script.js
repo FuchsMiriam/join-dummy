@@ -165,7 +165,6 @@ function handleLoginError(error) {
   console.error("Fehler beim Abrufen der Benutzerdaten:", error);
 }
 
-
 //Remember me function
 
 document.querySelector("form").addEventListener("submit", function (event) {
@@ -206,7 +205,6 @@ document.getElementById("rememberMe").addEventListener("click", function() {
     localStorage.removeItem("pass");
   }
 });
-
 
 //Animation media query
 
