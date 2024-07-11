@@ -4,8 +4,10 @@ function displayContactsTemplate(i, contact) {
   return `
     <div class="display-contacts-dropdown"  id='contacts${i}' onclick="addInitials(${i})">
             <div class="contact-list">
+            <div class="contacts-ini-container">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
                 <span class="contact-span" id="contact-span-name${i}">${contact} </span>
+            </div>
                 <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}, '${contact}'); checkContactsInList(${i}, event, 1)">
             </div>
     </div>
@@ -32,8 +34,8 @@ function displayInitials(i, initials) {
       `;
 }
 
-function displayInitialsNumber(count){
-return `
+function displayInitialsNumber(count) {
+  return `
     <div>
         <span>+${count}</span>
     </div>

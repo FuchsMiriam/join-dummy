@@ -15,6 +15,13 @@
     cursor: pointer;
 }
 
+.contacts-ini-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
 .seperator {
     width: 0;
     height: 424px;
@@ -226,6 +233,11 @@
     border-radius: 50%;
     padding: 10px;
     z-index: 10;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .subtask-button {

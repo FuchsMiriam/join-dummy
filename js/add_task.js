@@ -112,27 +112,6 @@ function showContacts() {
   }
 }
 
-// function checkMoreUsers() {
-//   let initials = document.getElementById("display-initials");
-//   let countContacts = initialName.length - 4;
-//   if (countContacts) {
-//     initials.innerHTML = `<div class="cardContactPlus">+ ${countContacts}</div>`;
-//   } else {
-//     return ``;
-//   }
-// }
-
-// function checkedInput(i) {
-//   let checked = document.getElementById(`checkbox-contacts${i}`);
-//   if (checked.unchecked) {
-//     updateCheckbox(i);
-//     updateCheckEdit();
-//   }
-//   if (checked.checked) {
-//     cleanCheckbox();
-//   }
-// }
-
 function updateCheckbox(i) {
   let idcheckbox = "checkbox-contacts" + i;
   if (contactChoose[i] == true)
@@ -143,8 +122,6 @@ function updateCheckEdit(nameEdit) {
   for (let i = 0; i < contacts.length; i++) {
     if (nameEdit == contacts[i].name) {
       contactChoose[i] = true;
-      // initial.push(getInitials(nameEdit));
-      // initialName.push(nameEdit);
     } else if (contactChoose[i] != true) contactChoose[i] = false;
   }
 }
@@ -209,7 +186,7 @@ function addInitials(i) {
   showSelectedContacts(ini);
 }
 
-function addNewSelectedContact(i, initials, ini){
+function addNewSelectedContact(i, initials, ini) {
   ini.classList.remove("d-none");
   initial.push(initials);
   initialName.push(contacts[i].name);
@@ -217,18 +194,15 @@ function addNewSelectedContact(i, initials, ini){
   contactChoose[i] = true;
 }
 
-function showSelectedContacts(ini){
+function showSelectedContacts(ini) {
   let count = 0;
   for (let i = 0; i < initial.length; i++) {
-    if(i < 4){
+    if (i < 4) {
       ini.innerHTML += displayInitials(i, initial[i]);
       initalsBackgroundColor(i);
-    }
-    else
-      count++;
+    } else count++;
   }
-  if(count)
-    ini.innerHTML += displayInitialsNumber(count);
+  if (count) ini.innerHTML += displayInitialsNumber(count);
 }
 
 function getInitials(name) {

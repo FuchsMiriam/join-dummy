@@ -103,7 +103,7 @@ body {
     margin: 0;
 }
 
-h1{
+h1 {
     font-size: 61px;
     margin-top: -50px;
     margin-left: 50px;
@@ -186,16 +186,16 @@ input {
     height: auto;
 }
 
-.content-left-padding{
+.content-left-padding {
     margin-top: calc(174px - 141px);
     margin-left: 74px;
 }
 
-.content-right-padding{
+.content-right-padding {
     margin-top: calc(174px - 141px);
 }
 
-.content-top-padding{
+.content-top-padding {
     margin-top: calc(174px - 141px);
 }
 
@@ -205,7 +205,7 @@ input {
     font-size: 20px;
 }
 
-.width440{
+.width440 {
     width: 440px;
 }
 
@@ -304,13 +304,13 @@ input {
     min-height: 120px;
 }
 
-.fiel-required{
+.fiel-required {
     display: flex;
     justify-content: space-around;
     margin-top: 150px;
 }
 
-.button-footer-addTask{
+.button-footer-addTask {
     top: 750px;
     left: 716.25px;
     gap: 25px;
@@ -328,6 +328,11 @@ input {
     padding: 10px;
     font-size: 16px;
     color: white;
+    display: flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-container-contacts {
@@ -388,4 +393,3 @@ input {
     color: #2A3647;
     position: absolute;
 }
-
