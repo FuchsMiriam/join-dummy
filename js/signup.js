@@ -105,30 +105,6 @@ async function postData(path = "", data = {}) {
 
 //Function for signup
 
-/*async function signup() {
-  const name = document.getElementById("signupNameInput").value;
-  const email = document.getElementById("signupEmailInput").value;
-  const password = document.getElementById("signupPasswordInput").value;
-  const confirmPassword = document.getElementById("signupConfirmPassword").value;
-
-  if (!validateSignupForm(name, email, password, confirmPassword)) return;
-
-  resetErrorMessages();
-
-  try {
-    const newUser = createNewUser(name, email, password);
-    const response = await postData("users", newUser);
-
-    if (response) {
-      handleSuccessfulSignup();
-    } else {
-      console.error("Error saving user to database:", response);
-    }
-  } catch (error) {
-    handleSignupError(error);
-  }
-}*/
-
 async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
@@ -159,7 +135,6 @@ async function signup() {
   }
 }
 
-
 function validateSignupForm(name, email, password, confirmPassword) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
 
@@ -174,12 +149,16 @@ function validateSignupForm(name, email, password, confirmPassword) {
   }
 
   if (password !== confirmPassword) {
-    document.getElementById("errorMessage").style.display = "block";
-    document.getElementById("signupConfirmPassword").classList.add("error");
+    showError();
     return false;
   }
 
   return true;
+
+  function showError() {
+    document.getElementById("errorMessage").style.display = "block";
+    document.getElementById("signupConfirmPassword").classList.add("error");
+  }
 }
 
 function resetErrorMessages() {
@@ -221,7 +200,6 @@ async function checkEmailExists(email) {
       const users = Object.values(data);
       return users.some(user => user.email === email);
     }
-
     return false;
   } catch (error) {
     console.error("Error checking email existence:", error);
