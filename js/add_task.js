@@ -250,7 +250,7 @@ function clearInputs() {
   document.getElementById("input-prio1").style.backgroundImage =
     "url(../assets/img/urgent_button.svg)";
   document.getElementById("input-prio2").style.backgroundImage =
-    "url(../assets/img/medium_button.svg)";
+    "url(../assets/img/medium_button_active.svg)";
   document.getElementById("input-prio3").style.backgroundImage =
     "url(../assets/img/low_button.svg)";
 
