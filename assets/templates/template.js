@@ -141,7 +141,14 @@ window.addEventListener("click", function(event) {
   var page = path.split("/").pop();
   if(page == "board.html")
     closeEdit(event);
+  closeChangeColumn();
 });
+
+function closeChangeColumn(){
+  document.getElementById("changeColumn").classList.add("d-none");
+  document.getElementById("dragTask").classList.remove("opacity");
+  toogleView = 0;
+}
 
 function closeEdit(event){
   if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))

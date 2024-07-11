@@ -194,7 +194,7 @@ function showSearchTasks(input) {
     else if (tasksBd[i].taskApplication == 2 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksAwaitFeedback += addTaskBoard(i, "awaitFeedback");
     else if (tasksBd[i].taskApplication == 3 && (text.toLowerCase().includes(input) || title.toLowerCase().includes(input))) tasksDone += addTaskBoard(i, "done");
   }
-  checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
+  checkNoTasksFound(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
 function foundTask() {
@@ -292,6 +292,39 @@ function formatDateEdit(inputDate) {
   return formattedDate;
 }
 
-// myObject.addEventListener("touchstart", (e) => {
-//   console.log("touch");
-// });
+let toogleView = 0;
+function changeColumn(idTask, event, stopPro){
+  if(toogleView){
+    document.getElementById("changeColumn").classList.add("d-none");
+    // document.getElementById("dragTask").classList.remove("opacity");
+    toogleView = 0;
+  }else{
+    document.getElementById("changeColumn").classList.remove("d-none");
+    // document.getElementById("dragTask").classList.add("opacity");
+    dropDownCheckHTML(idTask);
+    toogleView = 1;
+  }
+  
+  if (stopPro) 
+    event.stopPropagation();
+}
+
+function dropDownCheckHTML(idTask){
+  if(!tasksBd[idTask].taskApplication)
+    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(0, idTask);
+  else if(tasksBd[idTask].taskApplication == 1)
+    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(1, idTask);
+  else if(tasksBd[idTask].taskApplication == 2)
+    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(2, idTask);
+  else
+    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(3, idTask);
+}
+
+function moveToColumn(index, idTask, event, stopPro){
+  tasksBd[idTask].taskApplication = index;
+  renderTasks();
+  putDataBoard((path = ""), tasksBd);
+
+  if (stopPro) 
+    event.stopPropagation();
+}

@@ -147,21 +147,41 @@ function checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
   if (!tasksDone) document.getElementById("done").innerHTML = cardHTMLNoTasks();
 }
 
+
+function checkNoTasksFound(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
+  if (!tasksToDo) document.getElementById("toDO").innerHTML = cardHTMLNoTasksFound();
+  if (!tasksInProgress)
+    document.getElementById("inProgress").innerHTML = cardHTMLNoTasksFound();
+  if (!tasksAwaitFeedback)
+    document.getElementById("awaitFeedback").innerHTML = cardHTMLNoTasksFound();
+  if (!tasksDone) document.getElementById("done").innerHTML = cardHTMLNoTasksFound();
+}
+
 function cardHTML(idTask) {
   return /*html*/ `
         <div draggable="true" id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(event, ${idTask}, true)" ondragstart="startDragging(${idTask})">
-            ${cardHTMLLabel(idTask)}
-            <div class="textCard">
-                ${cardHTMLTitle(idTask)}
-                ${cardHTMLContent(idTask)}
-            </div>
-            ${cardHTMLProgressBar(idTask)}
-            <div class="contactsPriority">
-                ${cardHTMLContacts(idTask)}
-                ${cardHTMLPriority(idTask)}
-            </div>
+          <div class="titleCard">${cardHTMLLabel(idTask)}
+            <img class="dropDown" id="dragTask" src="../assets/img/arrow_drop_down.svg" alt="" onclick="changeColumn(${idTask}, event, true)">
+          </div>
+          <div id="changeColumn" class="d-none infoColumn"></div>            
+          <div class="textCard">${cardHTMLTitle(idTask)}${cardHTMLContent(idTask)}</div>
+          ${cardHTMLProgressBar(idTask)}
+          <div class="contactsPriority">${cardHTMLContacts(idTask)}${cardHTMLPriority(idTask)}</div>
         </div>
     `;
+}
+
+function dropDownChangeColumn(index, idTask){
+  let document = ``;
+  if(index != 0)
+    document += `<div class="changeColumnSpan" onclick="moveToColumn(0, ${idTask}, event, true)">To Do</div>`;
+  if(index != 1)
+    document += `<div class="changeColumnSpan" onclick="moveToColumn(1, ${idTask}, event, true)">In Progress</div>`;
+  if(index != 2)
+    document += `<div class="changeColumnSpan" onclick="moveToColumn(2, ${idTask}, event, true)">Await Feedback</div>`;
+  if(index != 3)
+    document += `<div class="changeColumnSpan" onclick="moveToColumn(3, ${idTask}, event, true)">Done</div>`;
+  return document;
 }
 
 function cardHTMLLabel(idTask) {
@@ -240,6 +260,12 @@ function checkMoreContacts(idTask, i){
 function cardHTMLNoTasks(idTask) {
   return /*html*/ `
         <div class="noTasksToDo">No tasks To do</div>
+    `;
+}
+
+function cardHTMLNoTasksFound(idTask) {
+  return /*html*/ `
+        <div class="noTasksToDo">No task found</div>
     `;
 }
 
