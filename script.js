@@ -110,25 +110,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Function for login
-async function loginUser() {
-  let email = document.getElementById("loginEmailInput").value;
-  let password = document.getElementById("loginPasswordInput").value;
 
+async function loginUser() {
+  let email = getEmailInputValue();
+  let password = getPasswordInputValue();
   try {
-    let usersData = await onloadDatabase("users");
-    let user = Object.values(usersData).find(
-      (u) => u.email === email && u.password === password
-    );
+    let usersData = await fetchUserData();
+    let user = findUser(usersData, email, password);
 
     if (user) {
-      getLoginName(user.name);
-      window.location.href = "./html/summary.html";
+      handleSuccessfulLogin(user);
       return true;
     }
   } catch (error) {
-    console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+    handleLoginError(error);
   }
 }
+
+function getEmailInputValue() {
+  return document.getElementById("loginEmailInput").value;
+}
+
+function getPasswordInputValue() {
+  return document.getElementById("loginPasswordInput").value;
+}
+
+async function fetchUserData() {
+  return await onloadDatabase("users");
+}
+
+function findUser(usersData, email, password) {
+  return Object.values(usersData).find(
+    (u) => u.email === email && u.password === password
+  );
+}
+
+function handleSuccessfulLogin(user) {
+  getLoginName(user.name);
+  window.location.href = "./html/summary.html";
+}
+
+function handleLoginError(error) {
+  console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+}
+
 
 //Remember me function
 
