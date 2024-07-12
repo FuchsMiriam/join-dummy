@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Delete contact
 
-async function deleteContact(id) {
+/*async function deleteContact(id) {
   try {
     await deleteData(id);
     const index = contacts.findIndex((contact) => contact.id === id);
@@ -380,6 +380,47 @@ async function deleteContact(id) {
   } catch (error) {
     console.error("Fehler beim Löschen des Kontakts aus Firebase:", error);
   }
+}*/
+
+// Main function to delete a contact by ID
+async function deleteContact(id) {
+  try {
+    await deleteData(id);
+    handleContactDeletion(id);
+  } catch (error) {
+    handleDeleteError(error);
+  }
+}
+
+// Handle contact deletion in local contacts array and UI
+function handleContactDeletion(id) {
+  const index = contacts.findIndex((contact) => contact.id === id);
+  if (index !== -1) {
+    contacts.splice(index, 1);
+    showContacts();
+    clearFullscreenContacts();
+    hideEditContactOverlay();
+    setBg();
+  } else {
+    console.error("Contact not found:", id);
+  }
+}
+
+// Handle error when deleting contact from Firebase
+function handleDeleteError(error) {
+  console.error("Error deleting contact from Firebase:", error);
+}
+
+// Function to clear fullscreen contact details
+function clearFullscreenContacts() {
+  document.getElementById("contactsFullscreen").innerHTML = "";
+}
+
+// Function to hide edit contact overlay
+function hideEditContactOverlay() {
+  const editContactOverlay = document.querySelector(".editContactOverlay");
+  editContactOverlay.classList.add("hidden");
+  editContactOverlay.classList.remove("visible");
 }
 
 //Display Initials Edit function
@@ -408,14 +449,9 @@ function editContact(contact) {
   deleteButton.setAttribute("onclick", `deleteContact('${contact.id}')`);
 }
 
-function validatePhoneNumber(phone) {
-  // Einfache Überprüfung für internationale und nationale Telefonnummern
-  const phonePattern = /^\+?[0-9\s-]{7,15}$/;
+//Save edited contact
 
-  return phonePattern.test(phone);
-}
-
-async function saveContact() {
+/*async function saveContact() {
   const editedContact = {
     name: document.getElementById("editNameInput").value,
     email: document.getElementById("editEmailInput").value,
@@ -453,6 +489,54 @@ async function saveContact() {
 
   document.querySelector(".editContactOverlay").classList.add("hidden");
   document.querySelector(".editContactOverlay").classList.remove("visible");
+}*/
+
+// Function to save edited contact details
+async function saveContact() {
+  const editedContact = getEditedContact();
+  if (!editedContact) return;
+
+  const contactId = getContactId();
+  if (!contactId) return;
+
+  try {
+    await putData(`${contactId}`, editedContact);
+    await fetchAndShowContacts();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+
+  hideEditContactOverlay();
+}
+
+// Function to get edited contact details from input fields
+function getEditedContact() {
+  return {
+    name: document.getElementById("editNameInput").value,
+    email: document.getElementById("editEmailInput").value,
+    phone: document.getElementById("editPhoneInput").value,
+  };
+}
+
+// Function to get the ID of the current contact
+function getContactId() {
+  const contactId = contacts[currentContact]?.id;
+  if (!contactId) {
+    console.error("No valid contact ID found");
+    return null;
+  }
+  return contactId;
+}
+
+// Function to fetch updated contacts and display them
+async function fetchAndShowContacts() {
+  try {
+    await fetchContacts();
+    showContacts();
+    showContactDetails(currentContact);
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+  }
 }
 
 //Create contact
