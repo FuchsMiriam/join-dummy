@@ -2,13 +2,13 @@ function displayContactsTemplate(i, contact) {
   const nameParts = contact.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
   return `
-    <div class="display-contacts-dropdown"  id='contacts${i}' onclick="addInitials(${i})">
+    <div class="display-contacts-dropdown"  id='contacts${i}' onclick="checkContacts(${i})">
             <div class="contact-list">
             <div class="contacts-ini-container">
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
                 <span class="contact-span" id="contact-span-name${i}">${contact} </span>
             </div>
-                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}, '${contact}'); checkContactsInList(${i}, event, 1)">
+                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="checkContacts(${i})">
             </div>
     </div>
     `;
@@ -18,10 +18,10 @@ function showSubtaskTemplate(i, tasks) {
   return `
         <li class="subtask-span" id="subtask${i}" onmouseover="hoverValueFromSubtask(${i})">
             ${tasks}
-            <div id='images-subtask${i}' class="d-none">
-            <img src="../assets/img/edit.png" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>
+            <div id='images-subtask${i}' class="d-none subtasks-edit-delete-image">
+            <img src="../assets/img/edit.svg" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>
             |
-            <img src="../assets/img/delete.png" class="subtask-button" onclick="deleteTask(${i})" class="d-none" id="images-subtask-value"></img>
+            <img src="../assets/img/delete.svg" class="subtask-button" onclick="deleteTask(${i})" class="d-none" id="images-subtask-value"></img>
             </div>
         </li>
 `;

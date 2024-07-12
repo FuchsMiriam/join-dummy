@@ -230,6 +230,7 @@
 
 .initials {
     background-color: yellow;
+    color: white;
     border-radius: 50%;
     padding: 10px;
     z-index: 10;
@@ -267,11 +268,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
 }
 
 .input-update-subtask {
     width: 100%;
     position: relative;
+    border-bottom: 1px solid blue;
 }
 
 .seperator-edit-subtask {
@@ -303,4 +306,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.subtasks-edit-delete-image {
+    padding-right: 10px;
+    display: flex;
+    gap: 5px;
 }
