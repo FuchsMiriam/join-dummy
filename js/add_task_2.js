@@ -222,6 +222,19 @@ window.addEventListener("click", function (event) {
 });
 
 function checkContacts(i) {
+  let checkbox = document.getElementById(`checkbox-contacts${i}`);
   addInitials(i);
-  checkContactsInList(i, event, 1);
+  toggleChecked(checkbox);
+}
+
+function toggleChecked(checkbox) {
+  checkbox.checked = !checkbox.checked;
+}
+
+function doubleclickSubtaskToEdit(i) {
+  let sub = document.getElementById(`subtask${i}`);
+
+  sub.addEventListener("dblclick", function () {
+    editSubtask(i);
+  });
 }

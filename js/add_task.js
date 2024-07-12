@@ -66,7 +66,7 @@ async function fetchContacts(path = "") {
           colorClasses[contacts.indexOf(contact) % colorClasses.length];
       }
     });
-  } catch (error) { }
+  } catch (error) {}
 }
 
 async function putDataTasks(path = "", data = {}) {
@@ -224,13 +224,13 @@ function checkContactsInList(i, event, stopPro) {
     isChecked.push(contactChecked.checked);
   } else {
     contactChoose[i] = false;
-    uncheckContactInList(i, contactChecked);
+    uncheckContactInList(contactChecked);
   }
   save();
   if (stopPro) event.stopPropagation();
 }
 
-function uncheckContactInList(i, contactChecked) {
+function uncheckContactInList(contactChecked) {
   if (contactChecked.checked == false) {
   }
 }
