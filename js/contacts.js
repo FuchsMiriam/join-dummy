@@ -56,7 +56,6 @@ async function fetchContacts(path = "") {
     contacts = data
       ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
       : [];
-
     contacts.forEach((contact) => {
       if (!contact.colorClass) {
         contact.colorClass =
@@ -105,7 +104,7 @@ function getInitials(name) {
   return initials;
 }
 
-function contactsSidebar(contacts) {
+/*function contactsSidebar(contacts) {
   let html = "";
   let addedLetters = new Set();
 
@@ -132,9 +131,60 @@ function contactsSidebar(contacts) {
   }
 
   return html;
+}*/
+
+// Main function to generate the contacts sidebar
+function contactsSidebar(contacts) {
+  let { html, addedLetters } = initializeHtmlAndLetters();
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    processFirstLetter(contact, addedLetters, html);
+    addContactToHtml(contact, html);
+  }
+
+  return html.value;
 }
 
-async function showContacts() {
+// Initialize HTML string and Set for added letters
+function initializeHtmlAndLetters() {
+  let html = { value: "" };
+  let addedLetters = new Set();
+  return { html, addedLetters };
+}
+
+// Process the first letter of the contact's name and add it to HTML if not already added
+function processFirstLetter(contact, addedLetters, html) {
+  const firstLetter = contact.name.charAt(0).toUpperCase();
+  if (!addedLetters.has(firstLetter)) {
+    html.value += `
+      <div class="letter">${firstLetter}</div>
+      <div class="lineContactSidebar"></div>
+    `;
+    addedLetters.add(firstLetter);
+  }
+}
+
+// Add contact details to the HTML string
+function addContactToHtml(contact, html) {
+  html.value += `
+    <div class="contactListInner">
+        <div class="contactInitials">${getInitials(contact.name)}</div>
+        <div>
+            <div class="contactName">${contact.name}</div>
+            <div class="contactEmail">${contact.email}</div>
+        </div>
+    </div>
+  `;
+}
+
+// Get initials from the contact's name
+function getInitials(name) {
+  return name.split(' ').map(word => word.charAt(0)).join('');
+}
+
+// Functions to Initialize, Sort, Display, and Manage Click Events for a Contact List
+/*async function showContacts() {
   const contactListDiv = document.getElementById("contactList");
   contactListDiv.innerHTML = "";
 
@@ -154,9 +204,58 @@ async function showContacts() {
   } else {
     contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
   }
+}*/
+
+// Main function to display contacts
+async function showContacts() {
+  const contactListDiv = initializeContactListDiv();
+
+  if (contacts.length > 0) {
+    sortContacts(contacts);
+    displayContacts(contactListDiv, contacts);
+    addContactClickListeners();
+  } else {
+    displayNoContactsMessage(contactListDiv);
+  }
+}
+
+// Initialize and clear the contact list div
+function initializeContactListDiv() {
+  const contactListDiv = document.getElementById("contactList");
+  contactListDiv.innerHTML = "";
+  return contactListDiv;
+}
+
+// Sort contacts by name
+function sortContacts(contacts) {
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+// Display the contacts in the contact list div
+function displayContacts(contactListDiv, contacts) {
+  const contactsHTML = contactsSidebar(contacts);
+  contactListDiv.innerHTML = contactsHTML;
+}
+
+// Add click listeners to contact elements
+function addContactClickListeners() {
+  const contactDivs = document.querySelectorAll(".contactListInner");
+  contactDivs.forEach((contactDiv, index) => {
+    contactDiv.addEventListener("click", () => {
+      showContactDetails(index);
+      currentContact = index;
+    });
+  });
+}
+
+// Display a message when no contacts are available
+function displayNoContactsMessage(contactListDiv) {
+  contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
 }
 
 contacts.sort();
+
+//Layout changing screen width
 
 function adjustLayoutForScreenWidth() {
   if (window.innerWidth <= 768) {
@@ -215,13 +314,9 @@ function showContactDetails(index) {
   } else {
     contact = contacts[index];
   }
-
   createContactDetailsHTML(contact);
-
   adjustLayoutForScreenWidth();
-
   updateContactDetailsUI(index);
-
   const editButton = document.querySelector(".editContactButton");
   editButton.onclick = function () {
     editContact(contact);
@@ -331,17 +426,6 @@ async function saveContact() {
     console.error("Keine gültige Kontakt-ID gefunden");
     return;
   }
-
-  // const nameParts = editContact.name.trim().split(/\s+/);
-  // if (nameParts.length < 2) {
-  //   alert("Please enter both first and last name.");
-  //   return false;
-  // }
-
-  // if (!validatePhoneNumber(editedContact.phone)) {
-  //   alert("Please enter a valid phone number.");
-  //   return false;
-  // }
 
   const contactId = contacts[currentContact]?.id;
 
