@@ -5,9 +5,9 @@
 }
 
 html {
-    font-family: "inter","sans-serif";
+    font-family: "inter", "sans-serif";
     color: #000000;
-    background-color: rgb(246,247,248);
+    background-color: rgb(246, 247, 248);
 }
 
 .head {
@@ -19,10 +19,10 @@ html {
 
 .container {
     max-width: 1014px;
-    /* height: 840px; */
     height: 100vh;
     overflow-y: auto;
     scrollbar-width: none;
+    max-height: calc(100vh - 120px);
 }
 
 .content {
@@ -93,8 +93,8 @@ ul {
     }
 }
 
-@media(max-width: 1400px){
-    .container{
+@media(max-width: 1400px) {
+    .container {
         height: calc(100vh - 100px - 80px);
     }
 }
