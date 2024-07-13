@@ -146,7 +146,8 @@ window.addEventListener("click", function(event) {
 });
 
 function closeChangeColumn(){
-  document.getElementById("changeColumn").classList.add("d-none");
+  let idChange = "changeColumn" + openChangeColumn;
+  document.getElementById(idChange).classList.add("d-none");
   document.getElementById("dragTask").classList.remove("opacity");
   toogleView = 0;
 }

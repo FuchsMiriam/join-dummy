@@ -163,7 +163,7 @@ function cardHTML(idTask) {
           <div class="titleCard">${cardHTMLLabel(idTask)}
             <img class="dropDown" id="dragTask" src="../assets/img/arrow_drop_down.svg" alt="" onclick="changeColumn(${idTask}, event, true)">
           </div>
-          <div id="changeColumn" class="d-none infoColumn"></div>            
+          <div id="changeColumn${idTask}" class="d-none infoColumn"></div>            
           <div class="textCard">${cardHTMLTitle(idTask)}${cardHTMLContent(idTask)}</div>
           ${cardHTMLProgressBar(idTask)}
           <div class="contactsPriority">${cardHTMLContacts(idTask)}${cardHTMLPriority(idTask)}</div>

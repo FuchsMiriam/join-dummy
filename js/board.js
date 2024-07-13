@@ -154,7 +154,7 @@ function getCheckedTasks(idTask) {
 }
 
 function toggleCheckbox(idTask, idCheckBox) {
-  var isChecked = document.getElementById(
+  let isChecked = document.getElementById(
     "checkCard" + idTask + idCheckBox
   ).checked;
 
@@ -293,14 +293,16 @@ function formatDateEdit(inputDate) {
 }
 
 let toogleView = 0;
+let openChangeColumn = 0;
+
 function changeColumn(idTask, event, stopPro){
+  openChangeColumn = idTask;
+  let idChange = "changeColumn" + openChangeColumn;
   if(toogleView){
-    document.getElementById("changeColumn").classList.add("d-none");
-    // document.getElementById("dragTask").classList.remove("opacity");
+    document.getElementById(idChange).classList.add("d-none");
     toogleView = 0;
   }else{
-    document.getElementById("changeColumn").classList.remove("d-none");
-    // document.getElementById("dragTask").classList.add("opacity");
+    document.getElementById(idChange).classList.remove("d-none");
     dropDownCheckHTML(idTask);
     toogleView = 1;
   }
@@ -310,14 +312,15 @@ function changeColumn(idTask, event, stopPro){
 }
 
 function dropDownCheckHTML(idTask){
+  let idChange = "changeColumn" + openChangeColumn;
   if(!tasksBd[idTask].taskApplication)
-    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(0, idTask);
+    document.getElementById(idChange).innerHTML = dropDownChangeColumn(0, idTask);
   else if(tasksBd[idTask].taskApplication == 1)
-    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(1, idTask);
+    document.getElementById(idChange).innerHTML = dropDownChangeColumn(1, idTask);
   else if(tasksBd[idTask].taskApplication == 2)
-    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(2, idTask);
+    document.getElementById(idChange).innerHTML = dropDownChangeColumn(2, idTask);
   else
-    document.getElementById("changeColumn").innerHTML = dropDownChangeColumn(3, idTask);
+    document.getElementById(idChangegit).innerHTML = dropDownChangeColumn(3, idTask);
 }
 
 function moveToColumn(index, idTask, event, stopPro){
