@@ -25,10 +25,51 @@
   }
 
   .animateMobile {
-    width: 100.03px;
-    height: 121.97px;
-    top: 402px;
-    left: 164px;
+    width: 64px;
+    height: 78.03px;
+    top: 37px;
+    left: 38px;
+    gap: 10px;
+  }
+
+  @-webkit-keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
   }
 }
 
