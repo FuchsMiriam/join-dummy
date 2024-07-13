@@ -354,6 +354,13 @@
   }
 }
 
+@media (max-width: 375px) and (max-height: 667px) {
+  .mainpageSignUpContainer{
+    gap: 0;
+  }
+  
+}
+
 /* -----------height--------------- */
 
 @media (max-height: 840px) {
@@ -362,7 +369,7 @@
   }
 
   .mainpageSignUpContainer {
-    top: 0;
+    top: -5px;
   }
 
   .legalButtonsContainer {
