@@ -303,7 +303,6 @@
   .loginButtons {
     flex-direction: column;
     align-items: center;
-    /* margin-top: 32px; */
   }
 
   .mainpageLoginButton {
@@ -361,7 +360,7 @@
   
 }
 
-/* -----------height--------------- */
+/*Height*/
 
 @media (max-height: 840px) {
   .loginContainer {
@@ -374,42 +373,5 @@
 
   .legalButtonsContainer {
     top: 670px;
-  }
-}
-
-@media (max-height: 770px) {
-  .loginContainer {
-    margin-top: 70px;
-    height: 460px;
-  }
-  .legalButtonsContainer {
-    top: 580px;
-  }
-
-  input {
-    width: 60%;
-  }
-
-  .loginEmail,
-  .loginPassword,
-  #errorMessage {
-    width: 70%;
-    margin-left: 40px;
-  }
-
-  .loginInputFields {
-    width: 0;
-  }
-
-  .mainpageSignUpContainer {
-    margin-top: 10px;
-  }
-
-  .rememberMeSection {
-    margin-left: 40px;
-  }
-
-  .loginButtons {
-    margin-left: 20px;
   }
 }
