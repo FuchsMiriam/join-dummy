@@ -260,7 +260,7 @@ contacts.sort();
 
 //Layout changing screen width
 
-function adjustLayoutForScreenWidth() {
+/*function adjustLayoutForScreenWidth() {
   if (window.innerWidth <= 768) {
     // Hide the contactsSidebar when showContactDetails is called
     const contactsSidebar = document.querySelector(".contactsSidebar");
@@ -282,13 +282,56 @@ function adjustLayoutForScreenWidth() {
     const contactsSidebar = document.querySelector(".contactsSidebar");
     contactsSidebar.style.display = "block";
 
-    const headlinesContainer = document.querySelector(".headlinesContainer");
+    //const headlinesContainer = document.querySelector(".headlinesContainer");
     // headlinesContainer.style.display = "block";
 
     const contactsArrow = document.querySelector(".contactsArrow");
     contactsArrow.style.display = "none";
   }
+}*/
+
+// Adjusts layout based on the screen width
+function adjustLayoutForScreenWidth() {
+  if (window.innerWidth <= 768) {
+    hideContactsSidebar();
+    showHeadlinesContainer();
+    showContactsArrow();
+  } else {
+    resetLayoutForLargerScreens();
+  }
 }
+
+// Hides the contacts sidebar element
+function hideContactsSidebar() {
+  const contactsSidebar = document.querySelector(".contactsSidebar");
+  contactsSidebar.style.display = "none";
+}
+
+// Displays the headlines container element
+function showHeadlinesContainer() {
+  const headlinesContainer = document.querySelector(".headlinesContainer");
+  headlinesContainer.style.display = "block";
+}
+
+// Displays the contacts arrow element and adds click event to navigate to contacts page
+function showContactsArrow() {
+  const contactsArrow = document.querySelector(".contactsArrow");
+  contactsArrow.style.display = "block";
+  contactsArrow.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link click
+    window.location.href = "../html/contacts.html"; // Go to the Contacts page
+  });
+}
+
+// Resets layout for larger screens by displaying contacts sidebar and hiding contacts arrow
+function resetLayoutForLargerScreens() {
+  const contactsSidebar = document.querySelector(".contactsSidebar");
+  contactsSidebar.style.display = "block";
+
+  const contactsArrow = document.querySelector(".contactsArrow");
+  contactsArrow.style.display = "none";
+}
+
 
 function updateContactDetailsUI(index) {
   // Update the fullscreen class list
@@ -335,7 +378,7 @@ function showDotIcon() {
   }
 }
 
-// Function to hide the dotIcon
+//Hide dotIcon
 function hideDotIcon() {
   const dotIcon = document.getElementById("dotIcon");
   dotIcon.style.display = "none";
