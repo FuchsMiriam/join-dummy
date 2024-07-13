@@ -344,10 +344,14 @@ function addTask() {
     category,
     document.getElementById("error-message-category")
   );
-
   if (title.value != "" && date.valueAsDate != null && category.value != "") {
     createTask();
     document.getElementById("add_task").classList.remove("d-none");
+    setTiemoutAddTask();
+    save();
+  }
+
+  function setTiemoutAddTask() {
     setTimeout(function () {
       if (shortURL(document.referrer) != "board.html")
         window.location.href = "../html/board.html";
@@ -361,7 +365,6 @@ function addTask() {
       }
     }, 2000);
   }
-  save();
 }
 
 function addOrEditTask() {
