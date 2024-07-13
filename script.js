@@ -235,7 +235,7 @@ function handleSmallScreenAnimation(bodyAnimation, img) {
     document.body.style.backgroundColor = "#f6f7f8";
     img.src = "./assets/img/logoLarge.svg";
     bodyAnimation.style.display = "block";
-  }, 1000);
+  }, 500);
 }
 
 function handleLargeScreenAnimation(bodyAnimation) {
@@ -244,7 +244,7 @@ function handleLargeScreenAnimation(bodyAnimation) {
   }, 0);
   setTimeout(() => {
     bodyAnimation.style.display = "block";
-  }, 1500);
+  }, 500);
 }
 
 function addAnimationEndListener(img) {
