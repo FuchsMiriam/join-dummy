@@ -4,17 +4,18 @@ let contacts = [];
 let contactsNames = [];
 let colorClassForContact = [];
 let assigned = [];
-let listContactsLoaded = false;
 let initial = [];
 let initialName = [];
 let initialColor = [];
 let namesFromContacts = [];
 let tasksBoardAdd = [];
+let isChecked = [];
+let contactChoose = [];
+let listContactsLoaded = false;
 let isClicked1 = false;
 let isClicked2 = false;
 let isClicked3 = false;
-let isChecked = [];
-let contactChoose = [];
+let openCategorie = false;
 let currentColumn = 0;
 let tasksBd = [];
 const colorClasses = [
@@ -171,16 +172,20 @@ function addInitials(i) {
   if (contactChoose[i] != true) {
     addNewSelectedContact(i, initials, ini);
   } else {
-    for (let id = 0; id < initial.length; id++) {
-      if (initial[id] == initials) {
-        initial.splice(id, 1);
-        initialName.splice(id, 1);
-        contactChoose[i] = false;
-      }
-    }
+    forLoopAddInitials(initials, i);
   }
   ini.innerHTML = "";
   showSelectedContacts(ini);
+}
+
+function forLoopAddInitials(initials, i) {
+  for (let id = 0; id < initial.length; id++) {
+    if (initial[id] == initials) {
+      initial.splice(id, 1);
+      initialName.splice(id, 1);
+      contactChoose[i] = false;
+    }
+  }
 }
 
 function addNewSelectedContact(i, initials, ini) {
@@ -263,7 +268,6 @@ function imageOnSubtask() {
   }
 }
 
-let openCategorie = false;
 function showCategorie(event, stopPro) {
   let display = document.getElementById("display-categorie");
   document.getElementById("input-categorie-image-down").classList.add("d-none");
@@ -273,12 +277,7 @@ function showCategorie(event, stopPro) {
   display.classList.remove("d-none");
   openCategorie = true;
   display.innerHTML = "";
-  display.innerHTML = `
-      <div>
-        <h2 class="technical-categorie" id="technical-input" onclick="addToInputTechnical()">Technical Task</h2>
-        <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
-      </div>
-    `;
+  display.innerHTML = showCategorieTemplate();
   if (stopPro == true) event.stopPropagation();
 }
 

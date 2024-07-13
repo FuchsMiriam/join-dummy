@@ -50,3 +50,25 @@ function closeButtonForShowContactsTemplate() {
             </div>
         `;
 }
+
+function showCategorieTemplate() {
+  return `
+      <div>
+        <h2 class="technical-categorie" id="technical-input" onclick="addToInputTechnical()">Technical Task</h2>
+        <h2 class="user-categorie" onclick="addToInputUser()">User Story</h2>
+      </div>
+    `;
+}
+
+function editSubtaskTemplate(i) {
+  return `
+  <div class="input-update-subtask">
+        <input id="update-subtask-input${i}" class="input-update-subtask" type="text" value="${tasks[i]}">
+      <div id="images-subtask-hover">
+        <img src="../assets/img/delete.svg" class="subtask-button" onclick="deleteTask(${i})" class="d-none images-subtask-hover-1"></img>
+        |
+        <img src="../assets/img/checked.svg" class="subtask-button" onclick="updateSubtask(${i})" class="d-none images-subtask-hover-2"></img>
+      </div>
+    </div> 
+    `;
+}

@@ -34,14 +34,16 @@
                 </form>
                 <div class="flex8gap">
                     <label for="input-description">Description</label>
-                    <textarea name="input-description" id="input-description" placeholder="Enter a Description"></textarea>
+                    <textarea name="input-description" id="input-description"
+                        placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex8gap">
                     <label for="input-assigny">Assigned to</label>
-                    <div class="input-container-contacts"  onclick="ifIsListContactsLoaded(event, 1)">
+                    <div class="input-container-contacts" onclick="ifIsListContactsLoaded(event, 1)">
                         <input list="input-assigned" id="input-assigny" class="dropbtn"
                             placeholder="Select contacts to assign">
-                        <button class="add-button" id="add-button-contacts" onclick="ifIsListContactsLoaded(event, 1)">+</button>
+                        <button class="add-button" id="add-button-contacts"
+                            onclick="ifIsListContactsLoaded(event, 1)">+</button>
                         <div id="show-contacts" class="d-none">
                         </div>
                     </div>
@@ -65,12 +67,14 @@
                         <div id="input-prio3" onclick="changePrioButtonLow()" class="low-image btn"></div>
                     </div>
                 </div>
-                <form class="flex8gap"  onsubmit="addTask(); return false">
+                <form class="flex8gap" onsubmit="addTask(); return false">
                     <label for="input-category">Category<span class="span-star">*</span></label>
-                    <div class="input-categorie-container" onclick="showCategorie(event, 1)" >
+                    <div class="input-categorie-container" onclick="showCategorie(event, 1)">
                         <input id="input-category" required placeholder="Select task category">
-                        <img class="input-categorie-arrow-down" id="input-categorie-image-down" src="../assets/img/arrow_drop_down.svg" alt=""  onclick="showCategorie(event, 1)">
-                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up" onclick="closeCategorie(event, 1)" class="d-none" alt="">
+                        <img class="input-categorie-arrow-down" id="input-categorie-image-down"
+                            src="../assets/img/arrow_drop_down.svg" alt="" onclick="showCategorie(event, 1)">
+                        <img src="../assets/img/arrow_drop_down_up.svg" id="input-categorie-image-up"
+                            onclick="closeCategorie(event, 1)" class="d-none" alt="">
                     </div>
                     <div id="display-categorie" class="d-none"></div>
                     <span id="error-message-category" class="error-message">Field required</span>
@@ -94,7 +98,7 @@
             </div>
             <div class="button-footer">
                 <button class="btn-footer-clear btn" onclick="clearInputs()" id="btn-clear">Clear x</button>
-                <button class="btn-footer-create btn" onclick="addTask()">Create Task 
+                <button class="btn-footer-create btn" onclick="addTask()">Create Task
                     <img src="../assets/img/check.svg" alt="">
                 </button>
             </div>
