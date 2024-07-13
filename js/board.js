@@ -86,6 +86,8 @@ function openDetailCard(event, idTask, stopPro) {
 }
 
 function addTaskInitials(idTask){
+  if(!tasksBd[idTask]["assigned to"])
+    return;
   for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
   {
     initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
@@ -320,7 +322,7 @@ function dropDownCheckHTML(idTask){
   else if(tasksBd[idTask].taskApplication == 2)
     document.getElementById(idChange).innerHTML = dropDownChangeColumn(2, idTask);
   else
-    document.getElementById(idChangegit).innerHTML = dropDownChangeColumn(3, idTask);
+    document.getElementById(idChange).innerHTML = dropDownChangeColumn(3, idTask);
 }
 
 function moveToColumn(index, idTask, event, stopPro){

@@ -318,6 +318,27 @@ p {
   }
 }
 
+@media(max-height: 1020px)
+{
+  .privacySidebar{
+    padding-top: calc(100vh - 750px);
+  }
+}
+
+@media((max-height: 1020px) and (min-width: 1401px))
+{
+  nav{
+    height: 100vh;
+  }
+}
+
+@media(max-height: 760px)
+{
+  .privacySidebar{
+    display: none;
+  }
+}
+
 @media (max-width: 1400px) {
   .headerTitel {
     display: none;

@@ -6,6 +6,9 @@
     .contentFrame{
         left: calc((100vw - 1207px) / 2);
     }
+    .columnBoard{
+        max-height: calc(100vh - 410px);
+    }
 }
 
 @media (min-width: 1201px)
@@ -47,6 +50,7 @@
         overflow-y: visible;
         overflow-x: auto;
         flex-direction: row;
+        min-height: unset;
     }
 
     .headerFrame{
