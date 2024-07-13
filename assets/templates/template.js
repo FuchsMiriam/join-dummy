@@ -1,7 +1,7 @@
 //Template einbinden
 let resultTemplate = false;
 function includeHTML() {
-  var z, i, elmnt, file, xhttp;
+  let z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
   z = document.getElementsByTagName("*");
   for (i = 0; i < z.length; i++) {
@@ -43,8 +43,8 @@ function initHTML(){
 let noneLoginName = 0;
 
 function hoverSidebar(){
-  var path = window.location.pathname;
-  var page = path.split("/").pop();
+  let path = window.location.pathname;
+  let page = path.split("/").pop();
   let docu = document.referrer;
   const index = docu.lastIndexOf('/') + 1; // Find the position of the last '/'
   const fileName = docu.substring(index);
@@ -132,16 +132,17 @@ window.addEventListener("click", function(event) {
   if(clickName == 1){
     document.getElementById("headerNote").classList.remove("d-none");
     clickName = 2;
-  }
-  else{
+  }else{
     document.getElementById("headerNote").classList.add("d-none");
     clickName = 0;
   }
-  var path = window.location.pathname;
-  var page = path.split("/").pop();
+  let path = window.location.pathname;
+  let page = path.split("/").pop();
   if(page == "board.html")
+  {
     closeEdit(event);
-  closeChangeColumn();
+    closeChangeColumn();
+  }
 });
 
 function closeChangeColumn(){

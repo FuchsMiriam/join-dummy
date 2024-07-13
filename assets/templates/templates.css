@@ -26,6 +26,7 @@ header {
 nav {
   position: absolute;
   top: 0;
+  height: fit-content;
   background-color: rgba(42, 54, 71, 1);
   width: 232px;
   padding: 64px 0px 64px 0px;
@@ -310,7 +311,7 @@ p {
   }
 }
 
-@media((min-width: 1440px) and (min-height: 950px))
+@media((min-width: 1401px) and (min-height: 950px))
 {
   nav{
     height: 100vh;
