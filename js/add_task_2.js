@@ -1,52 +1,5 @@
-async function createTask(i) {
-  let title = document.getElementById("input-title");
-  let description = document.getElementById("input-description");
-  let assigned = document.getElementById("show-contacts");
-  let date = document.getElementById("input-date").valueAsDate;
-  date.valueAsDate = formDate(date);
-  let category = document.getElementById("input-category");
-  let name = namesFromContacts;
-  let color = colorClassForContact;
-  let prio = getPrio();
-
-  let sumContacts = [];
-  for (let i = 0; i < name.length; i++) {
-    sumContacts[i] = {
-      name: name[i],
-      color: color[i],
-    };
-  }
-
-  let subtasks = [];
-  for (let j = 0; j < tasks.length; j++) {
-    subtasks[j] = {
-      text: tasks[j],
-      checked: "0",
-    };
-  }
-
-  let task = {
-    title: title.value,
-    description: description.value,
-    assigned: assigned.value,
-    date: date.valueAsDate,
-    category: category.value,
-    subtasks: [
-      {
-        text: "", //subtask,
-        checked: 0,
-      },
-    ],
-    prio: prio,
-    "assigned to": {
-      name: "", //name,
-      color: "", //color,
-    },
-    taskApplication: currentColumn,
-  };
-
-  task["assigned to"] = sumContacts;
-  task["subtasks"] = subtasks;
+async function createTask() {
+  let task = buildTask();
 
   tasksBoardAdd.push(task);
   tasksBd.push(task);
@@ -55,6 +8,44 @@ async function createTask(i) {
   clearInputs();
   spliceTask();
   save();
+}
+
+function buildTask() {
+  let { title, description, assigned, date, category, prio } = getTaskDetails();
+
+  return {
+    title: title,
+    description: description,
+    assigned: assigned,
+    date: date,
+    category: category,
+    subtasks: getSubtasks(),
+    prio: prio,
+    "assigned to": getSumContacts(),
+    taskApplication: currentColumn,
+  };
+}
+
+function getTaskDetails() {
+  let title = document.getElementById("input-title");
+  let description = document.getElementById("input-description");
+  let assigned = document.getElementById("show-contacts");
+  let date = document.getElementById("input-date").valueAsDate;
+  date.valueAsDate = formDate(date);
+  let category = document.getElementById("input-category");
+  let prio = getPrio();
+
+  return { title, description, assigned, date, category, prio };
+}
+
+function getSumContacts() {
+  let name = namesFromContacts;
+  let color = colorClassForContact;
+  return name.map((n, i) => ({ name: n, color: color[i] }));
+}
+
+function getSubtasks() {
+  return tasks.map((t) => ({ text: t, checked: "0" }));
 }
 
 function getColor(name) {

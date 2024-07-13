@@ -382,3 +382,11 @@ function checkRequieredValues(data, error) {
     error.style.display = "none";
   }
 }
+
+function getColorClass() {
+  for (let i = 0; i < contacts.length; i++) {
+    const colorClass = contacts[i].colorClass;
+
+    colorClassForContact.push(colorClass);
+  }
+}
