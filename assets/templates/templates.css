@@ -86,8 +86,10 @@ p {
   align-items: center;
   color: rgba(41, 171, 226, 1);
   font-size: 18px;
-  border-radius: 559px; /* Macht das Element rund */
-  border: 3px solid rgba(42, 54, 71, 1); /* Rahmen des Kreises */
+  border-radius: 559px;
+  /* Macht das Element rund */
+  border: 3px solid rgba(42, 54, 71, 1);
+  /* Rahmen des Kreises */
   background-color: transparent;
   background-color: rgba(255, 255, 255, 1);
   cursor: pointer;
@@ -182,7 +184,7 @@ p {
   background-color: rgba(9, 25, 49, 1);
 }
 
-.framesPolicy{
+.framesPolicy {
   background-color: rgba(9, 25, 49, 1);
 }
 
@@ -200,7 +202,7 @@ p {
   background-size: cover;
 }
 
-.padding8px60px{
+.padding8px60px {
   padding: 8px 60px 8px 60px;
 }
 
@@ -261,7 +263,7 @@ p {
   display: none !important;
 }
 
-.flexMax1440{
+.flexMax1440 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -269,15 +271,15 @@ p {
   max-width: 1000px;
 }
 
-.flexGap200{
+.flexGap200 {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 200px;
 }
 
-@media (min-width: 1441px){
-  .headerNote{
+@media (min-width: 1441px) {
+  .headerNote {
     right: unset;
     left: calc(1440px - 158px - 35px);
   }
@@ -301,7 +303,7 @@ p {
   background-color: rgb(42, 62, 89);
 }
 
-.helpTemplate{
+.helpTemplate {
   display: none;
 }
 
@@ -311,30 +313,32 @@ p {
   }
 }
 
-@media((min-width: 1401px) and (min-height: 950px))
-{
-  nav{
+@media(max-width: 1440px) {
+  header {
+    width: 100vw;
+  }
+}
+
+@media((min-width: 1401px) and (min-height: 950px)) {
+  nav {
     height: 100vh;
   }
 }
 
-@media(max-height: 1020px)
-{
-  .privacySidebar{
+@media(max-height: 1020px) {
+  .privacySidebar {
     padding-top: calc(100vh - 750px);
   }
 }
 
-@media((max-height: 1020px) and (min-width: 1401px))
-{
-  nav{
+@media((max-height: 1020px) and (min-width: 1401px)) {
+  nav {
     height: 100vh;
   }
 }
 
-@media(max-height: 760px)
-{
-  .privacySidebar{
+@media(max-height: 760px) {
+  .privacySidebar {
     display: none;
   }
 }
@@ -389,18 +393,18 @@ p {
     padding: 0px 32px 0px 16px;
   }
 
-  .helpTemplate{
+  .helpTemplate {
     display: flex;
   }
 
-  .menuFrames{
+  .menuFrames {
     gap: 8px;
     padding: 8px 35px 8px 35px;
     border-radius: 10px;
     justify-content: center;
   }
 
-  .flexMax1440{
+  .flexMax1440 {
     max-width: 1400px;
   }
 }
@@ -416,15 +420,14 @@ p {
   }
 }
 
-@media (max-width: 428px){
-  .iconSidebar{
+@media (max-width: 428px) {
+  .iconSidebar {
     width: 24px;
     height: 24px;
   }
 
-  .menuSidebarHover{
+  .menuSidebarHover {
     font-size: 14px;
     line-height: 16.8px;
   }
 }
-
