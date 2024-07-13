@@ -180,7 +180,10 @@ function addContactToHtml(contact, html) {
 
 // Get initials from the contact's name
 function getInitials(name) {
-  return name.split(' ').map(word => word.charAt(0)).join('');
+  return name
+    .split(" ")
+    .map((word) => word.charAt(0))
+    .join("");
 }
 
 // Functions to Initialize, Sort, Display, and Manage Click Events for a Contact List
@@ -546,55 +549,67 @@ async function createContact() {
   let email = document.getElementById("createEmailInput");
   let phone = document.getElementById("createPhoneInput");
 
-  let newID = await generateCustomID();
-
-  let contact = {
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-  };
-
   try {
-    await putData(newID, contact);
-    contacts.push({ id: newID, ...contact });
-
-    document.getElementById("contactOverlay").classList.add("hidden");
-
-    const overlay = document.querySelector(".contactCreatedOverlay");
-    overlay.classList.remove("contactCreatedOverlayHidden");
-
-    overlay.classList.remove("slideInRight", "slideInUp");
-
-    if (window.innerWidth >= 1290) {
-      overlay.classList.add("slideInRight");
-    } else {
-      overlay.classList.add("slideInUp");
+    const emailExists = await checkEmailExists(email.value);
+    if (emailExists) {
+      alert("This email address is already registered.");
+      return;
     }
 
-    void overlay.offsetWidth;
-    overlay.classList.add("in");
+    let newID = await generateCustomID();
 
-    setTimeout(async () => {
-      overlay.classList.remove("in");
-      overlay.classList.add("out");
+    let contact = {
+      name: name.value,
+      email: email.value,
+      phone: phone.value,
+    };
 
-      setTimeout(() => {
-        overlay.classList.remove("slideInRight", "slideInUp", "out");
-      }, 800);
+    try {
+      await putData(newID, contact);
+      contacts.push({ id: newID, ...contact });
 
-      await fetchContacts();
-      showContacts();
-      setBg();
+      document.getElementById("contactOverlay").classList.add("hidden");
 
-    }, 3000);
+      const overlay = document.querySelector(".contactCreatedOverlay");
+      overlay.classList.remove("contactCreatedOverlayHidden");
 
+      overlay.classList.remove("slideInRight", "slideInUp");
+
+      if (window.innerWidth >= 1290) {
+        overlay.classList.add("slideInRight");
+      } else {
+        overlay.classList.add("slideInUp");
+      }
+
+      void overlay.offsetWidth;
+      overlay.classList.add("in");
+
+      setTimeout(async () => {
+        overlay.classList.remove("in");
+        overlay.classList.add("out");
+
+        setTimeout(() => {
+          overlay.classList.remove("slideInRight", "slideInUp", "out");
+        }, 800);
+        await fetchContacts();
+        showContacts();
+        setBg();
+      }, 3000);
+    } catch (error) {
+      console.error("Error adding contact to Firebase:", error);
+    }
+
+    name.value = "";
+    email.value = "";
+    phone.value = "";
   } catch (error) {
-    console.error("Fehler beim Hinzufügen des Kontakts zu Firebase:", error);
+    console.error("Error checking email:", error);
   }
+}
 
-  name.value = "";
-  email.value = "";
-  phone.value = "";
+async function checkEmailExists(email) {
+  await fetchContacts();
+  return contacts.some((contact) => contact.email === email);
 }
 
 async function generateCustomID() {
