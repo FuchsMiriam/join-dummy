@@ -27,8 +27,8 @@ function buildTask() {
 }
 
 function getTaskDetails() {
-  let title = document.getElementById("input-title");
-  let description = document.getElementById("input-description");
+  let title = document.getElementById("input-title").value;
+  let description = document.getElementById("input-description").value;
   let assigned = document.getElementById("show-contacts");
   let date = document.getElementById("input-date").valueAsDate;
   date.valueAsDate = formDate(date);
