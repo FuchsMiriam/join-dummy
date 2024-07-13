@@ -544,7 +544,7 @@ async function fetchAndShowContacts() {
 
 //Create contact
 
-async function createContact() {
+/*async function createContact() {
   let name = document.getElementById("createNameInput");
   let email = document.getElementById("createEmailInput");
   let phone = document.getElementById("createPhoneInput");
@@ -605,6 +605,93 @@ async function createContact() {
   } catch (error) {
     console.error("Error checking email:", error);
   }
+}*/
+
+async function createContact() {
+  let name = document.getElementById("createNameInput");
+  let email = document.getElementById("createEmailInput");
+  let phone = document.getElementById("createPhoneInput");
+
+  try {
+    await checkAndSaveContact(name.value, email.value, phone.value);
+    clearInputs(name, email, phone);
+  } catch (error) {
+    if (error.message === "Duplicate email") {
+      alert("This email address is already registered.");
+    } else {
+      alert("An error occurred while creating the contact.");
+    }
+  }
+}
+
+async function checkAndSaveContact(name, email, phone) {
+  const emailExists = await checkEmailExists(email);
+  if (emailExists) throw new Error("Duplicate email");
+
+  let newID = await generateCustomID();
+  let contact = { name, email, phone };
+
+  try {
+    await saveContactToFirebase(newID, contact);
+    await showContactCreationOverlay();
+    await fetchAndShowContacts();
+  } catch (error) {
+    console.error("Error saving contact:", error);
+    throw new Error("Error saving contact");
+  }
+}
+
+async function saveContactToFirebase(id, contact) {
+  try {
+    await putData(id, contact);
+    contacts.push({ id, ...contact });
+  } catch (error) {
+    console.error("Error adding contact to Firebase:", error);
+    throw error;
+  }
+}
+
+async function showContactCreationOverlay() {
+  const overlay = document.querySelector(".contactCreatedOverlay");
+  overlay.classList.remove("contactCreatedOverlayHidden");
+
+  if (window.innerWidth >= 1290) {
+    overlay.classList.add("slideInRight");
+  } else {
+    overlay.classList.add("slideInUp");
+  }
+
+  await animateOverlay(overlay);
+}
+
+async function animateOverlay(overlay) {
+  void overlay.offsetWidth;
+  overlay.classList.add("in");
+
+  setTimeout(async () => {
+    overlay.classList.remove("in");
+    overlay.classList.add("out");
+
+    setTimeout(() => {
+      overlay.classList.remove("slideInRight", "slideInUp", "out");
+    }, 800);
+
+    await fetchAndShowContacts();
+    setBg();
+  }, 3000);
+}
+
+async function fetchAndShowContacts() {
+  try {
+    await fetchContacts();
+    showContacts();
+  } catch (error) {
+    console.error("Error fetching contacts:", error);
+  }
+}
+
+function clearInputs(...inputs) {
+  inputs.forEach(input => (input.value = ""));
 }
 
 async function checkEmailExists(email) {
