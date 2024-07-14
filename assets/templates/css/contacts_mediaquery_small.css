@@ -1,22 +1,9 @@
 /*Media query*/
 
 @media (max-width: 320px) {
-    /* .contactsSidebar {
-      width: 320px;
-    } */
-  
-    /* .contactList {
-      width: 380px;
-    } */
-  
     .contactEmail {
       font-size: 14px;
     }
-  
-    /* .addContactIcon {
-      left: 230px;
-      position: sticky;
-    } */
   
     .addNewContactOverlay {
       width: 280px;
@@ -76,13 +63,6 @@
       right: calc((100vw - 280px) / 2);
       left: 220px;
     }
-  
-    /* .popupOverlay { */
-      /* left: calc((100vw - 14px) / 2); */
-      /* right: 6px;
-      bottom: 84px;
-      z-index: 3; */
-    /* } */
   
     .editContactOverlay {
       width: 280px;

@@ -306,10 +306,6 @@
     display: flex;
     align-items: center;
   }
-
-  /*.contactCreatedOverlay {
-    animation-name: slideInUp;
-  }*/
 }
 
 /*Media query*/
@@ -325,9 +321,6 @@
     background-color: #2a3647;
     width: 56px;
     height: 56px;
-    /* top: 758px;
-    left: 356px;
-    padding: 12px 0px 0px 0px; */
     gap: 10px;
     border-radius: 46px;
     display: flex;

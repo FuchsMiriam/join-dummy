@@ -155,8 +155,6 @@
   border-radius: 56px;
   display: flex;
   position: absolute;
-  /* bottom: 25vh;
-  right: 8vw; */
   align-items: center;
   justify-content: center;
   z-index: 2;
@@ -166,13 +164,9 @@
 
 .dotIcon {
   cursor: pointer;
-  /* top: 758px; */
   border-radius: 56px;
   display: flex;
-  /* left: calc((100vw - 56px) / 2); */
   position: absolute;
-  /* bottom: 25vh;
-  right: 8vw; */
 }
 
 /* .dotIconContainer:hover .dotIcon{
