@@ -8,7 +8,7 @@ function displayContactsTemplate(i, contact) {
                 <span class="initials-contacts" id="initials-bg${i}">${initials}</span>
                 <span class="contact-span" id="contact-span-name${i}">${contact} </span>
             </div>
-                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}), checkContactsInList(${i}, ${event}, ${1})">
+                <input type="checkbox" id="checkbox-contacts${i}" class="contacts-checkbox" onclick="addInitials(${i}), checkContactsInList(${i}, event, 1)">
             </div>
     </div>
     `;
