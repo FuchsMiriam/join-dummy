@@ -122,7 +122,6 @@ function initializeHtmlAndLetters() {
   return { html, addedLetters };
 }
 
-// Process the first letter of the contact's name and add it to HTML if not already added
 function processFirstLetter(contact, addedLetters, html) {
   const firstLetter = contact.name.charAt(0).toUpperCase();
   if (!addedLetters.has(firstLetter)) {
