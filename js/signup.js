@@ -139,30 +139,46 @@ async function handleEmailCheckAndUserCreation(name, email, password) {
   }
 }
 
+// Function to validate the signup form
 function validateSignupForm(name, email, password, confirmPassword) {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
-
-  if (!name || !email || !password || !confirmPassword) {
+  if (!areFieldsFilled(name, email, password, confirmPassword)) {
     alert("Please fill in all fields.");
     return false;
   }
 
-  if (!emailPattern.test(email)) {
+  if (!isEmailValid(email)) {
     alert("Please enter a valid email address.");
     return false;
   }
 
-  if (password !== confirmPassword) {
+  if (!arePasswordsMatching(password, confirmPassword)) {
     showError();
     return false;
   }
 
   return true;
+}
 
-  function showError() {
-    document.getElementById("errorMessage").style.display = "block";
-    document.getElementById("signupConfirmPassword").classList.add("error");
-  }
+// Function to check if all fields are filled
+function areFieldsFilled(name, email, password, confirmPassword) {
+  return name && email && password && confirmPassword;
+}
+
+// Function to validate the email pattern
+function isEmailValid(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
+  return emailPattern.test(email);
+}
+
+// Function to check if passwords match
+function arePasswordsMatching(password, confirmPassword) {
+  return password === confirmPassword;
+}
+
+// Function to show error message for password mismatch
+function showError() {
+  document.getElementById("errorMessage").style.display = "block";
+  document.getElementById("signupConfirmPassword").classList.add("error");
 }
 
 function resetErrorMessages() {
