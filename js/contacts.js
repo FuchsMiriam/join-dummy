@@ -401,6 +401,8 @@ async function saveContact() {
   try {
     await putData(`${contactId}`, editedContact);
     await fetchAndShowContacts();
+    showContactDetails(currentContact);
+    setBg();
   } catch (error) {
     console.error("Error:", error);
   }
@@ -439,7 +441,6 @@ async function fetchAndShowContacts() {
 }
 
 //Create contact
-
 async function createContact() {
   let name = document.getElementById("createNameInput");
   let email = document.getElementById("createEmailInput");
