@@ -266,7 +266,6 @@
   }
 
   .popupOverlay {
-    /* left: calc((100vw - 28px) / 2); */
     right: 6px;
   }
 

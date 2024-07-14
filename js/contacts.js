@@ -407,27 +407,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Delete contact
 
-/*async function deleteContact(id) {
-  try {
-    await deleteData(id);
-    const index = contacts.findIndex((contact) => contact.id === id);
-    if (index !== -1) {
-      contacts.splice(index, 1);
-      showContacts();
-      document.getElementById("contactsFullscreen").innerHTML = "";
-
-      document.querySelector(".editContactOverlay").classList.add("hidden");
-      document.querySelector(".editContactOverlay").classList.remove("visible");
-
-      setBg();
-    } else {
-      console.error("Kontakt nicht gefunden:", id);
-    }
-  } catch (error) {
-    console.error("Fehler beim Löschen des Kontakts aus Firebase:", error);
-  }
-}*/
-
 // Main function to delete a contact by ID
 async function deleteContact(id) {
   try {
@@ -496,46 +475,6 @@ function editContact(contact) {
 }
 
 //Save edited contact
-
-/*async function saveContact() {
-  const editedContact = {
-    name: document.getElementById("editNameInput").value,
-    email: document.getElementById("editEmailInput").value,
-    phone: document.getElementById("editPhoneInput").value,
-  };
-
-  if (currentContact === null) {
-    console.error("Keine gültige Kontakt-ID gefunden");
-    return;
-  }
-
-  const contactId = contacts[currentContact]?.id;
-
-  if (!contactId) {
-    console.error("Keine gültige Kontakt-ID gefunden");
-    return;
-  }
-
-  try {
-    await putData(`${contactId}`, editedContact);
-  } catch (error) {
-    console.error("Error updating contact in Firebase:", error);
-    return;
-  }
-
-  try {
-    await fetchContacts();
-  } catch (error) {
-    console.error("Error fetching contacts:", error);
-  }
-
-  showContacts();
-
-  showContactDetails(currentContact);
-
-  document.querySelector(".editContactOverlay").classList.add("hidden");
-  document.querySelector(".editContactOverlay").classList.remove("visible");
-}*/
 
 // Function to save edited contact details
 async function saveContact() {
@@ -658,6 +597,8 @@ async function createContact() {
   try {
     await checkAndSaveContact(name.value, email.value, phone.value);
     clearInputs(name, email, phone);
+    hideContactOverlay();
+    await fetchAndShowContacts();
   } catch (error) {
     if (error.message === "Duplicate email") {
       alert("This email address is already registered.");
@@ -677,7 +618,7 @@ async function checkAndSaveContact(name, email, phone) {
   try {
     await saveContactToFirebase(newID, contact);
     await showContactCreationOverlay();
-    await fetchAndShowContacts();
+    //await fetchAndShowContacts();
   } catch (error) {
     console.error("Error saving contact:", error);
     throw new Error("Error saving contact");
@@ -747,4 +688,9 @@ async function generateCustomID() {
 
   const nextID = contacts.length + 1;
   return `contact${nextID}`;
+}
+
+function hideContactOverlay() {
+  const overlay = document.getElementById("contactOverlay");
+  overlay.classList.add("hidden");
 }
