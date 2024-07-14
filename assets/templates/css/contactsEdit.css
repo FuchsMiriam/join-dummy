@@ -170,7 +170,7 @@
 }
 
 .dotIconContainer:hover{
-  background-image: url(../../img/dotIconBlue.svg);
+  background-image: url(../../img/dotIconBlue.svg) !important;
   border: none;
   box-shadow: 0px 4px 4px 0px #00000040;
   background-size: cover;
