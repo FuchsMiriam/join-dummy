@@ -66,7 +66,7 @@ document
     document.querySelector(".editContactOverlay").classList.add("hidden");
   });
 
-  //Popup overlay Event listener
+//Popup overlay Event listener
 
 function togglePopup(event) {
   const popupOverlay = document.getElementById("popupOverlay");
@@ -74,14 +74,14 @@ function togglePopup(event) {
   event.stopPropagation(); 
 }
 
-// Funktion zum Bearbeiten eines Kontakts
+// Function to edit a contact from the popup
 function editContactFromPopup() {
   const contact = contacts[currentContact];
   editContact(contact);
   closePopup();
 }
 
-// Funktion zum Löschen eines Kontakts
+// Function to delete a contact from the popup
 async function deleteContactFromPopup() {
   try {
     const contactId = contacts[currentContact].id;
@@ -93,7 +93,7 @@ async function deleteContactFromPopup() {
   }
 }
 
-// Funktion zum Schließen des Popups
+// Function to close the popup
 function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
   popupOverlay.classList.add("hidden");

@@ -1,4 +1,4 @@
-/*Change image media query dot icon*/
+//Change image media query dot icon
 
 document.addEventListener("DOMContentLoaded", (event) => {
   const dotIcon = document.getElementById("dotIcon");
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 });
 
-/*Close small Add contact overlay*/
+//Close small Add contact overlay
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("closeAddOverlay").addEventListener("click", function () {
