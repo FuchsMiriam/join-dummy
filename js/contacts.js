@@ -24,7 +24,6 @@ async function initializePage() {
 }
 
 //Randomize colours
-
 async function assignColorsToContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
@@ -97,41 +96,11 @@ async function putData(path = "", data = {}) {
 }
 
 //Contact sidebar
-
 function getInitials(name) {
   const nameParts = name.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
   return initials;
 }
-
-/*function contactsSidebar(contacts) {
-  let html = "";
-  let addedLetters = new Set();
-
-  for (let i = 0; i < contacts.length; i++) {
-    const contact = contacts[i];
-    const firstLetter = contact.name.charAt(0).toUpperCase();
-    if (!addedLetters.has(firstLetter)) {
-      html += `
-        <div class="letter">${firstLetter}</div>
-        <div class="lineContactSidebar"></div>
-      `;
-      addedLetters.add(firstLetter);
-    }
-
-    html += `
-      <div class="contactListInner">
-          <div class="contactInitials">${getInitials(contact.name)}</div>
-          <div>
-              <div class="contactName">${contact.name}</div>
-              <div class="contactEmail">${contact.email}</div>
-          </div>
-      </div>
-    `;
-  }
-
-  return html;
-}*/
 
 // Main function to generate the contacts sidebar
 function contactsSidebar(contacts) {
@@ -187,27 +156,6 @@ function getInitials(name) {
 }
 
 // Functions to Initialize, Sort, Display, and Manage Click Events for a Contact List
-/*async function showContacts() {
-  const contactListDiv = document.getElementById("contactList");
-  contactListDiv.innerHTML = "";
-
-  if (contacts.length > 0) {
-    contacts.sort((a, b) => a.name.localeCompare(b.name));
-
-    const contactsHTML = contactsSidebar(contacts);
-    contactListDiv.innerHTML = contactsHTML;
-
-    const contactDivs = document.querySelectorAll(".contactListInner");
-    contactDivs.forEach((contactDiv, index) => {
-      contactDiv.addEventListener("click", () => {
-        showContactDetails(index);
-        currentContact = index;
-      });
-    });
-  } else {
-    contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
-  }
-}*/
 
 // Main function to display contacts
 async function showContacts() {
@@ -260,36 +208,6 @@ contacts.sort();
 
 //Layout changing screen width
 
-/*function adjustLayoutForScreenWidth() {
-  if (window.innerWidth <= 768) {
-    // Hide the contactsSidebar when showContactDetails is called
-    const contactsSidebar = document.querySelector(".contactsSidebar");
-    contactsSidebar.style.display = "none";
-
-    // Show the headlinesContainer above the contactsSidebar only when needed
-    const headlinesContainer = document.querySelector(".headlinesContainer");
-    headlinesContainer.style.display = "block";
-
-    // Show the arrow (contactsArrow) and ensure it returns to the Contacts page
-    const contactsArrow = document.querySelector(".contactsArrow");
-    contactsArrow.style.display = "block";
-    contactsArrow.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent the default link click
-      window.location.href = "../html/contacts.html"; // Go to the Contacts page
-    });
-  } else {
-    // For larger screen widths, reset to the normal layout
-    const contactsSidebar = document.querySelector(".contactsSidebar");
-    contactsSidebar.style.display = "block";
-
-    //const headlinesContainer = document.querySelector(".headlinesContainer");
-    // headlinesContainer.style.display = "block";
-
-    const contactsArrow = document.querySelector(".contactsArrow");
-    contactsArrow.style.display = "none";
-  }
-}*/
-
 // Adjusts layout based on the screen width
 function adjustLayoutForScreenWidth() {
   if (window.innerWidth <= 768) {
@@ -334,11 +252,9 @@ function resetLayoutForLargerScreens() {
 
 
 function updateContactDetailsUI(index) {
-  // Update the fullscreen class list
   document.getElementById("contactsFullscreen").classList.remove("out");
   document.getElementById("contactsFullscreen").classList.add("in");
 
-  // Update the contact list items
   let contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, i) => {
     if (i === index) {
@@ -449,7 +365,6 @@ function hideEditContactOverlay() {
 }
 
 //Display Initials Edit function
-
 function displayContactInitials(contact) {
   const contactInitialsEdit = document.getElementById("contactInitialsEdit");
   contactInitialsEdit.textContent = getInitials(contact.name);
@@ -457,7 +372,6 @@ function displayContactInitials(contact) {
 }
 
 //Edit contact
-
 function editContact(contact) {
   displayContactInitials(contact);
 
@@ -526,69 +440,6 @@ async function fetchAndShowContacts() {
 
 //Create contact
 
-/*async function createContact() {
-  let name = document.getElementById("createNameInput");
-  let email = document.getElementById("createEmailInput");
-  let phone = document.getElementById("createPhoneInput");
-
-  try {
-    const emailExists = await checkEmailExists(email.value);
-    if (emailExists) {
-      alert("This email address is already registered.");
-      return;
-    }
-
-    let newID = await generateCustomID();
-
-    let contact = {
-      name: name.value,
-      email: email.value,
-      phone: phone.value,
-    };
-
-    try {
-      await putData(newID, contact);
-      contacts.push({ id: newID, ...contact });
-
-      document.getElementById("contactOverlay").classList.add("hidden");
-
-      const overlay = document.querySelector(".contactCreatedOverlay");
-      overlay.classList.remove("contactCreatedOverlayHidden");
-
-      overlay.classList.remove("slideInRight", "slideInUp");
-
-      if (window.innerWidth >= 1290) {
-        overlay.classList.add("slideInRight");
-      } else {
-        overlay.classList.add("slideInUp");
-      }
-
-      void overlay.offsetWidth;
-      overlay.classList.add("in");
-
-      setTimeout(async () => {
-        overlay.classList.remove("in");
-        overlay.classList.add("out");
-
-        setTimeout(() => {
-          overlay.classList.remove("slideInRight", "slideInUp", "out");
-        }, 800);
-        await fetchContacts();
-        showContacts();
-        setBg();
-      }, 3000);
-    } catch (error) {
-      console.error("Error adding contact to Firebase:", error);
-    }
-
-    name.value = "";
-    email.value = "";
-    phone.value = "";
-  } catch (error) {
-    console.error("Error checking email:", error);
-  }
-}*/
-
 async function createContact() {
   let name = document.getElementById("createNameInput");
   let email = document.getElementById("createEmailInput");
@@ -618,7 +469,6 @@ async function checkAndSaveContact(name, email, phone) {
   try {
     await saveContactToFirebase(newID, contact);
     await showContactCreationOverlay();
-    //await fetchAndShowContacts();
   } catch (error) {
     console.error("Error saving contact:", error);
     throw new Error("Error saving contact");
