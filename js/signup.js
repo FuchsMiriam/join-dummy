@@ -41,38 +41,34 @@ function checkboxToggle() {
 //Functions for toggling password visibility - icons and text input
 
 document.addEventListener("DOMContentLoaded", () => {
-  const setupPasswordVisibilityToggle = (passwordInputId, lockIconId) => {
-    const passwordInput = document.getElementById(passwordInputId);
-    const lockIcon = document.getElementById(lockIconId);
-
-    passwordInput.addEventListener("input", () => {
-      if (passwordInput.value.length > 0) {
-        lockIcon.src = "../assets/img/visibility_off.png";
-      } else {
-        lockIcon.src = "../assets/img/lockIcon.png";
-      }
-    });
-
-    let passwordVisible = false;
-
-    lockIcon.addEventListener("click", () => {
-      passwordVisible = !passwordVisible;
-      if (passwordVisible) {
-        lockIcon.src = "../assets/img/visibility_on.png";
-        passwordInput.type = "text";
-      } else {
-        lockIcon.src = "../assets/img/visibility_off.png";
-        passwordInput.type = "password";
-      }
-    });
-  };
-
   setupPasswordVisibilityToggle("signupPasswordInput", "signupLockIcon");
-  setupPasswordVisibilityToggle(
-    "signupConfirmPassword",
-    "signupValidationLockIcon"
-  );
+  setupPasswordVisibilityToggle("signupConfirmPassword", "signupValidationLockIcon");
 });
+
+// Function to set up password visibility toggle
+function setupPasswordVisibilityToggle(passwordInputId, lockIconId) {
+  const passwordInput = document.getElementById(passwordInputId);
+  const lockIcon = document.getElementById(lockIconId);
+  
+  passwordInput.addEventListener("input", () => updateLockIcon(passwordInput, lockIcon));
+  lockIcon.addEventListener("click", () => togglePasswordVisibility(passwordInput, lockIcon));
+}
+
+// Function to update lock icon based on input
+function updateLockIcon(passwordInput, lockIcon) {
+  lockIcon.src = passwordInput.value.length > 0
+    ? "../assets/img/visibility_off.png"
+    : "../assets/img/lockIcon.png";
+}
+
+// Function to toggle password visibility
+function togglePasswordVisibility(passwordInput, lockIcon) {
+  const passwordVisible = passwordInput.type === "password";
+  lockIcon.src = passwordVisible
+    ? "../assets/img/visibility_on.png"
+    : "../assets/img/visibility_off.png";
+  passwordInput.type = passwordVisible ? "text" : "password";
+}
 
 //Database for signup
 
