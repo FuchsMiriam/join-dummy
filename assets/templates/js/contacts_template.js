@@ -74,6 +74,13 @@ function togglePopup(event) {
   event.stopPropagation(); 
 }
 
+document.addEventListener("click", function(event) {
+  const popupOverlay = document.getElementById("popupOverlay");
+  if (!popupOverlay.contains(event.target)) {
+    popupOverlay.classList.add("hidden");
+  }
+});
+
 // Function to edit a contact from the popup
 function editContactFromPopup() {
   const contact = contacts[currentContact];

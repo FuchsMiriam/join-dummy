@@ -1,5 +1,25 @@
 //Change image media query dot icon
 
+/*document.addEventListener("DOMContentLoaded", (event) => {
+  const dotIconContainer = document.getElementById("dotIconContainer");
+
+  if (dotIconContainer) {
+    dotIconContainer.addEventListener("mouseover", () => {
+      const dotIcon = dotIconContainer.querySelector(".dotIcon");
+      if (dotIcon) {
+        dotIcon.src = "../../img/dotIconBlue.svg";
+      }
+    });
+
+    dotIconContainer.addEventListener("mouseout", () => {
+      const dotIcon = dotIconContainer.querySelector(".dotIcon");
+      if (dotIcon) {
+        dotIcon.src = "../../img/dotIcon.svg";
+      }
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", (event) => {
   const dotIcon = document.getElementById("dotIcon");
 
@@ -10,7 +30,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   dotIcon.addEventListener("mouseout", () => {
     dotIcon.src = "../assets/img/dotIcon.svg";
   });
-});
+});*/
 
 //Close small Add contact overlay
 
