@@ -163,6 +163,13 @@
   background-image: url(../../img/dotIcon.svg); 
 }
 
+@media(max-width: 700px)
+{
+  .dotIconContainer {
+    background-image: url(../../img/dotIconBlue.svg);
+  }
+}
+
 .dotIcon {
   cursor: pointer;
   border-radius: 56px;
