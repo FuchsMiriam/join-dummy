@@ -121,14 +121,14 @@ async function editTask(i) {
   save();
 }
 
-function editSubtask(i) {
-  let button = document.getElementById("add-button-subtask");
-  let newValue = document.getElementById(`input-subtask`);
+// function editSubtask(i) {
+//   let button = document.getElementById("add-button-subtask");
+//   let newValue = document.getElementById(`input-subtask`);
 
-  button.classList.add("d-none");
-  newValue.focus();
+//   button.classList.add("d-none");
+//   newValue.focus();
 
-  task.splice(i, 1);
-  task.push(i, newValue);
-  save();
-}
+//   task.splice(i, 1);
+//   task.push(i, newValue);
+//   save();
+// }
