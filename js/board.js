@@ -97,7 +97,6 @@ function addTaskInitials(idTask){
 
 function closeDetailCard(idTask) {
   document.body.classList.remove("overflow-hidden");
-  document.body.classList.remove("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("leftPart");
   document.getElementById("idDetailCard").classList.add("leftPartOut");
   document.getElementById("idDetailCard").classList.add("d-none");

@@ -47,10 +47,11 @@
         /* white-space: nowrap; */
         padding-bottom: 20px;
         height: auto;
-        overflow-y: visible;
+        overflow-y: hidden;
         overflow-x: auto;
         flex-direction: row;
         min-height: unset;
+        margin-bottom: 8px;
     }
 
     .headerFrame{
