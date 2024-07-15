@@ -160,14 +160,7 @@
   z-index: 2;
   bottom: 90px;
   right: 10px;
-  background-image: url(../../img/dotIcon.svg); 
-}
-
-@media(max-width: 700px)
-{
-  .dotIconContainer {
-    background-image: url(../../img/dotIconBlue.svg);
-  }
+  /*background-image: url(../../img/dotIcon.svg);*/
 }
 
 .dotIcon {
