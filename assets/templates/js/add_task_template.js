@@ -16,7 +16,7 @@ function displayContactsTemplate(i, contact) {
 
 function showSubtaskTemplate(i, tasks) {
   return `
-        <li class="subtask-span" id="subtask${i}" onclick="doubleclickSubtaskToEdit(${i})" onmouseover="hoverValueFromSubtask(${i})">
+        <li class="subtask-span" id="subtask${i}" onclick="doubleclickSubtaskToEdit(${i}, event, 1)" onmouseover="hoverValueFromSubtask(${i})">
             ${tasks}
             <div id='images-subtask${i}' class="d-none subtasks-edit-delete-image">
             <img src="../assets/img/edit.svg" class="subtask-button" onclick="editSubtask(${i})" class="d-none" id="images-subtask-value"></img>

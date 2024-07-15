@@ -95,7 +95,10 @@ function getPrio() {
   }
 }
 
+
+let openEditChangeSubtasks = 0;
 function hoverValueFromSubtask(i) {
+  openEditChangeSubtasks = 1;
   let subtask = document.getElementById(`subtask${i}`);
   let images = document.getElementById(`images-subtask${i}`);
 
@@ -213,10 +216,13 @@ function toggleChecked(checkbox) {
   checkbox.checked = !checkbox.checked;
 }
 
-function doubleclickSubtaskToEdit(i) {
+function doubleclickSubtaskToEdit(i, event, stopPro) {
   let sub = document.getElementById(`subtask${i}`);
 
   sub.addEventListener("dblclick", function () {
     editSubtask(i);
   });
+
+  // if (stopPro) 
+  //   event.stopPropagation();
 }

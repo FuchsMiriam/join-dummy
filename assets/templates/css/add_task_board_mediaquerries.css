@@ -308,6 +308,10 @@
         width: calc(624px - 70px);
     }
 
+    #show-subtask{
+        width: calc(624px - 70px);
+    }
+
     #display-categorie {
         width: calc(624px - 70px);
     }
@@ -348,6 +352,10 @@
     }
 
     #input-assigny{
+        width: calc(624px - 120px);
+    }
+
+    #show-subtask{
         width: calc(624px - 120px);
     }
 
@@ -411,6 +419,10 @@
         width: calc(624px - 310px);
     }
 
+    #show-subtask{
+        width: calc(624px - 310px);
+    }
+
     #input-category{
         width: calc(624px - 310px);
     }
@@ -460,6 +472,10 @@
     }
 
     #input-assigny{
+        width: calc(624px - 390px);
+    }
+
+    #show-subtask{
         width: calc(624px - 390px);
     }
 

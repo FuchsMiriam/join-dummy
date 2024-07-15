@@ -138,11 +138,12 @@ window.addEventListener("click", function(event) {
   }
   let path = window.location.pathname;
   let page = path.split("/").pop();
-  if(page == "board.html")
+  if(page == "board.html" && !openEditChangeSubtasks)
   {
     closeEdit(event);
     closeChangeColumn();
   }
+  openEditChangeSubtasks = 0;
 });
 
 function closeChangeColumn(){
@@ -156,7 +157,7 @@ function closeEdit(event){
   if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))
     {
       if(event.target == document.getElementById('idDetailCard'))
-        document.getElementById("idDetailCard").classList.add("d-none");
+        closeDetailCard();
     }
   
     else if(event.target == document.getElementById('idEditCard'))
