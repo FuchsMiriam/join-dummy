@@ -40,6 +40,7 @@
 
 #content-addTask {
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .display-categorie-board{

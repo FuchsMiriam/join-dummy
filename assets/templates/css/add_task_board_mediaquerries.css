@@ -2,13 +2,20 @@
 {
     .container-board-addTask {
         right: auto;
+        overflow-y: auto;
+        top: unset;
+        scrollbar-width: none;
+     }
+
+     .fiel-required{
+        margin-top: 24px;
      }
 }
 
 @media(max-height: 900px)
 {
     .container-board-addTask {
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 100px);
     }
 }
 
@@ -17,6 +24,7 @@
         right: auto;
         top: unset;
         scrollbar-width: none;
+        overflow-y: auto;
      }
 
      .containerDetailCard {
@@ -29,9 +37,8 @@
      }
 
      .fiel-required {
-        margin-top: unset;
-        margin-bottom: 24px;
-        padding-bottom: 8px;
+        margin-top: 24px;
+        margin-bottom: 8px;
      }
  }
 
@@ -326,7 +333,7 @@
     }
 
     .container-board-addTask {
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 100px);
     }
 
     #content-addTask{
