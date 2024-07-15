@@ -107,6 +107,10 @@ function hoverValueFromSubtask(i) {
     subtask.addEventListener("mouseout", function () {
       mouseOut(subtask, images);
     });
+
+    subtask.addEventListener('touchstart', function() {
+      mouseOver(subtask, images);
+    });
   }
 }
 
