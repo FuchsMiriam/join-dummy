@@ -160,7 +160,8 @@
   z-index: 2;
   bottom: 90px;
   right: 10px;
-  /*background-image: url(../../img/dotIcon.svg);*/
+  background-size: cover;
+  background-position: center;
 }
 
 .dotIcon {
