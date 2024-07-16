@@ -51,10 +51,10 @@ p {
 }
 
 .headerImg {
-  width: 104px;
+  /* width: 104px; */
   height: 56px;
   display: flex;
-  gap: 16px;
+  /* gap: 16px; */
   justify-content: center;
   align-items: center;
 }
