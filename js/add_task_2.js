@@ -226,7 +226,4 @@ function doubleclickSubtaskToEdit(i, event, stopPro) {
   sub.addEventListener("dblclick", function () {
     editSubtask(i);
   });
-
-  // if (stopPro) 
-  //   event.stopPropagation();
 }
