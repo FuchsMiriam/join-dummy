@@ -9,6 +9,19 @@ html {
     background-color: #F6F7F8;
 }
 
+textarea{
+    font-family: "inter", "sans-serif";
+}
+
+input{
+    font-family: "inter", "sans-serif";
+}
+
+li{
+    font-family: "inter", "sans-serif";
+    font-size: 20px;
+}
+
 .m-left-328 {
     margin-left: 328px;
 }
