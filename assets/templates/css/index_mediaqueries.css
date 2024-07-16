@@ -305,6 +305,7 @@
   .loginButtons {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
 
   .mainpageLoginButton {
@@ -343,6 +344,86 @@
     gap: 16px;
     margin-top: 48px;
   }
+}
+
+@media (max-height: 926px) and (max-width: 1390px) {
+  .animateMobile {
+    width: 64px;
+    height: 78.03px;
+    top: 37px;
+    left: 38px;
+    gap: 10px;
+  }
+
+  @-webkit-keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  @keyframes slide-tl {
+    0% {
+      top: 402px;
+      left: 164px;
+      width: 100.03px;
+      height: 121.97px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+    100% {
+      width: 64px;
+      height: 78.03px;
+      top: 37px;
+      left: 38px;
+      gap: 10px;
+      -webkit-transform: translateY(0) translateX(0);
+      transform: translateY(0) translateX(0);
+    }
+  }
+
+  .mainpageSignUpContainer {
+    top: 37px;
+    right: 38px;
+  }
+}
+
+@media (max-height: 926px) {
+  .mainpageSignUpContainer {
+    top: 80px;
+    right: 77px;
+    margin-top: 0;
+    left: auto;
+  }
+}
+
+@media (max-height: 926px) and (max-width: 670px) {
+  .mainpageSignUpContainer {
+    width: 292px;
+    height: 49px;
+    left: calc((100vw - 292px) / 2);
+    top: calc(24px / 2);
+  }
+}
+
+@media (max-height: 926px) and (max-width: 490px) {
+  .mainpageSignUpContainer{
+    top: calc(100vh - 15vh - 49px);
+  }
+  
 }
 
 @media (max-width: 419px) {
