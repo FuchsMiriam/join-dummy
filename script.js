@@ -182,9 +182,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
 });
 
 function loadDataFromLocalStorage() {
-  var email = localStorage.getItem("username");
-  var password = localStorage.getItem("pass");
-  var rememberMe = localStorage.getItem("rememberMe");
+  let email = localStorage.getItem("username");
+  let password = localStorage.getItem("pass");
+  let rememberMe = localStorage.getItem("rememberMe");
 
   if (rememberMe === "true" && email && password) {
     document.getElementById("loginEmailInput").value = email;
