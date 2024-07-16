@@ -42,23 +42,31 @@ function checkboxToggle() {
 
 document.addEventListener("DOMContentLoaded", () => {
   setupPasswordVisibilityToggle("signupPasswordInput", "signupLockIcon");
-  setupPasswordVisibilityToggle("signupConfirmPassword", "signupValidationLockIcon");
+  setupPasswordVisibilityToggle(
+    "signupConfirmPassword",
+    "signupValidationLockIcon"
+  );
 });
 
 // Function to set up password visibility toggle
 function setupPasswordVisibilityToggle(passwordInputId, lockIconId) {
   const passwordInput = document.getElementById(passwordInputId);
   const lockIcon = document.getElementById(lockIconId);
-  
-  passwordInput.addEventListener("input", () => updateLockIcon(passwordInput, lockIcon));
-  lockIcon.addEventListener("click", () => togglePasswordVisibility(passwordInput, lockIcon));
+
+  passwordInput.addEventListener("input", () =>
+    updateLockIcon(passwordInput, lockIcon)
+  );
+  lockIcon.addEventListener("click", () =>
+    togglePasswordVisibility(passwordInput, lockIcon)
+  );
 }
 
 // Function to update lock icon based on input
 function updateLockIcon(passwordInput, lockIcon) {
-  lockIcon.src = passwordInput.value.length > 0
-    ? "../assets/img/visibility_off.png"
-    : "../assets/img/lockIcon.png";
+  lockIcon.src =
+    passwordInput.value.length > 0
+      ? "../assets/img/visibility_off.png"
+      : "../assets/img/lockIcon.png";
 }
 
 // Function to toggle password visibility
@@ -105,7 +113,9 @@ async function signup() {
   const name = document.getElementById("signupNameInput").value;
   const email = document.getElementById("signupEmailInput").value;
   const password = document.getElementById("signupPasswordInput").value;
-  const confirmPassword = document.getElementById("signupConfirmPassword").value;
+  const confirmPassword = document.getElementById(
+    "signupConfirmPassword"
+  ).value;
 
   if (!validateSignupForm(name, email, password, confirmPassword)) return;
 
@@ -118,10 +128,20 @@ async function signup() {
   }
 }
 
+// Function to display custom error message
+function displayCustomErrorMessage(message) {
+  const customErrorMessage = document.getElementById("customErrorMessage");
+  customErrorMessage.textContent = message;
+  customErrorMessage.style.display = "block";
+  setTimeout(() => {
+    customErrorMessage.style.display = "none";
+  }, 3000);
+}
+
 async function handleEmailCheckAndUserCreation(name, email, password) {
   const emailExists = await checkEmailExists(email);
   if (emailExists) {
-    alert("Email address is already registered.");
+    displayCustomErrorMessage("Email address is already registered.");
     return;
   }
 
@@ -138,12 +158,12 @@ async function handleEmailCheckAndUserCreation(name, email, password) {
 // Function to validate the signup form
 function validateSignupForm(name, email, password, confirmPassword) {
   if (!areFieldsFilled(name, email, password, confirmPassword)) {
-    alert("Please fill in all fields.");
+    displayCustomErrorMessage("Please fill in all fields.");
     return false;
   }
 
   if (!isEmailValid(email)) {
-    alert("Please enter a valid email address.");
+    displayCustomErrorMessage("Please enter a valid email address.");
     return false;
   }
 
@@ -162,7 +182,8 @@ function areFieldsFilled(name, email, password, confirmPassword) {
 
 // Function to validate the email pattern
 function isEmailValid(email) {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
+  const emailPattern =
+    /^[^\s@]+@[^\s@]+\.(com|de|org|net|edu|gov|mil|info|io|co)$/;
   return emailPattern.test(email);
 }
 
@@ -187,7 +208,7 @@ function createNewUser(name, email, password) {
     name: name,
     email: email,
     password: password,
-    login: false
+    login: false,
   };
 }
 
@@ -214,7 +235,7 @@ async function checkEmailExists(email) {
 
     if (data) {
       const users = Object.values(data);
-      return users.some(user => user.email === email);
+      return users.some((user) => user.email === email);
     }
     return false;
   } catch (error) {
@@ -222,4 +243,3 @@ async function checkEmailExists(email) {
     throw error;
   }
 }
-
