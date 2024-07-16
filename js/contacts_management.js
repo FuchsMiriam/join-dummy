@@ -169,9 +169,9 @@ async function createContact() {
 function displayErrorContacts(element, message) {
   element.textContent = message;
   element.style.display = "block";
-  //setTimeout(function () {
-    //element.style.display = "none";
-  //}, 3000);
+  setTimeout(function () {
+    element.style.display = "none";
+  }, 3000);
 }
 
 async function checkAndSaveContact(name, email, phone) {
