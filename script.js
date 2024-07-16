@@ -1,3 +1,10 @@
+const databaseURL =
+  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
+
+/**
+ * Loads initial functionality upon page load.
+ * Calls `onloadDatabase()`, `loadDataFromLocalStorage()`, `showAnimation()`, and `getLoginName("")`.
+ */
 function onloadFunc() {
   onloadDatabase();
   loadDataFromLocalStorage();
@@ -5,59 +12,74 @@ function onloadFunc() {
   getLoginName("");
 }
 
-//Database for Login
-
-const databaseURL =
-  "https://users-f61ab-default-rtdb.europe-west1.firebasedatabase.app/";
-
+/**
+ * 
+ * Loads data from the specified path in the Firebase Realtime Database.
+ * @param {string} [path=""] - The path to load data from.
+ * @returns {Promise<object>} A promise that resolves to the JSON response from the database.
+ */
 async function onloadDatabase(path = "") {
   let response = await fetch(databaseURL + path + ".json");
   let responseToJson = await response.json();
   return responseToJson;
 }
 
- //Animation beginning
+/**
+ * Initializes animation when the DOM content is fully loaded.
+ */
+document.addEventListener("DOMContentLoaded", function() {
+  const animatedLogo = document.getElementById("animatedLogo");
+  const contentMainpage = document.getElementById("contentMainpage");
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const animatedLogo = document.getElementById("animatedLogo");
-    const contentMainpage = document.getElementById("contentMainpage");
-  
-    animatedLogo.addEventListener("animationend", function () {
-      contentMainpage.classList.add("visibleMainpage");
-      contentMainpage.classList.remove("hiddenMainpage");
-    });
+  animatedLogo.addEventListener("animationend", function () {
+    contentMainpage.classList.add("visibleMainpage");
+    contentMainpage.classList.remove("hiddenMainpage");
   });
-  
-// Function for redirects
+});
 
+/**
+ * Redirects the user to the sign-up page.
+ */
 function redirectToSignUpPage() {
   window.location.href = "./html/signup.html";
 }
 
+/**
+ * Redirects the user to the privacy policy page.
+ */
 function redirectToPrivacyPage() {
   window.location.href = "./html/privacy_policy.html";
 }
 
+/**
+ * Redirects the user to the legal notice page.
+ */
 function redirectToLegalPage() {
   window.location.href = "./html/legal_notice.html";
 }
 
+/**
+ * Redirects the user to the board page.
+ */
 function redirectToBoard() {
   window.location.href = "./html/board.html";
 }
 
-function redirectToSummary(){
-  let test = 0;
+/**
+ * Redirects the user to the summary page based on the window width.
+ * Calls `getLoginName(null)` before redirection.
+ */
+function redirectToSummary() {
   getLoginName(null);
-  if(window.innerWidth > 1200)
+  if (window.innerWidth > 1200)
     window.location.href = "./html/summary.html";
-  else{
+  else
     window.location.href = "./html/greetingMobil.html";
-  }
 }
 
-//Reset form
-
+/**
+ * Resets the login form if 'rememberMe' is not checked.
+ */
 function resetForm() {
   if (!document.getElementById("rememberMe").checked) {
     document.getElementById("loginEmailInput").value = "";
@@ -66,10 +88,14 @@ function resetForm() {
   }
 }
 
+/**
+ * Resets the login form when the page is shown.
+ */
 window.addEventListener("pageshow", resetForm);
 
-//Functions for toggling display type - icons and text input
-
+/**
+ * Initializes form elements and event listeners for toggling password visibility.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   resetForm();
   const passwordInput = document.getElementById("loginPasswordInput");
@@ -107,6 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
   updateLockIcon(passwordVisible);
 });
 
+/**
+ * Initializes login button functionality.
+ */
 document.addEventListener("DOMContentLoaded", () => {
   const loginButton = document.querySelector(".mainpageLoginButton");
   loginButton.addEventListener("click", async () => {
@@ -120,8 +149,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//Function for login
-
+/**
+ * 
+ * Attempts to log in the user based on entered credentials.
+ * @returns {boolean} True if login is successful, otherwise false.
+ */
 async function loginUser() {
   let email = getEmailInputValue();
   let password = getPasswordInputValue();
@@ -138,35 +170,70 @@ async function loginUser() {
   }
 }
 
+/**
+ * 
+ * Retrieves the value of the email input field.
+ * @returns {string} The value of the email input.
+ */
 function getEmailInputValue() {
   return document.getElementById("loginEmailInput").value;
 }
 
+/**
+ * 
+ * Retrieves the value of the password input field.
+ * @returns {string} The value of the password input.
+ */
 function getPasswordInputValue() {
   return document.getElementById("loginPasswordInput").value;
 }
 
+/**
+ * 
+ * Fetches user data from the 'users' database table.
+ * @returns {Promise<object>} A promise that resolves to the user data object.
+ */
 async function fetchUserData() {
   return await onloadDatabase("users");
 }
 
+/**
+ * 
+ * Finds a user in the provided user data array based on email and password.
+ * @param {object} usersData - The user data object to search in.
+ * @param {string} email - The email of the user to find.
+ * @param {string} password - The password of the user to find.
+ * @returns {object | undefined} The user object if found, otherwise undefined.
+ */
 function findUser(usersData, email, password) {
   return Object.values(usersData).find(
     (u) => u.email === email && u.password === password
   );
 }
 
+/**
+ * 
+ * Handles actions upon successful user login.
+ * Calls `getLoginName(user.name)` and redirects to the summary page.
+ * @param {object} user - The user object containing user details.
+ */
 function handleSuccessfulLogin(user) {
   getLoginName(user.name);
   window.location.href = "./html/summary.html";
 }
 
+/**
+ * 
+ * Handles errors that occur during login.
+ * @param {Error} error - The error object representing the login error.
+ */
 function handleLoginError(error) {
-  console.error("Fehler beim Abrufen der Benutzerdaten:", error);
+  console.error("Error fetching user data:", error);
 }
 
-//Remember me function
-
+/**
+ * Saves login credentials to local storage if 'rememberMe' is checked.
+ */
 document.querySelector("form").addEventListener("submit", function (event) {
   if (document.getElementById("rememberMe").checked) {
     localStorage.setItem(
@@ -181,6 +248,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
 });
 
+/**
+ * Loads login credentials from local storage and populates the login form if 'rememberMe' is enabled.
+ */
 function loadDataFromLocalStorage() {
   let email = localStorage.getItem("username");
   let password = localStorage.getItem("pass");
@@ -193,6 +263,9 @@ function loadDataFromLocalStorage() {
   }
 }
 
+/**
+ * Saves 'rememberMe' state to local storage when the checkbox is clicked.
+ */
 document.getElementById("rememberMe").addEventListener("click", function() {
   const rememberMe = this.checked;
 
@@ -206,8 +279,9 @@ document.getElementById("rememberMe").addEventListener("click", function() {
   }
 });
 
-//Animation media query
-
+/**
+ * Shows animation based on media query.
+ */
 function showAnimation() {
   const bodyAnimation = document.getElementById("contentMainpage");
   const img = document.getElementById("animatedLogo");
@@ -223,6 +297,12 @@ function showAnimation() {
   addAnimationEndListener(img);
 }
 
+/**
+ * 
+ * Handles animation for small screen sizes.
+ * @param {HTMLElement} bodyAnimation - The main content element.
+ * @param {HTMLElement} img - The animated logo element.
+ */
 function handleSmallScreenAnimation(bodyAnimation, img) {
   setTimeout(() => {
     bodyAnimation.style.display = "none";
@@ -238,6 +318,11 @@ function handleSmallScreenAnimation(bodyAnimation, img) {
   }, 500);
 }
 
+/**
+ * 
+ * Handles animation for large screen sizes.
+ * @param {HTMLElement} bodyAnimation - The main content element.
+ */
 function handleLargeScreenAnimation(bodyAnimation) {
   setTimeout(() => {
     bodyAnimation.style.display = "none";
@@ -247,6 +332,11 @@ function handleLargeScreenAnimation(bodyAnimation) {
   }, 500);
 }
 
+/**
+ * 
+ * Adds animation end listener to the animated logo element.
+ * @param {HTMLElement} img - The animated logo element.
+ */
 function addAnimationEndListener(img) {
   img.addEventListener("animationend", () => {
     const contentMainpage = document.getElementById("contentMainpage");
@@ -255,6 +345,11 @@ function addAnimationEndListener(img) {
   });
 }
 
+/**
+ * 
+ * Returns the login name.
+ * @returns {string} The login name.
+ */
 function defineLoginName() {
-  return loginName;
+  return loginName; // Assuming loginName is defined elsewhere in your code.
 }
