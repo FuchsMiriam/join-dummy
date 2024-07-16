@@ -1,10 +1,12 @@
-const BASE_URL =
-  "https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL ="https://join-78ba4-default-rtdb.europe-west1.firebasedatabase.app/";
 let currentTask = 0;
 let openTask = 0;
 let useEditFunction = 0;
 
 let result = false;
+/**
+Die Funktion initialisiert die board.html. 
+*/ 
 function boardInit() {
   initHTML();
   loadTasksBoard().then((result) => {
@@ -14,6 +16,9 @@ function boardInit() {
   fetchContacts();
 }
 
+/**
+In dieser Funktion werden die Tasks aus der Firebase geladen
+*/
 async function loadTasksBoard() {
   let response = await fetch(BASE_URL + ".json");
   let responseToJSON = await response.json();
@@ -22,6 +27,9 @@ async function loadTasksBoard() {
   return responseToJSON;
 }
 
+/**
+In dieser Funktion werden die Tasks aus der Firebase mittels der Post-Funktion geladen
+*/
 async function postData(path = "", data = "") {
   let response = await fetch(BASE_URL + path + ".json", {
     method: "POST",
@@ -33,6 +41,9 @@ async function postData(path = "", data = "") {
   return (responseToJSON = await response.json());
 }
 
+/**
+Diese Funktion löscht Daten aus der Firebase
+*/
 async function deleteData(path = "") {
   let response = await fetch(BASE_URL + path + ".json", {
     method: "DELETE",
@@ -40,6 +51,9 @@ async function deleteData(path = "") {
   return (responseToJSON = await response.json());
 }
 
+/**
+Diese Funktion lädt Daten in die Firebase
+*/
 async function putDataBoard(path = "", data = {}) {
   let response = await fetch(BASE_URL + path + ".json", {
     method: "PUT",
@@ -51,17 +65,26 @@ async function putDataBoard(path = "", data = {}) {
   return (responseToJson = await response.json());
 }
 
+/**
+Diese Funktion rendert die Tasks auf der board.html Seite
+*/
 function renderTasks() {
   setBackColumns();
   showTasks();
 }
 
+/**
+Diese Funktion zeigt das AddTask Popup an
+*/
 function displayAddTask() {
   document
     .getElementById("container-add-task-board")
     .classList.remove("d-none");
 }
 
+/**
+Diese Funktion löscht die Spalten in denen später die Tasks angezeigt werden sollen
+*/
 function setBackColumns() {
   document.getElementById("toDO").innerHTML = ``;
   document.getElementById("inProgress").innerHTML = ``;
@@ -69,6 +92,10 @@ function setBackColumns() {
   document.getElementById("done").innerHTML = ``;
 }
 
+/**
+Diese Funktion öffnet die detaillierte Ansicht eines Tasks
+@param {string} idTask - Ist der Index des zu öffnenen Tasks
+*/
 function openDetailCard(event, idTask, stopPro) {
   document.body.classList.add("overflow-hidden");
   initial = [];
@@ -85,6 +112,10 @@ function openDetailCard(event, idTask, stopPro) {
     event.stopPropagation();
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion die schon ausgewählten Contacte aus
+@param {string} idTask - Ist der Index des zu bearbeitenen Tasks
+*/
 function addTaskInitials(idTask){
   if(!tasksBd[idTask]["assigned to"])
     return;
@@ -95,6 +126,10 @@ function addTaskInitials(idTask){
   }
 }
 
+/**
+Diese Funktion schließt die detaillierte Ansicht eines Tasks
+@param {string} idTask - Ist der Index des zu schließenen Tasks
+*/
 function closeDetailCard(idTask) {
   document.body.classList.remove("overflow-hidden");
   document.getElementById("idDetailCard").classList.remove("leftPart");
@@ -102,6 +137,10 @@ function closeDetailCard(idTask) {
   document.getElementById("idDetailCard").classList.add("d-none");
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion die schon eingefügten Subtasks an
+@param {string} idTask - Ist der Index des zu bearbeitenen Tasks
+*/
 function checkSubtasks(idTask) {
   if (tasksBd[idTask]["subtasks"] == null) return "";
   for (let i = 0; i < tasksBd[idTask]["subtasks"].length; i++) {
@@ -111,6 +150,10 @@ function checkSubtasks(idTask) {
   }
 }
 
+/**
+Diese Funktion ruft die notwendigen Funktionen aus, um die Detailcard anzuzeigen
+@param {string} idTask - Ist der Index des zu öffnenden Tasks
+*/
 function detailCardHTML(idTask) {
   return /*html*/ `
         <div id="detailCardID" class="detailCardTaskToDo">
@@ -126,6 +169,9 @@ function detailCardHTML(idTask) {
     `;
 }
 
+/**
+Diese Funktion ruft die einzelnen Tasks auf und ordnet die zu der passenden Spalte
+*/
 function showTasks() {
   let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
   setBackColumns();
@@ -142,6 +188,9 @@ function showTasks() {
   checkNoTasks(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
+/**
+Diese Funktion fügt dem Board die einzelnen Tasks zu
+*/
 function addTaskBoard(idTask, idApplication) {
   document.getElementById(idApplication).innerHTML += cardHTML(idTask);
   return 1;
