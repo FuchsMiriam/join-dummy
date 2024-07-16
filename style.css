@@ -94,12 +94,14 @@ body {
 .mainpageSignUpContainer {
   width: 279px;
   height: 49px;
-  top: 67px;
-  left: calc(100% / 1.5);
+  /*top: 67px;*/
+  /*left: calc(100% / 1.5);*/
+  top: 80px;
   gap: 35px;
   position: absolute;
   display: flex;
   align-items: center;
+  right: 77px;
 }
 
 .textNotUser {

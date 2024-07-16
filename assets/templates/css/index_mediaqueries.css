@@ -21,7 +21,9 @@
 
 @media (max-width: 890px) {
   .mainpageSignUpContainer {
-    left: calc(100% / 2);
+    /*left: calc(100% / 2);*/
+    top: 37px;
+    right: 38px;
   }
 
   .animateMobile {
@@ -82,7 +84,7 @@
 
   .mainpageSignUpContainer {
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
     left: calc(100% / 3);
   }
 
@@ -354,10 +356,9 @@
 }
 
 @media (max-width: 375px) and (max-height: 667px) {
-  .mainpageSignUpContainer{
+  .mainpageSignUpContainer {
     gap: 0;
   }
-  
 }
 
 /*Height*/
