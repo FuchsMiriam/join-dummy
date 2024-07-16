@@ -1,4 +1,6 @@
-//Template einbinden
+/**
+Diese Funktion bindet die template.html in den anderen Funktionen ein
+*/
 let resultTemplate = false;
 function includeHTML() {
   let z, i, elmnt, file, xhttp;
@@ -33,6 +35,9 @@ function includeHTML() {
   }
 }
 
+/**
+Diese Funktion initialisiert die template.html
+*/
 function initHTML(){
   includeHTML();
   setTimeout(() => {
@@ -42,6 +47,9 @@ function initHTML(){
 
 let noneLoginName = 0;
 
+/**
+Diese Funktion ermittelt, was von der Sidebar angezeigt werden darf -> Login, Guest und Fremder
+*/
 function hoverSidebar(){
   let path = window.location.pathname;
   let page = path.split("/").pop();
@@ -59,6 +67,9 @@ function hoverSidebar(){
   setHelpTemplate();
 }
 
+/**
+Diese Funktion blendet die Sidebar aus
+*/
 function dnoneSidbar(){
   document.getElementById("menu_Sidebar").classList.add("d-none");
   document.getElementById("privacyNav").classList.add("d-none");
@@ -66,15 +77,23 @@ function dnoneSidbar(){
   noneLoginName = 0;
 }
 
+/**
+Diese Funktion blendet die Sidebar ein
+*/
 function dSidbar(){
   document.getElementById("menu_Sidebar").classList.remove("d-none");
   document.getElementById("privacyNav").classList.remove("d-none");
-  // document.getElementById("headerNote").classList.remove("d-none");
 }
 
-function setHelpTemplate(){
-}
+/**
+Diese Funktion rendert die Help Seite
+*/
+function setHelpTemplate(){}
 
+/**
+Diese Funktion ermittelt, welche Kategorie in der Nav-Bar gehovert werden muss
+  @param {string} page - aktuelle Seite
+*/
 function setHoverFrames(page){
   if(page == "summary.html")
     setHover("frameSummary", "imgFrameSummary", "imgHoverSummary");
@@ -91,12 +110,21 @@ function setHoverFrames(page){
   }    
 }
 
+/**
+Diese Funktion definiert, dass die Kategorie auf der geöffneten Seite nicht gehovert werden kann
+@param {string} frame - Ist der Index der Kategorie
+@param {string} imgFrame - Ist der Index des Bildes der Kategorie
+@param {string} imgHover - Ist die Klasse des Hover-Bilds
+*/
 function setHover(frame, imgFrame, imgHover){
   document.getElementById(frame).classList.add("nohover");
   document.getElementById(frame).classList.add("menuFramesHover");
   document.getElementById(imgFrame).classList.add(imgHover);
 }
 
+/**
+Diese Funktion stellt die Kürzel dar -> G - Guest, MG - Initialien der Login Person
+*/
 function setInitialsName(){
   let name = loadLoginName();
   if(name == null)
@@ -109,6 +137,10 @@ function setInitialsName(){
   }
 }
 
+/**
+Diese Funktion ermittelt, welche Kategorie in der Nav-Bar gehovert werden muss
+@param {string} name - Ist der Name der Login Person
+*/
 function getInitials(name) {
   if(name == null)
     return "G";
@@ -119,6 +151,9 @@ function getInitials(name) {
 }
 
 let clickName = 0;
+/**
+Diese Funktion öffnet die Leiste bei den Kontakt-Initialien
+*/
 function openNoteHeader(){
   if(!noneLoginName)
     clickName = 0;
@@ -128,6 +163,9 @@ function openNoteHeader(){
     clickName = 1;
 }
 
+/**
+Diese Funktion wird bei einem "Click" geöffnet
+*/
 window.addEventListener("click", function(event) {
   if(clickName == 1){
     document.getElementById("headerNote").classList.remove("d-none");
@@ -146,6 +184,9 @@ window.addEventListener("click", function(event) {
   openEditChangeSubtasks = 0;
 });
 
+/**
+Diese Funktion schließt die Auswahl der möglichen neuen Spalten
+*/
 function closeChangeColumn(){
   let idChange = "changeColumn" + openChangeColumn;
   document.getElementById(idChange).classList.add("d-none");
@@ -153,6 +194,9 @@ function closeChangeColumn(){
   toogleView = 0;
 }
 
+/**
+Diese Funktion schließt das Edit-PopUp Fenster
+*/
 function closeEdit(event){
   if( document.getElementById("idEditCard").classList.contains("d-none") && !document.getElementById("idDetailCard").classList.contains("d-none"))
     {
@@ -164,10 +208,16 @@ function closeEdit(event){
       document.getElementById("idEditCard").classList.add("d-none");
 }
 
+/**
+Diese Funktion öffnet die Startseite
+*/
 function openIndex() {
   window.location.href = "../index.html";
 }
 
+/**
+Diese Funktion öffnet die vorherige Seite
+*/
 function backToSide(){
   history.back();
 }

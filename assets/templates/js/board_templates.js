@@ -1,3 +1,7 @@
+/**
+Diese Funktion rendert das Label von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLLabel(idTask) {
   if (tasksBd[idTask].category == "User Story") {
     return detailCardHTMLLabelUser(idTask);
@@ -6,6 +10,10 @@ function detailCardHTMLLabel(idTask) {
   }
 }
 
+/**
+Diese Funktion rendert den Label-USer von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLLabelUser(idTask){
   return /*html*/ `
         <div class="labelClose">
@@ -16,6 +24,10 @@ function detailCardHTMLLabelUser(idTask){
         </div>`;
 }
 
+/**
+Diese Funktion rendert das Label-Technical von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLLabelTechnical(idTask){
   return /*html*/ `
         <div class="labelClose">
@@ -26,12 +38,20 @@ function detailCardHTMLLabelTechnical(idTask){
         </div>`;
 }
 
+/**
+Diese Funktion rendert den Titel von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLTitle(idTask) {
   return /*html*/ `
         <div class="textDetailCardTitle">${tasksBd[idTask].title}</div>
     `;
 }
 
+/**
+Diese Funktion rendert den Content von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLContent(idTask) {
   if (tasksBd[idTask].description == null) return "";
   return /*html*/ `
@@ -39,6 +59,10 @@ function detailCardHTMLContent(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert das Datum von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLDate(idTask) {
   if (tasksBd[idTask].date == null) return "";
   return /*html*/ `
@@ -49,6 +73,10 @@ function detailCardHTMLDate(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die Priorität von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLPriority(idTask) {
   if (tasksBd[idTask].prio == null) return "";
   return /*html*/ `
@@ -64,12 +92,20 @@ function detailCardHTMLPriority(idTask) {
     `;
 }
 
+/**
+Diese Funktion gibt den Wortlaut der ausgewählten Priorität zurück
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLPriorityName(idTask) {
   if (tasksBd[idTask].prio == 1) return "Urgent";
   if (tasksBd[idTask].prio == 2) return "Medium";
   if (tasksBd[idTask].prio == 3) return "Low";
 }
 
+/**
+Diese Funktion rendert die Kontakte von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLContacts(idTask) {
   if (tasksBd[idTask]["assigned to"] == null) return "";
   return /*html*/ `
@@ -80,6 +116,10 @@ function detailCardHTMLContacts(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die einzelnen Kontakte von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function getdetailcardHTMLContacts(idTask) {
   let initials = 0;
   let contactCards = "";
@@ -96,6 +136,10 @@ function getdetailcardHTMLContacts(idTask) {
   return /*html*/ ` <div class="detailcardContacts">${contactCards}</div>`;
 }
 
+/**
+Diese Funktion rendert die Subtasks von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLSubtasks(idTask) {
   if (tasksBd[idTask]["subtasks"] == null) return "";
   if (tasksBd[idTask]["subtasks"].length <= 0) return "";
@@ -108,6 +152,10 @@ function detailCardHTMLSubtasks(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die einzelnen Subtasks von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function getDetailcardHTMLSubtasks(idTask) {
   let subtasksCards = "";
 
@@ -122,6 +170,10 @@ function getDetailcardHTMLSubtasks(idTask) {
   return /*html*/ ` <div class="subtasksDetailCard">${subtasksCards}</div>`;
 }
 
+/**
+Diese Funktion rendert das Edit-Label von der Detailcard
+@param {string} idTask - Ist der Index des Tasks
+*/
 function detailCardHTMLDeleteEdit(idTask) {
   return /*html*/ `
         <div class="deleteEditDetailCard">
@@ -138,6 +190,13 @@ function detailCardHTMLDeleteEdit(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die Spalten mit "No Tasks", wenn keine Tasks vorhanden sind
+@param {string} tasksToDo - Ist der Index der Spalte "To Do"
+@param {string} tasksInProgress - Ist der Index der Spalte "In Progress"
+@param {string} tasksAwaitFeedback - Ist der Index der Spalte "Await Feedback"
+@param {string} tasksDone - Ist der Index der Spalte "Done"
+*/
 function checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
   if (!tasksToDo) document.getElementById("toDO").innerHTML = cardHTMLNoTasks();
   if (!tasksInProgress)
@@ -147,7 +206,13 @@ function checkNoTasks(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
   if (!tasksDone) document.getElementById("done").innerHTML = cardHTMLNoTasks();
 }
 
-
+/**
+Diese Funktion rendert die Spalten mit "No Tasks Found", wenn keine Tasks mit dem Suchbegriff gefunden worden sind
+@param {string} tasksToDo - Ist der Index der Spalte "To Do"
+@param {string} tasksInProgress - Ist der Index der Spalte "In Progress"
+@param {string} tasksAwaitFeedback - Ist der Index der Spalte "Await Feedback"
+@param {string} tasksDone - Ist der Index der Spalte "Done"
+*/
 function checkNoTasksFound(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDone) {
   if (!tasksToDo) document.getElementById("toDO").innerHTML = cardHTMLNoTasksFound();
   if (!tasksInProgress)
@@ -157,6 +222,10 @@ function checkNoTasksFound(tasksToDo,tasksInProgress,tasksAwaitFeedback, tasksDo
   if (!tasksDone) document.getElementById("done").innerHTML = cardHTMLNoTasksFound();
 }
 
+/**
+Diese Funktion rendert einen Task
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTML(idTask) {
   return /*html*/ `
         <div draggable="true" id="taskToDo${idTask}" class="TasksToDo" onclick="openDetailCard(event, ${idTask}, true)" ondragstart="startDragging(${idTask})">
@@ -171,6 +240,11 @@ function cardHTML(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die einzelnen Möglichkeiten, wo der Task verschoben werden kann
+@param {string} idTask - Ist der Index des Tasks
+@param {string} index - Ist der Index der aktuellen Spalte
+*/
 function dropDownChangeColumn(index, idTask){
   let document = ``;
   if(index != 0)
@@ -184,6 +258,10 @@ function dropDownChangeColumn(index, idTask){
   return document;
 }
 
+/**
+Diese Funktion rendert das Label des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLLabel(idTask) {
   if (tasksBd[idTask].category == "User Story")
     return /*html*/ `
@@ -193,12 +271,20 @@ function cardHTMLLabel(idTask) {
             <div class="labelCard labelCard-green">${tasksBd[idTask].category}</div>`;
 }
 
+/**
+Diese Funktion rendert den Titel des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLTitle(idTask) {
   return /*html*/ `
         <div class="textCardTitle">${tasksBd[idTask].title}</div>
     `;
 }
 
+/**
+Diese Funktion rendert den Content des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLContent(idTask) {
   if (tasksBd[idTask].description == null) tasksBd[idTask].description = "";
   return /*html*/ `
@@ -206,6 +292,10 @@ function cardHTMLContent(idTask) {
     `;
 }
 
+/**
+Diese Funktion rendert die Progressbar des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLProgressBar(idTask) {
   if (tasksBd[idTask]["subtasks"] == null) return "";
   let maxSubtasks = tasksBd[idTask]["subtasks"].length;
@@ -223,6 +313,10 @@ function cardHTMLProgressBar(idTask) {
   }
 }
 
+/**
+Diese Funktion rendert die aktuelle Priorität des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLPriority(idTask) {
   if (tasksBd[idTask].prio == null) return "";
   if (tasksBd[idTask].prio == 3)
@@ -233,6 +327,10 @@ function cardHTMLPriority(idTask) {
     return /*html*/ `<img class="imgPrio" src="../assets/img/Property 1=Urgent.png" alt="">`;
 }
 
+/**
+Diese Funktion rendert die Kontakte des Tasks
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLContacts(idTask) {
   let initials = 0; let contactCards = "";let leftPosition = 0;
 
@@ -249,6 +347,10 @@ function cardHTMLContacts(idTask) {
   return /*html*/ `<div class="cardContacts">${contactCards}</div>`;
 }
 
+/**
+Diese Funktion rendert "+X", wenn mehr Kontakte vorhanden sind
+@param {string} idTask - Ist der Index des Tasks
+*/
 function checkMoreContacts(idTask, i){
     let countContacts = tasksBd[idTask]["assigned to"].length - 4;
     if(countContacts)
@@ -257,18 +359,30 @@ function checkMoreContacts(idTask, i){
     return ``;
 }
 
+/**
+Diese Funktion rendert das Label "No tasks to do"
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLNoTasks(idTask) {
   return /*html*/ `
         <div class="noTasksToDo">No tasks To do</div>
     `;
 }
 
+/**
+Diese Funktion rendert das Label "No task found"
+@param {string} idTask - Ist der Index des Tasks
+*/
 function cardHTMLNoTasksFound(idTask) {
   return /*html*/ `
         <div class="noTasksToDo">No task found</div>
     `;
 }
 
+/**
+Diese Funktion generiert die Initialen des Namens
+@param {string} name - Ist der Index des Namens
+*/
 function getInitials(name) {
   if (name == null) return "";
   const nameParts = name.split(" ");

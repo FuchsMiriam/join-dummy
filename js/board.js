@@ -190,12 +190,18 @@ function showTasks() {
 
 /**
 Diese Funktion fügt dem Board die einzelnen Tasks zu
+@param {string} idTask - Ist der Index des Tasks
+@param {string} idApplication - Ist der Index der Spalte
 */
 function addTaskBoard(idTask, idApplication) {
   document.getElementById(idApplication).innerHTML += cardHTML(idTask);
   return 1;
 }
 
+/**
+Diese Funktion überprüft, ob die einzelnen Subtasks schon ausgewählt worden sind, damit die später richtig gerendert werden
+@param {string} idTask - Ist der Index des Tasks
+*/
 function getCheckedTasks(idTask) {
   let checkedTasks = 0;
   for (let i = 0; i < tasksBd[idTask]["subtasks"].length; i++)
@@ -203,16 +209,23 @@ function getCheckedTasks(idTask) {
   return checkedTasks;
 }
 
+/**
+Diese Funktion speichert den Zustand der einzelnen Tasks ab
+@param {string} idTask - Ist der Index des Tasks
+@param {string} idCheckBox - Ist der Index des Subtasks
+*/
 function toggleCheckbox(idTask, idCheckBox) {
-  let isChecked = document.getElementById(
-    "checkCard" + idTask + idCheckBox
-  ).checked;
+  let isChecked = document.getElementById("checkCard" + idTask + idCheckBox).checked;
 
   tasksBd[idTask]["subtasks"][idCheckBox]["checked"] = isChecked;
   renderTasks();
   putDataBoard((path = ""), tasksBd);
 }
 
+/**
+Diese Funktion löscht ein Task vom Board
+@param {string} idTask - Ist der Index des Tasks
+*/
 function deleteTaskBoard(idTask) {
   tasksBd.splice(idTask, 1);
   closeDetailCard(idTask);
@@ -220,6 +233,9 @@ function deleteTaskBoard(idTask) {
   putDataBoard((path = ""), tasksBd);
 }
 
+/**
+Diese Funktion sucht Tasks, die den gesuchten Begriff im Titel oder in der Beschreibung besitzen
+*/
 function searchTasks() {
   let input = 0;
   if (window.innerWidth <= 1200)
@@ -234,6 +250,10 @@ function searchTasks() {
   }
 }
 
+/**
+Diese Funktion zeigt die Tasks an, die den gesuchten Begriff enthalten
+@param {string} input - der gesuchte Begriff
+*/
 function showSearchTasks(input) {
   let tasksToDo = 0; let tasksInProgress = 0; let tasksAwaitFeedback = 0; let tasksDone = 0;
   for (let i = 0; i < tasksBd.length; i++) {
@@ -247,29 +267,51 @@ function showSearchTasks(input) {
   checkNoTasksFound(tasksToDo, tasksInProgress, tasksAwaitFeedback, tasksDone);
 }
 
+
+/**
+Diese Funktion rendert die gefunden Task nach der Suche 
+*/
 function foundTask() {
   setBackColumns();
   renderTasks();
 }
 
+/**
+Diese Funktion merkt sich den Task, der aktuell verschoben wird
+@param {string} idTask - Ist der Index des Tasks
+*/
 function startDragging(idTask) {
   currentTask = idTask;
 }
 
+/**
+Diese Funktion ermöglicht das verschieben der Tasks mittels der Maus
+*/
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
+/**
+Diese Funktion speichert den neuen Ort des Tasks ab und rendert das Board neu
+@param {string} category - Ist der Name der Spalte, wo der aktuelle Task hinvorschoben wurde
+*/
 function drop(category) {
   tasksBd[currentTask]["taskApplication"] = category;
   renderTasks();
   putDataBoard((path = ""), tasksBd);
 }
 
+/**
+Diese Funktion übergibt alle Tasks
+*/
 function getTasks() {
   return tasksBd;
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion die ausgewählte Priorität an
+@param {string} idTask - Ist der Index des Tasks
+*/
 function openEditPrio(idTask){
   if(tasksBd[idTask].prio == 1)
     changePrioButtonUrgent();
@@ -279,6 +321,10 @@ function openEditPrio(idTask){
     changePrioButtonLow();
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion den Titel, die Beschreibung, das Datum und die Kategorie an
+@param {string} idTask - Ist der Index des Tasks
+*/
 function openEditTitleDescriptionDateCategory(idTask){
   document.getElementById("input-title").value = tasksBd[idTask].title;
   document.getElementById("input-description").value = tasksBd[idTask].description;
@@ -286,6 +332,10 @@ function openEditTitleDescriptionDateCategory(idTask){
   document.getElementById("input-category").value = tasksBd[idTask].category;
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion die Subtasks an
+@param {string} idTask - Ist der Index des Tasks
+*/
 function openEditSubtasks(idTask){
   let inputs = document.getElementById("show-subtask");
   inputs.innerHTML = "";
@@ -300,29 +350,30 @@ function openEditSubtasks(idTask){
   } 
 }
 
+/**
+Diese Funktion zeigt in der Edit-Funktion die ausgewählten Kontakte an
+@param {string} idTask - Ist der Index des Tasks
+*/
 function openEditContacts(idTask){
-  let initial = [];
+  let initial = []; let count = 0;
   let ini = document.getElementById("display-initials");
   ini.innerHTML = "";
-  let count = 0;
-  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++)
-  {
+  for(let i = 0; i < tasksBd[idTask]["assigned to"].length; i++){
     initial.push(getInitials(tasksBd[idTask]["assigned to"][i].name));
     updateCheckEdit(tasksBd[idTask]["assigned to"][i].name);
-    namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);
-  }
-    for (let i = 0; i < initial.length; i++) {
-      if(i < 4){
-        ini.innerHTML += displayInitials(i, initial[i]);
-        initalsBackgroundColor(i);
-      }
-      else
-        count++;
-    }
-    if(count)
-      ini.innerHTML += displayInitialsNumber(count);
+    namesFromContacts.push(tasksBd[idTask]["assigned to"][i].name);}
+  for (let i = 0; i < initial.length; i++) {
+    if(i < 4){
+      ini.innerHTML += displayInitials(i, initial[i]);
+      initalsBackgroundColor(i);
+    }else count++;}
+  if(count) ini.innerHTML += displayInitialsNumber(count);
 }
 
+/**
+Diese Funktion öffnet das Edit-Popup
+@param {string} idTask - Ist der Index des Tasks
+*/
 function openEdit(idTask){
   clearInputsEdit();
   useEditFunction = 1;
@@ -336,48 +387,3 @@ function openEdit(idTask){
   openEditSubtasks(idTask);
 }
 
-function formatDateEdit(inputDate) {
-  let dateParts = inputDate.split('/');
-  let formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-  return formattedDate;
-}
-
-let toogleView = 0;
-let openChangeColumn = 0;
-
-function changeColumn(idTask, event, stopPro){
-  openChangeColumn = idTask;
-  let idChange = "changeColumn" + openChangeColumn;
-  if(toogleView){
-    document.getElementById(idChange).classList.add("d-none");
-    toogleView = 0;
-  }else{
-    document.getElementById(idChange).classList.remove("d-none");
-    dropDownCheckHTML(idTask);
-    toogleView = 1;
-  }
-  
-  if (stopPro) 
-    event.stopPropagation();
-}
-
-function dropDownCheckHTML(idTask){
-  let idChange = "changeColumn" + openChangeColumn;
-  if(!tasksBd[idTask].taskApplication)
-    document.getElementById(idChange).innerHTML = dropDownChangeColumn(0, idTask);
-  else if(tasksBd[idTask].taskApplication == 1)
-    document.getElementById(idChange).innerHTML = dropDownChangeColumn(1, idTask);
-  else if(tasksBd[idTask].taskApplication == 2)
-    document.getElementById(idChange).innerHTML = dropDownChangeColumn(2, idTask);
-  else
-    document.getElementById(idChange).innerHTML = dropDownChangeColumn(3, idTask);
-}
-
-function moveToColumn(index, idTask, event, stopPro){
-  tasksBd[idTask].taskApplication = index;
-  renderTasks();
-  putDataBoard((path = ""), tasksBd);
-
-  if (stopPro) 
-    event.stopPropagation();
-}

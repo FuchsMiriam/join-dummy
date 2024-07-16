@@ -4,6 +4,9 @@ let result2 = false;
 let result3 = true;
 let loginName;
 
+/**
+Diese Funktion initialisiert die Seite summary.html in der Desktop Version
+*/
 async function summaryInit(){
   initHTML()
   loadTasksSummary().then((result2) => {
@@ -11,6 +14,9 @@ async function summaryInit(){
   });
 }
 
+/**
+Diese Funktion initialisert die Seite summary.html in der Mobil Version
+*/
 async function summaryMobilInit(){
   includeHTML();
   loadTasksSummary().then((result3) => {
@@ -23,10 +29,16 @@ async function summaryMobilInit(){
   });
 }
 
+/**
+Diese Funktion öffnet die Seite summary.html
+*/
 function openSummary(){
   window.location.href = "./summary.html";
 }
 
+/**
+Diese Funktion lädt die Tasks
+*/
 async function loadTasksSummary(){
   let response = await fetch(SUMMARY_URL + ".json");
   let responseToJSON = await response.json();
@@ -35,6 +47,10 @@ async function loadTasksSummary(){
   result3 = true;
 }
 
+/**
+Diese Funktion lädt die Daten auf Firebase hoch
+@param {string} data - die zu ladenen Tasks
+*/
 async function putDataSummary(path="", data={}){
   let response = await fetch(SUMMARY_URL + path + ".json", {
       method: "PUT",
@@ -47,6 +63,9 @@ async function putDataSummary(path="", data={}){
 }
 
 let nrToDO = 0;
+/**
+Diese Funktion ermittelt die Anzahl der Tasks in "To do"
+*/
 function getNumberofToDo(){
   if(tasksBoard == null)
     return 0;
@@ -57,6 +76,9 @@ function getNumberofToDo(){
 }
 
 let nrDone = 0;
+/**
+Diese Funktion ermittelt die Anzahl der Tasks in "Done"
+*/
 function getNumberofDone(){
   if(tasksBoard == null)
     return 0;
@@ -67,6 +89,9 @@ function getNumberofDone(){
 }
 
 let nrUrgent = 0;
+/**
+Diese Funktion ermittelt die Anzahl der Tasks mit Urgent als Prio
+*/
 function getNumberofUrgent(){
   if(tasksBoard == null)
     return 0;
@@ -76,6 +101,9 @@ function getNumberofUrgent(){
   return nrUrgent;
 }
 
+/**
+Diese Funktion ermittelt die Anzahl aller Tasks 
+*/
 function getNumberofTasks(){
   if(tasksBoard == null)
     return 0;
@@ -84,6 +112,9 @@ function getNumberofTasks(){
 }
 
 let nrProgress = 0;
+/**
+Diese Funktion ermittelt die Anzahl der Tasks in "In Progress"
+*/
 function getNumberofProgress(){
   if(tasksBoard == null)
     return 0;
@@ -94,6 +125,9 @@ function getNumberofProgress(){
 }
 
 let nrAwait = 0;
+/**
+Diese Funktion ermittelt die Anzahl der Tasks in "Await"
+*/
 function getNumberofAwait(){
   if(tasksBoard == null)
     return 0;
@@ -103,6 +137,9 @@ function getNumberofAwait(){
   return nrAwait;
 }
 
+/**
+Diese Funktion ruft alle Funktionen auf, um die Summary Seite zu rendern
+*/
 function getSummary(){
   document.getElementById("summaryToDo").innerHTML = getNumberofToDo();
   document.getElementById("summaryProgress").innerHTML = getNumberofProgress();
@@ -115,6 +152,9 @@ function getSummary(){
   document.getElementById("nameSummary").innerHTML = loadLoginName();
 }
 
+/**
+Diese Funktion ermittelt das Datum, wann der nächste Task ansteht
+*/
 function getNextDate(){
   if(tasksBoard == null) return '';
   let date = tasksBoard[0]["date"];
@@ -132,6 +172,9 @@ function getNextDate(){
   return formatDate(date);
 }
 
+/**
+Diese Funktion formatiert das Datum ins richtige Format
+*/
 function formatDate(date) {
   let dateParts = date.split("/");
 
@@ -145,6 +188,9 @@ function formatDate(date) {
   return `${monthName} ${day}, ${year}`;
 }
 
+/**
+Diese Funktion ermittelt je nach Uhrzeit die notwendige Begrüßung
+*/
 function calculateGreeting(currentHour){
   if (currentHour >= 5 && currentHour < 12) 
     return "Good Morning";
@@ -156,6 +202,9 @@ function calculateGreeting(currentHour){
     return "Good Night";
 }
 
+/**
+Diese Funktion stellt die Begrüßung dar
+*/
 function getGreeting(){
   let currentDate = new Date(); 
   let currentHour = currentDate.getHours();
@@ -168,11 +217,17 @@ function getGreeting(){
     return greeting;
 }
 
+/**
+Diese Funktion ermittelt den Namen der Person, die sich eingeloggt hat
+*/
 function getLoginName(name){
   let nameAsText = JSON.stringify(name);
   localStorage.setItem("name", nameAsText);
 }
 
+/**
+Diese Funktion speichert den Namen der Person ab, die sich eingeloggt hat
+*/
 function loadLoginName() {
   let nameAsText = localStorage.getItem("name", loginName);
   if (nameAsText == "null")
