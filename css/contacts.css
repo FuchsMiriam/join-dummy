@@ -39,6 +39,15 @@ body {
   right: 50%;
 }
 
+.errorMessageContacts {
+  display: none;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+}
+
 /*Close overlay window*/
 
 .closeOverlay {
