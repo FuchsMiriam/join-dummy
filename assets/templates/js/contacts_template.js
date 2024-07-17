@@ -1,5 +1,8 @@
-//Contact view on the right side
-
+/**
+ * Generates the HTML structure for displaying the contact details on the right side and inserts it into the page.
+ * @param {Object} contact - The contact object containing details.
+ * @param {number} index - The index of the contact in the contact list.
+ */
 function createContactDetailsHTML(contact, index) {
   document.getElementById("contactsFullscreen").innerHTML = `
       <div class="fullContactDetails">
@@ -36,44 +39,54 @@ function createContactDetailsHTML(contact, index) {
   setBg();
 }
 
-//Open Add contact overlay
-
+/**
+ * Opens the overlay for adding a new contact.
+ */
 function openOverlay() {
   document.querySelector(".addNewContactOverlay").classList.remove("hidden");
   document.querySelector(".addNewContactOverlay").classList.add("visible");
 }
 
-//Close Add contact overlay
-
+/**
+ * Closes the overlay for adding a new contact when the close button is clicked.
+ */
 document.getElementById("closeOverlay").addEventListener("click", function () {
   document.getElementById("contactOverlay").classList.add("hidden");
   document.getElementById("contactOverlay").classList.remove("visible");
 });
 
-//Close Edit contact overlay
-
+/**
+ * Closes the overlay for editing a contact when the close button is clicked.
+ */
 document
   .getElementById("closeEditOverlay")
   .addEventListener("click", function () {
     document.querySelector(".editContactOverlay").classList.add("hidden");
   });
 
-//Close small edit contact overlay
-
+/**
+ * Closes the small overlay for editing a contact when the close button is clicked.
+ */
 document
   .getElementById("whiteCloseEditOverlay")
   .addEventListener("click", function () {
     document.querySelector(".editContactOverlay").classList.add("hidden");
   });
 
-//Popup overlay Event listener
-
+/**
+ * Toggles the visibility of the popup overlay.
+ * @param {Event} event - The event object.
+ */
 function togglePopup(event) {
   const popupOverlay = document.getElementById("popupOverlay");
   popupOverlay.classList.toggle("hidden");
   event.stopPropagation(); 
 }
 
+/**
+ * Closes the popup overlay when clicking outside of it.
+ * @param {Event} event - The event object.
+ */
 document.addEventListener("click", function(event) {
   const popupOverlay = document.getElementById("popupOverlay");
   if (!popupOverlay.contains(event.target)) {
@@ -81,14 +94,19 @@ document.addEventListener("click", function(event) {
   }
 });
 
-// Function to edit a contact from the popup
+/**
+ * Edits the currently selected contact from the popup overlay.
+ */
 function editContactFromPopup() {
   const contact = contacts[currentContact];
   editContact(contact);
   closePopup();
 }
 
-// Function to delete a contact from the popup
+/**
+ * Deletes the currently selected contact from the popup overlay.
+ * @returns {Promise<void>}
+ */
 async function deleteContactFromPopup() {
   try {
     const contactId = contacts[currentContact].id;
@@ -100,7 +118,9 @@ async function deleteContactFromPopup() {
   }
 }
 
-// Function to close the popup
+/**
+ * Closes the popup overlay.
+ */
 function closePopup() {
   const popupOverlay = document.getElementById("popupOverlay");
   popupOverlay.classList.add("hidden");
