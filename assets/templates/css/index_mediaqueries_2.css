@@ -185,6 +185,10 @@
     margin-top: 0;
     left: auto;
   }
+
+  .errorMessage{
+    left: auto;
+  }
 }
 
 @media (max-height: 926px) and (max-width: 670px) {
