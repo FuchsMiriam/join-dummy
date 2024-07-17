@@ -1,4 +1,5 @@
 /**
+ * 
  * Generates the HTML structure for displaying the contact details on the right side and inserts it into the page.
  * @param {Object} contact - The contact object containing details.
  * @param {number} index - The index of the contact in the contact list.
@@ -74,6 +75,7 @@ document
   });
 
 /**
+ * 
  * Toggles the visibility of the popup overlay.
  * @param {Event} event - The event object.
  */
@@ -84,6 +86,7 @@ function togglePopup(event) {
 }
 
 /**
+ * 
  * Closes the popup overlay when clicking outside of it.
  * @param {Event} event - The event object.
  */
@@ -104,6 +107,7 @@ function editContactFromPopup() {
 }
 
 /**
+ * 
  * Deletes the currently selected contact from the popup overlay.
  * @returns {Promise<void>}
  */

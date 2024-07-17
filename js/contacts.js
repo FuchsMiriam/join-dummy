@@ -14,6 +14,9 @@ const colorClasses = [
 ];
 let currentContact = 0;
 
+/**
+ * Initializes the page by including HTML, fetching contacts, assigning colors, and displaying them.
+ */
 async function initializePage() {
   includeHTML();
   await fetchContacts();
@@ -23,7 +26,11 @@ async function initializePage() {
   hoverSidebar();
 }
 
-//Randomize colours
+/**
+ * 
+ * Assigns random colors to contacts.
+ * @param {Array} contacts - The array of contact objects.
+ */
 async function assignColorsToContacts(contacts) {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
@@ -34,6 +41,9 @@ async function assignColorsToContacts(contacts) {
   }
 }
 
+/**
+ * Sets the background color of contact initials based on the assigned color class.
+ */
 function setBg() {
   const elements = document.querySelectorAll(
     ".contactInitials, .contactDetailsInitials, .overlayInitialsContainer"
@@ -48,6 +58,11 @@ function setBg() {
   });
 }
 
+/**
+ * 
+ * Fetches contacts from the server.
+ * @param {string} [path=""] - The path for the contacts URL.
+ */
 async function fetchContacts(path = "") {
   try {
     const response = await fetch(contactsURL + path + ".json");
@@ -66,6 +81,13 @@ async function fetchContacts(path = "") {
   }
 }
 
+/**
+ * 
+ * Sends a POST request to add data to the server.
+ * @param {string} [path=""] - The path for the contacts URL.
+ * @param {Object} [data=""] - The data to be sent.
+ * @returns {Promise<Object>} - The response data in JSON format.
+ */
 async function postData(path = "", data = "") {
   let response = await fetch(contactsURL + path + ".json", {
     method: "POST",
@@ -74,16 +96,29 @@ async function postData(path = "", data = "") {
     },
     body: JSON.stringify(data),
   });
-  return (responseToJSON = await response.json());
+  return await response.json();
 }
 
+/**
+ * 
+ * Sends a DELETE request to delete data from the server.
+ * @param {string} [path=""] - The path for the contacts URL.
+ * @returns {Promise<Object>} - The response data in JSON format.
+ */
 async function deleteData(path = "") {
   let response = await fetch(contactsURL + path + ".json", {
     method: "DELETE",
   });
-  return (responseToJSON = await response.json());
+  return await response.json();
 }
 
+/**
+ * 
+ * Sends a PUT request to update data on the server.
+ * @param {string} [path=""] - The path for the contacts URL.
+ * @param {Object} [data={}] - The data to be updated.
+ * @returns {Promise<Object>} - The response data in JSON format.
+ */
 async function putData(path = "", data = {}) {
   let response = await fetch(contactsURL + path + ".json", {
     method: "PUT",
@@ -92,17 +127,27 @@ async function putData(path = "", data = {}) {
     },
     body: JSON.stringify(data),
   });
-  return (responseToJson = await response.json());
+  return await response.json();
 }
 
-//Contact sidebar
+/**
+ * 
+ * Retrieves the initials from a given name.
+ * @param {string} name - The full name of the contact.
+ * @returns {string} - The initials of the contact.
+ */
 function getInitials(name) {
   const nameParts = name.split(" ");
   const initials = nameParts.map((part) => part.charAt(0)).join("");
   return initials;
 }
 
-// Main function to generate the contacts sidebar
+/**
+ * 
+ * Generates the HTML for the contacts sidebar.
+ * @param {Array} contacts - The array of contact objects.
+ * @returns {string} - The generated HTML string.
+ */
 function contactsSidebar(contacts) {
   let { html, addedLetters } = initializeHtmlAndLetters();
 
@@ -115,13 +160,24 @@ function contactsSidebar(contacts) {
   return html.value;
 }
 
-// Initialize HTML string and Set for added letters
+/**
+ * 
+ * Initializes the HTML string and the Set for added letters.
+ * @returns {Object} - The initialized HTML string and Set of added letters.
+ */
 function initializeHtmlAndLetters() {
   let html = { value: "" };
   let addedLetters = new Set();
   return { html, addedLetters };
 }
 
+/**
+ * 
+ * Processes the first letter of the contact name for the sidebar.
+ * @param {Object} contact - The contact object.
+ * @param {Set} addedLetters - The Set of added letters.
+ * @param {Object} html - The HTML string object.
+ */
 function processFirstLetter(contact, addedLetters, html) {
   const firstLetter = contact.name.charAt(0).toUpperCase();
   if (!addedLetters.has(firstLetter)) {
@@ -133,7 +189,12 @@ function processFirstLetter(contact, addedLetters, html) {
   }
 }
 
-// Add contact details to the HTML string
+/**
+ * 
+ * Adds the contact details to the HTML string.
+ * @param {Object} contact - The contact object.
+ * @param {Object} html - The HTML string object.
+ */
 function addContactToHtml(contact, html) {
   html.value += `
     <div class="contactListInner">
@@ -146,7 +207,12 @@ function addContactToHtml(contact, html) {
   `;
 }
 
-// Get initials from the contact's name
+/**
+ * 
+ * Retrieves the initials from a given name.
+ * @param {string} name - The full name of the contact.
+ * @returns {string} - The initials of the contact.
+ */
 function getInitials(name) {
   return name
     .split(" ")
@@ -154,9 +220,9 @@ function getInitials(name) {
     .join("");
 }
 
-// Functions to Initialize, Sort, Display, and Manage Click Events for the Contact List
-
-// Main function to display contacts
+/**
+ * Displays the contacts on the page.
+ */
 async function showContacts() {
   const contactListDiv = initializeContactListDiv();
 
@@ -169,25 +235,40 @@ async function showContacts() {
   }
 }
 
-// Initialize and clear the contact list div
+/**
+ * 
+ * Initializes and clears the contact list div.
+ * @returns {HTMLElement} - The contact list div element.
+ */
 function initializeContactListDiv() {
   const contactListDiv = document.getElementById("contactList");
   contactListDiv.innerHTML = "";
   return contactListDiv;
 }
 
-// Sort contacts by name
+/**
+ * 
+ * Sorts the contacts by name.
+ * @param {Array} contacts - The array of contact objects.
+ */
 function sortContacts(contacts) {
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-// Display the contacts in the contact list div
+/**
+ * 
+ * Displays the contacts in the contact list div.
+ * @param {HTMLElement} contactListDiv - The contact list div element.
+ * @param {Array} contacts - The array of contact objects.
+ */
 function displayContacts(contactListDiv, contacts) {
   const contactsHTML = contactsSidebar(contacts);
   contactListDiv.innerHTML = contactsHTML;
 }
 
-// Add click listeners to contact elements
+/**
+ * Adds click listeners to the contact elements.
+ */
 function addContactClickListeners() {
   const contactDivs = document.querySelectorAll(".contactListInner");
   contactDivs.forEach((contactDiv, index) => {
@@ -198,16 +279,20 @@ function addContactClickListeners() {
   });
 }
 
-// Display a message when no contacts are available
+/**
+ * 
+ * Displays a message when no contacts are available.
+ * @param {HTMLElement} contactListDiv - The contact list div element.
+ */
 function displayNoContactsMessage(contactListDiv) {
   contactListDiv.innerHTML = "Keine Kontakte vorhanden.";
 }
 
 contacts.sort();
 
-//Layout changing screen width
-
-// Adjusts layout based on the screen width
+/**
+ * Adjusts the layout based on the screen width.
+ */
 function adjustLayoutForScreenWidth() {
   if (window.innerWidth <= 768) {
     hideContactsSidebar();
@@ -218,19 +303,25 @@ function adjustLayoutForScreenWidth() {
   }
 }
 
-// Hides the contacts sidebar element
+/**
+ * Hides the contacts sidebar element.
+ */
 function hideContactsSidebar() {
   const contactsSidebar = document.querySelector(".contactsSidebar");
   contactsSidebar.style.display = "none";
 }
 
-// Displays the headlines container element
+/**
+ * Displays the headlines container element.
+ */
 function showHeadlinesContainer() {
   const headlinesContainer = document.querySelector(".headlinesContainer");
   headlinesContainer.style.display = "block";
 }
 
-// Displays the contacts arrow element and adds click event to navigate to contacts page
+/**
+ * Displays the contacts arrow element and adds a click event to navigate to the contacts page.
+ */
 function showContactsArrow() {
   const contactsArrow = document.querySelector(".contactsArrow");
   contactsArrow.style.display = "block";
@@ -240,7 +331,9 @@ function showContactsArrow() {
   });
 }
 
-// Resets layout for larger screens by displaying contacts sidebar and hiding contacts arrow
+/**
+ * Resets the layout for larger screens by displaying the contacts sidebar and hiding the contacts arrow.
+ */
 function resetLayoutForLargerScreens() {
   const contactsSidebar = document.querySelector(".contactsSidebar");
   contactsSidebar.style.display = "block";
@@ -249,7 +342,11 @@ function resetLayoutForLargerScreens() {
   contactsArrow.style.display = "none";
 }
 
-
+/**
+ * 
+ * Updates the UI for the contact details.
+ * @param {number} index - The index of the current contact.
+ */
 function updateContactDetailsUI(index) {
   document.getElementById("contactsFullscreen").classList.remove("out");
   document.getElementById("contactsFullscreen").classList.add("in");
@@ -268,6 +365,11 @@ function updateContactDetailsUI(index) {
   });
 }
 
+/**
+ * 
+ * Displays the contact details.
+ * @param {number} index - The index of the contact to display.
+ */
 function showContactDetails(index) {
   let contact = 0;
   if (index == null) {
@@ -285,7 +387,9 @@ function showContactDetails(index) {
   showDotIcon();
 }
 
-//Show dot icon
+/**
+ * Displays the dot icon based on the screen width.
+ */
 function showDotIcon() {
   if (window.innerWidth <= 768) {
     const dotIcon = document.getElementById("dotIcon");
@@ -293,13 +397,17 @@ function showDotIcon() {
   }
 }
 
-//Hide dotIcon
+/**
+ * Hides the dot icon.
+ */
 function hideDotIcon() {
   const dotIcon = document.getElementById("dotIcon");
   dotIcon.style.display = "none";
 }
 
-// Event listener to control the visibility of the dotIcon
+/**
+ * Event listener to control the visibility of the dot icon.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   const contactsFullscreen = document.getElementById("contactsFullscreen");
 
