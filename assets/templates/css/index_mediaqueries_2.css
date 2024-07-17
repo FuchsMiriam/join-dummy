@@ -11,7 +11,7 @@
   }
 }
 
-/* max-width: 426px oder max-height: 926px */
+/* max-width: 426px or max-height: 926px */
 @media (max-width: 426px), (max-height: 926px) {
   .mainpage {
     overflow-x: hidden;
@@ -164,7 +164,7 @@
   }
 }
 
-/* max-height: 840px und max-width: 1390px */
+/* max-height: 840px and max-width: 1390px */
 @media (max-height: 840px) and (max-width: 1390px) {
   .mainpageSignUpContainer {
     top: 37px;
@@ -186,7 +186,7 @@
   }
 }
 
-/* max-height: 926px und max-width: 1390px */
+/* max-height: 926px and max-width: 1390px */
 @media (max-height: 926px) and (max-width: 1390px) {
   .animateMobile {
     width: 64px;
@@ -242,7 +242,7 @@
   }
 }
 
-/* max-height: 926px und max-width: 670px */
+/* max-height: 926px and max-width: 670px */
 @media (max-height: 926px) and (max-width: 670px) {
   .mainpageSignUpContainer {
     width: 292px;
@@ -252,14 +252,14 @@
   }
 }
 
-/* max-height: 926px und max-width: 490px */
+/* max-height: 926px and max-width: 490px */
 @media (max-height: 926px) and (max-width: 490px) {
   .mainpageSignUpContainer {
     top: calc(100vh - 15vh - 49px);
   }
 }
 
-/* max-width: 580px und max-height: 840px */
+/* max-width: 580px and max-height: 840px */
 @media (max-width: 580px) and (max-height: 840px) {
   .mainpageSignUpContainer {
     top: calc(100vh - 250px);
@@ -279,7 +279,7 @@
   }
 }
 
-/* max-width: 375px und max-height: 667px */
+/* max-width: 375px and max-height: 667px */
 @media (max-width: 375px) and (max-height: 667px) {
   .loginContainer {
     margin-top: 130px;
