@@ -118,23 +118,6 @@ async function fetchAndShowContacts() {
 }
 
 //Create contact
-/*async function createContact() {
-    let name = document.getElementById("createNameInput");
-    let email = document.getElementById("createEmailInput");
-    let phone = document.getElementById("createPhoneInput");
-    try {
-      await checkAndSaveContact(name.value, email.value, phone.value);
-      clearInputs(name, email, phone);
-      hideContactOverlay();
-      await fetchAndShowContacts();
-    } catch (error) {
-      if (error.message === "Duplicate email") {
-        alert("This email address is already registered.");
-      } else {
-        alert("An error occurred while creating the contact.");
-      }
-    }
-  }*/
 
 async function createContact() {
   let nameInput = document.getElementById("createNameInput");
@@ -143,26 +126,24 @@ async function createContact() {
   let errorMessageContacts = document.getElementById("errorMessageContacts");
 
   try {
-    await checkAndSaveContact(
-      nameInput.value,
-      emailInput.value,
-      phoneInput.value
-    );
-    clearInputs(nameInput, emailInput, phoneInput);
-    hideContactOverlay();
-    await fetchAndShowContacts();
+    await processContact(nameInput, emailInput, phoneInput, errorMessageContacts);
   } catch (error) {
-    if (error.message === "Duplicate email") {
-      displayErrorContacts(
-        errorMessageContacts,
-        "Email address is already registered."
-      );
-    } else {
-      displayErrorContacts(
-        errorMessageContacts,
-        "An error occurred while creating the contact."
-      );
-    }
+    handleCreateContactError(error, errorMessageContacts);
+  }
+}
+
+async function processContact(nameInput, emailInput, phoneInput) {
+  await checkAndSaveContact(nameInput.value, emailInput.value, phoneInput.value);
+  clearInputs(nameInput, emailInput, phoneInput);
+  hideContactOverlay();
+  await fetchAndShowContacts();
+}
+
+function handleCreateContactError(error, errorMessageContacts) {
+  if (error.message === "Duplicate email") {
+    displayErrorContacts(errorMessageContacts, "Email address is already registered.");
+  } else {
+    displayErrorContacts(errorMessageContacts, "An error occurred while creating the contact.");
   }
 }
 
