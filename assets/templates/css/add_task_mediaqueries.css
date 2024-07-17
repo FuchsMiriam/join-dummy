@@ -1,4 +1,13 @@
-@media(max-width:1400px) {
+@media(max-width: 1400px) {
+    #content {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        height: fit-content;
+        scrollbar-width: none;
+        max-height: 480px;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -6,10 +15,6 @@
         margin-left: 0;
         overflow-y: scroll;
         overflow-x: hidden;
-    }
-
-    .footer {
-        gap: 20px;
     }
 
     .container-board-addTask {
@@ -21,16 +26,11 @@
     body {
         overflow: hidden;
     }
-}
 
-@media(max-width: 1400px) {
-    #content {
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        height: fit-content;
-        scrollbar-width: none;
-        max-height: 480px;
+    .container-board-addTask {
+        top: 0;
+        right: 0;
+        left: 0;
     }
 
     .content-left {
@@ -49,8 +49,8 @@
         margin-top: 0;
         justify-content: left;
         position: fixed;
-        bottom: 150px;
-        height: 70px;
+        bottom: 85px;
+        height: 100px;
     }
 
     .footer span {
@@ -59,9 +59,30 @@
     }
 }
 
+@media(max-width: 680px) {
+    .footer {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        width: 440px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
 @media(max-width: 480px) {
     #content {
         align-items: center;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    h1 {
+        margin-left: 0;
     }
 
     .content-left,
@@ -125,9 +146,18 @@
         text-align: center;
     }
 
+    .input-categorie-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #input-categorie-image-up,
+    #input-categorie-image-down {
+        right: 35px;
+    }
+
     #input-category {
         width: 100%;
-        display: flex;
     }
 
     .input-container {
@@ -146,14 +176,13 @@
         display: flex;
         flex-direction: row !important;
         align-items: center;
-        height: 50px;
         margin-right: 0;
         width: inherit;
     }
 
     .required-field-footer {
         width: 30%;
-        margin: auto;
+        margin-left: 10px;
     }
 
     .btn-footer-clear {
@@ -163,8 +192,8 @@
     .footer span {
         width: 345px;
         font-size: 18px;
-        /* display: flex; */
         justify-content: center;
+        font-size: 16px;
     }
 
     .button-footer {
@@ -180,43 +209,25 @@
     }
 
     .flex8gap {
-        width: 70%;
-    }
-}
-
-@media(max-height: 740px) {
-    #content {
-        height: 530px;
-    }
-}
-
-@media(max-width: 680px) {
-    .footer {
-        flex-direction: column;
-        width: 440px;
-        display: flex;
-        justify-content: center;
+        width: 65%;
         align-items: center;
     }
 
-    .content {
-        width: 440px;
-        display: flex;
-        justify-content: center;
+    #input-date {
+        width: 100%;
     }
 }
 
-@media(max-width: 328px) {
-    #content {
-        max-height: 100px;
+@media(max-width: 360px) {
+    .content-left,
+    .content-right
+    {
+        margin-left: 10px;
+        margin-right: 10px;
     }
-}
 
-@media(max-width:1400px) {
-    .container-board-addTask {
-        top: 0;
-        right: 0;
-        left: 0;
+    #input-description {
+        min-width: 0;
     }
 }
 
@@ -230,18 +241,17 @@
     }
 }
 
-@media(min-width: 375px) and (min-height: 667px) {
-    h1 {
-        margin-left: 0;
+@media(max-height: 740px) {
+    #content {
+        height: 35vh;
     }
 }
 
-
 /*--------------------- max-heigh ------------------------*/
 
-@media(max-height: 880px) and (max-width: 1400px) {
+@media(max-height: 620px) {
     #content {
-        max-height: 330px;
+        max-height: 25vh;
     }
 }
 
@@ -254,5 +264,23 @@
 @media(max-height: 839px) {
     .footer {
         margin-top: 216px;
+    }
+}
+
+@media(max-height: 800px) {
+    #content {
+        max-height: 35vh;
+    }
+}
+
+@media(max-height: 890px) {
+    #content {
+        max-height: 40vh;
+    }
+}
+
+@media(max-height: 1060px) {
+    #content {
+        max-height: 45vh;
     }
 }
