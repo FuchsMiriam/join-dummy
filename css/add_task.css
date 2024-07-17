@@ -40,7 +40,6 @@ li{
 
 body {
     max-width: 1440px;
-    /* overflow: hidden; */
 }
 
 .d-none {
@@ -304,7 +303,6 @@ input {
 #input-description-addTask {
     padding: 18px 16px;
     gap: 8px;
-    /* margin-bottom: 20px; */
     padding: 18px 16px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
@@ -355,11 +353,8 @@ input {
 #display-initials {
     display: grid;
     bottom: 330px;
-    z-index: 1;
-    width: 440px;
     grid-template-columns: repeat(8, 1fr);
     grid-row-gap: 30px;
-    /* padding-top: 20px; */
 }
 
 .input-container {
@@ -376,13 +371,11 @@ input {
 
 #show-subtask {
     width: 440px;
-    /* height: 130px; */
     height: fit-content;
     display: flex;
     flex-direction: column;
     font-size: 24px;
     overflow: auto;
-    /* margin-top: 10px; */
 }
 
 #subtask {

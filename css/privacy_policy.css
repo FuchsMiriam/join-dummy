@@ -82,9 +82,3 @@ li {
         margin-left: auto;
     }
 }
-
-@media(max-width: 1440px){
-    /* .container{
-        height: calc(100vh - 100px - 100px);
-    } */
-}

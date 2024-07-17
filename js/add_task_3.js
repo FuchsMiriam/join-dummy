@@ -229,7 +229,7 @@ function getPrio() {
    * `event.stopPropagation()` method will be called to prevent the event from bubbling up the DOM tree.
    */
   
-  function doubleclickSubtaskToEdit(i, event, stopPro) {
+  function doubleclickSubtaskToEdit(i) {
     let sub = document.getElementById(`subtask${i}`);
   
     sub.addEventListener("dblclick", function () {

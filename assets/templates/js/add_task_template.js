@@ -30,7 +30,7 @@ function showSubtaskTemplate(i, tasks) {
 function displayInitials(i, initials) {
   return `
           <div>
-              <span class="initials" id="initials-span${i}">${initials}</span>
+              <span class="initials" id="initials-span${i}" style="background-color:${contacts[i].colorClass}">${initials}</span>
           </div>
       `;
 }

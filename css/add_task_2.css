@@ -140,8 +140,6 @@
 
 .btn-footer-create {
     width: 110px;
-    /* background-image: url(../assets/img/Property\ 1=check.svg); */
-    /* background-image: url(../assets/img/check.svg); */
     background-repeat: no-repeat;
     background-position-x: 150px;
     background-position-y: 15px;
@@ -168,6 +166,10 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    bottom: -235px;
+    left: 0px;
+    background-color: white;
 }
 
 .contact-list {

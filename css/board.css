@@ -250,7 +250,6 @@ input::placeholder{
     padding-right: 13px;
     padding-top: 13px;
     max-height: calc(100vh - 324px);
-    /* min-height: 670px; */
 }
 
 .noTasksToDo{

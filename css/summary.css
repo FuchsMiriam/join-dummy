@@ -1,6 +1,5 @@
 #titleSummary{
     width: fit-content;
-    /* height: 73px; */
     padding-left: 328px;
     padding-top: calc(206px - 96px);
     display: flex;
@@ -31,8 +30,6 @@
 }
 
 #textRegards{
-    /* width: 385px;
-    height: 136px; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -41,8 +38,6 @@
 }
 
 #infosSummary{
-    /* width: 560px;
-    height: 562px; */
     display: flex;
     flex-direction: column;
     gap: calc(392px - 196px - 168px);

@@ -162,10 +162,10 @@ function addTask() {
     save();
   }
 
-/**
- * The function `setTiemoutAddTask` uses `setTimeout` to redirect to "board.html" after 2 seconds if
- * the referrer is not "board.html" and performs additional actions based on the current URL.
- */
+  /**
+   * The function `setTiemoutAddTask` uses `setTimeout` to redirect to "board.html" after 2 seconds if
+   * the referrer is not "board.html" and performs additional actions based on the current URL.
+   */
   function setTiemoutAddTask() {
     setTimeout(function () {
       if (shortURL(document.referrer) != "board.html")
@@ -256,7 +256,7 @@ async function createTask() {
  * - taskApplication: currentColumn, is creating an object with three properties:
  */
 function buildTask() {
-  let { title, description, assigned, date, category, prio } = getTaskDetails();
+  let { title, description, assigned, date, category, color, prio } = getTaskDetails();
 
   return {
     title: title,
@@ -264,6 +264,7 @@ function buildTask() {
     assigned: assigned,
     date: date,
     category: category,
+    color: color,
     subtasks: getSubtasks(),
     prio: prio,
     "assigned to": getSumContacts(),
@@ -295,7 +296,7 @@ function getTaskDetails() {
   let category = document.getElementById("input-category");
   let prio = getPrio();
 
-  
+
   return { title, description, assigned, date, category, prio };
 }
 

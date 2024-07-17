@@ -1,3 +1,7 @@
+/**
+ * This function is async and load the data from the arrays to display it on board
+ * @param {string} indexColumn 
+ */
 async function initBoard(indexColumn) {
   await fetchContacts();
   loadTasks().then((resultTask) => {
@@ -14,11 +18,18 @@ async function initBoard(indexColumn) {
       currentColumn = 0;
   });}
 
+  /**
+   * This function displays the addTask
+   */
+
 function displayAddTask() {
   document.getElementById("container-add-task-board").classList.remove("d-none");
   document.getElementById("idEditCard").classList.remove("d-none");
 }
 
+/**
+ * This function close the addTask overlay in the board
+ */
 function closeAddTaskBoard() {
   useEditFunction = 0;
   contactChoose = [];
@@ -26,10 +37,16 @@ function closeAddTaskBoard() {
   document.getElementById("idEditCard").classList.add("d-none");
 }
 
+/**
+ * This function get names from array and push into contact 
+ */
 function getNamesFromArray() {
   contactsNames = contacts.map((contact) => contact.name);
 }
 
+/**
+ * This function clear all inputs by click at the button 
+ */
 function clearInputsEdit() {
   document.getElementById("input-title").value = "";
   document.getElementById("input-category").value = "";
@@ -44,6 +61,9 @@ function clearInputsEdit() {
   save();
 }
 
+/**
+ * This function make happen that user can edit the inputs
+ */
 function addTaskEdit(){
   let title = document.getElementById("input-title");
   let date = document.getElementById("input-date");
@@ -60,6 +80,9 @@ function addTaskEdit(){
   save();
 }
 
+/**
+ * open functions for edit task on board
+ */
 function editTaskToBoard(){
   editTask();
   renderTasks();
@@ -68,6 +91,10 @@ function editTaskToBoard(){
   tasks = [];
 }
 
+/**
+ * This function create an array with name and backgroundcolor for each contact
+ * @returns 
+ */
 function getContactInputs(){
   let sumContacts = [];
   for (let i = 0; i < initialName.length; i++) {
@@ -79,6 +106,10 @@ function getContactInputs(){
   return sumContacts;
 }
 
+/**
+ * This function create an array with all subtasks who was added from the addTask
+ * @returns 
+ */
 function getSubtasksInput(){
   let subtasks = [];
   for (let j = 0; j < tasks.length; j++) {
@@ -90,6 +121,17 @@ function getSubtasksInput(){
   return subtasks;
 }
 
+/**
+ * This function create variables to push the data to firebase
+ * @param {string} title 
+ * @param {string} description 
+ * @param {string} assigned 
+ * @param {number} date 
+ * @param {string} category 
+ * @param {string} color 
+ * @param {string} prio 
+ * @returns 
+ */
 function setTask(title, description, assigned, date, category, color, prio){
   let task = {
     title: title.value,
@@ -99,6 +141,7 @@ function setTask(title, description, assigned, date, category, color, prio){
     category: category.value,
     subtasks: [{text: "", checked: 0,},],
     prio: prio,
+    color, color,
     "assigned to": {name: "", color: "",},
     taskApplication: getTaskApplication(),};
   task["assigned to"] = getContactInputs();
@@ -106,6 +149,10 @@ function setTask(title, description, assigned, date, category, color, prio){
   return task;
 }
 
+/**
+ * This function create variables for the edit function 
+ * @param {string} i 
+ */
 async function editTask(i) {
   let title = document.getElementById("input-title");
   let description = document.getElementById("input-description");
@@ -120,15 +167,3 @@ async function editTask(i) {
   putDataTasks((path = ""), tasksBd);
   save();
 }
-
-// function editSubtask(i) {
-//   let button = document.getElementById("add-button-subtask");
-//   let newValue = document.getElementById(`input-subtask`);
-
-//   button.classList.add("d-none");
-//   newValue.focus();
-
-//   task.splice(i, 1);
-//   task.push(i, newValue);
-//   save();
-// }
