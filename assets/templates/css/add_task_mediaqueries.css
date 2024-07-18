@@ -149,11 +149,6 @@
         justify-content: center;
     }
 
-    #input-categorie-image-up,
-    #input-categorie-image-down {
-        right: 35px;
-    }
-
     #input-category {
         width: 100%;
     }
@@ -209,7 +204,6 @@
 
     .flex8gap {
         width: 65%;
-        align-items: center;
     }
 
     #input-date {
