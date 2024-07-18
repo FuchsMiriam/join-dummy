@@ -276,6 +276,10 @@
 @media (max-height: 740px) and (max-width: 580px) {
   .mainpageSignUpContainer {
     top: calc(100vh - 130px);
+    display: flex;
+    flex-direction: row;
+    margin-top: 70px;
+    gap: 40px;
   }
 }
 
@@ -286,7 +290,10 @@
   }
 
   .mainpageSignUpContainer {
-    gap: 0;
+    gap: 45px;
     top: calc(100vh - 68px);
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
   }
 }
