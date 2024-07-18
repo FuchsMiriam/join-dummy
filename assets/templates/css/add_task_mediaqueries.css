@@ -48,8 +48,6 @@
     .footer {
         margin-top: 0;
         justify-content: left;
-        position: fixed;
-        bottom: 85px;
         height: 100px;
     }
 
@@ -258,12 +256,6 @@
 @media(max-height: 790px) {
     #content {
         max-height: 200px;
-    }
-}
-
-@media(max-height: 839px) {
-    .footer {
-        margin-top: 216px;
     }
 }
 
