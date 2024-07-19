@@ -83,9 +83,10 @@
 }
 
 #input-date {
-    padding: 25px 16px;
     border-radius: 10px;
     cursor: pointer;
+    height: 48px;
+    padding: 10px;
 }
 
 #input-subtask {
@@ -93,6 +94,7 @@
     cursor: pointer;
     position: relative;
     border-radius: 10px;
+    height: 48px;
 }
 
 .input-subtask-span {

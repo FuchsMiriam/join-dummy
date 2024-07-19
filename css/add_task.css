@@ -178,7 +178,6 @@ h1 {
 
 input {
     border: 1px solid #D1D1D1;
-    height: 48px;
     width: 440px;
     font-size: 20px;
 }
@@ -214,6 +213,7 @@ input {
 #input-description,
 #input-assigned {
     font-size: 20px;
+    height: 48px;
 }
 
 .width440 {
@@ -294,7 +294,7 @@ input {
     border-radius: 10px;
     border: 1px solid #D1D1D1;
     resize: none;
-    height: 136px;
+    height: 120px;
 }
 
 #input-description-addTask {
@@ -362,7 +362,6 @@ input {
 }
 
 #input-subtask {
-    flex: 1;
     padding: 5px;
 }
 
