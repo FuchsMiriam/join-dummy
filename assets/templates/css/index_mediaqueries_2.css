@@ -379,4 +379,11 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .interactionContainer {
+    gap: 16px;
+    width: 100%;
+    height: unset;
+    margin-bottom: unset;
+  }
 }
