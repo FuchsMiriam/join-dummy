@@ -84,12 +84,6 @@
     display: none;
   }
 
-  /* .mainpageSignUpContainer {
-    flex-direction: column;
-    gap: 0;
-    left: calc(100% / 3);
-  } */
-
   .animateMobile {
     width: 100.03px;
     height: 121.97px;
@@ -169,15 +163,6 @@
     gap: 16px;
   }
 
-  /* .loginButtons {
-    width: 180px;
-    height: 123px;
-    gap: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
-
   .mainpageLoginButton {
     width: 180px;
     height: 51px;
@@ -211,15 +196,6 @@
     width: 160px;
     left: calc((100vw - 300px) / 2);
   }
-
-  /* .interactionContainer {
-    width: 280px;
-  } */
-
-  /* .loginEmail,
-  .loginPassword {
-    width: 230px;
-  } */
 }
 
 
